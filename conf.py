@@ -6,7 +6,7 @@ import tinkerer.paths
 # **************************************************************
 # TODO: Edit the lines below
 # **************************************************************
-language = "cn"
+language = "zh_CN"
 # Change this to the name of your blog
 project = u'愚炖的故事'                   
 
@@ -54,10 +54,10 @@ extensions = ['sphinxcontrib.plantuml',
              'tinkerer.ext.disqus']
 
 # Add other template paths here
-templates_path = ['_templates']
+templates_path = ['templates']
 
 # Add other static paths here
-html_static_path = ['_static', tinkerer.paths.static]
+html_static_path = ['static', tinkerer.paths.static]
 
 # Add other theme paths here
 html_theme_path = [tinkerer.paths.themes]                 
