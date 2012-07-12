@@ -20,7 +20,7 @@ author = 'Jet Geng'
 copyright = '2012, ' + author         
 
 # Change this to your blog root URL (required for RSS feed)
-website = 'http://127.0.0.1/blog/html/'                              
+website = 'http://jetgeng.github.com/blog/html/'                              
 
 # **************************************************************
 # More tweaks you can do
