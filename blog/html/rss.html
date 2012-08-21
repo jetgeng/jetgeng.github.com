@@ -5,7 +5,103 @@
         <link>http://jetgeng.github.com/blog/html/</link>
         <description>一个程序员的成长录</description>
         <language>en-us</language>
-        <pubDate>Wed, 11 Jul 2012 16:00:00 GMT</pubDate>
+        <pubDate>Mon, 20 Aug 2012 16:00:00 GMT</pubDate>
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2012/08/21/pyaudio.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2012/08/21/pyaudio.html</guid>
+            <title>初次接触PyAudio</title>
+            <description><![CDATA[<?xml version="1.0" ?><div class="section" id="pyaudio">
+<h1>初次接触PyAudio</h1>
+<p>前两天无意间PyAudio，当时没觉得怎么地。今天拿过来练了练。发现这个小东西还真的不错。只需要简单的几行代码就可以完成录音和播放wav的功能。而且他还是跨平台的，在WinXp和Linux下运行良好（遗憾的是在Mac OS Lion下编译没通过）。</p>
+<p>下面这个代码来源于实现了录音功能。 <a class="reference external" href="http://hyry.dip.jp:8000/pydoc/wave_pyaudio.html#pyaudio">http://hyry.dip.jp:8000/pydoc/wave_pyaudio.html#pyaudio</a> 。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<span class="kn">from</span> <span class="nn">pyaudio</span> <span class="kn">import</span> <span class="n">PyAudio</span><span class="p">,</span> <span class="n">paInt16</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">wave</span>
+
+
+<span class="c"># 将data中的数据保存到名为filename的WAV文件中</span>
+<span class="k">def</span> <span class="nf">save_wave_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">wave</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span>
+    <span class="n">wf</span><span class="o">.</span><span class="n">setnchannels</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">wf</span><span class="o">.</span><span class="n">setsampwidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">wf</span><span class="o">.</span><span class="n">setframerate</span><span class="p">(</span><span class="n">SAMPLING_RATE</span><span class="p">)</span>
+    <span class="n">wf</span><span class="o">.</span><span class="n">writeframes</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+    <span class="n">wf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+
+<span class="n">NUM_SAMPLES</span> <span class="o">=</span> <span class="mi">2000</span>      <span class="c"># pyAudio内部缓存的块的大小</span>
+<span class="n">SAMPLING_RATE</span> <span class="o">=</span> <span class="mi">8000</span>    <span class="c"># 取样频率</span>
+<span class="n">LEVEL</span> <span class="o">=</span> <span class="mi">1500</span>            <span class="c"># 声音保存的阈值</span>
+<span class="n">COUNT_NUM</span> <span class="o">=</span> <span class="mi">20</span>          <span class="c"># NUM_SAMPLES个取样之内出现COUNT_NUM个大于LEVEL的取样则记录声音</span>
+<span class="n">SAVE_LENGTH</span> <span class="o">=</span> <span class="mi">8</span>         <span class="c"># 声音记录的最小长度：SAVE_LENGTH * NUM_SAMPLES 个取样</span>
+
+<span class="c"># 开启声音输入</span>
+<span class="n">pa</span> <span class="o">=</span> <span class="n">PyAudio</span><span class="p">()</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="n">paInt16</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">SAMPLING_RATE</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                <span class="n">frames_per_buffer</span><span class="o">=</span><span class="n">NUM_SAMPLES</span><span class="p">)</span>
+
+<span class="n">save_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">save_buffer</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="c"># 读入NUM_SAMPLES个取样</span>
+    <span class="n">string_audio_data</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">NUM_SAMPLES</span><span class="p">)</span>
+    <span class="c"># 将读入的数据转换为数组</span>
+    <span class="n">audio_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">string_audio_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">short</span><span class="p">)</span>
+    <span class="c"># 计算大于LEVEL的取样的个数</span>
+    <span class="n">large_sample_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">audio_data</span> <span class="o">&gt;</span> <span class="n">LEVEL</span> <span class="p">)</span>
+    <span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">audio_data</span><span class="p">)</span>
+    <span class="c"># 如果个数大于COUNT_NUM，则至少保存SAVE_LENGTH个块</span>
+    <span class="k">if</span> <span class="n">large_sample_count</span> <span class="o">&gt;</span> <span class="n">COUNT_NUM</span><span class="p">:</span>
+        <span class="n">save_count</span> <span class="o">=</span> <span class="n">SAVE_LENGTH</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">save_count</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">save_count</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">save_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">save_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c"># 将要保存的数据存放到save_buffer中</span>
+        <span class="n">save_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">string_audio_data</span> <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c"># 将save_buffer中的数据写入WAV文件，WAV文件的文件名是保存的时刻</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">save_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">_%H_%M_%S&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;.wav&quot;</span>
+            <span class="n">save_wave_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">save_buffer</span><span class="p">)</span>
+            <span class="n">save_buffer</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">print</span> <span class="n">filename</span><span class="p">,</span> <span class="s">&quot;saved&quot;</span>
+    <span class="n">content</span>
+</pre></div>
+</div>
+</div>]]></description>
+            <category><![CDATA[ Python ]]></category>
+            <pubDate>Mon, 20 Aug 2012 16:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2012/07/15/nettywebconsole.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2012/07/15/nettywebconsole.html</guid>
+            <title>让Netty接受WebSocket请求</title>
+            <description><![CDATA[<?xml version="1.0" ?><div class="section" id="nettywebsocket">
+<h1>让Netty接受WebSocket请求</h1>
+<div class="section" id="id1">
+<h2>缘起</h2>
+<p>最近有个需要要求让 <a class="reference external" href="http://www.jboss.org/as7">JBoss AS 7</a> 支持WebSocket请求。遇到这样的问题，我的第一反应就是去想办法去换掉 <a class="reference external" href="http://www.jboss.org/as7">Jboss AS 7</a> 中的tomcat 容器或者把HTTP请求转发到另外一个容器中。一个老外 <a class="reference external" href="http://golovnin.blogspot.com/2012/04/jboss-7-and-websockets.html">JBoss 7 and WebSocket</a> 中就这么干的。但是觉得还存在一些问题。
+所以一直在尝试其他方案，突然一天看到了Netty的架构图。发现他居然支持WebSocket接入。如果我做一个subsystem，把Netty装进去是不是就可以解决这个问题呢？</p>
+</div>
+<div class="section" id="id2">
+<h2>尝试</h2>
+<p>有这如上的想法以后，就得去验证。验证的第一步就是确定Netty是否真的能够支持WebSocket。什么话都不用说了上让代码证明一切吧！</p>
+<p class="plantuml">
+<img alt="interface AttributeMap{ } interface ChannelOutboundInvoker{     bind()     connect()     disconnect()     close()     deregister()     flush()     write(message:Object) } interface ChannelFutureFactory{ } interface Channel{     isOpen()     isRegistered()     isActive()  }  AttributeMap &lt;|-- Channel ChannelOutboundInvoker &lt;|-- Channel ChannelFutureFactory &lt;|-- Channel  DefaultChannelGroup note of DefaultChannelGroup : 可以保存多个Channel。" src="http://jetgeng.github.com/blog/html/2012/07/15/../../../images/plantuml-2ea657842e5e1f7383c943b328ce934540f35be9.png"/>
+</p>
+</div>
+</div>]]></description>
+            <category><![CDATA[ Jboss ]]></category>
+            <pubDate>Sat, 14 Jul 2012 16:00:00 GMT</pubDate>
+        </item>
         <item>
             <link>http://jetgeng.github.com/blog/html/2012/07/12/esper_source_read.html</link>
             <guid>http://jetgeng.github.com/blog/html/2012/07/12/esper_source_read.html</guid>
