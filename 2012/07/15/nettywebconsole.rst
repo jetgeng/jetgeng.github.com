@@ -39,9 +39,6 @@
     ChannelOutboundInvoker <|-- Channel
     ChannelFutureFactory <|-- Channel 
 
-    DefaultChannelGroup
-    note of DefaultChannelGroup : 可以保存多个Channel。 
-
 
 
 .. _JBoss 7 and WebSocket: http://golovnin.blogspot.com/2012/04/jboss-7-and-websockets.html
