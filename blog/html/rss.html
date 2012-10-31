@@ -29,7 +29,7 @@
 <h1>Kid Capture开发手记</h1>
 <div class="section" id="id1">
 <h2>缘起</h2>
-<p>我四岁的儿子和他10谁的表哥迷上了我的电脑，只要我不用就和他哥跑到电脑前。随后就会传来一阵阵的狂笑。我过去一看发现他们抱着Photo Booth狂拍照片，狂拍视屏。被那些加上各种各样效果的视屏逗的开心死了。
+<p>我四岁的儿子和他10岁的表哥迷上了我的电脑，只要我不用就和他哥跑到电脑前。随后就会传来一阵阵的狂笑。我过去一看发现他们抱着Photo Booth狂拍照片，狂拍视屏。被那些加上各种各样效果的视屏逗的开心死了。
 这个时候我就在想我自己能否做一个这种小东西呢？让儿子在他妈妈的 <strong>瘟都死</strong> （Windows）上也能用呢？
 整理整理思路就动手做吧！</p>
 </div>
@@ -73,7 +73,7 @@
 </div>
 <div class="section" id="id4">
 <h2>图像采集</h2>
-<p>图像采集说白了就是从摄像头读取图像信息。在微软家有Direct.Show 可以用。从CodeProject网站上可以找到大量的示例，不是C#就是VB。 当然通过Python也可以调用，只是要求系统上一定要有Direct。所以放弃。最后在Youtube上看到一老外用不到10行代码完成了视屏采集。为之一动，对自己说就用他吧！他就是OpenCV。</p>
+<p>图像采集说白了就是从摄像头读取图像信息。在微软家有Direct.Show 可以用。从CodeProject网站上可以找到大量的示例，不是C#就是VB。 当然通过Python也可以调用，只是要求系统上一定要有Direct。所以放弃。最后在Youtube上看到一老外用10行代码完成了视屏采集。为之一动，对自己说就用他吧！他就是OpenCV。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -107,6 +107,16 @@
         <span class="k">break</span>
 </pre></div>
 </td></tr></table></div>
+<ol class="arabic simple">
+<li>4,5行导入OpenCV的包</li>
+<li>7打开摄像头，并开始读取frame</li>
+<li>11 ~ 13 读取摄像头的数据帧，并显示到窗体中。</li>
+<li>15 ~ 16 判断有没有用户输入，如果是 esc键就退出。</li>
+</ol>
+<blockquote>
+<div><p>上面的代码就是视屏捕捉的所有核心！超级简单吧！不过有个问题上面的代码只能使用 <a class="reference external" href="http://opencv.org/">OpenCV</a> 自己的图像界面，而且他的并不能集成到其他框架中来。所以要对他他做写改动才可以。</p>
+<p>在他的官方网站上找到了一个例子</p>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="pyaudio">
@@ -206,9 +216,9 @@
         <item>
             <link>http://jetgeng.github.com/blog/html/2012/07/12/esper_source_read.html</link>
             <guid>http://jetgeng.github.com/blog/html/2012/07/12/esper_source_read.html</guid>
-            <title>Esper 源码分析</title>
+            <title>通过交互的方式调试Esper</title>
             <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="esper">
-<h1>Esper 源码分析</h1>
+<h1>通过交互的方式调试Esper</h1>
 </div>
 </body>]]></description>
             <category><![CDATA[ Esper ]]></category>
@@ -217,24 +227,175 @@
         <item>
             <link>http://jetgeng.github.com/blog/html/2012/07/03/jbossover.html</link>
             <guid>http://jetgeng.github.com/blog/html/2012/07/03/jbossover.html</guid>
-            <title>JBoss AS 7 学习笔记</title>
-            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="jboss-as-7">
-<h1>JBoss AS 7 学习笔记</h1>
-<div class="section" id="xnio">
-<h2>XNIO模块</h2>
-<p>我们先从jboss-as-remoting-test的着手了解他。
-在RemotingSubsystemTestCase中</p>
-<p class="plantuml">
-<img alt="class AbstractSubsystemBaseTest{ }  class RemotingSubsystemTestCase{ }" src="http://jetgeng.github.com/blog/html/2012/07/03/../../../images/plantuml-43e98afc0df7eca3a76f0e56ea586e6b882d8153.png"/>
-</p>
+            <title>使用Maven和tycho构建OSGi插件项目</title>
+            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="maventychoosgi">
+<h1>使用Maven和tycho构建OSGi插件项目</h1>
+<div class="section" id="tycho">
+<h2>介绍Tycho插件</h2>
+<p>自动构建OSGi Plugin项目，一直以来就是个头疼的问题。直到 <a class="reference external" href="http://eclipse.org/tycho/">Tycho</a> 的出现,这些都不在成为问题了。用它你可以很轻松来构建Eclipse插件(Eclipse Plugin) , Eclipse features , Eclipse的更新站点(Update Site)以及可以直接执行的Eclipse产品(Eclipse Product)。
+Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信息。这样依赖pom.xml文件就会很小。</p>
 </div>
-<div class="section" id="netty">
-<h2>Netty模块</h2>
-<p>这个东西是和MINA项目对等的。但是他的野心会大一点。直接支持web socket。有点意思。</p>
+<div class="section" id="nexus">
+<h2>介绍Nexus私服</h2>
+<p>Nexus的OSS版是完全免费的Maven私服。很多企业都在使用他，我们也赶个热闹，用它来构建我们团队内部的私服。在默认情况下Nexus OSS版是不支持eclipse 推出的p2这个仓库的，而Tycho就是依赖这种仓库。所以为了让他能和Tycho配合工作我们让Nexus加上这种能力。
+万幸的是sonatype已经开发出了 <a class="reference external" href="https://github.com/sonatype/nexus-p2-repository-plugin">nexus-p2-repository-plugin</a> ， <a class="reference external" href="https://github.com/sonatype/nexus-p2-bridge-plugin">nexus-p2-bridge-plugin</a> 这两个插件，他们为Nexus加上这两种能力 。我们只需要安装这两个插件就好了。
+具体操作请参考： <a class="reference external" href="https://docs.sonatype.org/display/Nexus/Nexus+OSGi+Experimental+Features+-+P2+Repository+Plugin">Nexus OSGi Experimental Features P2 Repository Plugin</a></p>
+</div>
+<div class="section" id="eclipse">
+<h2>构建Eclipse 插件</h2>
+<p>好了既然万事具备了，我们就开始用Tycho来构建Eclipse 插件了。现在我手边有一个通过Eclipse 创建名为org.gunn.autobuild.tycho.bundle的Plugin项目。我要对他进行构建。
+首先我们需要一个pom.xml文件。我们可以通过如下命令来生成：</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>mvn org.eclipse.tycho:tycho-pomgenerator-plugin:generate-poms -DgroupId<span class="o">=</span>org.gunn.autobuild.tycho
+</pre></div>
+</div>
+</div></blockquote>
+<p>这个时候我就得到了如下结构的pom.xml</p>
+<blockquote>
+<div><div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0</span>
+<span class="s">http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>
+<span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.gunn.autobuild.tycho<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>org.gunn.autobuild.tycho.bundle<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;packaging&gt;</span>eclipse-plugin<span class="nt">&lt;/packaging&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>这个时候如果你输入 mvn package肯定是会出错的。出错的原因是我们还没有把Tycho插件加入进来。
+所以我们还需要一个如下如下结构的pom.xml.</p>
+<blockquote>
+<div><div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;project&gt;</span>
+  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.gunn.autobuile<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>parent<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;packaging&gt;</span>pom<span class="nt">&lt;/packaging&gt;</span>
+
+  <span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;tycho-version&gt;</span>0.15.0<span class="nt">&lt;/tycho-version&gt;</span>
+  <span class="nt">&lt;/properties&gt;</span>
+
+  <span class="nt">&lt;repositories&gt;</span>
+    <span class="nt">&lt;repository&gt;</span>
+      <span class="nt">&lt;id&gt;</span>juno<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;layout&gt;</span>p2<span class="nt">&lt;/layout&gt;</span>
+      <span class="nt">&lt;url&gt;</span>http://download.eclipse.org/releases/juno<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;/repository&gt;</span>
+  <span class="nt">&lt;/repositories&gt;</span>
+
+  <span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.eclipse.tycho<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>tycho-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>${tycho-version}<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;extensions&gt;</span>true<span class="nt">&lt;/extensions&gt;</span>
+      <span class="nt">&lt;/plugin&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.eclipse.tycho<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>tycho-p2-director-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>${tycho-version}<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;executions&gt;</span>
+          <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>materialize-products<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+              <span class="nt">&lt;goal&gt;</span>materialize-products<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+          <span class="nt">&lt;/execution&gt;</span>
+          <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>archive-products<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+              <span class="nt">&lt;goal&gt;</span>archive-products<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+          <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;/executions&gt;</span>
+      <span class="nt">&lt;/plugin&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.eclipse.tycho<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>target-platform-configuration<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>${tycho-version}<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;configuration&gt;</span>
+          <span class="nt">&lt;environments&gt;</span>
+            <span class="nt">&lt;environment&gt;</span>
+              <span class="nt">&lt;os&gt;</span>win32<span class="nt">&lt;/os&gt;</span>
+              <span class="nt">&lt;ws&gt;</span>win32<span class="nt">&lt;/ws&gt;</span>
+              <span class="nt">&lt;arch&gt;</span>x86<span class="nt">&lt;/arch&gt;</span>
+            <span class="nt">&lt;/environment&gt;</span>
+            <span class="nt">&lt;environment&gt;</span>
+              <span class="nt">&lt;os&gt;</span>linux<span class="nt">&lt;/os&gt;</span>
+              <span class="nt">&lt;ws&gt;</span>gtk<span class="nt">&lt;/ws&gt;</span>
+              <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
+            <span class="nt">&lt;/environment&gt;</span>
+            <span class="nt">&lt;environment&gt;</span>
+              <span class="nt">&lt;os&gt;</span>macosx<span class="nt">&lt;/os&gt;</span>
+              <span class="nt">&lt;ws&gt;</span>cocoa<span class="nt">&lt;/ws&gt;</span>
+              <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
+            <span class="nt">&lt;/environment&gt;</span>
+          <span class="nt">&lt;/environments&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+    <span class="nt">&lt;/plugin&gt;</span>
+   <span class="nt">&lt;/plugins&gt;</span>
+  <span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>将如下片段加入到org.gunn.autobuild.tycho.bundle项目下的pom.xml</p>
+<blockquote>
+<div><div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;parent&gt;</span>
+   <span class="nt">&lt;relativePath&gt;</span>../parent/pom.xml<span class="nt">&lt;/relativePath&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>org.gunn.autobuild<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>parent<span class="nt">&lt;/artifactId&gt;</span>
+   <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+ <span class="nt">&lt;/parent&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>这个时候我们得到了如下的目录结构：</p>
+<img alt="../../../images/build_tree.jpg" src="http://jetgeng.github.com/blog/html/2012/07/03/../../../images/build_tree.jpg"/>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">项目中的pom.xml中的artifactId 想要和MANIFEST.MF文件中的Bundle-SymbolicName保持一致。pom.xml中version要和MANIFEST.MF文件中的Bundle-Version一致</p>
+</div>
+<p>这个时候你通过：</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>org.gunn.autobuild.tycho.bundle
+mvn package
+</pre></div>
+</div>
+</div></blockquote>
+<p>就会完成对这个budle的打包。关于tycho更多的介绍可以参考 <a class="reference external" href="http://wiki.eclipse.org/Category:Tycho">Eclipse Wiki tycho</a></p>
+</div>
+<div class="section" id="id1">
+<h2>使用Nexus私服</h2>
+<p>请按照 视屏设定Nexus私服。如过要在项目中使用私服的内容就直接在parent/pom.xml文件中修改repository中的内容。
+例如有如下图所示的Nexus私服：</p>
+<img alt="../../../images/nexus_p2.jpg" src="http://jetgeng.github.com/blog/html/2012/07/03/../../../images/nexus_p2.jpg"/>
+<p>如果需要使用的Indigo仓库，只需要将下面xml片段加入到parent/pom.xml中。</p>
+<div class="highlight-xml"><div class="highlight"><pre> <span class="nt">&lt;repository&gt;</span>
+      <span class="nt">&lt;id&gt;</span>juno<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;layout&gt;</span>p2<span class="nt">&lt;/layout&gt;</span>
+      <span class="nt">&lt;url&gt;</span>http://192.168.100.235:8881/nexus/content/repositories/juno/<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;/repository&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>参考资料</h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://wiki.eclipse.org/Category:Tycho">Eclipse Wiki tycho</a></li>
+<li><a class="reference external" href="http://www.vogella.com/articles/EclipseTycho/article.html#productbuild">Eclipse Tycho - Tutorial for building Eclipse Plugins and RCP applications</a></li>
+</ol>
 </div>
 </div>
 </body>]]></description>
-            <category><![CDATA[ JBoss ]]></category>
+            <category><![CDATA[ autobuild ]]></category>
             <pubDate>Mon, 02 Jul 2012 16:00:00 GMT</pubDate>
         </item>
     </channel>

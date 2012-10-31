@@ -96,10 +96,10 @@
             <a href="../../07/15/nettywebconsole.html">让Netty接受WebSocket请求</a>
         </li>
         <li>
-            <a href="../../07/12/esper_source_read.html">Esper 源码分析</a>
+            <a href="../../07/12/esper_source_read.html">通过交互的方式调试Esper</a>
         </li>
         <li>
-            <a href="../../07/03/jbossover.html">JBoss AS 7 学习笔记</a>
+            <a href="../../07/03/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
         </li>
     </ul>
 </div>
@@ -144,7 +144,7 @@
 <h1>Kid Capture开发手记</h1>
 <div class="section" id="id1">
 <h2>缘起</h2>
-<p>我四岁的儿子和他10谁的表哥迷上了我的电脑，只要我不用就和他哥跑到电脑前。随后就会传来一阵阵的狂笑。我过去一看发现他们抱着Photo Booth狂拍照片，狂拍视屏。被那些加上各种各样效果的视屏逗的开心死了。
+<p>我四岁的儿子和他10岁的表哥迷上了我的电脑，只要我不用就和他哥跑到电脑前。随后就会传来一阵阵的狂笑。我过去一看发现他们抱着Photo Booth狂拍照片，狂拍视屏。被那些加上各种各样效果的视屏逗的开心死了。
 这个时候我就在想我自己能否做一个这种小东西呢？让儿子在他妈妈的 <strong>瘟都死</strong> （Windows）上也能用呢？
 整理整理思路就动手做吧！</p>
 </div>
@@ -188,7 +188,7 @@
 </div>
 <div class="section" id="id4">
 <h2>图像采集</h2>
-<p>图像采集说白了就是从摄像头读取图像信息。在微软家有Direct.Show 可以用。从CodeProject网站上可以找到大量的示例，不是C#就是VB。 当然通过Python也可以调用，只是要求系统上一定要有Direct。所以放弃。最后在Youtube上看到一老外用不到10行代码完成了视屏采集。为之一动，对自己说就用他吧！他就是OpenCV。</p>
+<p>图像采集说白了就是从摄像头读取图像信息。在微软家有Direct.Show 可以用。从CodeProject网站上可以找到大量的示例，不是C#就是VB。 当然通过Python也可以调用，只是要求系统上一定要有Direct。所以放弃。最后在Youtube上看到一老外用10行代码完成了视屏采集。为之一动，对自己说就用他吧！他就是OpenCV。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -222,6 +222,16 @@
         <span class="k">break</span>
 </pre></div>
 </td></tr></table></div>
+<ol class="arabic simple">
+<li>4,5行导入OpenCV的包</li>
+<li>7打开摄像头，并开始读取frame</li>
+<li>11 ~ 13 读取摄像头的数据帧，并显示到窗体中。</li>
+<li>15 ~ 16 判断有没有用户输入，如果是 esc键就退出。</li>
+</ol>
+<blockquote>
+<div><p>上面的代码就是视屏捕捉的所有核心！超级简单吧！不过有个问题上面的代码只能使用 <a class="reference external" href="http://opencv.org/">OpenCV</a> 自己的图像界面，而且他的并不能集成到其他框架中来。所以要对他他做写改动才可以。</p>
+<p>在他的官方网站上找到了一个例子</p>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="pyaudio">
