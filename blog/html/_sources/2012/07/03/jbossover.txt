@@ -153,7 +153,7 @@ Nexus的OSS版是完全免费的Maven私服。很多企业都在使用他，我�
 使用Nexus私服
 ------------------------------------------------------------
 
-请按照 视屏设定Nexus私服。如过要在项目中使用私服的内容就直接在parent/pom.xml文件中修改repository中的内容。
+请按照 视频设定Nexus私服。如过要在项目中使用私服的内容就直接在parent/pom.xml文件中修改repository中的内容。
 例如有如下图所示的Nexus私服：
 
 .. image:: ../../../static/images/nexus_p2.jpg
