@@ -14,8 +14,8 @@
     
     <title>使用Maven和tycho构建OSGi插件项目 &mdash; 愚炖的故事</title>
     
-    <link rel="stylesheet" href="../../../_static/modern.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/modern.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -26,11 +26,11 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/translations.js"></script>
-    <link rel="shortcut icon" href="../../../_static/tinkerer.ico"/>
+    <script type="text/javascript" src="../../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../static/translations.js"></script>
+    <link rel="shortcut icon" href="../../../static/tinkerer.ico"/>
     
     <link rel="top" title="愚炖的故事" href="../../../index.html" />
     <link rel="prev" title="通过交互的方式调试Esper" href="../12/esper_source_read.html" />
@@ -269,7 +269,7 @@ Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信
 </div>
 </div></blockquote>
 <p>这个时候我们得到了如下的目录结构：</p>
-<img alt="../../../_images/build_tree.jpg" src="../../../_images/build_tree.jpg" />
+<img alt="../../../images/build_tree.jpg" src="../../../images/build_tree.jpg" />
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">项目中的pom.xml中的artifactId 想要和MANIFEST.MF文件中的Bundle-SymbolicName保持一致。pom.xml中version要和MANIFEST.MF文件中的Bundle-Version一致</p>
@@ -287,7 +287,7 @@ mvn package
 <h2>使用Nexus私服</h2>
 <p>请按照 视频设定Nexus私服。如过要在项目中使用私服的内容就直接在parent/pom.xml文件中修改repository中的内容。
 例如有如下图所示的Nexus私服：</p>
-<img alt="../../../_images/nexus_p2.jpg" src="../../../_images/nexus_p2.jpg" />
+<img alt="../../../images/nexus_p2.jpg" src="../../../images/nexus_p2.jpg" />
 <p>如果需要使用的Indigo仓库，只需要将下面xml片段加入到parent/pom.xml中。</p>
 <div class="highlight-xml"><div class="highlight"><pre> <span class="nt">&lt;repository&gt;</span>
       <span class="nt">&lt;id&gt;</span>juno<span class="nt">&lt;/id&gt;</span>
