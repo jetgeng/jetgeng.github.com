@@ -1,4 +1,4 @@
-在OSGi中部署Web应用
+在OSGi中部署Web应用(一)
 ====================================
 
 概述
@@ -159,14 +159,63 @@ Ctrl+3 输入"Debug Configuration", 打开Debugy 配置界面。在"OSGi Framewo
 
 .. image:: ../../../static/images/osgi_web.jpg
 
+这个时候我们就已经将传统的Web应用部署到OSGi中来了。但是他现在还不能访问OSGi中资源！我们这就来干这活！
+
 Web应用和OSGi互用资源
 ------------------------------------------------------------    
 
-在Web应用中使用Struts2框架
-------------------------------------------------------------    
+为了能让Web应用和OSGi能互访资源，除了那些非常暴力的方法外，还有一种相对优雅的方式。如果做呢？那就是把war转化成符合OSGi bundle的规范的jar。简单一句话：把war转化成bundle！
+不要害怕，因为我们现在的转化成本已经很低很低了。甚至可以忽略！所有要做的只是添加一个文件而已，而且这个文件还可以通过工具生成！
 
-组建模块化的Web应用
-------------------------------------------------------------    
+我们先做一遍。 在Eclipse中，将一个普通的Java项目通过如下图所示操作转化成Plugin项目。
+
+.. image:: ../../../static/images/covert-pde.jpg
+
+这时根目录就会出现一个META-INF目录，下面有一个MANIFEST.MF文件。其中就包括了添加OSGi所需要的的信息。下面就是我做例子的文件的样子。
+
+.. code-block:: bash  
+
+        Manifest-Version: 1.0
+        Bundle-ManifestVersion: 2
+        Bundle-Name: Demo
+        Bundle-SymbolicName: org.gunn.osgi.web.demo
+        Bundle-Version: 1.0.0.qualifier
+        Bundle-Activator: org.gunn.osgi.web.demo.Activator
+        Bundle-ActivationPolicy: lazy
+        Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+        Import-Package: org.eclipse.osgi.framework.adaptor,
+         org.eclipse.osgi.framework.internal.core,
+         org.eclipse.osgi.internal.baseadaptor,
+         org.eclipse.osgi.internal.loader,
+         org.osgi.framework;version="1.3.0"
+        Web-ContextPath: /web/demo
+        Require-Bundle: org.eclipse.jetty.osgi.boot;bundle-version="8.1.0"
+        Bundle-ClassPath: WEB-INF/classes,
+         .
+
+需要说明的是将Bundle-ClassPath设定成WEB-INF/classes。 并将当前项目编译输出项目设定成WEB-INF/classes。如下图所示
+
+
+.. image:: ../../../static/images/default-output.jpg
+
+这样Bundle也就能访问到当前项目中的类了。
+
+另外在根目录下建立WEB-INF目录，并给定web.xml文件。Web需要的其他资源如jsp,html,css等就全部放到根目录下。
+
+.. image:: ../../../static/images/web-info.jpg
+
+这个时候在启动配置中勾选中刚才新建的这个项目。并启动。你在控制通过ss命令查看是，你就会看到
+
+.. code-block:: groovy
+     
+    386	ACTIVE      org.gunn.osgi.web.demo_1.0.0.qualifier 
+ 
+通过浏览器访问 http://localhost:9080/web/demo 就可以看到你的web项目。
+
+这个时候的web项目就是以Bundle的形式存在。他就是一个bundle。他可以使用OSGi中的任何服务和资源。
+    
+对于一个已有的war，可以使用 `bnd <http://www.aqute.biz/Code/BndCn>`_ 工具的wrap命令来转换成一个bundle。可以达到同样的效果。
+    
 
 
 参考资料
