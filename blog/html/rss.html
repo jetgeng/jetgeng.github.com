@@ -5,7 +5,91 @@
         <link>http://jetgeng.github.com/blog/html/</link>
         <description>一个程序员的成长录</description>
         <language>en-us</language>
-        <pubDate>Mon, 10 Dec 2012 16:00:00 GMT</pubDate>
+        <pubDate>Sun, 20 Jan 2013 16:00:00 GMT</pubDate>
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2013/01/21/lsfiles.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2013/01/21/lsfiles.html</guid>
+            <title>如何查看进程打开的文件</title>
+            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="id1">
+<h1>如何查看进程打开的文件</h1>
+<p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
+<p>首先要做的是找到相应的pid。 我们使用</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef | grep <span class="o">{</span>programe-name<span class="o">}</span>
+
+ps -aef | grep
+</pre></div>
+</div>
+</div></blockquote>
+<p>下面可以通过pfiles命令来查看：</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pfiles <span class="o">{</span>PID<span class="o">}</span>
+<span class="nv">$ </span>pfiles 3533
+</pre></div>
+</div>
+</div></blockquote>
+<p>不过pfiles在Mac OSX上默认没有安装。
+不过可以通过lsof 来完成。</p>
+<div class="highlight-bash"><div class="highlight"><pre>lsof -p <span class="o">{</span>PID<span class="o">}</span>
+</pre></div>
+</div>
+<p>输出的样例如下：</p>
+<p>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
+firefox 547 xxxx  txt      REG               14,2     63712   888627 /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
+firefox 547 xxxx  txt      REG               14,2    115792 16394163 /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
+firefox 547 xxxx  txt      REG               14,2    416260 16394166 /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
+firefox 547 xxxx  txt      REG               14,2     48140 16394174 /Applications/Firefox.app/Contents/MacOS/libplc4.dylib
+firefox 547 xxxx  txt      REG               14,2     43220 16394175 /Applications/Firefox.app/Contents/MacOS/libplds4.dylib
+firefox 547 xxxx  txt      REG               14,2    269952 16394173 /Applications/Firefox.app/Contents/MacOS/libnssutil3.dylib
+firefox 547 xxxx  txt      REG               14,2     25820 16394162 /Applications/Firefox.app/Contents/MacOS/libmozalloc.dylib
+firefox 547 xxxx  txt      REG               14,2     41328 16394181 /Applications/Firefox.app/Contents/MacOS/libxpcom.dylib
+firefox 547 xxxx  txt      REG               14,2   2040008 16394168 /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
+firefox 547 xxxx  txt      REG               14,2    304076 16394177 /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
+firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
+firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib</p>
+</div>
+</body>]]></description>
+            <category><![CDATA[ CLI ]]></category>
+            <pubDate>Sun, 20 Jan 2013 16:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2012/12/31/finderdumplicate.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2012/12/31/finderdumplicate.html</guid>
+            <title>又一个查找重复文件的工具</title>
+            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="id1">
+<h1>又一个查找重复文件的工具</h1>
+<p>有一块放了很多照片的硬盘，想整理出来另作他用。由于当时偷懒，把照片放的乱。甚至有一张照片放了很多份。浪费空间不说，主要是找个东西太费劲。
+所以就下决心自己写一个小工具把这些照片整理整理。</p>
+<div class="section" id="id2">
+<h2>技术方案</h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li>这种小东西用Python写会很快。就不用多想了。直接用他就OK了。</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/argparse">argparse</a> , 用来做命令的解析。</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/sh/1.07">sh</a> ,用于执行一些命令。</li>
+<li>使用git hash-object 命令获取文件的sha1</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>设计思路</h2>
+<p>这是一个命令行软件。命令行格式为：</p>
+<div class="highlight-bash"><div class="highlight"><pre>./fileDupFinder.py -e Extend -s sourcefolder -t targetfolder
+</pre></div>
+</div>
+<p>参数选项    长选项  用途
+-e          –extend    将要处理文件的扩展名，不区分大小写
+-s          –source    处理的源目录
+-t          –target    处理的输出目录
+.. uml:</p>
+<div class="highlight-python"><pre>class {
+}</pre>
+</div>
+</div>
+</div>
+</body>]]></description>
+            <pubDate>Sun, 30 Dec 2012 16:00:00 GMT</pubDate>
+        </item>
         <item>
             <link>http://jetgeng.github.com/blog/html/2012/12/11/webinosgi.html</link>
             <guid>http://jetgeng.github.com/blog/html/2012/12/11/webinosgi.html</guid>
@@ -48,7 +132,7 @@
 <div class="section" id="target-platform">
 <h3>准备Target Platform</h3>
 <p>将OSGi Framework 和Jetty Bundles解压到同一个文件夹。假定该目录为${Target_Path}。打开Eclipse，通过菜单Windows –&gt; Preferences –&gt; target 打开Target Platform的设定界面，也可以通过Ctrl+3 输入”Target Platform”来打开Target Platform设定界面。</p>
-<img alt="../../../images/open_target.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/open_target.jpg"/>
+<img alt="../../../_images/open_target.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/open_target.jpg"/>
 <p>新建一个Target Platform, 把${Target_Path} 加入到该Target Platform中。 并勾选新建的Target Platform为当前Platform。</p>
 </div>
 <div class="section" id="debug-configuration">
@@ -125,7 +209,7 @@ org.hamcrest.core_1.1.0.v20090501071000
 </pre></div>
 </div>
 <p>这个时候启动刚才新建的Debug 配置。这时去访问etc/jetty.xml 配置的端口（我本机设定是9080端口，所以我的访问地址是http://localhost:9080）。会的到如下效果。</p>
-<img alt="../../../images/404.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/404.jpg"/>
+<img alt="../../../_images/404.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/404.jpg"/>
 <p>各位看官可能会说：这不就是一个404错误页面吗，还是Jetty的。有什么好炫耀的啊！真的没有炫耀，只是用他来说明一个问题!
 说明我们的org.eclipse.jetty.osgi.boot 启动了一个Jetty服务。因为这个服务中没有部署任何web应用所以给他给出了一个404错误。
 我们下一步就是去部署一个传统的Web应用。
@@ -144,7 +228,7 @@ index.html
 </pre></div>
 </div>
 <p>这个时候我们访问一下 <a class="reference external" href="http://localhost:9080/org.web/">http://localhost:9080/org.web/</a> 这个url。可以看到如下效果：</p>
-<img alt="../../../images/osgi_web.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/osgi_web.jpg"/>
+<img alt="../../../_images/osgi_web.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/osgi_web.jpg"/>
 <p>这个时候我们就已经将传统的Web应用部署到OSGi中来了。但是他现在还不能访问OSGi中资源！我们这就来干这活！</p>
 </div>
 </div>
@@ -153,7 +237,7 @@ index.html
 <p>为了能让Web应用和OSGi能互访资源，除了那些非常暴力的方法外，还有一种相对优雅的方式。如果做呢？那就是把war转化成符合OSGi bundle的规范的jar。简单一句话：把war转化成bundle！
 不要害怕，因为我们现在的转化成本已经很低很低了。甚至可以忽略！所有要做的只是添加一个文件而已，而且这个文件还可以通过工具生成！</p>
 <p>我们先做一遍。 在Eclipse中，将一个普通的Java项目通过如下图所示操作转化成Plugin项目。</p>
-<img alt="../../../images/covert-pde.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/covert-pde.jpg"/>
+<img alt="../../../_images/covert-pde.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/covert-pde.jpg"/>
 <p>这时根目录就会出现一个META-INF目录，下面有一个MANIFEST.MF文件。其中就包括了添加OSGi所需要的的信息。下面就是我做例子的文件的样子。</p>
 <div class="highlight-bash"><div class="highlight"><pre>Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
@@ -175,10 +259,10 @@ Bundle-ClassPath: WEB-INF/classes,
 </pre></div>
 </div>
 <p>需要说明的是将Bundle-ClassPath设定成WEB-INF/classes。 并将当前项目编译输出项目设定成WEB-INF/classes。如下图所示</p>
-<img alt="../../../images/default-output.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/default-output.jpg"/>
+<img alt="../../../_images/default-output.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/default-output.jpg"/>
 <p>这样Bundle也就能访问到当前项目中的类了。</p>
 <p>另外在根目录下建立WEB-INF目录，并给定web.xml文件。Web需要的其他资源如jsp,html,css等就全部放到根目录下。</p>
-<img alt="../../../images/web-info.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/web-info.jpg"/>
+<img alt="../../../_images/web-info.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/web-info.jpg"/>
 <p>这个时候在启动配置中勾选中刚才新建的这个项目。并启动。你在控制通过ss命令查看是，你就会看到</p>
 <div class="highlight-groovy"><div class="highlight"><pre><span class="mi">386</span> <span class="n">ACTIVE</span>      <span class="n">org</span><span class="o">.</span><span class="na">gunn</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">demo_1</span><span class="o">.</span><span class="mf">0.0</span><span class="o">.</span><span class="na">qualifier</span>
 </pre></div>
@@ -399,7 +483,7 @@ Bundle-ClassPath: WEB-INF/classes,
 <h2>尝试</h2>
 <p>有这如上的想法以后，就得去验证。验证的第一步就是确定Netty是否真的能够支持WebSocket。什么话都不用说了上让代码证明一切吧！</p>
 <p class="plantuml">
-<img alt="interface AttributeMap{ } interface ChannelOutboundInvoker{     bind()     connect()     disconnect()     close()     deregister()     flush()     write(message:Object) } interface ChannelFutureFactory{ } interface Channel{     isOpen()     isRegistered()     isActive()  }  AttributeMap &lt;|-- Channel ChannelOutboundInvoker &lt;|-- Channel ChannelFutureFactory &lt;|-- Channel" src="http://jetgeng.github.com/blog/html/2012/07/15/../../../images/plantuml-f599b6a501d5f41f5c93b72954b0f663e170240b.png"/>
+<img alt="interface AttributeMap{ } interface ChannelOutboundInvoker{     bind()     connect()     disconnect()     close()     deregister()     flush()     write(message:Object) } interface ChannelFutureFactory{ } interface Channel{     isOpen()     isRegistered()     isActive()  }  AttributeMap &lt;|-- Channel ChannelOutboundInvoker &lt;|-- Channel ChannelFutureFactory &lt;|-- Channel" src="http://jetgeng.github.com/blog/html/2012/07/15/../../../_images/plantuml-f599b6a501d5f41f5c93b72954b0f663e170240b.png"/>
 </p>
 </div>
 </div>
@@ -552,7 +636,7 @@ Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信
 </div>
 </div></blockquote>
 <p>这个时候我们得到了如下的目录结构：</p>
-<img alt="../../../images/build_tree.jpg" src="http://jetgeng.github.com/blog/html/2012/07/03/../../../images/build_tree.jpg"/>
+<img alt="../../../_images/build_tree.jpg" src="http://jetgeng.github.com/blog/html/2012/07/03/../../../_images/build_tree.jpg"/>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">项目中的pom.xml中的artifactId 想要和MANIFEST.MF文件中的Bundle-SymbolicName保持一致。pom.xml中version要和MANIFEST.MF文件中的Bundle-Version一致</p>
@@ -570,7 +654,7 @@ mvn package
 <h2>使用Nexus私服</h2>
 <p>请按照 视频设定Nexus私服。如过要在项目中使用私服的内容就直接在parent/pom.xml文件中修改repository中的内容。
 例如有如下图所示的Nexus私服：</p>
-<img alt="../../../images/nexus_p2.jpg" src="http://jetgeng.github.com/blog/html/2012/07/03/../../../images/nexus_p2.jpg"/>
+<img alt="../../../_images/nexus_p2.jpg" src="http://jetgeng.github.com/blog/html/2012/07/03/../../../_images/nexus_p2.jpg"/>
 <p>如果需要使用的Indigo仓库，只需要将下面xml片段加入到parent/pom.xml中。</p>
 <div class="highlight-xml"><div class="highlight"><pre> <span class="nt">&lt;repository&gt;</span>
       <span class="nt">&lt;id&gt;</span>juno<span class="nt">&lt;/id&gt;</span>

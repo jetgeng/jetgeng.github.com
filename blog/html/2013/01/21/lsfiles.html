@@ -12,7 +12,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>让Netty接受WebSocket请求 &mdash; 愚炖的故事</title>
+    <title>如何查看进程打开的文件 &mdash; 愚炖的故事</title>
     
     <link rel="stylesheet" href="../../../_static/modern.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -33,8 +33,7 @@
     <link rel="shortcut icon" href="../../../_static/tinkerer.ico"/>
     
     <link rel="top" title="愚炖的故事" href="../../../index.html" />
-    <link rel="next" title="通过交互的方式调试Esper" href="../12/esper_source_read.html" />
-    <link rel="prev" title="Kid Capture开发手记" href="../../08/21/pyaudio.html" />
+    <link rel="next" title="又一个查找重复文件的工具" href="../../../2012/12/31/finderdumplicate.html" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html">
      
 
@@ -87,28 +86,28 @@
     <h3>Recent Posts</h3>
     <ul>
         <li>
-            <a href="../../../2013/01/21/lsfiles.html">如何查看进程打开的文件</a>
+            <a href="#">如何查看进程打开的文件</a>
         </li>
         <li>
-            <a href="../../12/31/finderdumplicate.html">又一个查找重复文件的工具</a>
+            <a href="../../../2012/12/31/finderdumplicate.html">又一个查找重复文件的工具</a>
         </li>
         <li>
-            <a href="../../12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
+            <a href="../../../2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
         </li>
         <li>
-            <a href="../../08/22/xtext_start.html">学习xtext语法</a>
+            <a href="../../../2012/08/22/xtext_start.html">学习xtext语法</a>
         </li>
         <li>
-            <a href="../../08/21/pyaudio.html">Kid Capture开发手记</a>
+            <a href="../../../2012/08/21/pyaudio.html">Kid Capture开发手记</a>
         </li>
         <li>
-            <a href="#">让Netty接受WebSocket请求</a>
+            <a href="../../../2012/07/15/nettywebconsole.html">让Netty接受WebSocket请求</a>
         </li>
         <li>
-            <a href="../12/esper_source_read.html">通过交互的方式调试Esper</a>
+            <a href="../../../2012/07/12/esper_source_read.html">通过交互的方式调试Esper</a>
         </li>
         <li>
-            <a href="../03/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
+            <a href="../../../2012/07/03/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
         </li>
     </ul>
 </div>
@@ -137,68 +136,66 @@
     
     <div class="related">
         <ul>
-            <li>
-                 &laquo; <a href="../../08/21/pyaudio.html">Kid Capture开发手记</a>
-            </li>
             <li class="right">
-                <a href="../12/esper_source_read.html">通过交互的方式调试Esper</a> &raquo; 
+                <a href="../../../2012/12/31/finderdumplicate.html">又一个查找重复文件的工具</a> &raquo; 
             </li>
         </ul>
     </div>
     
         <div class="timestamp postmeta">
-            <span>July 15, 2012</span> 
+            <span>January 21, 2013</span> 
         </div>
-    <div class="section" id="nettywebsocket">
-<h1>让Netty接受WebSocket请求</h1>
-<div class="section" id="id1">
-<h2>缘起</h2>
-<p>最近有个需要要求让 <a class="reference external" href="http://www.jboss.org/as7">JBoss AS 7</a> 支持WebSocket请求。遇到这样的问题，我的第一反应就是去想办法去换掉 <a class="reference external" href="http://www.jboss.org/as7">Jboss AS 7</a> 中的tomcat 容器或者把HTTP请求转发到另外一个容器中。一个老外 <a class="reference external" href="http://golovnin.blogspot.com/2012/04/jboss-7-and-websockets.html">JBoss 7 and WebSocket</a> 中就这么干的。但是觉得还存在一些问题。
-所以一直在尝试其他方案，突然一天看到了Netty的架构图。发现他居然支持WebSocket接入。如果我做一个subsystem，把Netty装进去是不是就可以解决这个问题呢？</p>
-</div>
-<div class="section" id="id2">
-<h2>尝试</h2>
-<p>有这如上的想法以后，就得去验证。验证的第一步就是确定Netty是否真的能够支持WebSocket。什么话都不用说了上让代码证明一切吧！</p>
-<p class="plantuml">
-<img src="../../../_images/plantuml-f599b6a501d5f41f5c93b72954b0f663e170240b.png" alt="interface AttributeMap{
-}
-interface ChannelOutboundInvoker{
-    bind()
-    connect()
-    disconnect()
-    close()
-    deregister()
-    flush()
-    write(message:Object)
-}
-interface ChannelFutureFactory{
-}
-interface Channel{
-    isOpen()
-    isRegistered()
-    isActive()
+    <div class="section" id="id1">
+<h1>如何查看进程打开的文件</h1>
+<p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
+<p>首先要做的是找到相应的pid。 我们使用</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef | grep <span class="o">{</span>programe-name<span class="o">}</span>
 
-}
-
-AttributeMap &lt;|-- Channel
-ChannelOutboundInvoker &lt;|-- Channel
-ChannelFutureFactory &lt;|-- Channel" />
-</p>
+ps -aef | grep
+</pre></div>
 </div>
+</div></blockquote>
+<p>下面可以通过pfiles命令来查看：</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pfiles <span class="o">{</span>PID<span class="o">}</span>
+<span class="nv">$ </span>pfiles 3533
+</pre></div>
+</div>
+</div></blockquote>
+<p>不过pfiles在Mac OSX上默认没有安装。
+不过可以通过lsof 来完成。</p>
+<div class="highlight-bash"><div class="highlight"><pre>lsof -p <span class="o">{</span>PID<span class="o">}</span>
+</pre></div>
+</div>
+<p>输出的样例如下：</p>
+<p>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
+firefox 547 xxxx  txt      REG               14,2     63712   888627 /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
+firefox 547 xxxx  txt      REG               14,2    115792 16394163 /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
+firefox 547 xxxx  txt      REG               14,2    416260 16394166 /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
+firefox 547 xxxx  txt      REG               14,2     48140 16394174 /Applications/Firefox.app/Contents/MacOS/libplc4.dylib
+firefox 547 xxxx  txt      REG               14,2     43220 16394175 /Applications/Firefox.app/Contents/MacOS/libplds4.dylib
+firefox 547 xxxx  txt      REG               14,2    269952 16394173 /Applications/Firefox.app/Contents/MacOS/libnssutil3.dylib
+firefox 547 xxxx  txt      REG               14,2     25820 16394162 /Applications/Firefox.app/Contents/MacOS/libmozalloc.dylib
+firefox 547 xxxx  txt      REG               14,2     41328 16394181 /Applications/Firefox.app/Contents/MacOS/libxpcom.dylib
+firefox 547 xxxx  txt      REG               14,2   2040008 16394168 /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
+firefox 547 xxxx  txt      REG               14,2    304076 16394177 /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
+firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
+firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib</p>
 </div>
 
     
     <div class="postmeta">
         
         <div class="author">
-            <span>Posted by Jet Geng</span>
+            <span>Posted by Jet</span>
         </div>
         
         <div class="categories">
             <span>
                 Filed under:
                 
-                    <a href="../../../categories/jboss.html">Jboss</a>
+                    <a href="../../../categories/cli.html">CLI</a>
                 
             </span>
         </div>
@@ -207,7 +204,7 @@ ChannelFutureFactory &lt;|-- Channel" />
             <span>
                 Tags:
                 
-                    <a href="../../../tags/netty.html">Netty</a>
+                    <a href="../../../tags/ps.html">PS</a>
                 
             </span>
         </div>
