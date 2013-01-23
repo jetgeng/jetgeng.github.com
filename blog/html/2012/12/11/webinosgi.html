@@ -14,8 +14,8 @@
     
     <title>在OSGi中部署Web应用(一) &mdash; 愚炖的故事</title>
     
-    <link rel="stylesheet" href="../../../_static/modern.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/modern.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -26,11 +26,11 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/translations.js"></script>
-    <link rel="shortcut icon" href="../../../_static/tinkerer.ico"/>
+    <script type="text/javascript" src="../../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../../static/doctools.js"></script>
+    <script type="text/javascript" src="../../../static/translations.js"></script>
+    <link rel="shortcut icon" href="../../../static/tinkerer.ico"/>
     
     <link rel="top" title="愚炖的故事" href="../../../index.html" />
     <link rel="next" title="学习xtext语法" href="../../08/22/xtext_start.html" />
@@ -187,7 +187,7 @@
 <div class="section" id="target-platform">
 <h3>准备Target Platform</h3>
 <p>将OSGi Framework 和Jetty Bundles解压到同一个文件夹。假定该目录为${Target_Path}。打开Eclipse，通过菜单Windows &#8211;&gt; Preferences &#8211;&gt; target 打开Target Platform的设定界面，也可以通过Ctrl+3 输入&#8221;Target Platform&#8221;来打开Target Platform设定界面。</p>
-<img alt="../../../_images/open_target.jpg" src="../../../_images/open_target.jpg" />
+<img alt="../../../images/open_target.jpg" src="../../../images/open_target.jpg" />
 <p>新建一个Target Platform, 把${Target_Path} 加入到该Target Platform中。 并勾选新建的Target Platform为当前Platform。</p>
 </div>
 <div class="section" id="debug-configuration">
@@ -264,7 +264,7 @@ org.hamcrest.core_1.1.0.v20090501071000
 </pre></div>
 </div>
 <p>这个时候启动刚才新建的Debug 配置。这时去访问etc/jetty.xml 配置的端口（我本机设定是9080端口，所以我的访问地址是http://localhost:9080）。会的到如下效果。</p>
-<img alt="../../../_images/404.jpg" src="../../../_images/404.jpg" />
+<img alt="../../../images/404.jpg" src="../../../images/404.jpg" />
 <p>各位看官可能会说：这不就是一个404错误页面吗，还是Jetty的。有什么好炫耀的啊！真的没有炫耀，只是用他来说明一个问题!
 说明我们的org.eclipse.jetty.osgi.boot 启动了一个Jetty服务。因为这个服务中没有部署任何web应用所以给他给出了一个404错误。
 我们下一步就是去部署一个传统的Web应用。
@@ -283,7 +283,7 @@ index.html
 </pre></div>
 </div>
 <p>这个时候我们访问一下 <a class="reference external" href="http://localhost:9080/org.web/">http://localhost:9080/org.web/</a> 这个url。可以看到如下效果：</p>
-<img alt="../../../_images/osgi_web.jpg" src="../../../_images/osgi_web.jpg" />
+<img alt="../../../images/osgi_web.jpg" src="../../../images/osgi_web.jpg" />
 <p>这个时候我们就已经将传统的Web应用部署到OSGi中来了。但是他现在还不能访问OSGi中资源！我们这就来干这活！</p>
 </div>
 </div>
@@ -292,7 +292,7 @@ index.html
 <p>为了能让Web应用和OSGi能互访资源，除了那些非常暴力的方法外，还有一种相对优雅的方式。如果做呢？那就是把war转化成符合OSGi bundle的规范的jar。简单一句话：把war转化成bundle！
 不要害怕，因为我们现在的转化成本已经很低很低了。甚至可以忽略！所有要做的只是添加一个文件而已，而且这个文件还可以通过工具生成！</p>
 <p>我们先做一遍。 在Eclipse中，将一个普通的Java项目通过如下图所示操作转化成Plugin项目。</p>
-<img alt="../../../_images/covert-pde.jpg" src="../../../_images/covert-pde.jpg" />
+<img alt="../../../images/covert-pde.jpg" src="../../../images/covert-pde.jpg" />
 <p>这时根目录就会出现一个META-INF目录，下面有一个MANIFEST.MF文件。其中就包括了添加OSGi所需要的的信息。下面就是我做例子的文件的样子。</p>
 <div class="highlight-bash"><div class="highlight"><pre>Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
@@ -314,10 +314,10 @@ Bundle-ClassPath: WEB-INF/classes,
 </pre></div>
 </div>
 <p>需要说明的是将Bundle-ClassPath设定成WEB-INF/classes。 并将当前项目编译输出项目设定成WEB-INF/classes。如下图所示</p>
-<img alt="../../../_images/default-output.jpg" src="../../../_images/default-output.jpg" />
+<img alt="../../../images/default-output.jpg" src="../../../images/default-output.jpg" />
 <p>这样Bundle也就能访问到当前项目中的类了。</p>
 <p>另外在根目录下建立WEB-INF目录，并给定web.xml文件。Web需要的其他资源如jsp,html,css等就全部放到根目录下。</p>
-<img alt="../../../_images/web-info.jpg" src="../../../_images/web-info.jpg" />
+<img alt="../../../images/web-info.jpg" src="../../../images/web-info.jpg" />
 <p>这个时候在启动配置中勾选中刚才新建的这个项目。并启动。你在控制通过ss命令查看是，你就会看到</p>
 <div class="highlight-groovy"><div class="highlight"><pre><span class="mi">386</span> <span class="n">ACTIVE</span>      <span class="n">org</span><span class="o">.</span><span class="na">gunn</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">demo_1</span><span class="o">.</span><span class="mf">0.0</span><span class="o">.</span><span class="na">qualifier</span>
 </pre></div>
