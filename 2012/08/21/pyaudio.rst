@@ -36,6 +36,7 @@ Kid Capture开发手记
 
 图像采集说白了就是从摄像头读取图像信息。在微软家有Direct.Show 可以用。从CodeProject网站上可以找到大量的示例，不是C#就是VB。 当然通过Python也可以调用，只是要求系统上一定要有Direct。所以放弃。最后在Youtube上看到一老外用10行代码完成了视屏采集。为之一动，对自己说就用他吧！他就是OpenCV。
 
+
 .. code-block:: python
     :linenos:
 
@@ -56,24 +57,27 @@ Kid Capture开发手记
         if k == 27:
             break
 
+
 #. 4,5行导入OpenCV的包
 #. 7打开摄像头，并开始读取frame
 #. 11 ~ 13 读取摄像头的数据帧，并显示到窗体中。
 #. 15 ~ 16 判断有没有用户输入，如果是 esc键就退出。
 
- 上面的代码就是视屏捕捉的所有核心！超级简单吧！不过有个问题上面的代码只能使用 OpenCV_ 自己的图像界面，而且他的并不能集成到其他框架中来。所以要对他他做写改动才可以。
+上面的代码就是视屏捕捉的所有核心！超级简单吧！不过有个问题上面的代码只能使用 OpenCV_ 自己的图像界面，而且他的并不能集成到其他框架中来。所以要对他他做写改动才可以。
 
  在他的官方网站上找到了一个例子
 
+
 初次接触PyAudio
-=================
+------------------------------------------------------------    
 
 前两天无意间PyAudio，当时没觉得怎么地。今天拿过来练了练。发现这个小东西还真的不错。只需要简单的几行代码就可以完成录音和播放wav的功能。而且他还是跨平台的，在WinXp和Linux下运行良好（遗憾的是在Mac OS Lion下编译没通过）。
 
 下面这个代码来源于实现了录音功能。 http://hyry.dip.jp:8000/pydoc/wave_pyaudio.html#pyaudio 。
 
 .. code-block:: python 
-    
+    :linenos:
+
     # -*- coding: utf-8 -*-
     from pyaudio import PyAudio, paInt16 
     import numpy as np 
@@ -134,8 +138,6 @@ Kid Capture开发手记
                 save_buffer = [] 
                 print filename, "saved" 
         content
-
-
 
 .. _Python: http://python.org/
 .. _wxPython: http://wxpython.org/

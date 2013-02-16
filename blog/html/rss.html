@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
     <channel>
-        <title>愚炖的故事</title>
+        <title>愚钝的故事</title>
         <link>http://jetgeng.github.com/blog/html/</link>
-        <description>一个程序员的成长录</description>
+        <description>记录我和Java，Groovy,Python的点点滴滴</description>
         <language>en-us</language>
-        <pubDate>Sun, 20 Jan 2013 16:00:00 GMT</pubDate>
+        <pubDate>Sat, 16 Feb 2013 00:00:00 +0800</pubDate>
+        
         <item>
-            <link>http://jetgeng.github.com/blog/html/2013/01/21/lsfiles.html</link>
-            <guid>http://jetgeng.github.com/blog/html/2013/01/21/lsfiles.html</guid>
+            <link>http://jetgeng.github.com/blog/html/2013/02/16/lsfiles.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2013/02/16/lsfiles.html</guid>
             <title>如何查看进程打开的文件</title>
-            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="id1">
+            <description><![CDATA[<div class="section" id="id1">
 <h1>如何查看进程打开的文件</h1>
 <p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
 <p>首先要做的是找到相应的pid。 我们使用</p>
@@ -34,7 +35,7 @@ ps -aef | grep
 </pre></div>
 </div>
 <p>输出的样例如下：</p>
-<p>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
+<div class="highlight-bash"><div class="highlight"><pre>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
 firefox 547 xxxx  txt      REG               14,2     63712   888627 /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
 firefox 547 xxxx  txt      REG               14,2    115792 16394163 /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
 firefox 547 xxxx  txt      REG               14,2    416260 16394166 /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
@@ -46,55 +47,29 @@ firefox 547 xxxx  txt      REG               14,2     41328 16394181 /Applicatio
 firefox 547 xxxx  txt      REG               14,2   2040008 16394168 /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
 firefox 547 xxxx  txt      REG               14,2    304076 16394177 /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
 firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
-firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib</p>
-</div>
-</body>]]></description>
-            <category><![CDATA[ CLI ]]></category>
-            <pubDate>Sun, 20 Jan 2013 16:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <link>http://jetgeng.github.com/blog/html/2012/12/31/finderdumplicate.html</link>
-            <guid>http://jetgeng.github.com/blog/html/2012/12/31/finderdumplicate.html</guid>
-            <title>又一个查找重复文件的工具</title>
-            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="id1">
-<h1>又一个查找重复文件的工具</h1>
-<p>有一块放了很多照片的硬盘，想整理出来另作他用。由于当时偷懒，把照片放的乱。甚至有一张照片放了很多份。浪费空间不说，主要是找个东西太费劲。
-所以就下决心自己写一个小工具把这些照片整理整理。</p>
-<div class="section" id="id2">
-<h2>技术方案</h2>
-<blockquote>
-<div><ol class="arabic simple">
-<li>这种小东西用Python写会很快。就不用多想了。直接用他就OK了。</li>
-<li><a class="reference external" href="http://pypi.python.org/pypi/argparse">argparse</a> , 用来做命令的解析。</li>
-<li><a class="reference external" href="http://pypi.python.org/pypi/sh/1.07">sh</a> ,用于执行一些命令。</li>
-<li>使用git hash-object 命令获取文件的sha1</li>
-</ol>
-</div></blockquote>
-</div>
-<div class="section" id="id3">
-<h2>设计思路</h2>
-<p>这是一个命令行软件。命令行格式为：</p>
-<div class="highlight-bash"><div class="highlight"><pre>./fileDupFinder.py -e Extend -s sourcefolder -t targetfolder
+firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
 </pre></div>
 </div>
-<p>参数选项    长选项  用途
--e          –extend    将要处理文件的扩展名，不区分大小写
--s          –source    处理的源目录
--t          –target    处理的输出目录
-.. uml:</p>
-<div class="highlight-python"><pre>class {
-}</pre>
-</div>
-</div>
-</div>
-</body>]]></description>
-            <pubDate>Sun, 30 Dec 2012 16:00:00 GMT</pubDate>
+</div>]]></description>
+            <category><![CDATA[ CLI ]]></category>
+             <pubDate>Sat, 16 Feb 2013 00:00:00 +0800</pubDate>
         </item>
+    
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2013/02/16/soapui_mock.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2013/02/16/soapui_mock.html</guid>
+            <title>soapui_mock</title>
+            <description><![CDATA[<div class="section" id="soapui-mock">
+<h1>soapui_mock</h1>
+</div>]]></description>
+             <pubDate>Sat, 16 Feb 2013 00:00:00 +0800</pubDate>
+        </item>
+    
         <item>
             <link>http://jetgeng.github.com/blog/html/2012/12/11/webinosgi.html</link>
             <guid>http://jetgeng.github.com/blog/html/2012/12/11/webinosgi.html</guid>
             <title>在OSGi中部署Web应用(一)</title>
-            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="osgiweb">
+            <description><![CDATA[<div class="section" id="osgiweb">
 <h1>在OSGi中部署Web应用(一)</h1>
 <div class="section" id="id1">
 <h2>概述</h2>
@@ -132,7 +107,7 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
 <div class="section" id="target-platform">
 <h3>准备Target Platform</h3>
 <p>将OSGi Framework 和Jetty Bundles解压到同一个文件夹。假定该目录为${Target_Path}。打开Eclipse，通过菜单Windows –&gt; Preferences –&gt; target 打开Target Platform的设定界面，也可以通过Ctrl+3 输入”Target Platform”来打开Target Platform设定界面。</p>
-<img alt="../../../images/open_target.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/open_target.jpg"/>
+<img alt="../../../_images/open_target.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/open_target.jpg"/>
 <p>新建一个Target Platform, 把${Target_Path} 加入到该Target Platform中。 并勾选新建的Target Platform为当前Platform。</p>
 </div>
 <div class="section" id="debug-configuration">
@@ -201,15 +176,15 @@ org.hamcrest.core_1.1.0.v20090501071000
 <div class="highlight-bash"><div class="highlight"><pre>.
 ├── contexts
 ├── etc
-│   └── jetty.xml
+│   └── jetty.xml
 ├── lib
-│   └── ext
+│   └── ext
 ├── resources
 └── webapps
 </pre></div>
 </div>
 <p>这个时候启动刚才新建的Debug 配置。这时去访问etc/jetty.xml 配置的端口（我本机设定是9080端口，所以我的访问地址是http://localhost:9080）。会的到如下效果。</p>
-<img alt="../../../images/404.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/404.jpg"/>
+<img alt="../../../_images/404.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/404.jpg"/>
 <p>各位看官可能会说：这不就是一个404错误页面吗，还是Jetty的。有什么好炫耀的啊！真的没有炫耀，只是用他来说明一个问题!
 说明我们的org.eclipse.jetty.osgi.boot 启动了一个Jetty服务。因为这个服务中没有部署任何web应用所以给他给出了一个404错误。
 我们下一步就是去部署一个传统的Web应用。
@@ -228,7 +203,7 @@ index.html
 </pre></div>
 </div>
 <p>这个时候我们访问一下 <a class="reference external" href="http://localhost:9080/org.web/">http://localhost:9080/org.web/</a> 这个url。可以看到如下效果：</p>
-<img alt="../../../images/osgi_web.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/osgi_web.jpg"/>
+<img alt="../../../_images/osgi_web.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/osgi_web.jpg"/>
 <p>这个时候我们就已经将传统的Web应用部署到OSGi中来了。但是他现在还不能访问OSGi中资源！我们这就来干这活！</p>
 </div>
 </div>
@@ -237,7 +212,7 @@ index.html
 <p>为了能让Web应用和OSGi能互访资源，除了那些非常暴力的方法外，还有一种相对优雅的方式。如果做呢？那就是把war转化成符合OSGi bundle的规范的jar。简单一句话：把war转化成bundle！
 不要害怕，因为我们现在的转化成本已经很低很低了。甚至可以忽略！所有要做的只是添加一个文件而已，而且这个文件还可以通过工具生成！</p>
 <p>我们先做一遍。 在Eclipse中，将一个普通的Java项目通过如下图所示操作转化成Plugin项目。</p>
-<img alt="../../../images/covert-pde.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/covert-pde.jpg"/>
+<img alt="../../../_images/covert-pde.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/covert-pde.jpg"/>
 <p>这时根目录就会出现一个META-INF目录，下面有一个MANIFEST.MF文件。其中就包括了添加OSGi所需要的的信息。下面就是我做例子的文件的样子。</p>
 <div class="highlight-bash"><div class="highlight"><pre>Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
@@ -259,10 +234,10 @@ Bundle-ClassPath: WEB-INF/classes,
 </pre></div>
 </div>
 <p>需要说明的是将Bundle-ClassPath设定成WEB-INF/classes。 并将当前项目编译输出项目设定成WEB-INF/classes。如下图所示</p>
-<img alt="../../../images/default-output.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/default-output.jpg"/>
+<img alt="../../../_images/default-output.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/default-output.jpg"/>
 <p>这样Bundle也就能访问到当前项目中的类了。</p>
 <p>另外在根目录下建立WEB-INF目录，并给定web.xml文件。Web需要的其他资源如jsp,html,css等就全部放到根目录下。</p>
-<img alt="../../../images/web-info.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../images/web-info.jpg"/>
+<img alt="../../../_images/web-info.jpg" src="http://jetgeng.github.com/blog/html/2012/12/11/../../../_images/web-info.jpg"/>
 <p>这个时候在启动配置中勾选中刚才新建的这个项目。并启动。你在控制通过ss命令查看是，你就会看到</p>
 <div class="highlight-groovy"><div class="highlight"><pre><span class="mi">386</span> <span class="n">ACTIVE</span>      <span class="n">org</span><span class="o">.</span><span class="na">gunn</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">demo_1</span><span class="o">.</span><span class="mf">0.0</span><span class="o">.</span><span class="na">qualifier</span>
 </pre></div>
@@ -280,30 +255,15 @@ Bundle-ClassPath: WEB-INF/classes,
 </tbody>
 </table>
 </div>
-</div>
-</body>]]></description>
-            <pubDate>Mon, 10 Dec 2012 16:00:00 GMT</pubDate>
+</div>]]></description>
+             <pubDate>Tue, 11 Dec 2012 00:00:00 +0800</pubDate>
         </item>
-        <item>
-            <link>http://jetgeng.github.com/blog/html/2012/08/22/xtext_start.html</link>
-            <guid>http://jetgeng.github.com/blog/html/2012/08/22/xtext_start.html</guid>
-            <title>学习xtext语法</title>
-            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="xtext">
-<h1>学习xtext语法</h1>
-<p>有人说通过例子学习是最快的学习方式，所以我找到了 <a class="reference external" href="http://git.eclipse.org/c/tmf/org.eclipse.xtext.git/plain/plugins/org.eclipse.xtext.xbase/src/org/eclipse/xtext/xbase/Xbase.xtext">Xbase</a>  来学习Xtext。简单小结如下，防备以后忘。</p>
-<div class="section" id="simple-action">
-<h2>Simple Action(简单动作)</h2>
-</div>
-</div>
-</body>]]></description>
-            <category><![CDATA[ Java ]]></category>
-            <pubDate>Tue, 21 Aug 2012 16:00:00 GMT</pubDate>
-        </item>
+    
         <item>
             <link>http://jetgeng.github.com/blog/html/2012/08/21/pyaudio.html</link>
             <guid>http://jetgeng.github.com/blog/html/2012/08/21/pyaudio.html</guid>
             <title>Kid Capture开发手记</title>
-            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="kid-capture">
+            <description><![CDATA[<div class="section" id="kid-capture">
 <h1>Kid Capture开发手记</h1>
 <div class="section" id="id1">
 <h2>缘起</h2>
@@ -391,17 +351,74 @@ Bundle-ClassPath: WEB-INF/classes,
 <li>11 ~ 13 读取摄像头的数据帧，并显示到窗体中。</li>
 <li>15 ~ 16 判断有没有用户输入，如果是 esc键就退出。</li>
 </ol>
+<p>上面的代码就是视屏捕捉的所有核心！超级简单吧！不过有个问题上面的代码只能使用 <a class="reference external" href="http://opencv.org/">OpenCV</a> 自己的图像界面，而且他的并不能集成到其他框架中来。所以要对他他做写改动才可以。</p>
 <blockquote>
-<div><p>上面的代码就是视屏捕捉的所有核心！超级简单吧！不过有个问题上面的代码只能使用 <a class="reference external" href="http://opencv.org/">OpenCV</a> 自己的图像界面，而且他的并不能集成到其他框架中来。所以要对他他做写改动才可以。</p>
-<p>在他的官方网站上找到了一个例子</p>
-</div></blockquote>
-</div>
+<div>在他的官方网站上找到了一个例子</div></blockquote>
 </div>
 <div class="section" id="pyaudio">
-<h1>初次接触PyAudio</h1>
+<h2>初次接触PyAudio</h2>
 <p>前两天无意间PyAudio，当时没觉得怎么地。今天拿过来练了练。发现这个小东西还真的不错。只需要简单的几行代码就可以完成录音和播放wav的功能。而且他还是跨平台的，在WinXp和Linux下运行良好（遗憾的是在Mac OS Lion下编译没通过）。</p>
 <p>下面这个代码来源于实现了录音功能。 <a class="reference external" href="http://hyry.dip.jp:8000/pydoc/wave_pyaudio.html#pyaudio">http://hyry.dip.jp:8000/pydoc/wave_pyaudio.html#pyaudio</a> 。</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">pyaudio</span> <span class="kn">import</span> <span class="n">PyAudio</span><span class="p">,</span> <span class="n">paInt16</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
@@ -462,51 +479,18 @@ Bundle-ClassPath: WEB-INF/classes,
             <span class="k">print</span> <span class="n">filename</span><span class="p">,</span> <span class="s">&quot;saved&quot;</span>
     <span class="n">content</span>
 </pre></div>
+</td></tr></table></div>
 </div>
-</div>
-</body>]]></description>
+</div>]]></description>
             <category><![CDATA[ Python ]]></category>
-            <pubDate>Mon, 20 Aug 2012 16:00:00 GMT</pubDate>
+             <pubDate>Tue, 21 Aug 2012 00:00:00 +0800</pubDate>
         </item>
+    
         <item>
-            <link>http://jetgeng.github.com/blog/html/2012/07/15/nettywebconsole.html</link>
-            <guid>http://jetgeng.github.com/blog/html/2012/07/15/nettywebconsole.html</guid>
-            <title>让Netty接受WebSocket请求</title>
-            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="nettywebsocket">
-<h1>让Netty接受WebSocket请求</h1>
-<div class="section" id="id1">
-<h2>缘起</h2>
-<p>最近有个需要要求让 <a class="reference external" href="http://www.jboss.org/as7">JBoss AS 7</a> 支持WebSocket请求。遇到这样的问题，我的第一反应就是去想办法去换掉 <a class="reference external" href="http://www.jboss.org/as7">Jboss AS 7</a> 中的tomcat 容器或者把HTTP请求转发到另外一个容器中。一个老外 <a class="reference external" href="http://golovnin.blogspot.com/2012/04/jboss-7-and-websockets.html">JBoss 7 and WebSocket</a> 中就这么干的。但是觉得还存在一些问题。
-所以一直在尝试其他方案，突然一天看到了Netty的架构图。发现他居然支持WebSocket接入。如果我做一个subsystem，把Netty装进去是不是就可以解决这个问题呢？</p>
-</div>
-<div class="section" id="id2">
-<h2>尝试</h2>
-<p>有这如上的想法以后，就得去验证。验证的第一步就是确定Netty是否真的能够支持WebSocket。什么话都不用说了上让代码证明一切吧！</p>
-<p class="plantuml">
-<img alt="interface AttributeMap{ } interface ChannelOutboundInvoker{     bind()     connect()     disconnect()     close()     deregister()     flush()     write(message:Object) } interface ChannelFutureFactory{ } interface Channel{     isOpen()     isRegistered()     isActive()  }  AttributeMap &lt;|-- Channel ChannelOutboundInvoker &lt;|-- Channel ChannelFutureFactory &lt;|-- Channel" src="http://jetgeng.github.com/blog/html/2012/07/15/../../../images/plantuml-f599b6a501d5f41f5c93b72954b0f663e170240b.png"/>
-</p>
-</div>
-</div>
-</body>]]></description>
-            <category><![CDATA[ Jboss ]]></category>
-            <pubDate>Sat, 14 Jul 2012 16:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <link>http://jetgeng.github.com/blog/html/2012/07/12/esper_source_read.html</link>
-            <guid>http://jetgeng.github.com/blog/html/2012/07/12/esper_source_read.html</guid>
-            <title>通过交互的方式调试Esper</title>
-            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="esper">
-<h1>通过交互的方式调试Esper</h1>
-</div>
-</body>]]></description>
-            <category><![CDATA[ Esper ]]></category>
-            <pubDate>Wed, 11 Jul 2012 16:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <link>http://jetgeng.github.com/blog/html/2012/07/03/jbossover.html</link>
-            <guid>http://jetgeng.github.com/blog/html/2012/07/03/jbossover.html</guid>
+            <link>http://jetgeng.github.com/blog/html/2012/07/02/jbossover.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2012/07/02/jbossover.html</guid>
             <title>使用Maven和tycho构建OSGi插件项目</title>
-            <description><![CDATA[<?xml version="1.0" ?><body><div class="section" id="maventychoosgi">
+            <description><![CDATA[<div class="section" id="maventychoosgi">
 <h1>使用Maven和tycho构建OSGi插件项目</h1>
 <div class="section" id="tycho">
 <h2>介绍Tycho插件</h2>
@@ -636,9 +620,9 @@ Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信
 </div>
 </div></blockquote>
 <p>这个时候我们得到了如下的目录结构：</p>
-<img alt="../../../images/build_tree.jpg" src="http://jetgeng.github.com/blog/html/2012/07/03/../../../images/build_tree.jpg"/>
+<img alt="../../../_images/build_tree.jpg" src="http://jetgeng.github.com/blog/html/2012/07/02/../../../_images/build_tree.jpg"/>
 <div class="admonition note">
-<p class="first admonition-title">注解</p>
+<p class="first admonition-title">Note</p>
 <p class="last">项目中的pom.xml中的artifactId 想要和MANIFEST.MF文件中的Bundle-SymbolicName保持一致。pom.xml中version要和MANIFEST.MF文件中的Bundle-Version一致</p>
 </div>
 <p>这个时候你通过：</p>
@@ -654,7 +638,7 @@ mvn package
 <h2>使用Nexus私服</h2>
 <p>请按照 视频设定Nexus私服。如过要在项目中使用私服的内容就直接在parent/pom.xml文件中修改repository中的内容。
 例如有如下图所示的Nexus私服：</p>
-<img alt="../../../images/nexus_p2.jpg" src="http://jetgeng.github.com/blog/html/2012/07/03/../../../images/nexus_p2.jpg"/>
+<img alt="../../../_images/nexus_p2.jpg" src="http://jetgeng.github.com/blog/html/2012/07/02/../../../_images/nexus_p2.jpg"/>
 <p>如果需要使用的Indigo仓库，只需要将下面xml片段加入到parent/pom.xml中。</p>
 <div class="highlight-xml"><div class="highlight"><pre> <span class="nt">&lt;repository&gt;</span>
       <span class="nt">&lt;id&gt;</span>juno<span class="nt">&lt;/id&gt;</span>
@@ -671,10 +655,10 @@ mvn package
 <li><a class="reference external" href="http://www.vogella.com/articles/EclipseTycho/article.html#productbuild">Eclipse Tycho - Tutorial for building Eclipse Plugins and RCP applications</a></li>
 </ol>
 </div>
-</div>
-</body>]]></description>
+</div>]]></description>
             <category><![CDATA[ autobuild ]]></category>
-            <pubDate>Mon, 02 Jul 2012 16:00:00 GMT</pubDate>
+             <pubDate>Mon, 02 Jul 2012 00:00:00 +0800</pubDate>
         </item>
+    
     </channel>
 </rss>

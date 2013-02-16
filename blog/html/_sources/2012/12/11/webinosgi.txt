@@ -120,9 +120,9 @@ Ctrl+3 输入"Debug Configuration", 打开Debugy 配置界面。在"OSGi Framewo
     .
     ├── contexts
     ├── etc
-    │   └── jetty.xml
+    │   └── jetty.xml
     ├── lib
-    │   └── ext
+    │   └── ext
     ├── resources
     └── webapps
 
@@ -215,8 +215,6 @@ Web应用和OSGi互用资源
 这个时候的web项目就是以Bundle的形式存在。他就是一个bundle。他可以使用OSGi中的任何服务和资源。
     
 对于一个已有的war，可以使用 `bnd <http://www.aqute.biz/Code/BndCn>`_ 工具的wrap命令来转换成一个bundle。可以达到同样的效果。
-    
-
 
 参考资料
 ------------------------------------------------------------    

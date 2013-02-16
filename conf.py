@@ -1,69 +1,76 @@
 # -*- coding: utf-8 -*-
 
 import tinkerer
-import tinkerer.paths        
+import tinkerer.paths
 
 # **************************************************************
 # TODO: Edit the lines below
 # **************************************************************
-language = "zh_CN"
+
 # Change this to the name of your blog
-project = u'愚炖的故事'                   
+project = u'愚钝的故事'
 
 # Change this to the tagline of your blog
-tagline = u'一个程序员的成长录'
+tagline = u'记录我和Java，Groovy,Python的点点滴滴'
 
 # Change this to your name
 author = 'Jet Geng'
 
 # Change this to your copyright string
-copyright = '2012, ' + author         
+copyright = '2012, ' + author
 
 # Change this to your blog root URL (required for RSS feed)
-website = 'http://jetgeng.github.com/blog/html/'                              
+website = 'http://jetgeng.github.com/blog/html/'
 
 # **************************************************************
 # More tweaks you can do
 # **************************************************************
 
 # Add your Disqus shortname to enable comments powered by Disqus
-disqus_shortname = None                                   
+disqus_shortname = ''
 
 # Change your favicon (new favicon goes in _static directory)
-html_favicon = 'tinkerer.ico'           
+html_favicon = 'tinkerer.ico'
 
 # Pick another Tinkerer theme or use your own
-html_theme = "modern"
+html_theme = "modern5"
 
 # Theme-specific options, see docs
-html_theme_options = { }                                  
+html_theme_options = { }
 
 # Link to RSS service like FeedBurner if any, otherwise feed is
 # linked directly
 rss_service = None
-homedir = '/Users/gengjet/'
+
+# Number of blog posts per page
+posts_per_page = 2
+
 # **************************************************************
 # Edit lines below to further customize Sphinx build
 # **************************************************************
-plantuml = 'java -jar %s/bin/plantuml.jar' % homedir 
+homedir = '/Users/gengjet/'
+plantuml= 'java -jar %s/bin/plantuml.jar' % homedir
 blockdiag_fontpath = '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc'
-extensions = ['sphinxcontrib.plantuml',
-             'sphinxcontrib.blockdiag',
-             'sphinxcontrib.seqdiag',
-             'tinkerer.ext.blog',
-             'tinkerer.ext.disqus']
+# Add other Sphinx extensions here
+extensions = [
+             'sphinxcontrib.plantuml',
+              'sphinxcontrib.blockdiag',
+              'sphinxcontrib.seqdiag',
+              'tinkerer.ext.blog',
+              'tinkerer.ext.disqus',
+              ]
 
 # Add other template paths here
-templates_path = ['templates']
+templates_path = ['_templates']
 
 # Add other static paths here
 html_static_path = ['static', tinkerer.paths.static]
 
 # Add other theme paths here
-html_theme_path = [tinkerer.paths.themes]                 
+html_theme_path = [tinkerer.paths.themes]
 
 # Add file patterns to exclude from build
-exclude_patterns = ["drafts/*"]                                     
+exclude_patterns = ["drafts/*"]
 
 # Add templates to be rendered in sidebar here
 html_sidebars = {
@@ -71,7 +78,7 @@ html_sidebars = {
 }
 
 # **************************************************************
-# Do not modify below lines as the values are required by 
+# Do not modify below lines as the values are required by
 # Tinkerer to play nice with Sphinx
 # **************************************************************
 

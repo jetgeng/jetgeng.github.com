@@ -1,146 +1,77 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Home &mdash; 愚钝的故事</title><meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
 
 
-
-
-
-
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Home &mdash; 愚炖的故事</title>
-    
-    <link rel="stylesheet" href="static/modern.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
+        <link rel="stylesheet" href="_static/normalize.css" type="text/css">
+        <link rel="stylesheet" href="_static/main.css" type="text/css">
+        <link rel="stylesheet" href="_static/modern5.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+        <link rel="stylesheet" href="_static/webfont.css" type="text/css"><link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="_static/plugins.js"></script>
+        <script src="_static/main.js"></script><link rel="top" title="愚钝的故事" href="#" /><link rel="next" title="Older" href="page1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.3.1b',
+        URL_ROOT:    '#',
+        VERSION:     '1.0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <script type="text/javascript" src="static/translations.js"></script>
-    <link rel="shortcut icon" href="static/tinkerer.ico"/>
-    
-    <link rel="top" title="愚炖的故事" href="#" />
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html">
-     
+    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script>
 
-    
     <script type="text/javascript">
-        $(document).ready(function() {
-            var bodywrapper = document.getElementsByClassName("documentwrapper")[0];
-            var sidebar = document.getElementsByClassName("sphinxsidebar")[0];
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
 
-            if (sidebar.offsetHeight > bodywrapper.offsetHeight)
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
             {
-                bodywrapper.style.minHeight = sidebar.offsetHeight + "px";
+                documentwrapper.style.minHeight = sidebar.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
             }
         });
-    </script>
+    </script></head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
 
-  </head>
-  <body>
-    
-    <div class="header">
-        <h1 class="heading">
-            <a href="#">
-                <span>愚炖的故事</span>
-            </a>
-        </h1>
-        <h2 class="tagline">一个程序员的成长录</h2>
-    </div>
-    <div class="page_nav">
-        <ul>
-            
-            <li>
+      <div id="container"><header>
+            <hgroup>
+              <h1><a href="#">愚钝的故事</a></h1>
+              <h2>记录我和Java，Groovy,Python的点点滴滴</h2>
+            </hgroup>
+          </header>
+      <nav>
+            <ul><li class="quicklink"><div class="rss">
+        <a href="rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
+    </div></li><li class="main-nav">
                 <a href="#">Home</a>
-            </li>
-            
-            <li class="right">
-                
-    <a href="rss.html" title="Subscribe via RSS">
-        <div class="rss"><span class="webfont">B</span>
-            
+              </li>
+              </ul>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="page1.html">Older</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>February 16, 2013</span>
         </div>
-    </a>
-            </li>
-        </ul>
-    </div>
-    <div class="clearer"></div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-
-<div class="widget">
-    <h3>Recent Posts</h3>
-    <ul>
-        <li>
-            <a href="2013/01/21/lsfiles.html">如何查看进程打开的文件</a>
-        </li>
-        <li>
-            <a href="2012/12/31/finderdumplicate.html">又一个查找重复文件的工具</a>
-        </li>
-        <li>
-            <a href="2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
-        </li>
-        <li>
-            <a href="2012/08/22/xtext_start.html">学习xtext语法</a>
-        </li>
-        <li>
-            <a href="2012/08/21/pyaudio.html">Kid Capture开发手记</a>
-        </li>
-        <li>
-            <a href="2012/07/15/nettywebconsole.html">让Netty接受WebSocket请求</a>
-        </li>
-        <li>
-            <a href="2012/07/12/esper_source_read.html">通过交互的方式调试Esper</a>
-        </li>
-        <li>
-            <a href="2012/07/03/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
-        </li>
-    </ul>
-</div>
-
-<div id="searchbox" style="display: none">
-  <h3>快速搜索</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="搜索" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    输入相关的模块，术语，类或者函数名称进行搜索
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-    
-        
-        <div class="timestamp postmeta">
-            <span>January 21, 2013</span> 
-        </div>
-        <?xml version="1.0" ?><body><div class="section" id="id1">
-<a href="2013/01/21/lsfiles.html"><h1>如何查看进程打开的文件</h1></a>
+        <div class="section" id="id1">
+<h1><a href="2013/02/16/lsfiles.html">如何查看进程打开的文件</a></h1>
 <p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
 <p>首先要做的是找到相应的pid。 我们使用</p>
 <blockquote>
@@ -163,7 +94,7 @@ ps -aef | grep
 </pre></div>
 </div>
 <p>输出的样例如下：</p>
-<p>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
+<div class="highlight-bash"><div class="highlight"><pre>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
 firefox 547 xxxx  txt      REG               14,2     63712   888627 /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
 firefox 547 xxxx  txt      REG               14,2    115792 16394163 /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
 firefox 547 xxxx  txt      REG               14,2    416260 16394166 /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
@@ -175,818 +106,70 @@ firefox 547 xxxx  txt      REG               14,2     41328 16394181 /Applicatio
 firefox 547 xxxx  txt      REG               14,2   2040008 16394168 /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
 firefox 547 xxxx  txt      REG               14,2    304076 16394177 /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
 firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
-firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib</p>
+firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
+</pre></div>
 </div>
-</body>
-        
-    <div class="postmeta">
-        
+</div>
+        <div class="postmeta">
         <div class="author">
             <span>Posted by Jet</span>
         </div>
-        
         <div class="categories">
             <span>
                 Filed under:
-                
-                    <a href="categories/cli.html">CLI</a>
-                
-            </span>
+                <a href="categories/cli.html">CLI</a></span>
         </div>
-        
         <div class="tags">
             <span>
                 Tags:
-                
-                    <a href="tags/ps.html">PS</a>
-                
-            </span>
+                <a href="tags/ps.html">PS</a></span>
         </div>
         
-    </div><div class="separator post_separator"></div>
-        
-        <div class="timestamp postmeta">
-            <span>December 31, 2012</span> 
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>February 16, 2013</span>
         </div>
-        <?xml version="1.0" ?><body><div class="section" id="id1">
-<a href="2012/12/31/finderdumplicate.html"><h1>又一个查找重复文件的工具</h1></a>
-<p>有一块放了很多照片的硬盘，想整理出来另作他用。由于当时偷懒，把照片放的乱。甚至有一张照片放了很多份。浪费空间不说，主要是找个东西太费劲。
-所以就下决心自己写一个小工具把这些照片整理整理。</p>
-<div class="section" id="id2">
-<h2>技术方案</h2>
-<blockquote>
-<div><ol class="arabic simple">
-<li>这种小东西用Python写会很快。就不用多想了。直接用他就OK了。</li>
-<li><a class="reference external" href="http://pypi.python.org/pypi/argparse">argparse</a> , 用来做命令的解析。</li>
-<li><a class="reference external" href="http://pypi.python.org/pypi/sh/1.07">sh</a> ,用于执行一些命令。</li>
-<li>使用git hash-object 命令获取文件的sha1</li>
-</ol>
-</div></blockquote>
+        <div class="section" id="soapui-mock">
+<h1><a href="2013/02/16/soapui_mock.html">soapui_mock</a></h1>
 </div>
-<div class="section" id="id3">
-<h2>设计思路</h2>
-<p>这是一个命令行软件。命令行格式为：</p>
-<div class="highlight-bash"><div class="highlight"><pre>./fileDupFinder.py -e Extend -s sourcefolder -t targetfolder
-</pre></div>
-</div>
-<p>参数选项    长选项  用途
--e          –extend    将要处理文件的扩展名，不区分大小写
--s          –source    处理的源目录
--t          –target    处理的输出目录
-.. uml:</p>
-<div class="highlight-python"><pre>class {
-}</pre>
-</div>
-</div>
-</div>
-</body>
-        
-    <div class="postmeta">
-        
-        
-        
-        <div class="tags">
-            <span>
-                Tags:
-                
-                    <a href="tags/python.html">Python</a>
-                
-            </span>
-        </div>
-        
-    </div><div class="separator post_separator"></div>
-        
-        <div class="timestamp postmeta">
-            <span>December 11, 2012</span> 
-        </div>
-        <?xml version="1.0" ?><body><div class="section" id="osgiweb">
-<a href="2012/12/11/webinosgi.html"><h1>在OSGi中部署Web应用(一)</h1></a>
-<div class="section" id="id1">
-<h2>概述</h2>
-<p>在很久很久以前，我们用 ‘HTTP Registry’_  在OSGi环境中注册Servlet，JSP以及静态资源。或者通过 <a class="reference external" href="http://git.eclipse.org/c/equinox/rt.equinox.bundles.git/tree/bundles/org.eclipse.equinox.http.servletbridge/">HTTP ServletBridge</a>  在Web容器中启动一个OSGi的方式来实现Web应用和OSGi的集合。在很多文章 <a class="footnote-reference" href="#id5" id="id2">[1]</a> 中都有描述。
-但是这样的方式让传统的Web程序员望而生畏他们熟悉的web.xml文件，WEB-INF文件夹在 ‘HTTP Registry’_ 方式中都不见了， 更要命的是对Filter都没有的支持还不全。 为了实现模块化他们甚至要重现学习OSGi的相关内容。所以他们停住了脚本。
-不过现在好了，有了 <a class="reference external" href="http://wiki.eclipse.org/Jetty/Feature/Jetty_OSGi">org.eclipse.jetty.osgi.boot</a> 这一切都发生了改变。</p>
-<dl class="docutils">
-<dt>本文假定读者对如下知识有所了解：</dt>
-<dd><ol class="first last arabic simple">
-<li>Java基础知识。</li>
-<li>Java中的Classloader机制。</li>
-<li>OSGi Plugin 开发的基本步骤。</li>
-</ol>
-</dd>
-</dl>
-</div>
-<div class="section" id="id3">
-<h2>什么是org.eclipse.jetty.osgi.boot</h2>
-<p>org.eclipse.jetty.osgi.boot是Jetty项目的一部分。本质而言他就是Jetty中的Start.jar在OSGi中的替代品。他会根据${jetty.home} 这个系统参数找到jetty.xml这个文件。并根据该文件的配置的在OSGi中启动一个真实的Jetty Server。
-新启动的这个Jetty Server的classloader 会包括org.eclipse.jetty.osgi.boot 这个bundle的所能看到的所有类和其他资源，${jetty.home}/lib/ext 和${jetty.home}/resources中的所有类及其他资源。</p>
-</div>
-<div class="section" id="web">
-<h2>部署传统的Web 应用</h2>
-<p>既然上面已经提到了org.eclipse.jetty.osgi.boot 启动的是一个标准的Jetty Server。 所以我们在部署的传统的Web 应用的时候，主需像在传统的Jetty Server中部署Web一样就可以了。
-下面我们就一步一步做一遍。
-在开始之前我们要确认一下所需要的库：</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>JDK 1.5 向上。</li>
-<li>OSGi Framework， 推荐Equniox 下载地址为： <a class="reference external" href="http://download.eclipse.org/equinox/">http://download.eclipse.org/equinox/</a></li>
-<li>Jetty Bundles发行包 下载地址为： <a class="reference external" href="http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.5.v20120716/">http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.5.v20120716/</a></li>
-<li>带有PDE 的Eclipse。 下载地址为： <a class="reference external" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a></li>
-</ol>
-</div></blockquote>
-<div class="section" id="target-platform">
-<h3>准备Target Platform</h3>
-<p>将OSGi Framework 和Jetty Bundles解压到同一个文件夹。假定该目录为${Target_Path}。打开Eclipse，通过菜单Windows –&gt; Preferences –&gt; target 打开Target Platform的设定界面，也可以通过Ctrl+3 输入”Target Platform”来打开Target Platform设定界面。</p>
-<img alt="../../../images/open_target.jpg" src="2012/12/11/../../../images/open_target.jpg"/>
-<p>新建一个Target Platform, 把${Target_Path} 加入到该Target Platform中。 并勾选新建的Target Platform为当前Platform。</p>
-</div>
-<div class="section" id="debug-configuration">
-<h3>新建Debug Configuration</h3>
-<p>Ctrl+3 输入”Debug Configuration”, 打开Debugy 配置界面。在”OSGi Framework”下新建一个启动配置。
-选取如下插件：</p>
-<div class="highlight-bash"><div class="highlight"><pre>com.springsource.javax.xml.stream_1.0.1
-com.springsource.net.sf.cglib_2.1.3
-com.springsource.org.aopalliance_1.0.0
-com.springsource.org.apache.commons.codec_1.3.0
-com.springsource.org.apache.commons.logging_1.1.1
-com.springsource.org.apache.juli.extras_6.0.18
-com.springsource.org.apache.log4j_1.2.15
-com.springsource.org.apache.xmlbeans_2.4.0
-com.springsource.org.objectweb.asm.commons_3.1.0
-com.springsource.org.objectweb.asm.tree_3.1.0
-com.springsource.org.objectweb.asm_3.1.0
-javax.annotation_1.1.0.v201105051105
-javax.el_2.2.0.v201108011116
-javax.servlet.jsp.jstl_1.2.0.v201105211821
-javax.servlet.jsp_2.2.0.v201112011158
-javax.servlet_3.0.0.v201103241009
-org.apache.commons.collections_3.2.0.v200803061811
-org.apache.commons.lang_2.3.0.v200803061910
-org.apache.commons.pool_1.5.6
-org.apache.geronimo.specs.geronimo-activation_1.1_spec_1.0.2
-org.apache.geronimo.specs.geronimo-j2ee-management_1.1_spec_1.0.1
-org.apache.geronimo.specs.geronimo-javamail_1.4_spec_1.3.0
-org.apache.jasper.glassfish_2.2.2.v201112011158
-org.apache.taglibs.standard.glassfish_1.2.0.v201112081803
-org.aspectj.runtime_1.6.4.20090304172355
-org.aspectj.weaver_1.6.4.20090304172355
-org.eclipse.core.contenttype_3.4.1.R35x_v20090826-0451
-org.eclipse.core.jobs_3.4.100.v20090429-1800
-org.eclipse.core.runtime_3.7.0.v20110110
-org.eclipse.equinox.app_1.3.100.v20110321
-org.eclipse.equinox.common_3.5.0.v20090520-1800
-org.eclipse.equinox.http.servlet_1.0.200.v20090520-1800
-org.eclipse.equinox.preferences_3.4.0.v20110502
-org.eclipse.equinox.registry_3.4.100.v20090520-1800
-org.eclipse.jetty.continuation_8.1.0.v20120127
-org.eclipse.jetty.deploy_8.1.0.v20120127
-org.eclipse.jetty.http_8.1.0.v20120127
-org.eclipse.jetty.io_8.1.0.v20120127
-org.eclipse.jetty.jmx_8.1.0.v20120127
-org.eclipse.jetty.jndi_8.1.0.v20120127
-org.eclipse.jetty.nested_8.1.0.v20120127
-org.eclipse.jetty.osgi.boot_8.1.0.v20120127
-org.eclipse.jetty.osgi.httpservice_8.1.0.v20120127
-org.eclipse.jetty.security_8.1.0.v20120127
-org.eclipse.jetty.server_8.1.0.v20120127
-org.eclipse.jetty.servlet_8.1.0.v20120127
-org.eclipse.jetty.util_8.1.0.v20120127
-org.eclipse.jetty.webapp_8.1.0.v20120127
-org.eclipse.jetty.xml_8.1.0.v20120127
-org.eclipse.osgi.services_3.3.0.v20110513
-org.eclipse.osgi_3.7.2.v20120110-1415
-org.hamcrest.core_1.1.0.v20090501071000
-</pre></div>
-</div>
-<p>在启动阐述中加入</p>
-<div class="highlight-bash"><div class="highlight"><pre>-Djetty.home<span class="o">=</span><span class="k">${</span><span class="nv">jetty</span><span class="p">.home</span><span class="k">}</span>
-</pre></div>
-</div>
-<p>在${jetty.home} 这个目录中包括如下结构：</p>
-<div class="highlight-bash"><div class="highlight"><pre>.
-├── contexts
-├── etc
-│   └── jetty.xml
-├── lib
-│   └── ext
-├── resources
-└── webapps
-</pre></div>
-</div>
-<p>这个时候启动刚才新建的Debug 配置。这时去访问etc/jetty.xml 配置的端口（我本机设定是9080端口，所以我的访问地址是http://localhost:9080）。会的到如下效果。</p>
-<img alt="../../../images/404.jpg" src="2012/12/11/../../../images/404.jpg"/>
-<p>各位看官可能会说：这不就是一个404错误页面吗，还是Jetty的。有什么好炫耀的啊！真的没有炫耀，只是用他来说明一个问题!
-说明我们的org.eclipse.jetty.osgi.boot 启动了一个Jetty服务。因为这个服务中没有部署任何web应用所以给他给出了一个404错误。
-我们下一步就是去部署一个传统的Web应用。
-我这个应用很简单，只有一个静态页面。war的具体结构如下：</p>
-<div class="highlight-bash"><div class="highlight"><pre>META-INF/MANIFEST.MF
-build.properties
-WEB-INF/web.xml
-index.html
-</pre></div>
-</div>
-<p>把这个war直接放到${jetty.home}/webapps目录下。我们可以从控制台看到如下信息：</p>
-<div class="highlight-bash"><div class="highlight"><pre>2012-12-17 18:21:28.193:INFO:oejd.DeploymentManager:Deployable added: jetty-home/webapps/org.web.war
-2012-12-17 18:21:28.280:INFO:oejw.WebInfConfiguration:Extract jar:file:jetty-home/webapps/org.web.war!/ to /private/var/folders/z3/38fg6pfx37z6tbfw6878tps80000gn/T/jetty-0.0.0.0-9080-org.web.war-_org.web-any-/webapp
-2012-12-17 18:21:28.599:INFO:oejsh.ContextHandler:started o.e.j.w.WebAppContext<span class="o">{</span>/org.web,file:/private/var/folders/z3/38fg6pfx37z6tbfw6878tps80000gn/T/jetty-0.0.0.0-9080-org.web.war-_org.web-any-/webapp/<span class="o">}</span>, /temp/jetty-home/webapps/org.web.war
-2012-12-17 18:21:28.599:INFO:oejsh.ContextHandler:started o.e.j.w.WebAppContext<span class="o">{</span>/org.web,file:/private/var/folders/z3/38fg6pfx37z6tbfw6878tps80000gn/T/jetty-0.0.0.0-9080-org.web.war-_org.web-any-/webapp/<span class="o">}</span>, /temp/jetty-home/webapps/org.web.war
-</pre></div>
-</div>
-<p>这个时候我们访问一下 <a class="reference external" href="http://localhost:9080/org.web/">http://localhost:9080/org.web/</a> 这个url。可以看到如下效果：</p>
-<img alt="../../../images/osgi_web.jpg" src="2012/12/11/../../../images/osgi_web.jpg"/>
-<p>这个时候我们就已经将传统的Web应用部署到OSGi中来了。但是他现在还不能访问OSGi中资源！我们这就来干这活！</p>
-</div>
-</div>
-<div class="section" id="webosgi">
-<h2>Web应用和OSGi互用资源</h2>
-<p>为了能让Web应用和OSGi能互访资源，除了那些非常暴力的方法外，还有一种相对优雅的方式。如果做呢？那就是把war转化成符合OSGi bundle的规范的jar。简单一句话：把war转化成bundle！
-不要害怕，因为我们现在的转化成本已经很低很低了。甚至可以忽略！所有要做的只是添加一个文件而已，而且这个文件还可以通过工具生成！</p>
-<p>我们先做一遍。 在Eclipse中，将一个普通的Java项目通过如下图所示操作转化成Plugin项目。</p>
-<img alt="../../../images/covert-pde.jpg" src="2012/12/11/../../../images/covert-pde.jpg"/>
-<p>这时根目录就会出现一个META-INF目录，下面有一个MANIFEST.MF文件。其中就包括了添加OSGi所需要的的信息。下面就是我做例子的文件的样子。</p>
-<div class="highlight-bash"><div class="highlight"><pre>Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Demo
-Bundle-SymbolicName: org.gunn.osgi.web.demo
-Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.gunn.osgi.web.demo.Activator
-Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.eclipse.osgi.framework.adaptor,
- org.eclipse.osgi.framework.internal.core,
- org.eclipse.osgi.internal.baseadaptor,
- org.eclipse.osgi.internal.loader,
- org.osgi.framework;version<span class="o">=</span><span class="s2">&quot;1.3.0&quot;</span>
-Web-ContextPath: /web/demo
-Require-Bundle: org.eclipse.jetty.osgi.boot;bundle-version<span class="o">=</span><span class="s2">&quot;8.1.0&quot;</span>
-Bundle-ClassPath: WEB-INF/classes,
- .
-</pre></div>
-</div>
-<p>需要说明的是将Bundle-ClassPath设定成WEB-INF/classes。 并将当前项目编译输出项目设定成WEB-INF/classes。如下图所示</p>
-<img alt="../../../images/default-output.jpg" src="2012/12/11/../../../images/default-output.jpg"/>
-<p>这样Bundle也就能访问到当前项目中的类了。</p>
-<p>另外在根目录下建立WEB-INF目录，并给定web.xml文件。Web需要的其他资源如jsp,html,css等就全部放到根目录下。</p>
-<img alt="../../../images/web-info.jpg" src="2012/12/11/../../../images/web-info.jpg"/>
-<p>这个时候在启动配置中勾选中刚才新建的这个项目。并启动。你在控制通过ss命令查看是，你就会看到</p>
-<div class="highlight-groovy"><div class="highlight"><pre><span class="mi">386</span> <span class="n">ACTIVE</span>      <span class="n">org</span><span class="o">.</span><span class="na">gunn</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">demo_1</span><span class="o">.</span><span class="mf">0.0</span><span class="o">.</span><span class="na">qualifier</span>
-</pre></div>
-</div>
-<p>通过浏览器访问 <a class="reference external" href="http://localhost:9080/web/demo">http://localhost:9080/web/demo</a> 就可以看到你的web项目。</p>
-<p>这个时候的web项目就是以Bundle的形式存在。他就是一个bundle。他可以使用OSGi中的任何服务和资源。</p>
-<p>对于一个已有的war，可以使用 <a class="reference external" href="http://www.aqute.biz/Code/BndCn">bnd</a> 工具的wrap命令来转换成一个bundle。可以达到同样的效果。</p>
-</div>
-<div class="section" id="id4">
-<h2>参考资料</h2>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
-<colgroup><col class="label"/><col/></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://www.ibm.com/developerworks/cn/web/0907_osgiweb_liuqing/">使用Equinox 框架进行OSGi环境下的Web开发</a></td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</body>
-        
-    <div class="postmeta">
-        
-        <div class="author">
-            <span>Posted by Jet</span>
-        </div>
-        
-        
-        <div class="tags">
-            <span>
-                Tags:
-                
-                    <a href="tags/osgi.html">OSGi</a>
-                
-            </span>
-        </div>
-        
-    </div><div class="separator post_separator"></div>
-        
-        <div class="timestamp postmeta">
-            <span>August 22, 2012</span> 
-        </div>
-        <?xml version="1.0" ?><body><div class="section" id="xtext">
-<a href="2012/08/22/xtext_start.html"><h1>学习xtext语法</h1></a>
-<p>有人说通过例子学习是最快的学习方式，所以我找到了 <a class="reference external" href="http://git.eclipse.org/c/tmf/org.eclipse.xtext.git/plain/plugins/org.eclipse.xtext.xbase/src/org/eclipse/xtext/xbase/Xbase.xtext">Xbase</a>  来学习Xtext。简单小结如下，防备以后忘。</p>
-<div class="section" id="simple-action">
-<h2>Simple Action(简单动作)</h2>
-</div>
-</div>
-</body>
-        
-    <div class="postmeta">
-        
+        <div class="postmeta">
         <div class="author">
             <span>Posted by Jet Geng</span>
         </div>
         
-        <div class="categories">
-            <span>
-                Filed under:
-                
-                    <a href="categories/java.html">Java</a>
-                
-            </span>
-        </div>
         
-        <div class="tags">
-            <span>
-                Tags:
-                
-                    <a href="tags/xtext.html">xtext</a>
-                
-            </span>
-        </div>
         
-    </div><div class="separator post_separator"></div>
-        
-        <div class="timestamp postmeta">
-            <span>August 21, 2012</span> 
-        </div>
-        <?xml version="1.0" ?><body><div class="section" id="kid-capture">
-<a href="2012/08/21/pyaudio.html"><h1>Kid Capture开发手记</h1></a>
-<div class="section" id="id1">
-<h2>缘起</h2>
-<p>我四岁的儿子和他10岁的表哥迷上了我的电脑，只要我不用就和他哥跑到电脑前。随后就会传来一阵阵的狂笑。我过去一看发现他们抱着Photo Booth狂拍照片，狂拍视屏。被那些加上各种各样效果的视屏逗的开心死了。
-这个时候我就在想我自己能否做一个这种小东西呢？让儿子在他妈妈的 <strong>瘟都死</strong> （Windows）上也能用呢？
-整理整理思路就动手做吧！</p>
+    </div><div class="archive_link">
+        <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
+    </div><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="page1.html">Older</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="2013/02/16/lsfiles.html">如何查看进程打开的文件</a>
+        </li><li>
+            <a href="2013/02/16/soapui_mock.html">soapui_mock</a>
+        </li><li>
+            <a href="2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
+        </li><li>
+            <a href="2012/08/21/pyaudio.html">Kid Capture开发手记</a>
+        </li><li>
+            <a href="2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
+        </li></ul>
 </div>
-<div class="section" id="id2">
-<h2>需求</h2>
-<dl class="docutils">
-<dt>虽然是个小东西，但是也要简单列举一下需求。以确定开发的边界。</dt>
-<dd><ol class="first last arabic">
-<li><p class="first">通过摄像头获取图像信息。显示到主界面上。</p>
-</li>
-<li><p class="first">提供三个功能按钮</p>
-<dl class="docutils">
-<dt><strong>开始录制视屏</strong></dt>
-<dd><p class="first last">点击后就开始将摄像头获取的图片信息以视频流的形式保存成一个文件。同时还需要记录下麦克风的声音。保存成文件</p>
-</dd>
-<dt><strong>停止录制</strong></dt>
-<dd><p class="first last">停止录制的过程，将声音文件和视频文件合并成一个小电影</p>
-</dd>
-<dt><strong>拍照</strong></dt>
-<dd><p class="first last">将摄像头的当前帧保存成文件</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-<p>第一个版本先做这么多吧！关于效果部分后续在跟进</p>
-</div>
-<div class="section" id="id3">
-<h2>技术方案</h2>
-<p>由于我预定的目标平台是 <strong>瘟都死</strong>  又不想使用笨重的Visual Studio。
-所以决定采用如下的工具</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>开发语言– <a class="reference external" href="http://python.org/">Python</a></li>
-<li>图形界面框架 – <a class="reference external" href="http://wxpython.org/">wxPython</a></li>
-<li>图像采集和分析框架 – <a class="reference external" href="http://opencv.org/">OpenCV</a></li>
-<li>声音采集工具  – <a class="reference external" href="http://people.csail.mit.edu/hubert/pyaudio/">PyAudio</a></li>
-</ol>
-</div></blockquote>
-</div>
-<div class="section" id="id4">
-<h2>图像采集</h2>
-<p>图像采集说白了就是从摄像头读取图像信息。在微软家有Direct.Show 可以用。从CodeProject网站上可以找到大量的示例，不是C#就是VB。 当然通过Python也可以调用，只是要求系统上一定要有Direct。所以放弃。最后在Youtube上看到一老外用10行代码完成了视屏采集。为之一动，对自己说就用他吧！他就是OpenCV。</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/usr/bin/python</span>
-<span class="c"># -*- coding: utf-8 -*-</span>
+</section><section><div class="widget" id="searchbox">
+    <h1>Search</h1>
+    <form action="search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="webfont">L</span></button>
+    </form>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
-<span class="kn">import</span> <span class="nn">cv2.cv</span> <span class="kn">as</span> <span class="nn">cv</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- fotter-container -->
 
-<span class="n">capture</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">CaptureFromCAM</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="n">cv</span><span class="o">.</span><span class="n">NamedWindow</span><span class="p">(</span><span class="s">&quot;camera&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">QueryFrame</span><span class="p">(</span><span class="n">capture</span><span class="p">)</span>
-    <span class="n">cv</span><span class="o">.</span><span class="n">ShowImage</span><span class="p">(</span><span class="s">&quot;camera&quot;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="mh">0xFF</span> <span class="o">&amp;</span> <span class="n">cv</span><span class="o">.</span><span class="n">WaitKey</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
-        <span class="k">break</span>
-</pre></div>
-</td></tr></table></div>
-<ol class="arabic simple">
-<li>4,5行导入OpenCV的包</li>
-<li>7打开摄像头，并开始读取frame</li>
-<li>11 ~ 13 读取摄像头的数据帧，并显示到窗体中。</li>
-<li>15 ~ 16 判断有没有用户输入，如果是 esc键就退出。</li>
-</ol>
-<blockquote>
-<div><p>上面的代码就是视屏捕捉的所有核心！超级简单吧！不过有个问题上面的代码只能使用 <a class="reference external" href="http://opencv.org/">OpenCV</a> 自己的图像界面，而且他的并不能集成到其他框架中来。所以要对他他做写改动才可以。</p>
-<p>在他的官方网站上找到了一个例子</p>
-</div></blockquote>
-</div>
-</div>
-<div class="section" id="pyaudio">
-<h1>初次接触PyAudio</h1>
-<p>前两天无意间PyAudio，当时没觉得怎么地。今天拿过来练了练。发现这个小东西还真的不错。只需要简单的几行代码就可以完成录音和播放wav的功能。而且他还是跨平台的，在WinXp和Linux下运行良好（遗憾的是在Mac OS Lion下编译没通过）。</p>
-<p>下面这个代码来源于实现了录音功能。 <a class="reference external" href="http://hyry.dip.jp:8000/pydoc/wave_pyaudio.html#pyaudio">http://hyry.dip.jp:8000/pydoc/wave_pyaudio.html#pyaudio</a> 。</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
-<span class="kn">from</span> <span class="nn">pyaudio</span> <span class="kn">import</span> <span class="n">PyAudio</span><span class="p">,</span> <span class="n">paInt16</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">import</span> <span class="nn">wave</span>
-
-
-<span class="c"># 将data中的数据保存到名为filename的WAV文件中</span>
-<span class="k">def</span> <span class="nf">save_wave_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-    <span class="n">wf</span> <span class="o">=</span> <span class="n">wave</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span>
-    <span class="n">wf</span><span class="o">.</span><span class="n">setnchannels</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">wf</span><span class="o">.</span><span class="n">setsampwidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">wf</span><span class="o">.</span><span class="n">setframerate</span><span class="p">(</span><span class="n">SAMPLING_RATE</span><span class="p">)</span>
-    <span class="n">wf</span><span class="o">.</span><span class="n">writeframes</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-    <span class="n">wf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-
-
-<span class="n">NUM_SAMPLES</span> <span class="o">=</span> <span class="mi">2000</span>      <span class="c"># pyAudio内部缓存的块的大小</span>
-<span class="n">SAMPLING_RATE</span> <span class="o">=</span> <span class="mi">8000</span>    <span class="c"># 取样频率</span>
-<span class="n">LEVEL</span> <span class="o">=</span> <span class="mi">1500</span>            <span class="c"># 声音保存的阈值</span>
-<span class="n">COUNT_NUM</span> <span class="o">=</span> <span class="mi">20</span>          <span class="c"># NUM_SAMPLES个取样之内出现COUNT_NUM个大于LEVEL的取样则记录声音</span>
-<span class="n">SAVE_LENGTH</span> <span class="o">=</span> <span class="mi">8</span>         <span class="c"># 声音记录的最小长度：SAVE_LENGTH * NUM_SAMPLES 个取样</span>
-
-<span class="c"># 开启声音输入</span>
-<span class="n">pa</span> <span class="o">=</span> <span class="n">PyAudio</span><span class="p">()</span>
-<span class="n">stream</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="n">paInt16</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">SAMPLING_RATE</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                <span class="n">frames_per_buffer</span><span class="o">=</span><span class="n">NUM_SAMPLES</span><span class="p">)</span>
-
-<span class="n">save_count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">save_buffer</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-    <span class="c"># 读入NUM_SAMPLES个取样</span>
-    <span class="n">string_audio_data</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">NUM_SAMPLES</span><span class="p">)</span>
-    <span class="c"># 将读入的数据转换为数组</span>
-    <span class="n">audio_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">string_audio_data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">short</span><span class="p">)</span>
-    <span class="c"># 计算大于LEVEL的取样的个数</span>
-    <span class="n">large_sample_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">audio_data</span> <span class="o">&gt;</span> <span class="n">LEVEL</span> <span class="p">)</span>
-    <span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">audio_data</span><span class="p">)</span>
-    <span class="c"># 如果个数大于COUNT_NUM，则至少保存SAVE_LENGTH个块</span>
-    <span class="k">if</span> <span class="n">large_sample_count</span> <span class="o">&gt;</span> <span class="n">COUNT_NUM</span><span class="p">:</span>
-        <span class="n">save_count</span> <span class="o">=</span> <span class="n">SAVE_LENGTH</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">save_count</span> <span class="o">-=</span> <span class="mi">1</span>
-
-    <span class="k">if</span> <span class="n">save_count</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">save_count</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">if</span> <span class="n">save_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="c"># 将要保存的数据存放到save_buffer中</span>
-        <span class="n">save_buffer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">string_audio_data</span> <span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c"># 将save_buffer中的数据写入WAV文件，WAV文件的文件名是保存的时刻</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">save_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">filename</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">_%H_%M_%S&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;.wav&quot;</span>
-            <span class="n">save_wave_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">save_buffer</span><span class="p">)</span>
-            <span class="n">save_buffer</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">print</span> <span class="n">filename</span><span class="p">,</span> <span class="s">&quot;saved&quot;</span>
-    <span class="n">content</span>
-</pre></div>
-</div>
-</div>
-</body>
-        
-    <div class="postmeta">
-        
-        <div class="author">
-            <span>Posted by JetGeng</span>
-        </div>
-        
-        <div class="categories">
-            <span>
-                Filed under:
-                
-                    <a href="categories/python.html">Python</a>
-                
-            </span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                Tags:
-                
-                    <a href="tags/python.html">Python</a>
-                
-            </span>
-        </div>
-        
-    </div><div class="separator post_separator"></div>
-        
-        <div class="timestamp postmeta">
-            <span>July 15, 2012</span> 
-        </div>
-        <?xml version="1.0" ?><body><div class="section" id="nettywebsocket">
-<a href="2012/07/15/nettywebconsole.html"><h1>让Netty接受WebSocket请求</h1></a>
-<div class="section" id="id1">
-<h2>缘起</h2>
-<p>最近有个需要要求让 <a class="reference external" href="http://www.jboss.org/as7">JBoss AS 7</a> 支持WebSocket请求。遇到这样的问题，我的第一反应就是去想办法去换掉 <a class="reference external" href="http://www.jboss.org/as7">Jboss AS 7</a> 中的tomcat 容器或者把HTTP请求转发到另外一个容器中。一个老外 <a class="reference external" href="http://golovnin.blogspot.com/2012/04/jboss-7-and-websockets.html">JBoss 7 and WebSocket</a> 中就这么干的。但是觉得还存在一些问题。
-所以一直在尝试其他方案，突然一天看到了Netty的架构图。发现他居然支持WebSocket接入。如果我做一个subsystem，把Netty装进去是不是就可以解决这个问题呢？</p>
-</div>
-<div class="section" id="id2">
-<h2>尝试</h2>
-<p>有这如上的想法以后，就得去验证。验证的第一步就是确定Netty是否真的能够支持WebSocket。什么话都不用说了上让代码证明一切吧！</p>
-<p class="plantuml">
-<img alt="interface AttributeMap{ } interface ChannelOutboundInvoker{     bind()     connect()     disconnect()     close()     deregister()     flush()     write(message:Object) } interface ChannelFutureFactory{ } interface Channel{     isOpen()     isRegistered()     isActive()  }  AttributeMap &lt;|-- Channel ChannelOutboundInvoker &lt;|-- Channel ChannelFutureFactory &lt;|-- Channel" src="2012/07/15/../../../images/plantuml-f599b6a501d5f41f5c93b72954b0f663e170240b.png"/>
-</p>
-</div>
-</div>
-</body>
-        
-    <div class="postmeta">
-        
-        <div class="author">
-            <span>Posted by Jet Geng</span>
-        </div>
-        
-        <div class="categories">
-            <span>
-                Filed under:
-                
-                    <a href="categories/jboss.html">Jboss</a>
-                
-            </span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                Tags:
-                
-                    <a href="tags/netty.html">Netty</a>
-                
-            </span>
-        </div>
-        
-    </div><div class="separator post_separator"></div>
-        
-        <div class="timestamp postmeta">
-            <span>July 12, 2012</span> 
-        </div>
-        <?xml version="1.0" ?><body><div class="section" id="esper">
-<a href="2012/07/12/esper_source_read.html"><h1>通过交互的方式调试Esper</h1></a>
-</div>
-</body>
-        
-    <div class="postmeta">
-        
-        <div class="author">
-            <span>Posted by Jet Geng</span>
-        </div>
-        
-        <div class="categories">
-            <span>
-                Filed under:
-                
-                    <a href="categories/esper.html">Esper</a>
-                
-            </span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                Tags:
-                
-                    <a href="tags/esper.html">Esper</a>
-                
-            </span>
-        </div>
-        
-    </div><div class="separator post_separator"></div>
-        
-        <div class="timestamp postmeta">
-            <span>July 03, 2012</span> 
-        </div>
-        <?xml version="1.0" ?><body><div class="section" id="maventychoosgi">
-<a href="2012/07/03/jbossover.html"><h1>使用Maven和tycho构建OSGi插件项目</h1></a>
-<div class="section" id="tycho">
-<h2>介绍Tycho插件</h2>
-<p>自动构建OSGi Plugin项目，一直以来就是个头疼的问题。直到 <a class="reference external" href="http://eclipse.org/tycho/">Tycho</a> 的出现,这些都不在成为问题了。用它你可以很轻松来构建Eclipse插件(Eclipse Plugin) , Eclipse features , Eclipse的更新站点(Update Site)以及可以直接执行的Eclipse产品(Eclipse Product)。
-Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信息。这样依赖pom.xml文件就会很小。</p>
-</div>
-<div class="section" id="nexus">
-<h2>介绍Nexus私服</h2>
-<p>Nexus的OSS版是完全免费的Maven私服。很多企业都在使用他，我们也赶个热闹，用它来构建我们团队内部的私服。在默认情况下Nexus OSS版是不支持eclipse 推出的p2这个仓库的，而Tycho就是依赖这种仓库。所以为了让他能和Tycho配合工作我们让Nexus加上这种能力。
-万幸的是sonatype已经开发出了 <a class="reference external" href="https://github.com/sonatype/nexus-p2-repository-plugin">nexus-p2-repository-plugin</a> ， <a class="reference external" href="https://github.com/sonatype/nexus-p2-bridge-plugin">nexus-p2-bridge-plugin</a> 这两个插件，他们为Nexus加上这两种能力 。我们只需要安装这两个插件就好了。
-具体操作请参考： <a class="reference external" href="https://docs.sonatype.org/display/Nexus/Nexus+OSGi+Experimental+Features+-+P2+Repository+Plugin">Nexus OSGi Experimental Features P2 Repository Plugin</a></p>
-</div>
-<div class="section" id="eclipse">
-<h2>构建Eclipse 插件</h2>
-<p>好了既然万事具备了，我们就开始用Tycho来构建Eclipse 插件了。现在我手边有一个通过Eclipse 创建名为org.gunn.autobuild.tycho.bundle的Plugin项目。我要对他进行构建。
-首先我们需要一个pom.xml文件。我们可以通过如下命令来生成：</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre>mvn org.eclipse.tycho:tycho-pomgenerator-plugin:generate-poms -DgroupId<span class="o">=</span>org.gunn.autobuild.tycho
-</pre></div>
-</div>
-</div></blockquote>
-<p>这个时候我就得到了如下结构的pom.xml</p>
-<blockquote>
-<div><div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;project</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0</span>
-<span class="s">http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>
-<span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
-<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.gunn.autobuild.tycho<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>org.gunn.autobuild.tycho.bundle<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;packaging&gt;</span>eclipse-plugin<span class="nt">&lt;/packaging&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>这个时候如果你输入 mvn package肯定是会出错的。出错的原因是我们还没有把Tycho插件加入进来。
-所以我们还需要一个如下如下结构的pom.xml.</p>
-<blockquote>
-<div><div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;project&gt;</span>
-  <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.gunn.autobuile<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>parent<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-  <span class="nt">&lt;packaging&gt;</span>pom<span class="nt">&lt;/packaging&gt;</span>
-
-  <span class="nt">&lt;properties&gt;</span>
-    <span class="nt">&lt;tycho-version&gt;</span>0.15.0<span class="nt">&lt;/tycho-version&gt;</span>
-  <span class="nt">&lt;/properties&gt;</span>
-
-  <span class="nt">&lt;repositories&gt;</span>
-    <span class="nt">&lt;repository&gt;</span>
-      <span class="nt">&lt;id&gt;</span>juno<span class="nt">&lt;/id&gt;</span>
-      <span class="nt">&lt;layout&gt;</span>p2<span class="nt">&lt;/layout&gt;</span>
-      <span class="nt">&lt;url&gt;</span>http://download.eclipse.org/releases/juno<span class="nt">&lt;/url&gt;</span>
-    <span class="nt">&lt;/repository&gt;</span>
-  <span class="nt">&lt;/repositories&gt;</span>
-
-  <span class="nt">&lt;build&gt;</span>
-    <span class="nt">&lt;plugins&gt;</span>
-      <span class="nt">&lt;plugin&gt;</span>
-        <span class="nt">&lt;groupId&gt;</span>org.eclipse.tycho<span class="nt">&lt;/groupId&gt;</span>
-        <span class="nt">&lt;artifactId&gt;</span>tycho-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-        <span class="nt">&lt;version&gt;</span>${tycho-version}<span class="nt">&lt;/version&gt;</span>
-        <span class="nt">&lt;extensions&gt;</span>true<span class="nt">&lt;/extensions&gt;</span>
-      <span class="nt">&lt;/plugin&gt;</span>
-      <span class="nt">&lt;plugin&gt;</span>
-        <span class="nt">&lt;groupId&gt;</span>org.eclipse.tycho<span class="nt">&lt;/groupId&gt;</span>
-        <span class="nt">&lt;artifactId&gt;</span>tycho-p2-director-plugin<span class="nt">&lt;/artifactId&gt;</span>
-        <span class="nt">&lt;version&gt;</span>${tycho-version}<span class="nt">&lt;/version&gt;</span>
-        <span class="nt">&lt;executions&gt;</span>
-          <span class="nt">&lt;execution&gt;</span>
-            <span class="nt">&lt;id&gt;</span>materialize-products<span class="nt">&lt;/id&gt;</span>
-            <span class="nt">&lt;goals&gt;</span>
-              <span class="nt">&lt;goal&gt;</span>materialize-products<span class="nt">&lt;/goal&gt;</span>
-            <span class="nt">&lt;/goals&gt;</span>
-          <span class="nt">&lt;/execution&gt;</span>
-          <span class="nt">&lt;execution&gt;</span>
-            <span class="nt">&lt;id&gt;</span>archive-products<span class="nt">&lt;/id&gt;</span>
-            <span class="nt">&lt;goals&gt;</span>
-              <span class="nt">&lt;goal&gt;</span>archive-products<span class="nt">&lt;/goal&gt;</span>
-            <span class="nt">&lt;/goals&gt;</span>
-          <span class="nt">&lt;/execution&gt;</span>
-        <span class="nt">&lt;/executions&gt;</span>
-      <span class="nt">&lt;/plugin&gt;</span>
-      <span class="nt">&lt;plugin&gt;</span>
-        <span class="nt">&lt;groupId&gt;</span>org.eclipse.tycho<span class="nt">&lt;/groupId&gt;</span>
-        <span class="nt">&lt;artifactId&gt;</span>target-platform-configuration<span class="nt">&lt;/artifactId&gt;</span>
-        <span class="nt">&lt;version&gt;</span>${tycho-version}<span class="nt">&lt;/version&gt;</span>
-        <span class="nt">&lt;configuration&gt;</span>
-          <span class="nt">&lt;environments&gt;</span>
-            <span class="nt">&lt;environment&gt;</span>
-              <span class="nt">&lt;os&gt;</span>win32<span class="nt">&lt;/os&gt;</span>
-              <span class="nt">&lt;ws&gt;</span>win32<span class="nt">&lt;/ws&gt;</span>
-              <span class="nt">&lt;arch&gt;</span>x86<span class="nt">&lt;/arch&gt;</span>
-            <span class="nt">&lt;/environment&gt;</span>
-            <span class="nt">&lt;environment&gt;</span>
-              <span class="nt">&lt;os&gt;</span>linux<span class="nt">&lt;/os&gt;</span>
-              <span class="nt">&lt;ws&gt;</span>gtk<span class="nt">&lt;/ws&gt;</span>
-              <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
-            <span class="nt">&lt;/environment&gt;</span>
-            <span class="nt">&lt;environment&gt;</span>
-              <span class="nt">&lt;os&gt;</span>macosx<span class="nt">&lt;/os&gt;</span>
-              <span class="nt">&lt;ws&gt;</span>cocoa<span class="nt">&lt;/ws&gt;</span>
-              <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
-            <span class="nt">&lt;/environment&gt;</span>
-          <span class="nt">&lt;/environments&gt;</span>
-        <span class="nt">&lt;/configuration&gt;</span>
-    <span class="nt">&lt;/plugin&gt;</span>
-   <span class="nt">&lt;/plugins&gt;</span>
-  <span class="nt">&lt;/build&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>将如下片段加入到org.gunn.autobuild.tycho.bundle项目下的pom.xml</p>
-<blockquote>
-<div><div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;parent&gt;</span>
-   <span class="nt">&lt;relativePath&gt;</span>../parent/pom.xml<span class="nt">&lt;/relativePath&gt;</span>
-   <span class="nt">&lt;groupId&gt;</span>org.gunn.autobuild<span class="nt">&lt;/groupId&gt;</span>
-   <span class="nt">&lt;artifactId&gt;</span>parent<span class="nt">&lt;/artifactId&gt;</span>
-   <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
- <span class="nt">&lt;/parent&gt;</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>这个时候我们得到了如下的目录结构：</p>
-<img alt="../../../images/build_tree.jpg" src="2012/07/03/../../../images/build_tree.jpg"/>
-<div class="admonition note">
-<p class="first admonition-title">注解</p>
-<p class="last">项目中的pom.xml中的artifactId 想要和MANIFEST.MF文件中的Bundle-SymbolicName保持一致。pom.xml中version要和MANIFEST.MF文件中的Bundle-Version一致</p>
-</div>
-<p>这个时候你通过：</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>org.gunn.autobuild.tycho.bundle
-mvn package
-</pre></div>
-</div>
-</div></blockquote>
-<p>就会完成对这个budle的打包。关于tycho更多的介绍可以参考 <a class="reference external" href="http://wiki.eclipse.org/Category:Tycho">Eclipse Wiki tycho</a></p>
-</div>
-<div class="section" id="id1">
-<h2>使用Nexus私服</h2>
-<p>请按照 视频设定Nexus私服。如过要在项目中使用私服的内容就直接在parent/pom.xml文件中修改repository中的内容。
-例如有如下图所示的Nexus私服：</p>
-<img alt="../../../images/nexus_p2.jpg" src="2012/07/03/../../../images/nexus_p2.jpg"/>
-<p>如果需要使用的Indigo仓库，只需要将下面xml片段加入到parent/pom.xml中。</p>
-<div class="highlight-xml"><div class="highlight"><pre> <span class="nt">&lt;repository&gt;</span>
-      <span class="nt">&lt;id&gt;</span>juno<span class="nt">&lt;/id&gt;</span>
-      <span class="nt">&lt;layout&gt;</span>p2<span class="nt">&lt;/layout&gt;</span>
-      <span class="nt">&lt;url&gt;</span>http://192.168.100.235:8881/nexus/content/repositories/juno/<span class="nt">&lt;/url&gt;</span>
-<span class="nt">&lt;/repository&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id2">
-<h2>参考资料</h2>
-<ol class="arabic simple">
-<li><a class="reference external" href="http://wiki.eclipse.org/Category:Tycho">Eclipse Wiki tycho</a></li>
-<li><a class="reference external" href="http://www.vogella.com/articles/EclipseTycho/article.html#productbuild">Eclipse Tycho - Tutorial for building Eclipse Plugins and RCP applications</a></li>
-</ol>
-</div>
-</div>
-</body>
-        
-    <div class="postmeta">
-        
-        <div class="author">
-            <span>Posted by Jet Geng</span>
-        </div>
-        
-        <div class="categories">
-            <span>
-                Filed under:
-                
-                    <a href="categories/autobuild.html">autobuild</a>
-                
-            </span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                Tags:
-                
-                    <a href="tags/tycho.html">Tycho</a>
-                
-            </span>
-        </div>
-        
-    </div>
-    
-    <div class="archive_link">
-        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
-    </div>
-
-          </div>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-        &copy; 版权所有 2012, Jet Geng.
-        Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
-
-    
-    </div>
-  </body>
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
 </html>
