@@ -27,7 +27,7 @@ website = 'http://jetgeng.github.com/blog/html/'
 # **************************************************************
 
 # Add your Disqus shortname to enable comments powered by Disqus
-disqus_shortname = ''
+disqus_shortname = 'techfoolishstory'
 
 # Change your favicon (new favicon goes in _static directory)
 html_favicon = 'tinkerer.ico'

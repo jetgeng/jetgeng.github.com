@@ -1,9 +1,9 @@
-soapui_mock
-===========
+用SoapUI mock Web服务
+======================
 
 
 
-.. author:: default
-.. categories:: none
-.. tags:: none
+.. author:: Jet Geng 
+.. categories:: WS 
+.. tags:: Java Groovy
 .. comments::
