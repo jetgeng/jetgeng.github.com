@@ -76,6 +76,52 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
 <p>好了，准备好上述的内容我们就开始创建WS mock。
 首先打开SoapUI。 通过File菜单中的new project新建一个项目。</p>
 <img alt="../../../images/soap-newproject.jpg" src="http://jetgeng.github.com/blog/html/2013/02/16/../../../images/soap-newproject.jpg"/>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">在创建界面要勾选”Create MockService”选项。</p>
+</div>
+<p>在SoapUI的导航面板中，我们就会看到如下图所示的结构</p>
+<img alt="../../../images/soapui-mock.png" src="http://jetgeng.github.com/blog/html/2013/02/16/../../../images/soapui-mock.png"/>
+<ol class="arabic simple">
+<li>mock WS中显示了Mock WS的所有响应。当然你可以通过右键菜单对他做各种操作。</li>
+<li>通过右键菜单中的”Show MockService Editor”可以打开”服务器启动按钮”所在的”MockService Editor”。</li>
+<li>点击”服务器启动按钮”时就会启动一个jetty（jetty-6.1.26）服务器，并将部署一个包括当前mock的服务到jetty中。这时通过浏览器访问 <a class="reference external" href="http://localhost:8088">http://localhost:8088</a> 就会看到如下效果。</li>
+</ol>
+<img alt="../../../images/mock-server-infirefox.jpg" src="http://jetgeng.github.com/blog/html/2013/02/16/../../../images/mock-server-infirefox.jpg"/>
+<p>这时mock WS已经开始服务了。但是现在的mock还是静态的。SoapUI为了让用户创建动态的响应提供了Groovy脚本支持。
+下面就来创建动态的响应。</p>
+<div class="section" id="groovy">
+<h3>通过Groovy脚本创建动态响应</h3>
+<p>通过点击sayHi，下面的Response 1项的右键菜单中的”Show MockResponse Editor”打开”MockResponse Editor” 准备编辑该响应。
+具体内容如下图所示：</p>
+<img alt="../../../images/response-editor.jpg" src="http://jetgeng.github.com/blog/html/2013/02/16/../../../images/response-editor.jpg"/>
+<p>下面分析图中的代码：</p>
+<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre> <span class="c1">// create XmlHolder for request content</span>
+ <span class="kt">def</span> <span class="n">holder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">com</span><span class="o">.</span><span class="na">eviware</span><span class="o">.</span><span class="na">soapui</span><span class="o">.</span><span class="na">support</span><span class="o">.</span><span class="na">XmlHolder</span><span class="o">(</span> <span class="n">mockRequest</span><span class="o">.</span><span class="na">requestContent</span> <span class="o">)</span>
+
+ <span class="kt">def</span> <span class="n">name</span> <span class="o">=</span> <span class="n">holder</span><span class="o">[</span><span class="s2">&quot;//ws:name&quot;</span><span class="o">]</span>
+
+ <span class="n">requestContext</span><span class="o">.</span><span class="na">msg</span> <span class="o">=</span> <span class="s2">&quot;hi $name&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple">
+<li>第2行，将Soap 请求封装成一个XmlHolder。提供各种好用的东西，让你想取请求中的那个部分，就取那个部分。</li>
+<li>第3行，取出”//ws:name”。 也就是客户端传来的name参数。</li>
+<li>第6行，拼出一个动态的变量。存放到requestContext中。备用！</li>
+<li>最后在响应中以${msg}的方式引用存入requestContex中的msg变量。</li>
+</ol>
+<p>由于这个Scrip 是用Groovy写的，你可以使用任何语句。完成你的逻辑。你甚至可以通过jdbc连接数据库。查询数据。
+要完成jdbc连接数据库要解决如下问题：
+#. 如何为SoapUI中的Groovy脚本添加三方jar？
+#. 如何让多个响应公用一个数据库连接池？
+随后为了能够脱离SoapUI进行测试，如何把我们创建好的Mock WS部署到类似于Tomcat， Jetty这样的服务器中去？</p>
+<p>欲见详情，请听下回分解！</p>
+</div>
 </div>
 </div>]]></description>
             <category><![CDATA[ WS ]]></category>
