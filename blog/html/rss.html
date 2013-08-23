@@ -213,26 +213,26 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
 </div></blockquote>
 <p>好了，准备好上述的内容我们就开始创建WS mock。
 首先打开SoapUI。 通过File菜单中的new project新建一个项目。</p>
-<img alt="../../../_images/soap-newproject.jpg" src="http://jetgeng.github.com/blog/html/_images/soap-newproject.jpg"/>
+<img alt="../../../images/soap-newproject.jpg" src="http://jetgeng.github.com/blog/html/images/soap-newproject.jpg"/>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">在创建界面要勾选”Create MockService”选项。</p>
 </div>
 <p>在SoapUI的导航面板中，我们就会看到如下图所示的结构</p>
-<img alt="../../../_images/soapui-mock.png" src="http://jetgeng.github.com/blog/html/_images/soapui-mock.png"/>
+<img alt="../../../images/soapui-mock.png" src="http://jetgeng.github.com/blog/html/images/soapui-mock.png"/>
 <ol class="arabic simple">
 <li>mock WS中显示了Mock WS的所有响应。当然你可以通过右键菜单对他做各种操作。</li>
 <li>通过右键菜单中的”Show MockService Editor”可以打开”服务器启动按钮”所在的”MockService Editor”。</li>
 <li>点击”服务器启动按钮”时就会启动一个jetty（jetty-6.1.26）服务器，并将部署一个包括当前mock的服务到jetty中。这时通过浏览器访问 <a class="reference external" href="http://localhost:8088">http://localhost:8088</a> 就会看到如下效果。</li>
 </ol>
-<img alt="../../../_images/mock-server-infirefox.jpg" src="http://jetgeng.github.com/blog/html/_images/mock-server-infirefox.jpg"/>
+<img alt="../../../images/mock-server-infirefox.jpg" src="http://jetgeng.github.com/blog/html/images/mock-server-infirefox.jpg"/>
 <p>这时mock WS已经开始服务了。但是现在的mock还是静态的。SoapUI为了让用户创建动态的响应提供了Groovy脚本支持。
 下面就来创建动态的响应。</p>
 <div class="section" id="groovy">
 <h3>通过Groovy脚本创建动态响应</h3>
 <p>通过点击sayHi，下面的Response 1项的右键菜单中的”Show MockResponse Editor”打开”MockResponse Editor” 准备编辑该响应。
 具体内容如下图所示：</p>
-<img alt="../../../_images/response-editor.jpg" src="http://jetgeng.github.com/blog/html/_images/response-editor.jpg"/>
+<img alt="../../../images/response-editor.jpg" src="http://jetgeng.github.com/blog/html/images/response-editor.jpg"/>
 <p>下面分析图中的代码：</p>
 <div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -312,7 +312,7 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
 <div class="section" id="target-platform">
 <h3>准备Target Platform</h3>
 <p>将OSGi Framework 和Jetty Bundles解压到同一个文件夹。假定该目录为${Target_Path}。打开Eclipse，通过菜单Windows –&gt; Preferences –&gt; target 打开Target Platform的设定界面，也可以通过Ctrl+3 输入”Target Platform”来打开Target Platform设定界面。</p>
-<img alt="../../../_images/open_target.jpg" src="http://jetgeng.github.com/blog/html/_images/open_target.jpg"/>
+<img alt="../../../images/open_target.jpg" src="http://jetgeng.github.com/blog/html/images/open_target.jpg"/>
 <p>新建一个Target Platform, 把${Target_Path} 加入到该Target Platform中。 并勾选新建的Target Platform为当前Platform。</p>
 </div>
 <div class="section" id="debug-configuration">
@@ -389,7 +389,7 @@ org.hamcrest.core_1.1.0.v20090501071000
 </pre></div>
 </div>
 <p>这个时候启动刚才新建的Debug 配置。这时去访问etc/jetty.xml 配置的端口（我本机设定是9080端口，所以我的访问地址是http://localhost:9080）。会的到如下效果。</p>
-<img alt="../../../_images/404.jpg" src="http://jetgeng.github.com/blog/html/_images/404.jpg"/>
+<img alt="../../../images/404.jpg" src="http://jetgeng.github.com/blog/html/images/404.jpg"/>
 <p>各位看官可能会说：这不就是一个404错误页面吗，还是Jetty的。有什么好炫耀的啊！真的没有炫耀，只是用他来说明一个问题!
 说明我们的org.eclipse.jetty.osgi.boot 启动了一个Jetty服务。因为这个服务中没有部署任何web应用所以给他给出了一个404错误。
 我们下一步就是去部署一个传统的Web应用。
@@ -408,7 +408,7 @@ index.html
 </pre></div>
 </div>
 <p>这个时候我们访问一下 <a class="reference external" href="http://localhost:9080/org.web">http://localhost:9080/org.web/</a> 这个url。可以看到如下效果：</p>
-<img alt="../../../_images/osgi_web.jpg" src="http://jetgeng.github.com/blog/html/_images/osgi_web.jpg"/>
+<img alt="../../../images/osgi_web.jpg" src="http://jetgeng.github.com/blog/html/images/osgi_web.jpg"/>
 <p>这个时候我们就已经将传统的Web应用部署到OSGi中来了。但是他现在还不能访问OSGi中资源！我们这就来干这活！</p>
 </div>
 </div>
@@ -417,7 +417,7 @@ index.html
 <p>为了能让Web应用和OSGi能互访资源，除了那些非常暴力的方法外，还有一种相对优雅的方式。如果做呢？那就是把war转化成符合OSGi bundle的规范的jar。简单一句话：把war转化成bundle！
 不要害怕，因为我们现在的转化成本已经很低很低了。甚至可以忽略！所有要做的只是添加一个文件而已，而且这个文件还可以通过工具生成！</p>
 <p>我们先做一遍。 在Eclipse中，将一个普通的Java项目通过如下图所示操作转化成Plugin项目。</p>
-<img alt="../../../_images/covert-pde.jpg" src="http://jetgeng.github.com/blog/html/_images/covert-pde.jpg"/>
+<img alt="../../../images/covert-pde.jpg" src="http://jetgeng.github.com/blog/html/images/covert-pde.jpg"/>
 <p>这时根目录就会出现一个META-INF目录，下面有一个MANIFEST.MF文件。其中就包括了添加OSGi所需要的的信息。下面就是我做例子的文件的样子。</p>
 <div class="highlight-bash"><div class="highlight"><pre>Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
@@ -439,10 +439,10 @@ Bundle-ClassPath: WEB-INF/classes,
 </pre></div>
 </div>
 <p>需要说明的是将Bundle-ClassPath设定成WEB-INF/classes。 并将当前项目编译输出项目设定成WEB-INF/classes。如下图所示</p>
-<img alt="../../../_images/default-output.jpg" src="http://jetgeng.github.com/blog/html/_images/default-output.jpg"/>
+<img alt="../../../images/default-output.jpg" src="http://jetgeng.github.com/blog/html/images/default-output.jpg"/>
 <p>这样Bundle也就能访问到当前项目中的类了。</p>
 <p>另外在根目录下建立WEB-INF目录，并给定web.xml文件。Web需要的其他资源如jsp,html,css等就全部放到根目录下。</p>
-<img alt="../../../_images/web-info.jpg" src="http://jetgeng.github.com/blog/html/_images/web-info.jpg"/>
+<img alt="../../../images/web-info.jpg" src="http://jetgeng.github.com/blog/html/images/web-info.jpg"/>
 <p>这个时候在启动配置中勾选中刚才新建的这个项目。并启动。你在控制通过ss命令查看是，你就会看到</p>
 <div class="highlight-groovy"><div class="highlight"><pre><span class="mi">386</span> <span class="n">ACTIVE</span>      <span class="n">org</span><span class="o">.</span><span class="na">gunn</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">web</span><span class="o">.</span><span class="na">demo_1</span><span class="o">.</span><span class="mf">0.0</span><span class="o">.</span><span class="na">qualifier</span>
 </pre></div>
@@ -825,7 +825,7 @@ Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信
 </div>
 </div></blockquote>
 <p>这个时候我们得到了如下的目录结构：</p>
-<img alt="../../../_images/build_tree.jpg" src="http://jetgeng.github.com/blog/html/_images/build_tree.jpg"/>
+<img alt="../../../images/build_tree.jpg" src="http://jetgeng.github.com/blog/html/images/build_tree.jpg"/>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">项目中的pom.xml中的artifactId 想要和MANIFEST.MF文件中的Bundle-SymbolicName保持一致。pom.xml中version要和MANIFEST.MF文件中的Bundle-Version一致</p>
@@ -843,7 +843,7 @@ mvn package
 <h2>使用Nexus私服</h2>
 <p>请按照 视频设定Nexus私服。如过要在项目中使用私服的内容就直接在parent/pom.xml文件中修改repository中的内容。
 例如有如下图所示的Nexus私服：</p>
-<img alt="../../../_images/nexus_p2.jpg" src="http://jetgeng.github.com/blog/html/_images/nexus_p2.jpg"/>
+<img alt="../../../images/nexus_p2.jpg" src="http://jetgeng.github.com/blog/html/images/nexus_p2.jpg"/>
 <p>如果需要使用的Indigo仓库，只需要将下面xml片段加入到parent/pom.xml中。</p>
 <div class="highlight-xml"><div class="highlight"><pre> <span class="nt">&lt;repository&gt;</span>
       <span class="nt">&lt;id&gt;</span>juno<span class="nt">&lt;/id&gt;</span>
