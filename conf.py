@@ -58,6 +58,7 @@ extensions = [
               'sphinxcontrib.seqdiag',
               'tinkerer.ext.blog',
               'tinkerer.ext.disqus',
+              'withgithub',
               ]
 
 # Add other template paths here
