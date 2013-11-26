@@ -1,32 +1,42 @@
-<!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Home &mdash; 愚钝的故事</title><meta name="description" content="">
+        <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-
-
-        <link rel="stylesheet" href="static/normalize.css" type="text/css">
-        <link rel="stylesheet" href="static/main.css" type="text/css">
-        <link rel="stylesheet" href="static/modern5.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-        <link rel="stylesheet" href="static/webfont.css" type="text/css"><link rel="shortcut icon" href="static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-        <script src="static/vendor/modernizr-2.6.2.min.js"></script>
+        <title>Home &mdash; 愚钝的故事</title>
+            <link rel="stylesheet" href="_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="_static/main.css" type="text/css">
+            <link rel="stylesheet" href="_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="static/plugins.js"></script>
-        <script src="static/main.js"></script><link rel="top" title="愚钝的故事" href="#" /><link rel="next" title="Older" href="page1.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="_static/plugins.js"></script>
+        <script src="_static/main.js"></script>
+        <link rel="next" title="Older" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '#',
-        VERSION:     '1.0.2',
+        URL_ROOT:    './',
+        VERSION:     '1.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="static/underscore.js"></script><script type="text/javascript" src="static/doctools.js"></script><script type="text/javascript" src="static/disqus.js"></script>
+    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/disqus.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -36,7 +46,8 @@
 
             if (sidebar.offsetHeight > documentwrapper.offsetHeight)
             {
-                documentwrapper.style.minHeight = sidebar.offsetHeight + "px";
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
             }
 
             // Scroll to content if on small screen
@@ -53,177 +64,207 @@
 
       <div id="container"><header>
             <hgroup>
-              <h1><a href="#">愚钝的故事</a></h1>
-              <h2>记录我和Java，Groovy,Python的点点滴滴</h2>
-            </hgroup>
+              <h1><a href="#">愚钝的故事</a></h1><h2>记录我和Java，Groovy,Python的点点滴滴</h2></hgroup>
           </header>
       <nav>
             <ul><li class="quicklink"><div class="rss">
         <a href="rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
     </div></li><li class="main-nav">
-                <a href="#">Home</a>
-              </li>
+                  <a href="#">Home</a>
+                </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
             <li class="left"></li>
-            <li class="right"><a href="page1.html">Older</a> &raquo; </li>
+            <li class="right"><a href="page2.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>February 16, 2013</span>
+            <span>November 26, 2013</span>
         </div>
-        <div class="section" id="id1">
-<h1><a href="2013/02/16/lsfiles.html">如何查看进程打开的文件</a></h1>
-<p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
-<p>首先要做的是找到相应的pid。 我们使用</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef | grep <span class="o">{</span>programe-name<span class="o">}</span>
-
-ps -aef | grep
+        <div class="section" id="git">
+<h1><a href="2013/11/26/gittips.html">Git使用小技巧</a></h1>
+<p>使用git也有段时间了。其中遇到一些问题，google半圈找到一些觉得不错的技巧记录在此。防止自己会忘掉。</p>
+<div class="section" id="id1">
+<h2>标签相关</h2>
+<p>好不容易创建将手头上的工作告一段落了。可以提供给用户使用了。为了以后很方便的找到这个版本，所以就打一个tag啊。迫不及待的敲了下面的命令。</p>
+<div class="highlight-bash"><div class="highlight"><pre>git tag  -a cool_tagname -m <span class="s1">'cool comment'</span>
+git push origin -- tag
 </pre></div>
 </div>
-</div></blockquote>
-<p>下面可以通过pfiles命令来查看：</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pfiles <span class="o">{</span>PID<span class="o">}</span>
-<span class="nv">$ </span>pfiles 3533
-</pre></div>
-</div>
-</div></blockquote>
-<p>不过pfiles在Mac OSX上默认没有安装。
-不过可以通过lsof 来完成。</p>
-<div class="highlight-bash"><div class="highlight"><pre>lsof -p <span class="o">{</span>PID<span class="o">}</span>
-</pre></div>
-</div>
-<p>输出的样例如下：</p>
-<div class="highlight-bash"><div class="highlight"><pre>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
-firefox 547 xxxx  txt      REG               14,2     63712   888627 /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
-firefox 547 xxxx  txt      REG               14,2    115792 16394163 /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
-firefox 547 xxxx  txt      REG               14,2    416260 16394166 /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
-firefox 547 xxxx  txt      REG               14,2     48140 16394174 /Applications/Firefox.app/Contents/MacOS/libplc4.dylib
-firefox 547 xxxx  txt      REG               14,2     43220 16394175 /Applications/Firefox.app/Contents/MacOS/libplds4.dylib
-firefox 547 xxxx  txt      REG               14,2    269952 16394173 /Applications/Firefox.app/Contents/MacOS/libnssutil3.dylib
-firefox 547 xxxx  txt      REG               14,2     25820 16394162 /Applications/Firefox.app/Contents/MacOS/libmozalloc.dylib
-firefox 547 xxxx  txt      REG               14,2     41328 16394181 /Applications/Firefox.app/Contents/MacOS/libxpcom.dylib
-firefox 547 xxxx  txt      REG               14,2   2040008 16394168 /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
-firefox 547 xxxx  txt      REG               14,2    304076 16394177 /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
-firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
-firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
-</pre></div>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Jet</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/cli.html">CLI</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/ps.html">PS</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2013/02/16/lsfiles.html#disqus_thread" data-disqus-identifier="2013/02/16/lsfiles">Leave a comment</a>
-        </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>February 16, 2013</span>
-        </div>
-        <div class="section" id="soapui-mock-web">
-<h1><a href="2013/02/16/soapui_mock.html">用SoapUI mock Web服务</a></h1>
-<p>最近工作大量使用三方的Web Service（以下简称WS）。三方的WS时好时坏。让人很是郁闷，所以就动了自己按照三方提供的wsdl自己实现同样接口的WS。其实这就是Mock。 简单google了一下发现 <a class="reference external" href="http://www.soapui.org/Service-Mocking/creating-dynamic-mockservices.html">SoapUI</a> 已经具有这样的功能，而且很容易上手。毫不犹豫的用起来。</p>
-<div class="section" id="ws-mock">
-<h2>创建动态的WS mock</h2>
-<p>我们的目标是根据一个wsdl文件创建一个WS mock。WS client可以方法这个WS mock，并且能产生动态的相应。
-在开始前我们需要如下材料：</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>JDK， 建议使用1.5向上版本。</li>
-<li>SoapUI 4.5.1版本</li>
-<li>一个wsdl文件。我使用的wsdl文件在</li>
-</ol>
-</div></blockquote>
-<p>好了，准备好上述的内容我们就开始创建WS mock。
-首先打开SoapUI。 通过File菜单中的new project新建一个项目。</p>
-<img alt="../../../images/soap-newproject.jpg" src="2013/02/16/../../../images/soap-newproject.jpg"/>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">在创建界面要勾选”Create MockService”选项。</p>
-</div>
-<p>在SoapUI的导航面板中，我们就会看到如下图所示的结构</p>
-<img alt="../../../images/soapui-mock.png" src="2013/02/16/../../../images/soapui-mock.png"/>
-<ol class="arabic simple">
-<li>mock WS中显示了Mock WS的所有响应。当然你可以通过右键菜单对他做各种操作。</li>
-<li>通过右键菜单中的”Show MockService Editor”可以打开”服务器启动按钮”所在的”MockService Editor”。</li>
-<li>点击”服务器启动按钮”时就会启动一个jetty（jetty-6.1.26）服务器，并将部署一个包括当前mock的服务到jetty中。这时通过浏览器访问 <a class="reference external" href="http://localhost:8088">http://localhost:8088</a> 就会看到如下效果。</li>
-</ol>
-<img alt="../../../images/mock-server-infirefox.jpg" src="2013/02/16/../../../images/mock-server-infirefox.jpg"/>
-<p>这时mock WS已经开始服务了。但是现在的mock还是静态的。SoapUI为了让用户创建动态的响应提供了Groovy脚本支持。
-下面就来创建动态的响应。</p>
-<div class="section" id="groovy">
-<h3>通过Groovy脚本创建动态响应</h3>
-<p>通过点击sayHi，下面的Response 1项的右键菜单中的”Show MockResponse Editor”打开”MockResponse Editor” 准备编辑该响应。
-具体内容如下图所示：</p>
-<img alt="../../../images/response-editor.jpg" src="2013/02/16/../../../images/response-editor.jpg"/>
-<p>下面分析图中的代码：</p>
-<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre> <span class="c1">// create XmlHolder for request content</span>
- <span class="kt">def</span> <span class="n">holder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">com</span><span class="o">.</span><span class="na">eviware</span><span class="o">.</span><span class="na">soapui</span><span class="o">.</span><span class="na">support</span><span class="o">.</span><span class="na">XmlHolder</span><span class="o">(</span> <span class="n">mockRequest</span><span class="o">.</span><span class="na">requestContent</span> <span class="o">)</span>
-
- <span class="kt">def</span> <span class="n">name</span> <span class="o">=</span> <span class="n">holder</span><span class="o">[</span><span class="s2">&quot;//ws:name&quot;</span><span class="o">]</span>
-
- <span class="n">requestContext</span><span class="o">.</span><span class="na">msg</span> <span class="o">=</span> <span class="s2">&quot;hi $name&quot;</span>
-</pre></div>
-</td></tr></table></div>
-<ol class="arabic simple">
-<li>第2行，将Soap 请求封装成一个XmlHolder。提供各种好用的东西，让你想取请求中的那个部分，就取那个部分。</li>
-<li>第3行，取出”//ws:name”。 也就是客户端传来的name参数。</li>
-<li>第6行，拼出一个动态的变量。存放到requestContext中。备用！</li>
-<li>最后在响应中以${msg}的方式引用存入requestContex中的msg变量。</li>
-</ol>
-<p>由于这个Scrip 是用Groovy写的，你可以使用任何语句。完成你的逻辑。你甚至可以通过jdbc连接数据库。查询数据。
-要完成jdbc连接数据库要解决如下问题：</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>如何为SoapUI中的Groovy脚本添加三方jar？</li>
-<li>如何让多个响应公用一个数据库连接池？</li>
-<li>随后为了能够脱离SoapUI进行测试，如何把我们创建好的Mock WS部署到类似于Tomcat， Jetty这样的服务器中去？</li>
-</ol>
-</div></blockquote>
-<p>欲见详情，请听下回分解！</p>
-</div>
+<p>心里说不出的畅快啊。终于完成了这些活。
+稍等，qa又测试出bug了。你这个tag上的内容还不能发布。修改吧。经过一堆修改。git add , git commit 操作以后问题搞定了。
+这一回是真的，真的可以提交了。可以打tag了。但是那个那么好的，和功能那么匹配的tag name已经被占用了。把他删除掉，再加一下就好了。
+所以我们需要如下的操作：</p>
+<p>好了，打完收工。tag就修正好。</p>
 </div>
 </div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by Jet Geng</span>
         </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/ws.html">WS</a></span>
-        </div>
+        
         <div class="tags">
             <span>
                 Tags:
-                <a href="tags/java_groovy.html">Java Groovy</a></span>
+                <a href="tags/git.html">Git</a></span>
         </div>
         <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2013/02/16/soapui_mock.html#disqus_thread" data-disqus-identifier="2013/02/16/soapui_mock">Leave a comment</a>
+            <a href="http://jetgeng.github.com/blog/html/2013/11/26/gittips.html#disqus_thread" data-disqus-identifier="2013/11/26/gittips">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>August 23, 2013</span>
         </div>
-    </div><div class="archive_link">
-        <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
+        <div class="section" id="id1">
+<h1><a href="2013/08/23/scodestory.html">一段代码演变的故事</a></h1>
+<dl class="docutils">
+<dt>前段时间项目需要从一个mysql数据库(记做A库)导入到另外mysql数据库（记做B库)。在到换的过程中需要对数据进行一些转换。本质而言就是把同样的业务数据分成不同的格式进行存储。初期的我们想法很简单，通过如下步骤来完成：</dt>
+<dd><ol class="first last arabic simple">
+<li>从老库逐条读取出数据，</li>
+<li>将这些数据拼装成POJO，这些POJO通过ORM框架可以直接存入数据库B</li>
+<li>通过ORM框架将数据逐条出入数据库。</li>
+</ol>
+</dd>
+</dl>
+<p>主题的程序结构如下为代码所示:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">DBMigrate</span><span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">{</span>
+      <span class="c1">//分析参数</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">offset</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+          <span class="n">id</span> <span class="o">=</span> <span class="n">startId</span> <span class="o">+</span> <span class="n">i</span>
+          <span class="n">pojo</span> <span class="o">=</span> <span class="n">loadOldPOJO</span><span class="o">(</span><span class="n">id</span><span class="o">);</span> <span class="c1">//从老库获取POJO</span>
+          <span class="n">savePOJO2NewDB</span><span class="o">(</span><span class="n">pojo</span><span class="o">);</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="kd">private</span> <span class="kd">static</span> <span class="nf">loadOldPOJO</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
+      <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">POJO</span><span class="o">();</span>
+      <span class="n">String</span> <span class="n">sql1</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+      <span class="n">getRS</span><span class="o">(</span><span class="n">sql1</span><span class="o">)</span> <span class="c1">//根据一个Sql查询POJO中的一部分。拼装入pojo</span>
+      <span class="o">............</span>
+      <span class="o">............</span> <span class="c1">//根据不同的sql，重复上面的步骤。</span>
+
+      <span class="k">return</span> <span class="n">pojo</span>
+  <span class="o">}</span>
+
+  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">savePOJO2NewDB</span><span class="o">(</span><span class="n">POJO</span> <span class="n">pojo</span><span class="o">){</span>
+      <span class="c1">//使用ibatis保存该记录。</span>
+      <span class="c1">//同时会更新n多表</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>牛x的你可能一眼就能看出我们这个结构中致命的问题–效率！ 逐条导入数据效率会非常底下。一笔数据将要多次连接数据库。另外当前结构还有一个致命缺点就是啥和啥的都混在一起。想要加个表和减少一个表都很困难。</p>
+<p>针对上面的问题我们不得不对这段代码做点改动。改动的第一目标就是让他快起来！</p>
+<div class="section" id="id2">
+<h2>加速</h2>
+<p>加速时目标。手段是减少和数据库交互。说白了就是批量处理这个的感谢mysql提供了强大的插入命令。</p>
+<div class="highlight-mysql"><pre>INSERT [LOW_PRIORITY | DELAYED | HIGH_PRIORITY] [IGNORE]
+[INTO] tbl_name
+[PARTITION (partition_name,...)]
+[(col_name,...)]
+{VALUES | VALUE} ({expr | DEFAULT},...),(...),...
+[ ON DUPLICATE KEY UPDATE
+col_name=expr
+[, col_name=expr] ... ]</pre>
+</div>
+<p>这个命令可以一次插入很多条数据，只要你的sql够长就可以。就像下面的样子：</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tbl_name</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="k">c</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>这样就往数据库中插入了三条记录。1000条也是这样。这个就是我们的核心技术。
+为了能够对数据库表批量操作。将不再将老数据拼装中间状态的POJO，直接使用对应于新表的POJO。** 让数据从业务逻辑中解放出来**
+所以就有一些和与B数据库表一一对应的POJO。下面的转换的过程就以这个与B数据库一一对应的表为中心。下面要做的事情就时很老套的了。</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>根据POJO从A数据库中获取一批该数据库所需要的。</li>
+<li>拼装成和B数据库表对应的POJO</li>
+<li>使用批量插入语句将POJO插入到新的数据库。</li>
+</ol>
+<dl class="docutils">
+<dt>在上述动作中对每一个表操作的不同点有三点：</dt>
+<dd><ol class="first last arabic simple">
+<li>从A数据库获取数据的sql</li>
+<li>将从A数据库获取的数据拼装成对象。</li>
+<li>POJO插入到B数据库时，对应的字段。也就是插入方式不同。</li>
+</ol>
+</dd>
+</dl>
+</div></blockquote>
+<p>只要将上述这个三个地方抽取出来我们就可以用一套代码完成所有表的操作。基于这个思路我们有了如下的代码.</p>
+<p class="plantuml">
+<img alt="interface IRecordCallBack{     +processRecord(ResultSet):T     +getQuerySql():String }  interface BatchOperate{     +saveByBatch(list:List&lt;T&gt;):int }  class SomePOJODao{     +saveByBatch(list:List&lt;SomePOJO&gt;):int } class AnotherPOJODao{     +saveByBatch(list:List&lt;AnotherPOJO&gt;):int } class SomePOJORecordCallBack {     +processRecord(ResultSet):SomePOJO     +getQuerySql():String }  class AnotherPOJORecordCallBack{     +processRecord(ResultSet):AnotherPOJO     +getQuerySql():String }  IRecordCallBack &lt;|-- SomePOJORecordCallBack IRecordCallBack &lt;|-- AnotherPOJORecordCallBack  BatchOperate &lt;|--  SomePOJODao BatchOperate &lt;|-- AnotherPOJODao" src="_images/plantuml-7cd5dcb24abe5d6b8b60de23c2636a78477223c6.png"/>
+</p>
+<p>在上图的结构中IRecordCallBack 中的 getQuerySql 方法用于解决如何获取数据的问题。processRecord 方法用于解决如何拼装POJO的问题。
+BatchOperate 方法中用于解决如何保存的问题。
+这样所有问题都解决了。我们的工作是否完了呢。还没有，还缺少一个总管来协调让这些分散的类协同工作。</p>
+</div>
+<div class="section" id="id3">
+<h2>程序的拼装</h2>
+<p>在前期的程序中，我们直接将程序里面。这样如果要加一个表，牵涉的内容会比较多。
+我们做了如下改进。同样时以于与数据库B一一对应的POJO为中心创建两个Map，具体代码如下：</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;();</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;</span> <span class="n">daoMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;();</span>
+<span class="kd">static</span> <span class="o">{</span>
+    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">SomePOJORecordCallBack</span><span class="o">())</span>
+    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">AnotherPOJORecordCallBack</span><span class="o">())</span>
+    <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">SomePOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>有了这样的配置信息后，我们后期的程序根本不许要知道当前处理的时什么pojo。只是知道取数据，交给dao取保存就可以了。下面给出伪代码如下：</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">startMigrate</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">){</span>
+    <span class="c1">//获取数据库连接</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">tableItem</span> <span class="o">:</span> <span class="n">callbacks</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">PreparedStatement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">tableItem</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">getQuerySql</span><span class="o">());</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tableItem</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">processRecord</span><span class="o">(</span><span class="n">rs</span><span class="o">));</span>
+                <span class="o">}</span>
+        <span class="k">for</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">cls</span> <span class="o">:</span> <span class="n">daoMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">tableItem</span><span class="o">.</span><span class="na">getKey</span><span class="o">())){</span>
+            <span class="n">BatchOperate</span> <span class="n">dao</span> <span class="o">=</span> <span class="o">(</span><span class="n">BatchOperate</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">cls</span><span class="o">);</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;cls.getName():&quot;</span><span class="o">+</span><span class="n">cls</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">dao</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">&amp;&amp;</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()!=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                                    <span class="n">dao</span><span class="o">.</span><span class="na">saveByBatch</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+        <span class="c1">//各种善后</span>
+        <span class="c1">//小睡一会</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>这个就是所有改善后的结果。这样改动后效率提升了不少。结构上也把重复的代码去掉。今后如果要加入新的数据库表的话，只需要实现一个POJO, IRecordCallBack 和Dao就可以了。其他东西都不用动了。</p>
+</div>
+<div class="section" id="id4">
+<h2>扩展,插件化</h2>
+<p>到这里应该说告一段落了。但是还没有完。现在的情况如果你要添加一个表的导入的话。你还的修改daoMap和callBacks这两个map。</p>
+<p>其实我们这边很容易通过 <a class="reference external" href="http://en.wikipedia.org/wiki/Service_provider_interface">SPI</a>  将IRecordCallBack 和BatchOperate 服务化。通过 java.util.ServiceLoader 来动态获取当前系统中已经存在的实现。动态创建daoMap和callbacks，这样就建立起了一个可管理插件的框。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">某个牛人说过：写软件就是在别人写的框子里填数，或则自己写框让别人填数。</p>
+</div>
+<p>我们只是做好了让别人(包括我们自己)填的框！</p>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Jet Geng</span>
+        </div>
+        
+        
+        <div class="comments">
+            <a href="http://jetgeng.github.com/blog/html/2013/08/23/scodestory.html#disqus_thread" data-disqus-identifier="2013/08/23/scodestory">Leave a comment</a>
+        </div></div><div class="archive_link">
+        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"></li>
-            <li class="right"><a href="page1.html">Older</a> &raquo; </li>
+            <li class="right"><a href="page2.html">Older</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2013/11/26/gittips.html">Git使用小技巧</a>
+        </li><li>
+            <a href="2013/08/23/scodestory.html">一段代码演变的故事</a>
+        </li><li>
             <a href="2013/02/16/lsfiles.html">如何查看进程打开的文件</a>
         </li><li>
             <a href="2013/02/16/soapui_mock.html">用SoapUI mock Web服务</a>
@@ -243,7 +284,7 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
     </form>
 </div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
-        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- fotter-container -->
+        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    disqus_count();</script><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>

@@ -4,6 +4,8 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/11/26/gittips
+   2013/08/23/scodestory
    2013/02/16/lsfiles
    2013/02/16/soapui_mock
    2012/12/11/webinosgi
