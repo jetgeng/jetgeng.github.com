@@ -32,6 +32,26 @@ Git使用小技巧
  # 第5行 另外一种推送方式。相对底层的推送方式。
 好了，打完收工。tag就修正好。
 
+查看标签创建的时间
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    git log --tags --simplify-by-decoration --pretty="format:%ci %d" 
+
+输出结果如下
+
+.. code-block:: bash
+
+   git log --tags --simplify-by-decoration --pretty="format:%ci %d"
+   2014-01-18 22:27:00 +0800  (tag: v1.0.2)
+   2013-11-26 00:09:57 +0800  (tag: v1.0.1)
+
+
+
+
+
+
 
 
 
