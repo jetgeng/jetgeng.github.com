@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/03/14/logbackenhance
    2013/11/26/gittips
    2013/08/23/scodestory
    2013/02/16/lsfiles
