@@ -77,6 +77,50 @@
             <li class="left"> &laquo; <a href="index.html">Newer</a></li>
             <li class="right"><a href="page3.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>November 26, 2013</span>
+        </div>
+        <div class="section" id="git">
+<h1><a href="2013/11/26/gittips.html">Git使用小技巧</a></h1>
+<p>使用git也有段时间了。其中遇到一些问题，google半圈找到一些觉得不错的技巧记录在此。防止自己会忘掉。</p>
+<div class="section" id="id1">
+<h2>标签相关</h2>
+<p>好不容易创建将手头上的工作告一段落了。可以提供给用户使用了。为了以后很方便的找到这个版本，所以就打一个tag啊。迫不及待的敲了下面的命令。</p>
+<div class="highlight-bash"><div class="highlight"><pre>git tag  -a cool_tagname -m <span class="s1">'cool comment'</span>
+git push origin -- tag
+</pre></div>
+</div>
+<p>心里说不出的畅快啊。终于完成了这些活。
+稍等，qa又测试出bug了。你这个tag上的内容还不能发布。修改吧。经过一堆修改。git add , git commit 操作以后问题搞定了。
+这一回是真的，真的可以提交了。可以打tag了。但是那个那么好的，和功能那么匹配的tag name已经被占用了。把他删除掉，再加一下就好了。
+所以我们需要如下的操作：</p>
+<p>好了，打完收工。tag就修正好。</p>
+<div class="section" id="id2">
+<h3>查看标签创建的时间</h3>
+<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">&quot;format:%ci %d&quot;</span>
+</pre></div>
+</div>
+<p>输出结果如下</p>
+<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">&quot;format:%ci %d&quot;</span>
+2014-01-18 22:27:00 +0800  <span class="o">(</span>tag: v1.0.2<span class="o">)</span>
+2013-11-26 00:09:57 +0800  <span class="o">(</span>tag: v1.0.1<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Jet Geng</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/git.html">Git</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://jetgeng.github.com/blog/html/2013/11/26/gittips.html#disqus_thread" data-disqus-identifier="2013/11/26/gittips">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>August 23, 2013</span>
         </div>
         <div class="section" id="id1">
@@ -222,65 +266,6 @@ BatchOperate 方法中用于解决如何保存的问题。
         
         <div class="comments">
             <a href="http://jetgeng.github.com/blog/html/2013/08/23/scodestory.html#disqus_thread" data-disqus-identifier="2013/08/23/scodestory">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>February 16, 2013</span>
-        </div>
-        <div class="section" id="id1">
-<h1><a href="2013/02/16/lsfiles.html">如何查看进程打开的文件</a></h1>
-<p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
-<p>首先要做的是找到相应的pid。 我们使用</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef | grep <span class="o">{</span>programe-name<span class="o">}</span>
-
-ps -aef | grep
-</pre></div>
-</div>
-</div></blockquote>
-<p>下面可以通过pfiles命令来查看：</p>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pfiles <span class="o">{</span>PID<span class="o">}</span>
-<span class="nv">$ </span>pfiles 3533
-</pre></div>
-</div>
-</div></blockquote>
-<p>不过pfiles在Mac OSX上默认没有安装。
-不过可以通过lsof 来完成。</p>
-<div class="highlight-bash"><div class="highlight"><pre>lsof -p <span class="o">{</span>PID<span class="o">}</span>
-</pre></div>
-</div>
-<p>输出的样例如下：</p>
-<div class="highlight-bash"><div class="highlight"><pre>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
-firefox 547 xxxx  txt      REG               14,2     63712   888627 /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
-firefox 547 xxxx  txt      REG               14,2    115792 16394163 /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
-firefox 547 xxxx  txt      REG               14,2    416260 16394166 /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
-firefox 547 xxxx  txt      REG               14,2     48140 16394174 /Applications/Firefox.app/Contents/MacOS/libplc4.dylib
-firefox 547 xxxx  txt      REG               14,2     43220 16394175 /Applications/Firefox.app/Contents/MacOS/libplds4.dylib
-firefox 547 xxxx  txt      REG               14,2    269952 16394173 /Applications/Firefox.app/Contents/MacOS/libnssutil3.dylib
-firefox 547 xxxx  txt      REG               14,2     25820 16394162 /Applications/Firefox.app/Contents/MacOS/libmozalloc.dylib
-firefox 547 xxxx  txt      REG               14,2     41328 16394181 /Applications/Firefox.app/Contents/MacOS/libxpcom.dylib
-firefox 547 xxxx  txt      REG               14,2   2040008 16394168 /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
-firefox 547 xxxx  txt      REG               14,2    304076 16394177 /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
-firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
-firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
-</pre></div>
-</div>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Jet</span>
-        </div>
-        <div class="categories">
-            <span>
-                Filed under:
-                <a href="categories/cli.html">CLI</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/ps.html">PS</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2013/02/16/lsfiles.html#disqus_thread" data-disqus-identifier="2013/02/16/lsfiles">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
@@ -289,6 +274,8 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
+        </li><li>
             <a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
         </li><li>
             <a href="2013/11/26/gittips.html">Git使用小技巧</a>

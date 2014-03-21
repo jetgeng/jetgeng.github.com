@@ -15,28 +15,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>使用Maven和tycho构建OSGi插件项目 &mdash; 愚钝的故事</title>
-            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
-            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
-            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
-            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
-            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-            <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css">
-        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <title>Page 5 &mdash; 愚钝的故事</title>
+            <link rel="stylesheet" href="_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="_static/main.css" type="text/css">
+            <link rel="stylesheet" href="_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="_static/webfont.css" type="text/css">
+        <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="../../../_static/plugins.js"></script>
-        <script src="../../../_static/main.js"></script>
-        <link rel="prev" title="Kid Capture开发手记" href="../../08/21/pyaudio.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="_static/plugins.js"></script>
+        <script src="_static/main.js"></script>
+        <link rel="prev" title="Newer" href="page4.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
+        URL_ROOT:    './',
         VERSION:     '1.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script>
+    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/disqus.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -64,26 +64,26 @@
 
       <div id="container"><header>
             <hgroup>
-              <h1><a href="../../../index.html">愚钝的故事</a></h1><h2>记录我和Java，Groovy,Python的点点滴滴</h2></hgroup>
+              <h1><a href="index.html">愚钝的故事</a></h1><h2>记录我和Java，Groovy,Python的点点滴滴</h2></hgroup>
           </header>
       <nav>
             <ul><li class="quicklink"><div class="rss">
-        <a href="../../../rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
+        <a href="rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
     </div></li><li class="main-nav">
-                  <a href="../../../index.html">Home</a>
+                  <a href="index.html">Home</a>
                 </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="../../08/21/pyaudio.html">Kid Capture开发手记</a></li>
+            <li class="left"> &laquo; <a href="page4.html">Newer</a></li>
             <li class="right"></li>
         </ul><div class="timestamp postmeta">
             <span>July 02, 2012</span>
         </div>
-    <div class="section" id="maventychoosgi">
-<h1>使用Maven和tycho构建OSGi插件项目</h1>
+        <div class="section" id="maventychoosgi">
+<h1><a href="2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a></h1>
 <div class="section" id="tycho">
 <h2>介绍Tycho插件</h2>
-<p>自动构建OSGi Plugin项目，一直以来就是个头疼的问题。直到 <a class="reference external" href="http://eclipse.org/tycho/">Tycho</a> 的出现,这些都不在成为问题了。用它你可以很轻松来构建Eclipse插件(Eclipse Plugin) , Eclipse features , Eclipse的更新站点(Update Site)以及可以直接执行的Eclipse产品(Eclipse Product)。
+<p>自动构建OSGi Plugin项目，一直以来就是个头疼的问题。直到 <a class="reference external" href="http://eclipse.org/tycho">Tycho</a> 的出现,这些都不在成为问题了。用它你可以很轻松来构建Eclipse插件(Eclipse Plugin) , Eclipse features , Eclipse的更新站点(Update Site)以及可以直接执行的Eclipse产品(Eclipse Product)。
 Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信息。这样依赖pom.xml文件就会很小。</p>
 </div>
 <div class="section" id="nexus">
@@ -209,7 +209,7 @@ Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信
 </div>
 </div></blockquote>
 <p>这个时候我们得到了如下的目录结构：</p>
-<img alt="../../../_images/build_tree.jpg" src="../../../_images/build_tree.jpg" />
+<img alt="../../../_images/build_tree.jpg" src="_images/build_tree.jpg"/>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">项目中的pom.xml中的artifactId 想要和MANIFEST.MF文件中的Bundle-SymbolicName保持一致。pom.xml中version要和MANIFEST.MF文件中的Bundle-Version一致</p>
@@ -227,7 +227,7 @@ mvn package
 <h2>使用Nexus私服</h2>
 <p>请按照 视频设定Nexus私服。如过要在项目中使用私服的内容就直接在parent/pom.xml文件中修改repository中的内容。
 例如有如下图所示的Nexus私服：</p>
-<img alt="../../../_images/nexus_p2.jpg" src="../../../_images/nexus_p2.jpg" />
+<img alt="../../../_images/nexus_p2.jpg" src="_images/nexus_p2.jpg"/>
 <p>如果需要使用的Indigo仓库，只需要将下面xml片段加入到parent/pom.xml中。</p>
 <div class="highlight-xml"><div class="highlight"><pre> <span class="nt">&lt;repository&gt;</span>
       <span class="nt">&lt;id&gt;</span>juno<span class="nt">&lt;/id&gt;</span>
@@ -245,50 +245,52 @@ mvn package
 </ol>
 </div>
 </div>
-
-    <div class="postmeta">
+        <div class="postmeta">
         <div class="author">
             <span>Posted by Jet Geng</span>
         </div>
         <div class="categories">
             <span>
                 Filed under:
-                <a href="../../../categories/autobuild.html">autobuild</a></span>
+                <a href="categories/autobuild.html">autobuild</a></span>
         </div>
         <div class="tags">
             <span>
                 Tags:
-                <a href="../../../tags/tycho.html">Tycho</a></span>
+                <a href="tags/tycho.html">Tycho</a></span>
         </div>
-        </div>
-    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    var disqus_identifier = "2012/07/02/jbossover";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="../../08/21/pyaudio.html">Kid Capture开发手记</a></li>
+        <div class="comments">
+            <a href="http://jetgeng.github.com/blog/html/2012/07/02/jbossover.html#disqus_thread" data-disqus-identifier="2012/07/02/jbossover">Leave a comment</a>
+        </div></div><div class="archive_link">
+        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
+    </div><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="page4.html">Newer</a></li>
             <li class="right"></li>
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="../../../2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
+            <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
         </li><li>
-            <a href="../../../2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
+            <a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
         </li><li>
-            <a href="../../../2013/11/26/gittips.html">Git使用小技巧</a>
+            <a href="2013/11/26/gittips.html">Git使用小技巧</a>
         </li><li>
-            <a href="../../../2013/08/23/scodestory.html">一段代码演变的故事</a>
+            <a href="2013/08/23/scodestory.html">一段代码演变的故事</a>
         </li><li>
-            <a href="../../../2013/02/16/lsfiles.html">如何查看进程打开的文件</a>
+            <a href="2013/02/16/lsfiles.html">如何查看进程打开的文件</a>
         </li><li>
-            <a href="../../../2013/02/16/soapui_mock.html">用SoapUI mock Web服务</a>
+            <a href="2013/02/16/soapui_mock.html">用SoapUI mock Web服务</a>
         </li><li>
-            <a href="../../12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
+            <a href="2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
         </li><li>
-            <a href="../../08/21/pyaudio.html">Kid Capture开发手记</a>
+            <a href="2012/08/21/pyaudio.html">Kid Capture开发手记</a>
         </li><li>
-            <a href="#">使用Maven和tycho构建OSGi插件项目</a>
+            <a href="2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">
     <h1>Search</h1>
-    <form action="../../../search.html" method="get">
+    <form action="search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="webfont">L</span></button>
     </form>
@@ -296,7 +298,7 @@ mvn package
 
         <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
-      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+      </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    disqus_count();</script><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
           <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
         <![endif]-->

@@ -120,7 +120,7 @@ log文件就会出现不连续的情况。例如用如下配置：
  #. 理清楚DefaultTimeBasedFileNamingAndTriggeringPolicy 的职责，他就是用于计算是否要rollover, 提供当前文件的文件名就可以了。他并不去参与rollover这个过程。rollover过程也只有RollingFileAppender 来处理。
  #. 遵循logback的惯例，新建一个类继承于RollingFileAppender， 让他在subAppend的时候调用多次rollover就好了。
 
-重构
+重写
 ----
 
 .. uml::

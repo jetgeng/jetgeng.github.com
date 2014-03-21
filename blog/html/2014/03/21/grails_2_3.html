@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>又一个查找重复文件的工具 &mdash; 愚钝的故事</title>
+        <title>Grails从2.2升级到2.3.3遇到的问题 &mdash; 愚钝的故事</title>
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
@@ -28,7 +28,7 @@
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <link rel="next" title="增强LogBack的RollingFileAppender" href="../14/logbackenhance.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
         VERSION:     '1.3.0',
@@ -73,57 +73,43 @@
                   <a href="../../../index.html">Home</a>
                 </li>
               </ul>
-          </nav><div class="main-container"><div class="main wrapper clearfix"><article><div class="timestamp postmeta">
-            <span>December 31, 2012</span>
+          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../14/logbackenhance.html">增强LogBack的RollingFileAppender</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>March 21, 2014</span>
         </div>
-    <div class="section" id="id1">
-<h1>又一个查找重复文件的工具</h1>
-<p>有一块放了很多照片的硬盘，想整理出来另作他用。由于当时偷懒，把照片放的乱。甚至有一张照片放了很多份。浪费空间不说，主要是找个东西太费劲。
-所以就下决心自己写一个小工具把这些照片整理整理。</p>
-<div class="section" id="id2">
-<h2>技术方案</h2>
+    <div class="section" id="grails2-22-3-3">
+<h1>Grails从2.2升级到2.3.3遇到的问题</h1>
+<div class="section" id="debug">
+<h2>Debug</h2>
+<p>升级到2.3 以后我就找不到grails-debug 这个命令了。后进过查询发现原来是被 <span class="docutils literal"><span class="pre">grails</span> <span class="pre">-debug</span></span> 这个参数替代了。是要了这个参数以后又遇到一个问题。就是需要通过Remote Debug 的方式连接进去才可以。但是不管咋地都不在断点处停下来。真的让人抓狂。</p>
+<p>最后通过这个一个老外的一段话给解决了</p>
 <blockquote>
-<div><ol class="arabic simple">
-<li>这种小东西用Python写会很快。就不用多想了。直接用他就OK了。</li>
-<li><a class="reference external" href="http://pypi.python.org/pypi/argparse">argparse</a> , 用来做命令的解析。</li>
-<li><a class="reference external" href="http://pypi.python.org/pypi/sh/1.07">sh</a> ,用于执行一些命令。</li>
-<li>使用git hash-object 命令获取文件的sha1</li>
-</ol>
-</div></blockquote>
-</div>
-<div class="section" id="id3">
-<h2>设计思路</h2>
-<p>这是一个命令行软件。命令行格式为：</p>
-<div class="highlight-bash"><div class="highlight"><pre>./fileDupFinder.py -e Extend -s sourcefolder -t targetfolder
-</pre></div>
-</div>
-<p>参数选项    长选项  用途
--e          &#8211;extend    将要处理文件的扩展名，不区分大小写
--s          &#8211;source    处理的源目录
--t          &#8211;target    处理的输出目录
-.. uml:</p>
-<div class="highlight-python"><div class="highlight"><pre>class {
-}
-</pre></div>
-</div>
+<div>In Intellij  go to &#8220;Run / Edit Configurations&#8221;, click + then &#8220;Remote&#8221; and name it whatever  you want (example &#8220;Grails Remote&#8221;) then press ok.
+Then from the command line do:
+grail run-app &#8211;debug-fork
+Attach your debugger by running your &#8220;Grails Remote&#8221; config. Done.</div></blockquote>
+<p>原来是需要使用 grails run-app &#8211;debug-fork 命令来做。解了，亲测！</p>
 </div>
 </div>
 
     <div class="postmeta">
+        <div class="author">
+            <span>Posted by Jet Geng</span>
+        </div>
         
         
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="../../../tags/python.html">Python</a></span>
         </div>
-        </div>
-    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    var disqus_identifier = "2012/12/31/finderdumplicate";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    var disqus_identifier = "2014/03/21/grails_2_3";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../14/logbackenhance.html">增强LogBack的RollingFileAppender</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="../../../2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
+            <a href="#">Grails从2.2升级到2.3.3遇到的问题</a>
         </li><li>
-            <a href="../../../2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
+            <a href="../14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
         </li><li>
             <a href="../../../2013/11/26/gittips.html">Git使用小技巧</a>
         </li><li>
@@ -133,11 +119,11 @@
         </li><li>
             <a href="../../../2013/02/16/soapui_mock.html">用SoapUI mock Web服务</a>
         </li><li>
-            <a href="../11/webinosgi.html">在OSGi中部署Web应用(一)</a>
+            <a href="../../../2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
         </li><li>
-            <a href="../../08/21/pyaudio.html">Kid Capture开发手记</a>
+            <a href="../../../2012/08/21/pyaudio.html">Kid Capture开发手记</a>
         </li><li>
-            <a href="../../07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
+            <a href="../../../2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox">

@@ -5,8 +5,29 @@
         <link>http://jetgeng.github.com/blog/html/</link>
         <description>记录我和Java，Groovy,Python的点点滴滴</description>
         <language>en-us</language>
-        <pubDate>Fri, 14 Mar 2014 00:00:00 +0800</pubDate>
+        <pubDate>Fri, 21 Mar 2014 00:00:00 +0800</pubDate>
         
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html</guid>
+            <title><![CDATA[Grails从2.2升级到2.3.3遇到的问题]]></title>
+            <description><![CDATA[<div class="section" id="grails2-22-3-3">
+<h1>Grails从2.2升级到2.3.3遇到的问题</h1>
+<div class="section" id="debug">
+<h2>Debug</h2>
+<p>升级到2.3 以后我就找不到grails-debug 这个命令了。后进过查询发现原来是被 <span class="docutils literal"><span class="pre">grails</span> <span class="pre">-debug</span></span> 这个参数替代了。是要了这个参数以后又遇到一个问题。就是需要通过Remote Debug 的方式连接进去才可以。但是不管咋地都不在断点处停下来。真的让人抓狂。</p>
+<p>最后通过这个一个老外的一段话给解决了</p>
+<blockquote>
+<div>In Intellij  go to “Run / Edit Configurations”, click + then “Remote” and name it whatever  you want (example “Grails Remote”) then press ok.
+Then from the command line do:
+grail run-app –debug-fork
+Attach your debugger by running your “Grails Remote” config. Done.</div></blockquote>
+<p>原来是需要使用 grails run-app –debug-fork 命令来做。解了，亲测！</p>
+</div>
+</div>]]></description>
+             <pubDate>Fri, 21 Mar 2014 00:00:00 +0800</pubDate>
+        </item>
+    
         <item>
             <link>http://jetgeng.github.com/blog/html/2014/03/14/logbackenhance.html</link>
             <guid>http://jetgeng.github.com/blog/html/2014/03/14/logbackenhance.html</guid>
@@ -105,7 +126,7 @@ rolling_file.2014-03-13-17.log
 </div></blockquote>
 </div>
 <div class="section" id="id4">
-<h2>重构</h2>
+<h2>重写</h2>
 <p class="plantuml">
 <img alt="RollingFileAppender &lt;|-- ContinueRollingFileAppender DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamingAndTriggeringPolicy" src="http://jetgeng.github.com/blog/html/_images/plantuml-b560654b92490ddc2ed37d4b07a6dc0f3612dfd9.png"/>
 </p>
