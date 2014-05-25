@@ -263,7 +263,7 @@ Validator &lt;-- DataBinder" />
 <h3>实现配置部分</h3>
 <p>我们先从高处看一下我们的结构：</p>
 <p class="plantuml">
-<img src="../../../_images/plantuml-7292ece8782177b7c18b4fbb446b38ceebad29e1.png" alt="interface Validator{
+<img src="../../../_images/plantuml-34c0019ce96703a7cfafb0115a005c3f637428e5.png" alt="interface Validator{
     validate(Object target, Errors error)
 }
 
@@ -281,16 +281,16 @@ class ValidatorConfigManager{
 class ValidateGroup{
    pojoClassName : String
    name : String
-   constrainedProperties : Map&lt;String, ConstrainedPropertyQunar&gt;
+   constrainedProperties : Map&lt;String, ConstrainedProperty3R&gt;
 }
 
-class ConstrainedPropertyQunar{
+class ConstrainedProperty3r{
 
 }
 
 Validator &lt;|-- ValidatorConfigManager
 ValidatorConfigManager --&gt; ValidateGroup
-ValidateGroup --&gt; ConstrainedPropertyQunar
+ValidateGroup --&gt; ConstrainedProperty3r
 ValidatorConfigManager --&gt; SpringValidatorConfigureationDelegate
 SpringValidatorConfigureationDelegate --&gt; ValidatorConfigurationBuilder" />
 </p>

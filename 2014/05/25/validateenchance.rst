@@ -182,16 +182,16 @@ builder
     class ValidateGroup{
        pojoClassName : String
        name : String
-       constrainedProperties : Map<String, ConstrainedPropertyQunar>
+       constrainedProperties : Map<String, ConstrainedProperty3R>
     }
 
-    class ConstrainedPropertyQunar{
+    class ConstrainedProperty3r{
         
     }
 
     Validator <|-- ValidatorConfigManager 
     ValidatorConfigManager --> ValidateGroup 
-    ValidateGroup --> ConstrainedPropertyQunar
+    ValidateGroup --> ConstrainedProperty3r
     ValidatorConfigManager --> SpringValidatorConfigureationDelegate
     SpringValidatorConfigureationDelegate --> ValidatorConfigurationBuilder
 
