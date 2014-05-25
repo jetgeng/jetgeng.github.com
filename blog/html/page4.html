@@ -15,23 +15,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>Page 4 &mdash; 愚钝的故事</title>
+        <title>第 4 页 &mdash; 愚钝的故事</title>
             <link rel="stylesheet" href="_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="_static/main.css" type="text/css">
             <link rel="stylesheet" href="_static/modern5.css" type="text/css">
             <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-            <link rel="stylesheet" href="_static/webfont.css" type="text/css">
+            <link rel="stylesheet" href="_static/font-awesome.min.css" type="text/css">
         <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
         <script src="_static/main.js"></script>
-        <link rel="next" title="Older" href="page5.html" /><link rel="prev" title="Newer" href="page3.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="next" title="较旧" href="page5.html" /><link rel="prev" title="较新" href="page3.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.3.0',
+        VERSION:     '1.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -57,30 +57,32 @@
             }
         });
     </script></head>
-    <body>
+    <body role="document">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-      <div id="container"><header>
+      <div id="container"><header role="banner">
             <hgroup>
               <h1><a href="index.html">愚钝的故事</a></h1><h2>记录我和Java，Groovy,Python的点点滴滴</h2></hgroup>
           </header>
-      <nav>
+      <nav role="navigation">
             <ul><li class="quicklink"><div class="rss">
-        <a href="rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
+        <a href="rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
     </div></li><li class="main-nav">
-                  <a href="index.html">Home</a>
+                  <a href="index.html">首页</a>
+                </li>
+              <li class="main-nav">
+                  <a href="pages/aboutme.html">关于我</a>
                 </li>
               </ul>
-          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="page3.html">Newer</a></li>
-            <li class="right"><a href="page5.html">Older</a> &raquo; </li>
+          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="page3.html">较新</a></li>
+            <li class="right"><a href="page5.html">较旧</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
             <span>December 11, 2012</span>
         </div>
-        <div class="section" id="osgiweb">
-<h1><a href="2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a></h1>
+        <h1><a href="2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a></h1>
 <div class="section" id="id1">
 <h2>概述</h2>
 <p>在很久很久以前，我们用 ‘HTTP Registry’_  在OSGi环境中注册Servlet，JSP以及静态资源。或者通过 <a class="reference external" href="http://git.eclipse.org/c/equinox/rt.equinox.bundles.git/tree/bundles/org.eclipse.equinox.http.servletbridge">HTTP ServletBridge</a>  在Web容器中启动一个OSGi的方式来实现Web应用和OSGi的集合。在很多文章 <a class="footnote-reference" href="#id5" id="id2">[1]</a> 中都有描述。
@@ -236,9 +238,9 @@ Import-Package: org.eclipse.osgi.framework.adaptor,
  org.eclipse.osgi.framework.internal.core,
  org.eclipse.osgi.internal.baseadaptor,
  org.eclipse.osgi.internal.loader,
- org.osgi.framework;version<span class="o">=</span><span class="s2">&quot;1.3.0&quot;</span>
+ org.osgi.framework;version<span class="o">=</span><span class="s2">"1.3.0"</span>
 Web-ContextPath: /web/demo
-Require-Bundle: org.eclipse.jetty.osgi.boot;bundle-version<span class="o">=</span><span class="s2">&quot;8.1.0&quot;</span>
+Require-Bundle: org.eclipse.jetty.osgi.boot;bundle-version<span class="o">=</span><span class="s2">"8.1.0"</span>
 Bundle-ClassPath: WEB-INF/classes,
  .
 </pre></div>
@@ -265,15 +267,15 @@ Bundle-ClassPath: WEB-INF/classes,
 </tbody>
 </table>
 </div>
-</div>
+
         <div class="postmeta">
         <div class="author">
-            <span>Posted by Jet</span>
+            <span>发布者 Jet</span>
         </div>
         
         <div class="tags">
             <span>
-                Tags:
+                标签:
                 <a href="tags/osgi.html">OSGi</a></span>
         </div>
         <div class="comments">
@@ -281,8 +283,7 @@ Bundle-ClassPath: WEB-INF/classes,
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>August 21, 2012</span>
         </div>
-        <div class="section" id="kid-capture">
-<h1><a href="2012/08/21/pyaudio.html">Kid Capture开发手记</a></h1>
+        <h1><a href="2012/08/21/pyaudio.html">Kid Capture开发手记</a></h1>
 <div class="section" id="id1">
 <h2>缘起</h2>
 <p>我四岁的儿子和他10岁的表哥迷上了我的电脑，只要我不用就和他哥跑到电脑前。随后就会传来一阵阵的狂笑。我过去一看发现他们抱着Photo Booth狂拍照片，狂拍视屏。被那些加上各种各样效果的视屏逗的开心死了。
@@ -353,11 +354,11 @@ Bundle-ClassPath: WEB-INF/classes,
 
 <span class="n">capture</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">CaptureFromCAM</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="n">cv</span><span class="o">.</span><span class="n">NamedWindow</span><span class="p">(</span><span class="s">&quot;camera&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">cv</span><span class="o">.</span><span class="n">NamedWindow</span><span class="p">(</span><span class="s">"camera"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">QueryFrame</span><span class="p">(</span><span class="n">capture</span><span class="p">)</span>
-    <span class="n">cv</span><span class="o">.</span><span class="n">ShowImage</span><span class="p">(</span><span class="s">&quot;camera&quot;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="n">cv</span><span class="o">.</span><span class="n">ShowImage</span><span class="p">(</span><span class="s">"camera"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
     <span class="n">k</span> <span class="o">=</span> <span class="mh">0xFF</span> <span class="o">&amp;</span> <span class="n">cv</span><span class="o">.</span><span class="n">WaitKey</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
     <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
         <span class="k">break</span>
@@ -449,7 +450,7 @@ Bundle-ClassPath: WEB-INF/classes,
     <span class="n">wf</span><span class="o">.</span><span class="n">setnchannels</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">wf</span><span class="o">.</span><span class="n">setsampwidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">wf</span><span class="o">.</span><span class="n">setframerate</span><span class="p">(</span><span class="n">SAMPLING_RATE</span><span class="p">)</span>
-    <span class="n">wf</span><span class="o">.</span><span class="n">writeframes</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+    <span class="n">wf</span><span class="o">.</span><span class="n">writeframes</span><span class="p">(</span><span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
     <span class="n">wf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 
@@ -491,38 +492,38 @@ Bundle-ClassPath: WEB-INF/classes,
     <span class="k">else</span><span class="p">:</span>
         <span class="c"># 将save_buffer中的数据写入WAV文件，WAV文件的文件名是保存的时刻</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">save_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">filename</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">_%H_%M_%S&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;.wav&quot;</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"%Y-%m-</span><span class="si">%d</span><span class="s">_%H_%M_%S"</span><span class="p">)</span> <span class="o">+</span> <span class="s">".wav"</span>
             <span class="n">save_wave_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">save_buffer</span><span class="p">)</span>
             <span class="n">save_buffer</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">print</span> <span class="n">filename</span><span class="p">,</span> <span class="s">&quot;saved&quot;</span>
+            <span class="k">print</span> <span class="n">filename</span><span class="p">,</span> <span class="s">"saved"</span>
     <span class="n">content</span>
 </pre></div>
 </td></tr></table></div>
 </div>
-</div>
+
         <div class="postmeta">
         <div class="author">
-            <span>Posted by JetGeng</span>
+            <span>发布者 JetGeng</span>
         </div>
         <div class="categories">
             <span>
-                Filed under:
+                归类为:
                 <a href="categories/python.html">Python</a></span>
         </div>
         <div class="tags">
             <span>
-                Tags:
+                标签:
                 <a href="tags/python.html">Python</a></span>
         </div>
         <div class="comments">
             <a href="http://jetgeng.github.com/blog/html/2012/08/21/pyaudio.html#disqus_thread" data-disqus-identifier="2012/08/21/pyaudio">Leave a comment</a>
         </div></div><div class="archive_link">
-        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
+        <a href="archive.html"> &mdash; 博客归档 &mdash; </a>
     </div><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="page3.html">Newer</a></li>
-            <li class="right"><a href="page5.html">Older</a> &raquo; </li>
+            <li class="left"> &laquo; <a href="page3.html">较新</a></li>
+            <li class="right"><a href="page5.html">较旧</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget">
-    <h1>Recent Posts</h1>
+    <h1>近期的文章</h1>
     <ul><li>
             <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
         </li><li>
@@ -543,15 +544,15 @@ Bundle-ClassPath: WEB-INF/classes,
             <a href="2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
         </li></ul>
 </div>
-</section><section><div class="widget" id="searchbox">
+</section><section><div class="widget" id="searchbox" role="search">
     <h1>Search</h1>
     <form action="search.html" method="get">
         <input type="text" name="q" />
-        <button type="submit"><span class="webfont">L</span></button>
+        <button type="submit"><span class="fa fa-search"></span></button>
     </form>
 </div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
-        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    disqus_count();</script><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>

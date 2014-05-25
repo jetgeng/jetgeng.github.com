@@ -13,4 +13,5 @@ Sitemap
    2012/12/11/webinosgi
    2012/08/21/pyaudio
    2012/07/02/jbossover
+   pages/aboutme
 

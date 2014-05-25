@@ -15,23 +15,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>Page 2 &mdash; 愚钝的故事</title>
+        <title>第 2 页 &mdash; 愚钝的故事</title>
             <link rel="stylesheet" href="_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="_static/main.css" type="text/css">
             <link rel="stylesheet" href="_static/modern5.css" type="text/css">
             <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-            <link rel="stylesheet" href="_static/webfont.css" type="text/css">
+            <link rel="stylesheet" href="_static/font-awesome.min.css" type="text/css">
         <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
         <script src="_static/main.js"></script>
-        <link rel="next" title="Older" href="page3.html" /><link rel="prev" title="Newer" href="index.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="next" title="较旧" href="page3.html" /><link rel="prev" title="较新" href="index.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.3.0',
+        VERSION:     '1.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -57,30 +57,32 @@
             }
         });
     </script></head>
-    <body>
+    <body role="document">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-      <div id="container"><header>
+      <div id="container"><header role="banner">
             <hgroup>
               <h1><a href="index.html">愚钝的故事</a></h1><h2>记录我和Java，Groovy,Python的点点滴滴</h2></hgroup>
           </header>
-      <nav>
+      <nav role="navigation">
             <ul><li class="quicklink"><div class="rss">
-        <a href="rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
+        <a href="rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
     </div></li><li class="main-nav">
-                  <a href="index.html">Home</a>
+                  <a href="index.html">首页</a>
+                </li>
+              <li class="main-nav">
+                  <a href="pages/aboutme.html">关于我</a>
                 </li>
               </ul>
-          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="index.html">Newer</a></li>
-            <li class="right"><a href="page3.html">Older</a> &raquo; </li>
+          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="index.html">较新</a></li>
+            <li class="right"><a href="page3.html">较旧</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
             <span>November 26, 2013</span>
         </div>
-        <div class="section" id="git">
-<h1><a href="2013/11/26/gittips.html">Git使用小技巧</a></h1>
+        <h1><a href="2013/11/26/gittips.html">Git使用小技巧</a></h1>
 <p>使用git也有段时间了。其中遇到一些问题，google半圈找到一些觉得不错的技巧记录在此。防止自己会忘掉。</p>
 <div class="section" id="id1">
 <h2>标签相关</h2>
@@ -96,26 +98,26 @@ git push origin -- tag
 <p>好了，打完收工。tag就修正好。</p>
 <div class="section" id="id2">
 <h3>查看标签创建的时间</h3>
-<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">&quot;format:%ci %d&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">"format:%ci %d"</span>
 </pre></div>
 </div>
 <p>输出结果如下</p>
-<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">&quot;format:%ci %d&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">"format:%ci %d"</span>
 2014-01-18 22:27:00 +0800  <span class="o">(</span>tag: v1.0.2<span class="o">)</span>
 2013-11-26 00:09:57 +0800  <span class="o">(</span>tag: v1.0.1<span class="o">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
+
         <div class="postmeta">
         <div class="author">
-            <span>Posted by Jet Geng</span>
+            <span>发布者 Jet Geng</span>
         </div>
         
         <div class="tags">
             <span>
-                Tags:
+                标签:
                 <a href="tags/git.html">Git</a></span>
         </div>
         <div class="comments">
@@ -123,8 +125,7 @@ git push origin -- tag
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>August 23, 2013</span>
         </div>
-        <div class="section" id="id1">
-<h1><a href="2013/08/23/scodestory.html">一段代码演变的故事</a></h1>
+        <h1><a href="2013/08/23/scodestory.html">一段代码演变的故事</a></h1>
 <dl class="docutils">
 <dt>前段时间项目需要从一个mysql数据库(记做A库)导入到另外mysql数据库（记做B库)。在到换的过程中需要对数据进行一些转换。本质而言就是把同样的业务数据分成不同的格式进行存储。初期的我们想法很简单，通过如下步骤来完成：</dt>
 <dd><ol class="first last arabic simple">
@@ -147,7 +148,7 @@ git push origin -- tag
 
   <span class="kd">private</span> <span class="kd">static</span> <span class="nf">loadOldPOJO</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
       <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">POJO</span><span class="o">();</span>
-      <span class="n">String</span> <span class="n">sql1</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+      <span class="n">String</span> <span class="n">sql1</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
       <span class="n">getRS</span><span class="o">(</span><span class="n">sql1</span><span class="o">)</span> <span class="c1">//根据一个Sql查询POJO中的一部分。拼装入pojo</span>
       <span class="o">............</span>
       <span class="o">............</span> <span class="c1">//根据不同的sql，重复上面的步骤。</span>
@@ -203,7 +204,7 @@ col_name=expr
 </div></blockquote>
 <p>只要将上述这个三个地方抽取出来我们就可以用一套代码完成所有表的操作。基于这个思路我们有了如下的代码.</p>
 <p class="plantuml">
-<img alt="interface IRecordCallBack{     +processRecord(ResultSet):T     +getQuerySql():String }  interface BatchOperate{     +saveByBatch(list:List&lt;T&gt;):int }  class SomePOJODao{     +saveByBatch(list:List&lt;SomePOJO&gt;):int } class AnotherPOJODao{     +saveByBatch(list:List&lt;AnotherPOJO&gt;):int } class SomePOJORecordCallBack {     +processRecord(ResultSet):SomePOJO     +getQuerySql():String }  class AnotherPOJORecordCallBack{     +processRecord(ResultSet):AnotherPOJO     +getQuerySql():String }  IRecordCallBack &lt;|-- SomePOJORecordCallBack IRecordCallBack &lt;|-- AnotherPOJORecordCallBack  BatchOperate &lt;|--  SomePOJODao BatchOperate &lt;|-- AnotherPOJODao" src="_images/plantuml-7cd5dcb24abe5d6b8b60de23c2636a78477223c6.png"/>
+<img src="_images/plantuml-7cd5dcb24abe5d6b8b60de23c2636a78477223c6.png" alt="interface IRecordCallBack{     +processRecord(ResultSet):T     +getQuerySql():String }  interface BatchOperate{     +saveByBatch(list:List&lt;T&gt;):int }  class SomePOJODao{     +saveByBatch(list:List&lt;SomePOJO&gt;):int } class AnotherPOJODao{     +saveByBatch(list:List&lt;AnotherPOJO&gt;):int } class SomePOJORecordCallBack {     +processRecord(ResultSet):SomePOJO     +getQuerySql():String }  class AnotherPOJORecordCallBack{     +processRecord(ResultSet):AnotherPOJO     +getQuerySql():String }  IRecordCallBack &lt;|-- SomePOJORecordCallBack IRecordCallBack &lt;|-- AnotherPOJORecordCallBack  BatchOperate &lt;|--  SomePOJODao BatchOperate &lt;|-- AnotherPOJODao"/>
 </p>
 <p>在上图的结构中IRecordCallBack 中的 getQuerySql 方法用于解决如何获取数据的问题。processRecord 方法用于解决如何拼装POJO的问题。
 BatchOperate 方法中用于解决如何保存的问题。
@@ -234,7 +235,7 @@ BatchOperate 方法中用于解决如何保存的问题。
                 <span class="o">}</span>
         <span class="k">for</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">cls</span> <span class="o">:</span> <span class="n">daoMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">tableItem</span><span class="o">.</span><span class="na">getKey</span><span class="o">())){</span>
             <span class="n">BatchOperate</span> <span class="n">dao</span> <span class="o">=</span> <span class="o">(</span><span class="n">BatchOperate</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">cls</span><span class="o">);</span>
-            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;cls.getName():&quot;</span><span class="o">+</span><span class="n">cls</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"cls.getName():"</span><span class="o">+</span><span class="n">cls</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
                         <span class="k">if</span> <span class="o">(</span><span class="n">dao</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">&amp;&amp;</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()!=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
                                     <span class="n">dao</span><span class="o">.</span><span class="na">saveByBatch</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
                         <span class="o">}</span>
@@ -257,22 +258,22 @@ BatchOperate 方法中用于解决如何保存的问题。
 </div>
 <p>我们只是做好了让别人(包括我们自己)填的框！</p>
 </div>
-</div>
+
         <div class="postmeta">
         <div class="author">
-            <span>Posted by Jet Geng</span>
+            <span>发布者 Jet Geng</span>
         </div>
         
         
         <div class="comments">
             <a href="http://jetgeng.github.com/blog/html/2013/08/23/scodestory.html#disqus_thread" data-disqus-identifier="2013/08/23/scodestory">Leave a comment</a>
         </div></div><div class="archive_link">
-        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
+        <a href="archive.html"> &mdash; 博客归档 &mdash; </a>
     </div><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="index.html">Newer</a></li>
-            <li class="right"><a href="page3.html">Older</a> &raquo; </li>
+            <li class="left"> &laquo; <a href="index.html">较新</a></li>
+            <li class="right"><a href="page3.html">较旧</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget">
-    <h1>Recent Posts</h1>
+    <h1>近期的文章</h1>
     <ul><li>
             <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
         </li><li>
@@ -293,15 +294,15 @@ BatchOperate 方法中用于解决如何保存的问题。
             <a href="2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
         </li></ul>
 </div>
-</section><section><div class="widget" id="searchbox">
+</section><section><div class="widget" id="searchbox" role="search">
     <h1>Search</h1>
     <form action="search.html" method="get">
         <input type="text" name="q" />
-        <button type="submit"><span class="webfont">L</span></button>
+        <button type="submit"><span class="fa fa-search"></span></button>
     </form>
 </div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
-        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    disqus_count();</script><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>

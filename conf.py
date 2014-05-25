@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import tinkerer
 import tinkerer.paths
 
@@ -48,7 +49,7 @@ posts_per_page = 2
 # **************************************************************
 # Edit lines below to further customize Sphinx build
 # **************************************************************
-homedir = '/Users/gengjet/'
+homedir = os.path.expanduser('~')
 plantuml= 'java -jar %s/bin/plantuml.jar' % homedir
 blockdiag_fontpath = '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc'
 # Add other Sphinx extensions here

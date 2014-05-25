@@ -11,8 +11,7 @@
             <link>http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html</link>
             <guid>http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html</guid>
             <title><![CDATA[Grails从2.2升级到2.3.3遇到的问题]]></title>
-            <description><![CDATA[<div class="section" id="grails2-22-3-3">
-<h1>Grails从2.2升级到2.3.3遇到的问题</h1>
+            <description><![CDATA[<h1>Grails从2.2升级到2.3.3遇到的问题</h1>
 <div class="section" id="debug">
 <h2>Debug</h2>
 <p>升级到2.3 以后我就找不到grails-debug 这个命令了。后进过查询发现原来是被 <span class="docutils literal"><span class="pre">grails</span> <span class="pre">-debug</span></span> 这个参数替代了。是要了这个参数以后又遇到一个问题。就是需要通过Remote Debug 的方式连接进去才可以。但是不管咋地都不在断点处停下来。真的让人抓狂。</p>
@@ -24,7 +23,7 @@ grail run-app –debug-fork
 Attach your debugger by running your “Grails Remote” config. Done.</div></blockquote>
 <p>原来是需要使用 grails run-app –debug-fork 命令来做。解了，亲测！</p>
 </div>
-</div>]]></description>
+]]></description>
              <pubDate>Fri, 21 Mar 2014 00:00:00 +0800</pubDate>
         </item>
     
@@ -32,17 +31,16 @@ Attach your debugger by running your “Grails Remote” config. Done.</div></bl
             <link>http://jetgeng.github.com/blog/html/2014/03/14/logbackenhance.html</link>
             <guid>http://jetgeng.github.com/blog/html/2014/03/14/logbackenhance.html</guid>
             <title><![CDATA[增强LogBack的RollingFileAppender]]></title>
-            <description><![CDATA[<div class="section" id="logbackrollingfileappender">
-<h1>增强LogBack的RollingFileAppender</h1>
+            <description><![CDATA[<h1>增强LogBack的RollingFileAppender</h1>
 <div class="section" id="id1">
 <h2>前因</h2>
 <p>有系统使用Logback使用RollingFileAppender来记录日志，并且每个小时换成一个新的文件。 这样有个问题如果一个系统在超过一个小时没有打印任何log的时候。
 log文件就会出现不连续的情况。例如用如下配置：</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">&quot;LOG&quot;</span>
-           <span class="na">class=</span><span class="s">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"LOG"</span>
+           <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.RollingFileAppender"</span><span class="nt">&gt;</span>
      <span class="nt">&lt;file&gt;</span>target/test-output/rolling_file.log<span class="nt">&lt;/file&gt;</span>
      <span class="nt">&lt;rollingPolicy</span>
-             <span class="na">class=</span><span class="s">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span><span class="nt">&gt;</span>
+             <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.TimeBasedRollingPolicy"</span><span class="nt">&gt;</span>
          <span class="nt">&lt;FileNamePattern&gt;</span>
              target/test-output/qunarrolling_file.%d{yyyy-MM-dd-HH}.log
          <span class="nt">&lt;/FileNamePattern&gt;</span>
@@ -68,7 +66,7 @@ rolling_file.2014-03-13-17.log
 <h2>分析</h2>
 <p>通过阅读LogBack的源码发现如下结构：</p>
 <p class="plantuml">
-<img alt="class RollingFileAppender{     +rollover():void     +subAppend(event:E):void }  interface TriggeringPolicy{ }  interface RollingPolicy{ }  class TimeBasedRollingPolicy{ }  class RollingPolicyBase{ }  class DefaultTimeBasedFileNamingAndTriggeringPolicy{     +isTriggeringEvent(activeFile:File, event E) }  RollingFileAppender -left-&gt; TriggeringPolicy RollingFileAppender -right-&gt; RollingPolicy RollingPolicy &lt;|.. RollingPolicyBase RollingPolicyBase &lt;|-- TimeBasedRollingPolicy TimeBasedRollingPolicy ..|&gt; TriggeringPolicy TimeBasedRollingPolicy --&gt; DefaultTimeBasedFileNamingAndTriggeringPolicy" src="http://jetgeng.github.com/blog/html/_images/plantuml-52b276328f19272bb063ec61cf468244d1e30727.png"/>
+<img src="http://jetgeng.github.com/blog/html/_images/plantuml-52b276328f19272bb063ec61cf468244d1e30727.png" alt="class RollingFileAppender{     +rollover():void     +subAppend(event:E):void }  interface TriggeringPolicy{ }  interface RollingPolicy{ }  class TimeBasedRollingPolicy{ }  class RollingPolicyBase{ }  class DefaultTimeBasedFileNamingAndTriggeringPolicy{     +isTriggeringEvent(activeFile:File, event E) }  RollingFileAppender -left-&gt; TriggeringPolicy RollingFileAppender -right-&gt; RollingPolicy RollingPolicy &lt;|.. RollingPolicyBase RollingPolicyBase &lt;|-- TimeBasedRollingPolicy TimeBasedRollingPolicy ..|&gt; TriggeringPolicy TimeBasedRollingPolicy --&gt; DefaultTimeBasedFileNamingAndTriggeringPolicy"/>
 </p>
 <dl class="docutils">
 <dt><strong>RollingFileAppender</strong></dt>
@@ -100,7 +98,7 @@ rolling_file.2014-03-13-17.log
     <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
 <span class="hll">    <span class="k">while</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
 </span>        <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
-        <span class="n">addInfo</span><span class="o">(</span><span class="s">&quot;Elapsed period: &quot;</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
+        <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
         <span class="n">elapsedPeriodsFileName</span> <span class="o">=</span> <span class="n">tbrp</span><span class="o">.</span><span class="na">fileNamePatternWCS</span><span class="o">.</span><span class="na">convert</span><span class="o">(</span><span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
 <span class="hll">        <span class="n">tbrp</span><span class="o">.</span><span class="na">rollover</span><span class="o">();</span>
 </span>        <span class="n">setDateInCurrentPeriod</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
@@ -128,7 +126,7 @@ rolling_file.2014-03-13-17.log
 <div class="section" id="id4">
 <h2>重写</h2>
 <p class="plantuml">
-<img alt="RollingFileAppender &lt;|-- ContinueRollingFileAppender DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamingAndTriggeringPolicy" src="http://jetgeng.github.com/blog/html/_images/plantuml-b560654b92490ddc2ed37d4b07a6dc0f3612dfd9.png"/>
+<img src="http://jetgeng.github.com/blog/html/_images/plantuml-b560654b92490ddc2ed37d4b07a6dc0f3612dfd9.png" alt="RollingFileAppender &lt;|-- ContinueRollingFileAppender DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamingAndTriggeringPolicy"/>
 </p>
 <p>ContinueRollingFileAppender 的重载subAppend方法为：</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="nd">@Override</span>
@@ -158,9 +156,9 @@ rolling_file.2014-03-13-17.log
                     <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
                     <span class="k">if</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
                             <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
-                            <span class="n">addInfo</span><span class="o">(</span><span class="s">&quot;Elapsed period: &quot;</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
+                            <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
                             <span class="n">elapsedPeriodsFileName</span> <span class="o">=</span> <span class="n">tbrp</span><span class="o">.</span><span class="na">fileNamePatternWCS</span><span class="o">.</span><span class="na">convert</span><span class="o">(</span><span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
-                            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;elapsedPeriodsFileName is &quot;</span> <span class="o">+</span> <span class="n">elapsedPeriodsFileName</span><span class="o">);</span>
+                            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"elapsedPeriodsFileName is "</span> <span class="o">+</span> <span class="n">elapsedPeriodsFileName</span><span class="o">);</span>
                             <span class="n">setDateInCurrentPeriod</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
                             <span class="n">computeNextCheck</span><span class="o">();</span>
                             <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
@@ -172,25 +170,25 @@ rolling_file.2014-03-13-17.log
 </pre></div>
 </div>
 <p>最后我把配置文件修改为：</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;configuration</span> <span class="na">scan=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">&quot;LOG&quot;</span>
-          <span class="na">class=</span><span class="s">&quot;ch.qos.logback.core.rolling.ContinueRollingFileAppender&quot;</span><span class="nt">&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;configuration</span> <span class="na">scan=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"LOG"</span>
+          <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.ContinueRollingFileAppender"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;file&gt;</span>target/test-output/demo.log<span class="nt">&lt;/file&gt;</span>
     <span class="nt">&lt;rollingPolicy</span>
-            <span class="na">class=</span><span class="s">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span><span class="nt">&gt;</span>
+            <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.TimeBasedRollingPolicy"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;FileNamePattern&gt;</span>
             target/test-output/demo.%d{yyyy-MM-dd-HH-mm}.log
         <span class="nt">&lt;/FileNamePattern&gt;</span>
         <span class="nt">&lt;timeBasedFileNamingAndTriggeringPolicy</span>
-                <span class="na">class=</span><span class="s">&quot;ch.qos.logback.core.rolling.ContinuePolicyTimeBasedFileNamingAndTriggeringPolicy&quot;</span><span class="nt">&gt;</span>
+                <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.ContinuePolicyTimeBasedFileNamingAndTriggeringPolicy"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;/timeBasedFileNamingAndTriggeringPolicy&gt;</span>
     <span class="nt">&lt;/rollingPolicy&gt;</span>
     <span class="nt">&lt;layout&gt;</span>
         <span class="nt">&lt;Pattern&gt;</span>%date [%thread] %-5level %logger - %msg%n<span class="nt">&lt;/Pattern&gt;</span>
     <span class="nt">&lt;/layout&gt;</span>
 <span class="nt">&lt;/appender&gt;</span>
-<span class="nt">&lt;root</span> <span class="na">level=</span><span class="s">&quot;DEBUG&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">&quot;LOG&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;root</span> <span class="na">level=</span><span class="s">"DEBUG"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"LOG"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/root&gt;</span>
 <span class="nt">&lt;/configuration&gt;</span>
 </pre></div>
@@ -208,7 +206,7 @@ rolling_file.2014-03-13-17.log
 </dd>
 </dl>
 </div>
-</div>]]></description>
+]]></description>
              <pubDate>Fri, 14 Mar 2014 00:00:00 +0800</pubDate>
         </item>
     
@@ -216,8 +214,7 @@ rolling_file.2014-03-13-17.log
             <link>http://jetgeng.github.com/blog/html/2013/11/26/gittips.html</link>
             <guid>http://jetgeng.github.com/blog/html/2013/11/26/gittips.html</guid>
             <title><![CDATA[Git使用小技巧]]></title>
-            <description><![CDATA[<div class="section" id="git">
-<h1>Git使用小技巧</h1>
+            <description><![CDATA[<h1>Git使用小技巧</h1>
 <p>使用git也有段时间了。其中遇到一些问题，google半圈找到一些觉得不错的技巧记录在此。防止自己会忘掉。</p>
 <div class="section" id="id1">
 <h2>标签相关</h2>
@@ -233,18 +230,18 @@ git push origin -- tag
 <p>好了，打完收工。tag就修正好。</p>
 <div class="section" id="id2">
 <h3>查看标签创建的时间</h3>
-<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">&quot;format:%ci %d&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">"format:%ci %d"</span>
 </pre></div>
 </div>
 <p>输出结果如下</p>
-<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">&quot;format:%ci %d&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">"format:%ci %d"</span>
 2014-01-18 22:27:00 +0800  <span class="o">(</span>tag: v1.0.2<span class="o">)</span>
 2013-11-26 00:09:57 +0800  <span class="o">(</span>tag: v1.0.1<span class="o">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>]]></description>
+]]></description>
              <pubDate>Tue, 26 Nov 2013 00:00:00 +0800</pubDate>
         </item>
     
@@ -252,8 +249,7 @@ git push origin -- tag
             <link>http://jetgeng.github.com/blog/html/2013/08/23/scodestory.html</link>
             <guid>http://jetgeng.github.com/blog/html/2013/08/23/scodestory.html</guid>
             <title><![CDATA[一段代码演变的故事]]></title>
-            <description><![CDATA[<div class="section" id="id1">
-<h1>一段代码演变的故事</h1>
+            <description><![CDATA[<h1>一段代码演变的故事</h1>
 <dl class="docutils">
 <dt>前段时间项目需要从一个mysql数据库(记做A库)导入到另外mysql数据库（记做B库)。在到换的过程中需要对数据进行一些转换。本质而言就是把同样的业务数据分成不同的格式进行存储。初期的我们想法很简单，通过如下步骤来完成：</dt>
 <dd><ol class="first last arabic simple">
@@ -276,7 +272,7 @@ git push origin -- tag
 
   <span class="kd">private</span> <span class="kd">static</span> <span class="nf">loadOldPOJO</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
       <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">POJO</span><span class="o">();</span>
-      <span class="n">String</span> <span class="n">sql1</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+      <span class="n">String</span> <span class="n">sql1</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
       <span class="n">getRS</span><span class="o">(</span><span class="n">sql1</span><span class="o">)</span> <span class="c1">//根据一个Sql查询POJO中的一部分。拼装入pojo</span>
       <span class="o">............</span>
       <span class="o">............</span> <span class="c1">//根据不同的sql，重复上面的步骤。</span>
@@ -332,7 +328,7 @@ col_name=expr
 </div></blockquote>
 <p>只要将上述这个三个地方抽取出来我们就可以用一套代码完成所有表的操作。基于这个思路我们有了如下的代码.</p>
 <p class="plantuml">
-<img alt="interface IRecordCallBack{     +processRecord(ResultSet):T     +getQuerySql():String }  interface BatchOperate{     +saveByBatch(list:List&lt;T&gt;):int }  class SomePOJODao{     +saveByBatch(list:List&lt;SomePOJO&gt;):int } class AnotherPOJODao{     +saveByBatch(list:List&lt;AnotherPOJO&gt;):int } class SomePOJORecordCallBack {     +processRecord(ResultSet):SomePOJO     +getQuerySql():String }  class AnotherPOJORecordCallBack{     +processRecord(ResultSet):AnotherPOJO     +getQuerySql():String }  IRecordCallBack &lt;|-- SomePOJORecordCallBack IRecordCallBack &lt;|-- AnotherPOJORecordCallBack  BatchOperate &lt;|--  SomePOJODao BatchOperate &lt;|-- AnotherPOJODao" src="http://jetgeng.github.com/blog/html/_images/plantuml-7cd5dcb24abe5d6b8b60de23c2636a78477223c6.png"/>
+<img src="http://jetgeng.github.com/blog/html/_images/plantuml-7cd5dcb24abe5d6b8b60de23c2636a78477223c6.png" alt="interface IRecordCallBack{     +processRecord(ResultSet):T     +getQuerySql():String }  interface BatchOperate{     +saveByBatch(list:List&lt;T&gt;):int }  class SomePOJODao{     +saveByBatch(list:List&lt;SomePOJO&gt;):int } class AnotherPOJODao{     +saveByBatch(list:List&lt;AnotherPOJO&gt;):int } class SomePOJORecordCallBack {     +processRecord(ResultSet):SomePOJO     +getQuerySql():String }  class AnotherPOJORecordCallBack{     +processRecord(ResultSet):AnotherPOJO     +getQuerySql():String }  IRecordCallBack &lt;|-- SomePOJORecordCallBack IRecordCallBack &lt;|-- AnotherPOJORecordCallBack  BatchOperate &lt;|--  SomePOJODao BatchOperate &lt;|-- AnotherPOJODao"/>
 </p>
 <p>在上图的结构中IRecordCallBack 中的 getQuerySql 方法用于解决如何获取数据的问题。processRecord 方法用于解决如何拼装POJO的问题。
 BatchOperate 方法中用于解决如何保存的问题。
@@ -363,7 +359,7 @@ BatchOperate 方法中用于解决如何保存的问题。
                 <span class="o">}</span>
         <span class="k">for</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">cls</span> <span class="o">:</span> <span class="n">daoMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">tableItem</span><span class="o">.</span><span class="na">getKey</span><span class="o">())){</span>
             <span class="n">BatchOperate</span> <span class="n">dao</span> <span class="o">=</span> <span class="o">(</span><span class="n">BatchOperate</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">cls</span><span class="o">);</span>
-            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;cls.getName():&quot;</span><span class="o">+</span><span class="n">cls</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"cls.getName():"</span><span class="o">+</span><span class="n">cls</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
                         <span class="k">if</span> <span class="o">(</span><span class="n">dao</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">&amp;&amp;</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()!=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
                                     <span class="n">dao</span><span class="o">.</span><span class="na">saveByBatch</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
                         <span class="o">}</span>
@@ -386,7 +382,7 @@ BatchOperate 方法中用于解决如何保存的问题。
 </div>
 <p>我们只是做好了让别人(包括我们自己)填的框！</p>
 </div>
-</div>]]></description>
+]]></description>
              <pubDate>Fri, 23 Aug 2013 00:00:00 +0800</pubDate>
         </item>
     
@@ -394,8 +390,7 @@ BatchOperate 方法中用于解决如何保存的问题。
             <link>http://jetgeng.github.com/blog/html/2013/02/16/lsfiles.html</link>
             <guid>http://jetgeng.github.com/blog/html/2013/02/16/lsfiles.html</guid>
             <title><![CDATA[如何查看进程打开的文件]]></title>
-            <description><![CDATA[<div class="section" id="id1">
-<h1>如何查看进程打开的文件</h1>
+            <description><![CDATA[<h1>如何查看进程打开的文件</h1>
 <p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
 <p>首先要做的是找到相应的pid。 我们使用</p>
 <blockquote>
@@ -433,7 +428,7 @@ firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applicatio
 firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
 </pre></div>
 </div>
-</div>]]></description>
+]]></description>
             <category><![CDATA[ CLI ]]></category>
              <pubDate>Sat, 16 Feb 2013 00:00:00 +0800</pubDate>
         </item>
@@ -442,8 +437,7 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
             <link>http://jetgeng.github.com/blog/html/2013/02/16/soapui_mock.html</link>
             <guid>http://jetgeng.github.com/blog/html/2013/02/16/soapui_mock.html</guid>
             <title><![CDATA[用SoapUI mock Web服务]]></title>
-            <description><![CDATA[<div class="section" id="soapui-mock-web">
-<h1>用SoapUI mock Web服务</h1>
+            <description><![CDATA[<h1>用SoapUI mock Web服务</h1>
 <p>最近工作大量使用三方的Web Service（以下简称WS）。三方的WS时好时坏。让人很是郁闷，所以就动了自己按照三方提供的wsdl自己实现同样接口的WS。其实这就是Mock。 简单google了一下发现 <a class="reference external" href="http://www.soapui.org/Service-Mocking/creating-dynamic-mockservices.html">SoapUI</a> 已经具有这样的功能，而且很容易上手。毫不犹豫的用起来。</p>
 <div class="section" id="ws-mock">
 <h2>创建动态的WS mock</h2>
@@ -487,9 +481,9 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
 6</pre></div></td><td class="code"><div class="highlight"><pre> <span class="c1">// create XmlHolder for request content</span>
  <span class="kt">def</span> <span class="n">holder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">com</span><span class="o">.</span><span class="na">eviware</span><span class="o">.</span><span class="na">soapui</span><span class="o">.</span><span class="na">support</span><span class="o">.</span><span class="na">XmlHolder</span><span class="o">(</span> <span class="n">mockRequest</span><span class="o">.</span><span class="na">requestContent</span> <span class="o">)</span>
 
- <span class="kt">def</span> <span class="n">name</span> <span class="o">=</span> <span class="n">holder</span><span class="o">[</span><span class="s2">&quot;//ws:name&quot;</span><span class="o">]</span>
+ <span class="kt">def</span> <span class="n">name</span> <span class="o">=</span> <span class="n">holder</span><span class="o">[</span><span class="s2">"//ws:name"</span><span class="o">]</span>
 
- <span class="n">requestContext</span><span class="o">.</span><span class="na">msg</span> <span class="o">=</span> <span class="s2">&quot;hi $name&quot;</span>
+ <span class="n">requestContext</span><span class="o">.</span><span class="na">msg</span> <span class="o">=</span> <span class="s2">"hi $name"</span>
 </pre></div>
 </td></tr></table></div>
 <ol class="arabic simple">
@@ -510,7 +504,7 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
 <p>欲见详情，请听下回分解！</p>
 </div>
 </div>
-</div>]]></description>
+]]></description>
             <category><![CDATA[ WS ]]></category>
              <pubDate>Sat, 16 Feb 2013 00:00:00 +0800</pubDate>
         </item>
@@ -519,8 +513,7 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
             <link>http://jetgeng.github.com/blog/html/2012/12/11/webinosgi.html</link>
             <guid>http://jetgeng.github.com/blog/html/2012/12/11/webinosgi.html</guid>
             <title><![CDATA[在OSGi中部署Web应用(一)]]></title>
-            <description><![CDATA[<div class="section" id="osgiweb">
-<h1>在OSGi中部署Web应用(一)</h1>
+            <description><![CDATA[<h1>在OSGi中部署Web应用(一)</h1>
 <div class="section" id="id1">
 <h2>概述</h2>
 <p>在很久很久以前，我们用 ‘HTTP Registry’_  在OSGi环境中注册Servlet，JSP以及静态资源。或者通过 <a class="reference external" href="http://git.eclipse.org/c/equinox/rt.equinox.bundles.git/tree/bundles/org.eclipse.equinox.http.servletbridge">HTTP ServletBridge</a>  在Web容器中启动一个OSGi的方式来实现Web应用和OSGi的集合。在很多文章 <a class="footnote-reference" href="#id5" id="id2">[1]</a> 中都有描述。
@@ -676,9 +669,9 @@ Import-Package: org.eclipse.osgi.framework.adaptor,
  org.eclipse.osgi.framework.internal.core,
  org.eclipse.osgi.internal.baseadaptor,
  org.eclipse.osgi.internal.loader,
- org.osgi.framework;version<span class="o">=</span><span class="s2">&quot;1.3.0&quot;</span>
+ org.osgi.framework;version<span class="o">=</span><span class="s2">"1.3.0"</span>
 Web-ContextPath: /web/demo
-Require-Bundle: org.eclipse.jetty.osgi.boot;bundle-version<span class="o">=</span><span class="s2">&quot;8.1.0&quot;</span>
+Require-Bundle: org.eclipse.jetty.osgi.boot;bundle-version<span class="o">=</span><span class="s2">"8.1.0"</span>
 Bundle-ClassPath: WEB-INF/classes,
  .
 </pre></div>
@@ -705,7 +698,7 @@ Bundle-ClassPath: WEB-INF/classes,
 </tbody>
 </table>
 </div>
-</div>]]></description>
+]]></description>
              <pubDate>Tue, 11 Dec 2012 00:00:00 +0800</pubDate>
         </item>
     
@@ -713,8 +706,7 @@ Bundle-ClassPath: WEB-INF/classes,
             <link>http://jetgeng.github.com/blog/html/2012/08/21/pyaudio.html</link>
             <guid>http://jetgeng.github.com/blog/html/2012/08/21/pyaudio.html</guid>
             <title><![CDATA[Kid Capture开发手记]]></title>
-            <description><![CDATA[<div class="section" id="kid-capture">
-<h1>Kid Capture开发手记</h1>
+            <description><![CDATA[<h1>Kid Capture开发手记</h1>
 <div class="section" id="id1">
 <h2>缘起</h2>
 <p>我四岁的儿子和他10岁的表哥迷上了我的电脑，只要我不用就和他哥跑到电脑前。随后就会传来一阵阵的狂笑。我过去一看发现他们抱着Photo Booth狂拍照片，狂拍视屏。被那些加上各种各样效果的视屏逗的开心死了。
@@ -785,11 +777,11 @@ Bundle-ClassPath: WEB-INF/classes,
 
 <span class="n">capture</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">CaptureFromCAM</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="n">cv</span><span class="o">.</span><span class="n">NamedWindow</span><span class="p">(</span><span class="s">&quot;camera&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">cv</span><span class="o">.</span><span class="n">NamedWindow</span><span class="p">(</span><span class="s">"camera"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">QueryFrame</span><span class="p">(</span><span class="n">capture</span><span class="p">)</span>
-    <span class="n">cv</span><span class="o">.</span><span class="n">ShowImage</span><span class="p">(</span><span class="s">&quot;camera&quot;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="n">cv</span><span class="o">.</span><span class="n">ShowImage</span><span class="p">(</span><span class="s">"camera"</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
     <span class="n">k</span> <span class="o">=</span> <span class="mh">0xFF</span> <span class="o">&amp;</span> <span class="n">cv</span><span class="o">.</span><span class="n">WaitKey</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
     <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
         <span class="k">break</span>
@@ -881,7 +873,7 @@ Bundle-ClassPath: WEB-INF/classes,
     <span class="n">wf</span><span class="o">.</span><span class="n">setnchannels</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">wf</span><span class="o">.</span><span class="n">setsampwidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">wf</span><span class="o">.</span><span class="n">setframerate</span><span class="p">(</span><span class="n">SAMPLING_RATE</span><span class="p">)</span>
-    <span class="n">wf</span><span class="o">.</span><span class="n">writeframes</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+    <span class="n">wf</span><span class="o">.</span><span class="n">writeframes</span><span class="p">(</span><span class="s">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
     <span class="n">wf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 
@@ -923,15 +915,15 @@ Bundle-ClassPath: WEB-INF/classes,
     <span class="k">else</span><span class="p">:</span>
         <span class="c"># 将save_buffer中的数据写入WAV文件，WAV文件的文件名是保存的时刻</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">save_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">filename</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">_%H_%M_%S&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;.wav&quot;</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">"%Y-%m-</span><span class="si">%d</span><span class="s">_%H_%M_%S"</span><span class="p">)</span> <span class="o">+</span> <span class="s">".wav"</span>
             <span class="n">save_wave_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">save_buffer</span><span class="p">)</span>
             <span class="n">save_buffer</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">print</span> <span class="n">filename</span><span class="p">,</span> <span class="s">&quot;saved&quot;</span>
+            <span class="k">print</span> <span class="n">filename</span><span class="p">,</span> <span class="s">"saved"</span>
     <span class="n">content</span>
 </pre></div>
 </td></tr></table></div>
 </div>
-</div>]]></description>
+]]></description>
             <category><![CDATA[ Python ]]></category>
              <pubDate>Tue, 21 Aug 2012 00:00:00 +0800</pubDate>
         </item>
@@ -940,8 +932,7 @@ Bundle-ClassPath: WEB-INF/classes,
             <link>http://jetgeng.github.com/blog/html/2012/07/02/jbossover.html</link>
             <guid>http://jetgeng.github.com/blog/html/2012/07/02/jbossover.html</guid>
             <title><![CDATA[使用Maven和tycho构建OSGi插件项目]]></title>
-            <description><![CDATA[<div class="section" id="maventychoosgi">
-<h1>使用Maven和tycho构建OSGi插件项目</h1>
+            <description><![CDATA[<h1>使用Maven和tycho构建OSGi插件项目</h1>
 <div class="section" id="tycho">
 <h2>介绍Tycho插件</h2>
 <p>自动构建OSGi Plugin项目，一直以来就是个头疼的问题。直到 <a class="reference external" href="http://eclipse.org/tycho">Tycho</a> 的出现,这些都不在成为问题了。用它你可以很轻松来构建Eclipse插件(Eclipse Plugin) , Eclipse features , Eclipse的更新站点(Update Site)以及可以直接执行的Eclipse产品(Eclipse Product)。
@@ -964,11 +955,11 @@ Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信
 </div></blockquote>
 <p>这个时候我就得到了如下结构的pom.xml</p>
 <blockquote>
-<div><div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;project</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0</span>
-<span class="s">http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>
-<span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
-<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<div><div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0</span>
+<span class="s">http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>
+<span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span>
+<span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.gunn.autobuild.tycho<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>org.gunn.autobuild.tycho.bundle<span class="nt">&lt;/artifactId&gt;</span>
@@ -981,7 +972,7 @@ Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信
 <p>这个时候如果你输入 mvn package肯定是会出错的。出错的原因是我们还没有把Tycho插件加入进来。
 所以我们还需要一个如下如下结构的pom.xml.</p>
 <blockquote>
-<div><div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div><div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;project&gt;</span>
   <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>org.gunn.autobuile<span class="nt">&lt;/groupId&gt;</span>
@@ -1105,7 +1096,7 @@ mvn package
 <li><a class="reference external" href="http://www.vogella.com/articles/EclipseTycho/article.html#productbuild">Eclipse Tycho - Tutorial for building Eclipse Plugins and RCP applications</a></li>
 </ol>
 </div>
-</div>]]></description>
+]]></description>
             <category><![CDATA[ autobuild ]]></category>
              <pubDate>Mon, 02 Jul 2012 00:00:00 +0800</pubDate>
         </item>
