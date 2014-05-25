@@ -15,28 +15,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>首页 &mdash; 愚钝的故事</title>
-            <link rel="stylesheet" href="_static/normalize.css" type="text/css">
-            <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
-            <link rel="stylesheet" href="_static/main.css" type="text/css">
-            <link rel="stylesheet" href="_static/modern5.css" type="text/css">
-            <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-            <link rel="stylesheet" href="_static/font-awesome.min.css" type="text/css">
-        <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-        <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
+        <title>自定义Spring MVC的验证框架 &mdash; 愚钝的故事</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/font-awesome.min.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="_static/plugins.js"></script>
-        <script src="_static/main.js"></script>
-        <link rel="next" title="较旧" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Grails从2.2升级到2.3.3遇到的问题" href="../../03/21/grails_2_3.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '../../../',
         VERSION:     '1.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/disqus.js"></script>
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -64,26 +64,26 @@
 
       <div id="container"><header role="banner">
             <hgroup>
-              <h1><a href="#">愚钝的故事</a></h1><h2>记录我和Java，Groovy,Python的点点滴滴</h2></hgroup>
+              <h1><a href="../../../index.html">愚钝的故事</a></h1><h2>记录我和Java，Groovy,Python的点点滴滴</h2></hgroup>
           </header>
       <nav role="navigation">
             <ul><li class="quicklink"><div class="rss">
-        <a href="rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
+        <a href="../../../rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
     </div></li><li class="main-nav">
-                  <a href="#">首页</a>
+                  <a href="../../../index.html">首页</a>
                 </li>
               <li class="main-nav">
-                  <a href="pages/aboutme.html">关于我</a>
+                  <a href="../../../pages/aboutme.html">关于我</a>
                 </li>
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
             <li class="left"></li>
-            <li class="right"><a href="page2.html">较旧</a> &raquo; </li>
+            <li class="right"><a href="../../03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
             <span>May 25, 2014</span>
         </div>
-        <div class="section" id="spring-mvc">
-<h1><a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a></h1>
+    <div class="section" id="spring-mvc">
+<h1>自定义Spring MVC的验证框架</h1>
 <div class="section" id="id1">
 <h2>背景</h2>
 <dl class="docutils">
@@ -138,15 +138,15 @@
 <span class="kn">import</span> <span class="nn">....</span>
 
 <span class="kt">def</span> <span class="n">somePattern</span> <span class="o">=</span> <span class="s">/(\d{6})?/</span>
-<span class="kt">def</span> <span class="n">searchTypes</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"OnewayFlight"</span><span class="o">,</span><span class="s2">"onewaybus"</span><span class="o">,</span><span class="s2">"RoundtripFlight"</span><span class="o">,</span><span class="s2">"roundtripbus"</span><span class="o">,</span><span class="s2">"RoundTripFlight"</span><span class="o">]</span>
+<span class="kt">def</span> <span class="n">searchTypes</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;OnewayFlight&quot;</span><span class="o">,</span><span class="s2">&quot;onewaybus&quot;</span><span class="o">,</span><span class="s2">&quot;RoundtripFlight&quot;</span><span class="o">,</span><span class="s2">&quot;roundtripbus&quot;</span><span class="o">,</span><span class="s2">&quot;RoundTripFlight&quot;</span><span class="o">]</span>
 <span class="o">...</span>
 
 <span class="kt">def</span> <span class="n">someClosure</span> <span class="o">=</span> <span class="o">{</span> <span class="n">val</span><span class="o">,</span> <span class="n">obj</span> <span class="o">-&gt;</span>
 <span class="o">}</span>
 <span class="o">...</span>
 
-<span class="n">rules</span><span class="o">(</span><span class="nl">site:</span><span class="s1">'*'</span><span class="o">){</span>
-    <span class="n">BookForm</span><span class="o">(</span><span class="nl">package:</span><span class="s1">'com.gunn.bean'</span><span class="o">){</span>
+<span class="n">rules</span><span class="o">(</span><span class="nl">site:</span><span class="s1">&#39;*&#39;</span><span class="o">){</span>
+    <span class="n">BookForm</span><span class="o">(</span><span class="nl">package:</span><span class="s1">&#39;com.gunn.bean&#39;</span><span class="o">){</span>
         <span class="n">searchType</span> <span class="nl">blank:</span><span class="kc">false</span><span class="o">,</span> <span class="nl">inList:</span><span class="n">searchTypes</span><span class="o">,</span> <span class="nl">nullable:</span> <span class="kc">false</span>
 
         <span class="n">INVOCE</span> <span class="o">{</span>
@@ -156,8 +156,8 @@
     <span class="o">}</span>
 <span class="o">}</span>
 
-<span class="n">rules</span><span class="o">(</span><span class="nl">site:</span><span class="s1">'hubei'</span><span class="o">){</span>
-    <span class="n">BookForm</span><span class="o">(</span><span class="nl">package:</span><span class="s1">'com.gunn.bus.busship.bean'</span><span class="o">){</span>
+<span class="n">rules</span><span class="o">(</span><span class="nl">site:</span><span class="s1">&#39;hubei&#39;</span><span class="o">){</span>
+    <span class="n">BookForm</span><span class="o">(</span><span class="nl">package:</span><span class="s1">&#39;com.gunn.bus.busship.bean&#39;</span><span class="o">){</span>
         <span class="n">searchType</span> <span class="nl">blank:</span><span class="kc">true</span><span class="o">,</span> <span class="nl">inList:</span><span class="n">searchTypes</span><span class="o">,</span> <span class="nl">nullable:</span> <span class="kc">false</span>
 
     <span class="o">}</span>
@@ -186,8 +186,8 @@
 <p>在spring 配置文件中加上如下内容：</p>
 <blockquote>
 <div><div class="highlight-xml"><div class="highlight"><pre><span class="c">&lt;!-- validator bean --&gt;</span>
-<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.gunn.bus.validate.ValidatorConfigManager"</span> <span class="na">id=</span><span class="s">"validatorConfigManager"</span> <span class="na">init-method=</span><span class="s">"init"</span> <span class="nt">&gt;</span>
-   <span class="nt">&lt;aop:scoped-proxy</span> <span class="na">proxy-target-class=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">&quot;com.gunn.bus.validate.ValidatorConfigManager&quot;</span> <span class="na">id=</span><span class="s">&quot;validatorConfigManager&quot;</span> <span class="na">init-method=</span><span class="s">&quot;init&quot;</span> <span class="nt">&gt;</span>
+   <span class="nt">&lt;aop:scoped-proxy</span> <span class="na">proxy-target-class=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/bean&gt;</span>
 </pre></div>
 </div>
@@ -215,11 +215,24 @@
 <p>这个框架是对Spring的验证机制的一个扩展。
 这个框架主要的几个类入下图。</p>
 <p class="plantuml">
-<img src="_images/plantuml-abd6dc5eac452cb3e824d6920a977538ecf19208.png" alt="interface Validator{&#10;    validate(Object target, Errors error)&#10;}&#10;&#10;class SpringValidatorAdapter{&#10;}&#10;&#10;Validator &lt;|-- SpringValidatorAdapter&#10;&#10;class DataBinder {&#10;&#10;}&#10;&#10;Validator &lt;-- DataBinder"/>
+<img src="../../../_images/plantuml-abd6dc5eac452cb3e824d6920a977538ecf19208.png" alt="interface Validator{
+    validate(Object target, Errors error)
+}
+
+class SpringValidatorAdapter{
+}
+
+Validator &lt;|-- SpringValidatorAdapter
+
+class DataBinder {
+
+}
+
+Validator &lt;-- DataBinder" />
 </p>
 <p>主要就是这么几个类。一个请求进入spring框架到验证的调用过程如下图:</p>
 <div class="align-center figure">
-<img alt="../../../_images/from_doDispatch.png" src="_images/from_doDispatch.png"/>
+<img alt="../../../_images/from_doDispatch.png" src="../../../_images/from_doDispatch.png" />
 </div>
 <p>上图需要额外说明。</p>
 </div>
@@ -250,76 +263,78 @@
 <h3>实现配置部分</h3>
 <p>我们先从高处看一下我们的结构：</p>
 <p class="plantuml">
-<img src="_images/plantuml-7292ece8782177b7c18b4fbb446b38ceebad29e1.png" alt="interface Validator{&#10;    validate(Object target, Errors error)&#10;}&#10;&#10;class ValidatorConfigManager{&#10;    validateRuleContainer:Map&#10;    __&#10;    init()&#10;    configValidateRules()&#10;    runDSL()&#10;    __&#10;    validate()&#10;    getValidateRule()&#10;}&#10;&#10;class ValidateGroup{&#10;   pojoClassName : String&#10;   name : String&#10;   constrainedProperties : Map&lt;String, ConstrainedPropertyQunar&gt;&#10;}&#10;&#10;class ConstrainedPropertyQunar{&#10;&#10;}&#10;&#10;Validator &lt;|-- ValidatorConfigManager&#10;ValidatorConfigManager --&gt; ValidateGroup&#10;ValidateGroup --&gt; ConstrainedPropertyQunar&#10;ValidatorConfigManager --&gt; SpringValidatorConfigureationDelegate&#10;SpringValidatorConfigureationDelegate --&gt; ValidatorConfigurationBuilder"/>
+<img src="../../../_images/plantuml-7292ece8782177b7c18b4fbb446b38ceebad29e1.png" alt="interface Validator{
+    validate(Object target, Errors error)
+}
+
+class ValidatorConfigManager{
+    validateRuleContainer:Map
+    __
+    init()
+    configValidateRules()
+    runDSL()
+    __
+    validate()
+    getValidateRule()
+}
+
+class ValidateGroup{
+   pojoClassName : String
+   name : String
+   constrainedProperties : Map&lt;String, ConstrainedPropertyQunar&gt;
+}
+
+class ConstrainedPropertyQunar{
+
+}
+
+Validator &lt;|-- ValidatorConfigManager
+ValidatorConfigManager --&gt; ValidateGroup
+ValidateGroup --&gt; ConstrainedPropertyQunar
+ValidatorConfigManager --&gt; SpringValidatorConfigureationDelegate
+SpringValidatorConfigureationDelegate --&gt; ValidatorConfigurationBuilder" />
 </p>
 </div>
 </div>
 </div>
 
-        <div class="postmeta">
+    <div class="postmeta">
         <div class="author">
             <span>发布者 Jet Geng</span>
         </div>
         
         
-        <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/05/25/validateenchance.html#disqus_thread" data-disqus-identifier="2014/05/25/validateenchance">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>March 21, 2014</span>
         </div>
-        <h1><a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a></h1>
-<div class="section" id="debug">
-<h2>Debug</h2>
-<p>升级到2.3 以后我就找不到grails-debug 这个命令了。后进过查询发现原来是被 <span class="docutils literal"><span class="pre">grails</span> <span class="pre">-debug</span></span> 这个参数替代了。是要了这个参数以后又遇到一个问题。就是需要通过Remote Debug 的方式连接进去才可以。但是不管咋地都不在断点处停下来。真的让人抓狂。</p>
-<p>最后通过这个一个老外的一段话给解决了</p>
-<blockquote>
-<div>In Intellij  go to “Run / Edit Configurations”, click + then “Remote” and name it whatever  you want (example “Grails Remote”) then press ok.
-Then from the command line do:
-grail run-app –debug-fork
-Attach your debugger by running your “Grails Remote” config. Done.</div></blockquote>
-<p>原来是需要使用 grails run-app –debug-fork 命令来做。解了，亲测！</p>
-</div>
-
-        <div class="postmeta">
-        <div class="author">
-            <span>发布者 Jet Geng</span>
-        </div>
-        
-        
-        <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html#disqus_thread" data-disqus-identifier="2014/03/21/grails_2_3">Leave a comment</a>
-        </div></div><div class="archive_link">
-        <a href="archive.html"> &mdash; 博客归档 &mdash; </a>
-    </div><ul class="related clearfix">
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    var disqus_identifier = "2014/05/25/validateenchance";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
             <li class="left"></li>
-            <li class="right"><a href="page2.html">较旧</a> &raquo; </li>
+            <li class="right"><a href="../../03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>近期的文章</h1>
     <ul><li>
-            <a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
+            <a href="#">自定义Spring MVC的验证框架</a>
         </li><li>
-            <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
+            <a href="../../03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
         </li><li>
-            <a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
+            <a href="../../03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
         </li><li>
-            <a href="2013/11/26/gittips.html">Git使用小技巧</a>
+            <a href="../../../2013/11/26/gittips.html">Git使用小技巧</a>
         </li><li>
-            <a href="2013/08/23/scodestory.html">一段代码演变的故事</a>
+            <a href="../../../2013/08/23/scodestory.html">一段代码演变的故事</a>
         </li><li>
-            <a href="2013/02/16/lsfiles.html">如何查看进程打开的文件</a>
+            <a href="../../../2013/02/16/lsfiles.html">如何查看进程打开的文件</a>
         </li><li>
-            <a href="2013/02/16/soapui_mock.html">用SoapUI mock Web服务</a>
+            <a href="../../../2013/02/16/soapui_mock.html">用SoapUI mock Web服务</a>
         </li><li>
-            <a href="2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
+            <a href="../../../2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
         </li><li>
-            <a href="2012/08/21/pyaudio.html">Kid Capture开发手记</a>
+            <a href="../../../2012/08/21/pyaudio.html">Kid Capture开发手记</a>
         </li><li>
-            <a href="2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
+            <a href="../../../2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">
     <h1>Search</h1>
-    <form action="search.html" method="get">
+    <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="fa fa-search"></span></button>
     </form>
@@ -327,7 +342,7 @@ Attach your debugger by running your “Grails Remote” config. Done.</div></bl
 
         <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
-      </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    disqus_count();</script><!--[if lt IE 7 ]>
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
           <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
         <![endif]-->

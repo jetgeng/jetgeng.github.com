@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/05/25/validateenchance
    2014/03/21/grails_2_3
    2014/03/14/logbackenhance
    2013/11/26/gittips

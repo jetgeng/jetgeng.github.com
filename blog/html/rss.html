@@ -5,8 +5,189 @@
         <link>http://jetgeng.github.com/blog/html/</link>
         <description>记录我和Java，Groovy,Python的点点滴滴</description>
         <language>en-us</language>
-        <pubDate>Fri, 21 Mar 2014 00:00:00 +0800</pubDate>
+        <pubDate>Sun, 25 May 2014 00:00:00 +0800</pubDate>
         
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2014/05/25/validateenchance.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2014/05/25/validateenchance.html</guid>
+            <title><![CDATA[自定义Spring MVC的验证框架]]></title>
+            <description><![CDATA[<div class="section" id="spring-mvc">
+<h1>自定义Spring MVC的验证框架</h1>
+<div class="section" id="id1">
+<h2>背景</h2>
+<dl class="docutils">
+<dt>在已有项目中使用了spring mvc中的Validation框架做验证。在使用的过程中发现改框架有如下缺点：</dt>
+<dd><ol class="first arabic simple">
+<li>验证规则在编译期确定。 不能在运行期重新设定验证规则</li>
+<li>自定义一个验证规则比较麻烦。需要自己定义一个注解。</li>
+<li>验证规则分散在各个类的注解中。</li>
+</ol>
+<blockquote class="last">
+<div><p>对于第一个缺点在在我们的新项目中变的不可接受了。我们的系统是一个多租户的Saas系统。 针对多家租户我们采用了一套代码完成所有逻辑。 同一个对象在不同的不同的租户中他的验证规则不一定相同。而一个对象属于哪个租户只有在运行期才能知道。所以为了能够根据对象属于哪个租户而动态的选择验证规则，我们对Spring的验证框架做了一点扩展。</p>
+<p>最后有了一个新的验证框架。</p>
+</div></blockquote>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h2>新的验证框架的使用</h2>
+<div class="section" id="id3">
+<h3>定义规则</h3>
+<p>使用我们这个新的验证框架你需要做在classpath的可见范围创建一个名为validator.qr（改文件目前是写死的，后续可以考虑通过一个开关来指定）的文件。这个文件保存的就是我们所有的验证规则。
+他本质上是一段groovy脚本。只不过加上了一点关于验证的语法。我们可以称它针对验证的DSL。
+下面就是他常见的样子:</p>
+<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">groovy.time.TimeCategory</span>
+<span class="kn">import</span> <span class="nn">....</span>
+
+<span class="kt">def</span> <span class="n">somePattern</span> <span class="o">=</span> <span class="s">/(\d{6})?/</span>
+<span class="kt">def</span> <span class="n">searchTypes</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"OnewayFlight"</span><span class="o">,</span><span class="s2">"onewaybus"</span><span class="o">,</span><span class="s2">"RoundtripFlight"</span><span class="o">,</span><span class="s2">"roundtripbus"</span><span class="o">,</span><span class="s2">"RoundTripFlight"</span><span class="o">]</span>
+<span class="o">...</span>
+
+<span class="kt">def</span> <span class="n">someClosure</span> <span class="o">=</span> <span class="o">{</span> <span class="n">val</span><span class="o">,</span> <span class="n">obj</span> <span class="o">-&gt;</span>
+<span class="o">}</span>
+<span class="o">...</span>
+
+<span class="n">rules</span><span class="o">(</span><span class="nl">site:</span><span class="s1">'*'</span><span class="o">){</span>
+    <span class="n">BookForm</span><span class="o">(</span><span class="nl">package:</span><span class="s1">'com.gunn.bean'</span><span class="o">){</span>
+        <span class="n">searchType</span> <span class="nl">blank:</span><span class="kc">false</span><span class="o">,</span> <span class="nl">inList:</span><span class="n">searchTypes</span><span class="o">,</span> <span class="nl">nullable:</span> <span class="kc">false</span>
+
+        <span class="n">INVOCE</span> <span class="o">{</span>
+        <span class="c1">//组</span>
+            <span class="n">invoiceRecipientMobile</span> <span class="nl">nullable:</span><span class="kc">false</span><span class="o">,</span> <span class="nl">matches:</span><span class="s">/(1\d{10})?/</span><span class="o">,</span> <span class="nl">blank:</span><span class="kc">false</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">rules</span><span class="o">(</span><span class="nl">site:</span><span class="s1">'hubei'</span><span class="o">){</span>
+    <span class="n">BookForm</span><span class="o">(</span><span class="nl">package:</span><span class="s1">'com.gunn.bus.busship.bean'</span><span class="o">){</span>
+        <span class="n">searchType</span> <span class="nl">blank:</span><span class="kc">true</span><span class="o">,</span> <span class="nl">inList:</span><span class="n">searchTypes</span><span class="o">,</span> <span class="nl">nullable:</span> <span class="kc">false</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>下面是对这段DSL的详细说明：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>1~2 行是导入类，就和java中导入要使用的类一样</li>
+<li>4~5 行定义了一些公用的变量。 可以没有。</li>
+<li>8~10 行定义一些公用的方法或闭包。可以在验证规则中使用。可以没有。</li>
+<li>12~21 行定义了组公用规则。不属于任何旗舰店。但是他时基础的规则。在验证过程中，优先寻找特定旗舰店定义的规则段。如果找不到。就到这个通用规则段来找。<ul>
+<li>12 行 定义规则。site熟悉用于标示这个规则应用于那家租户。<strong>*</strong> 表示这个规则组是一个通用规则组。整个验证规则中只能有一个。</li>
+<li>13 行 定义了一个正对于一个类的验证规则。该规则应用于com.gunn.bean.BookForm</li>
+<li>14 行 是对BookForm中的searchType一个字段的规则进行约定。 blank:flase 表示该字段不能是一个空的字符串。 inList: searchTypes 表示该字段的值必须在searchTypes 这个列表中。 nullable: false 表示这个字段不能为空。</li>
+<li>16 行表示定义一个验证组(Group). 默认情况下对这个对象验证的时候Group 内的规则是不去校验的。只有当显式调用的时候才会去验证。</li>
+</ul>
+</li>
+<li>23 ~ 27行 是为hubei定义了一组 验证规则。其他内容和公用组的机制一样。</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3>创建校验器</h3>
+<p>在spring 配置文件中加上如下内容：</p>
+<blockquote>
+<div><div class="highlight-xml"><div class="highlight"><pre><span class="c">&lt;!-- validator bean --&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.gunn.bus.validate.ValidatorConfigManager"</span> <span class="na">id=</span><span class="s">"validatorConfigManager"</span> <span class="na">init-method=</span><span class="s">"init"</span> <span class="nt">&gt;</span>
+   <span class="nt">&lt;aop:scoped-proxy</span> <span class="na">proxy-target-class=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="controller">
+<h3>在Controller中使用</h3>
+<p>这个时候校验器就已经创建好了。下面就是使用他了。使用也很简单。 在Controller类中添加如下代码：</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Autowired</span>
+<span class="kd">private</span> <span class="n">ValidatorConfigManager</span> <span class="n">validator</span> <span class="n">ConfigManager</span><span class="o">;</span>
+
+<span class="nd">@InitBinder</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">initBinder</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="n">ServletRequestDataBin</span> <span class="n">der</span> <span class="n">binder</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">binder</span><span class="o">.</span><span class="na">setValidator</span><span class="o">(</span><span class="n">validatorConfigManager</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>验证框架的实现</h1>
+<div class="section" id="id6">
+<h2>背景知识</h2>
+<p>这个框架是对Spring的验证机制的一个扩展。
+这个框架主要的几个类入下图。</p>
+<p class="plantuml">
+<img src="http://jetgeng.github.com/blog/html/_images/plantuml-abd6dc5eac452cb3e824d6920a977538ecf19208.png" alt="interface Validator{&#10;    validate(Object target, Errors error)&#10;}&#10;&#10;class SpringValidatorAdapter{&#10;}&#10;&#10;Validator &lt;|-- SpringValidatorAdapter&#10;&#10;class DataBinder {&#10;&#10;}&#10;&#10;Validator &lt;-- DataBinder"/>
+</p>
+<p>主要就是这么几个类。一个请求进入spring框架到验证的调用过程如下图:</p>
+<div class="align-center figure">
+<img alt="../../../_images/from_doDispatch.png" src="http://jetgeng.github.com/blog/html/_images/from_doDispatch.png"/>
+</div>
+<p>上图需要额外说明。</p>
+</div>
+<div class="section" id="id7">
+<h2>配置期</h2>
+<p>这个时期的主要任务如下：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>新建我们扩展的Validator。 也就是com.qunar.flight.flagship.validate.ValidatorConfigManager</li>
+<li>从配置文件读取，解析验证规则</li>
+<li>根据验证规则创建验证对象</li>
+<li>将验证规则存放到ValidatorConfigManager</li>
+</ol>
+</div></blockquote>
+<div class="section" id="id8">
+<h3>出发之前</h3>
+<p>在开始之前我需要先对Groovy的一些特性做点了解:</p>
+<dl class="docutils">
+<dt>闭包</dt>
+<dd>闭包就是一个可执行的代码片段。</dd>
+<dt>metaClass 元类</dt>
+<dd>允许你动态的为一个类添加一些方法。</dd>
+<dt>builder</dt>
+<dd>先来看个例子. <a class="reference external" href="http://groovy.codehaus.org/Swing+Builder">http://groovy.codehaus.org/Swing+Builder</a></dd>
+</dl>
+</div>
+<div class="section" id="id9">
+<h3>实现配置部分</h3>
+<p>我们先从高处看一下我们的结构：</p>
+<p class="plantuml">
+<img src="http://jetgeng.github.com/blog/html/_images/plantuml-7292ece8782177b7c18b4fbb446b38ceebad29e1.png" alt="interface Validator{&#10;    validate(Object target, Errors error)&#10;}&#10;&#10;class ValidatorConfigManager{&#10;    validateRuleContainer:Map&#10;    __&#10;    init()&#10;    configValidateRules()&#10;    runDSL()&#10;    __&#10;    validate()&#10;    getValidateRule()&#10;}&#10;&#10;class ValidateGroup{&#10;   pojoClassName : String&#10;   name : String&#10;   constrainedProperties : Map&lt;String, ConstrainedPropertyQunar&gt;&#10;}&#10;&#10;class ConstrainedPropertyQunar{&#10;&#10;}&#10;&#10;Validator &lt;|-- ValidatorConfigManager&#10;ValidatorConfigManager --&gt; ValidateGroup&#10;ValidateGroup --&gt; ConstrainedPropertyQunar&#10;ValidatorConfigManager --&gt; SpringValidatorConfigureationDelegate&#10;SpringValidatorConfigureationDelegate --&gt; ValidatorConfigurationBuilder"/>
+</p>
+</div>
+</div>
+</div>
+]]></description>
+             <pubDate>Sun, 25 May 2014 00:00:00 +0800</pubDate>
+        </item>
+    
         <item>
             <link>http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html</link>
             <guid>http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html</guid>
