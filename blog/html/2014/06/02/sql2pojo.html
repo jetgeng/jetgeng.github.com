@@ -123,10 +123,47 @@
 <p>代码详细说明：</p>
 <blockquote>
 <div><ul class="simple">
-<li>第三行 注入dataSource， 这个dataSource 就是Grails中在DataSource.groovy中配置的 数据源。 默认的hibernate也是在使用这个数据源。</li>
-<li></li>
+<li>第3行 注入dataSource， 这个dataSource 就是Grails中在DataSource.groovy中配置的 数据源。 默认的hibernate也是在使用这个数据源。</li>
+<li>第5 行 使用通过注入的dataSource对象 创建sql对象。 关于Sql对象的使用可以参考 <a class="reference external" href="http://groovy.codehaus.org/api/groovy/sql/Sql.html">http://groovy.codehaus.org/api/groovy/sql/Sql.html</a></li>
+<li>第6行 使用each方法执行一个sql语句。然后逐行回调。</li>
 </ul>
 </div></blockquote>
+<p>连接数据库和查询数据就这么简单。</p>
+<p>到这里肯定有人会问，如果需要往sql语句中加入参数怎么办。如何避免 Sql注入。
+这个Sql在设计的过程中已经考虑到了。而且使用及其简单。只要使用如下代码即可。</p>
+<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="kt">def</span> <span class="nf">queryDataWithSql</span><span class="o">(){</span>
+        <span class="n">Sql</span> <span class="n">sql</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sql</span><span class="o">(</span><span class="n">dataSource</span><span class="o">)</span>
+        <span class="kt">def</span> <span class="n">paramValue</span> <span class="o">=</span> <span class="o">..</span>
+        <span class="kt">def</span> <span class="n">paramValue2</span> <span class="o">=</span> <span class="o">..</span>
+        <span class="n">sql</span><span class="o">.</span><span class="na">each</span><span class="o">(</span><span class="s2">&quot;select * from sometable where field = ${paramValue} and field2 = ${paramValue2}&quot;</span><span class="o">){</span> <span class="n">it</span> <span class="o">-&gt;</span>
+            <span class="n">println</span> <span class="n">it</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>第5行直接使用GString传入参数。最终执行的时候其实是讲GString中得参数获取出来。通过PreparedStatement传入参数的方式。这样可以避免sql的注入的攻击。你不相信？那就看看Sql.java这个类中得eachRow方法吧。这个方法位于groovy-all-2.1.9-source.jar/groovy/sql/Sql.java 的第1236行。</p>
+</div>
+<div class="section" id="domain-class">
+<h2>数据如何转换成Domain Class对象</h2>
+<p>这个问题是一个大问题。不过不是没有办法。最笨的办法就是写成如下的样子：</p>
+<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">sql</span><span class="o">.</span><span class="na">each</span><span class="o">(</span><span class="s2">&quot;select field1 , field2 from sometable where field = ${paramValue} and field2 = ${paramValue2}&quot;</span><span class="o">){</span> <span class="n">it</span> <span class="o">-&gt;</span>
+   <span class="kt">def</span> <span class="n">someDomain</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeDomin</span><span class="o">()</span>
+   <span class="n">someDomain</span><span class="o">.</span><span class="na">field1</span> <span class="o">=</span> <span class="n">it</span><span class="o">[</span><span class="s2">&quot;field1&quot;</span><span class="o">]</span>
+   <span class="n">someDomain</span><span class="o">.</span><span class="na">field2</span> <span class="o">=</span> <span class="n">it</span><span class="o">[</span><span class="s2">&quot;field2&quot;</span><span class="o">]</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 </div>
 
