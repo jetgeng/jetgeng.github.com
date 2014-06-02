@@ -80,6 +80,63 @@
             <li class="left"></li>
             <li class="right"><a href="page2.html">较旧</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>June 02, 2014</span>
+        </div>
+        <h1><a href="2014/06/02/sql2pojo.html">在Grails使用Sql获取数据</a></h1>
+<div class="section" id="id1">
+<h2>前因</h2>
+<p>Grails默认情况使用Hibernate作为数据存取的框架。不过Hibernate的缺点是众所周知的。所以我们在一些复杂的场合需要通过 groovy.sql.Sql 直接使用sql来获取数据。这样就会存在如下的问题：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>如何使用Grails配置的数据库连接?</li>
+<li>如何执行sql，进行数据库相关操作?</li>
+<li>如何将查询的数据转换成Domain Class?</li>
+</ol>
+</div></blockquote>
+<p>下面就从上面这3个问题来说明如何在grails环境中直接使用sql来对数据库进行操作。</p>
+</div>
+<div class="section" id="id2">
+<h2>连接数据库</h2>
+<p>连接数据库相对来说比较简单，通过如下代码就可以完成。</p>
+<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">class</span> <span class="nc">DoSomethingServices</span> <span class="o">{</span>
+    <span class="kt">def</span> <span class="n">dataSource</span>
+
+    <span class="kt">def</span> <span class="nf">queryDataWithSql</span><span class="o">(){</span>
+        <span class="n">Sql</span> <span class="n">sql</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sql</span><span class="o">(</span><span class="n">dataSource</span><span class="o">)</span>
+        <span class="n">sql</span><span class="o">.</span><span class="na">each</span><span class="o">(</span><span class="s2">"select * from sometable"</span><span class="o">){</span> <span class="n">it</span> <span class="o">-&gt;</span>
+            <span class="n">println</span> <span class="n">it</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>代码详细说明：</p>
+<blockquote>
+<div><ul class="simple">
+<li>第三行 注入dataSource， 这个dataSource 就是Grails中在DataSource.groovy中配置的 数据源。 默认的hibernate也是在使用这个数据源。</li>
+<li/>
+</ul>
+</div></blockquote>
+</div>
+
+        <div class="postmeta">
+        <div class="author">
+            <span>发布者 Jet Geng</span>
+        </div>
+        
+        
+        <div class="comments">
+            <a href="http://jetgeng.github.com/blog/html/2014/06/02/sql2pojo.html#disqus_thread" data-disqus-identifier="2014/06/02/sql2pojo">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>May 25, 2014</span>
         </div>
         <div class="section" id="spring-mvc">
@@ -262,30 +319,6 @@
         
         <div class="comments">
             <a href="http://jetgeng.github.com/blog/html/2014/05/25/validateenchance.html#disqus_thread" data-disqus-identifier="2014/05/25/validateenchance">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>March 21, 2014</span>
-        </div>
-        <h1><a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a></h1>
-<div class="section" id="debug">
-<h2>Debug</h2>
-<p>升级到2.3 以后我就找不到grails-debug 这个命令了。后进过查询发现原来是被 <span class="docutils literal"><span class="pre">grails</span> <span class="pre">-debug</span></span> 这个参数替代了。是要了这个参数以后又遇到一个问题。就是需要通过Remote Debug 的方式连接进去才可以。但是不管咋地都不在断点处停下来。真的让人抓狂。</p>
-<p>最后通过这个一个老外的一段话给解决了</p>
-<blockquote>
-<div>In Intellij  go to “Run / Edit Configurations”, click + then “Remote” and name it whatever  you want (example “Grails Remote”) then press ok.
-Then from the command line do:
-grail run-app –debug-fork
-Attach your debugger by running your “Grails Remote” config. Done.</div></blockquote>
-<p>原来是需要使用 grails run-app –debug-fork 命令来做。解了，亲测！</p>
-</div>
-
-        <div class="postmeta">
-        <div class="author">
-            <span>发布者 Jet Geng</span>
-        </div>
-        
-        
-        <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html#disqus_thread" data-disqus-identifier="2014/03/21/grails_2_3">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; 博客归档 &mdash; </a>
     </div><ul class="related clearfix">
@@ -294,6 +327,8 @@ Attach your debugger by running your “Grails Remote” config. Done.</div></bl
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>近期的文章</h1>
     <ul><li>
+            <a href="2014/06/02/sql2pojo.html">在Grails使用Sql获取数据</a>
+        </li><li>
             <a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
         </li><li>
             <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
@@ -311,8 +346,6 @@ Attach your debugger by running your “Grails Remote” config. Done.</div></bl
             <a href="2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
         </li><li>
             <a href="2012/08/21/pyaudio.html">Kid Capture开发手记</a>
-        </li><li>
-            <a href="2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">

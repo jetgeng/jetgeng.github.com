@@ -1,0 +1,53 @@
+在Grails使用Sql获取数据
+================================
+
+前因
+----
+
+Grails默认情况使用Hibernate作为数据存取的框架。不过Hibernate的缺点是众所周知的。所以我们在一些复杂的场合需要通过 groovy.sql.Sql 直接使用sql来获取数据。这样就会存在如下的问题：
+
+ #. 如何使用Grails配置的数据库连接?
+ #. 如何执行sql，进行数据库相关操作?
+ #. 如何将查询的数据转换成Domain Class?
+
+下面就从上面这3个问题来说明如何在grails环境中直接使用sql来对数据库进行操作。
+
+连接数据库
+----------
+
+连接数据库相对来说比较简单，通过如下代码就可以完成。
+
+.. code-block:: groovy
+    :linenos:
+
+    class DoSomethingServices {
+        def dataSource
+
+        def queryDataWithSql(){
+            Sql sql = new Sql(dataSource)
+            sql.each("select * from sometable"){ it ->
+                println it 
+            }
+        }
+    }
+
+代码详细说明：
+
+ * 第三行 注入dataSource， 这个dataSource 就是Grails中在DataSource.groovy中配置的 数据源。 默认的hibernate也是在使用这个数据源。
+ * 
+
+   
+
+
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: none
+.. tags:: none
+.. comments::

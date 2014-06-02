@@ -80,6 +80,30 @@
             <li class="left"> &laquo; <a href="index.html">较新</a></li>
             <li class="right"><a href="page3.html">较旧</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>March 21, 2014</span>
+        </div>
+        <h1><a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a></h1>
+<div class="section" id="debug">
+<h2>Debug</h2>
+<p>升级到2.3 以后我就找不到grails-debug 这个命令了。后进过查询发现原来是被 <span class="docutils literal"><span class="pre">grails</span> <span class="pre">-debug</span></span> 这个参数替代了。是要了这个参数以后又遇到一个问题。就是需要通过Remote Debug 的方式连接进去才可以。但是不管咋地都不在断点处停下来。真的让人抓狂。</p>
+<p>最后通过这个一个老外的一段话给解决了</p>
+<blockquote>
+<div>In Intellij  go to “Run / Edit Configurations”, click + then “Remote” and name it whatever  you want (example “Grails Remote”) then press ok.
+Then from the command line do:
+grail run-app –debug-fork
+Attach your debugger by running your “Grails Remote” config. Done.</div></blockquote>
+<p>原来是需要使用 grails run-app –debug-fork 命令来做。解了，亲测！</p>
+</div>
+
+        <div class="postmeta">
+        <div class="author">
+            <span>发布者 Jet Geng</span>
+        </div>
+        
+        
+        <div class="comments">
+            <a href="http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html#disqus_thread" data-disqus-identifier="2014/03/21/grails_2_3">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>March 14, 2014</span>
         </div>
         <h1><a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a></h1>
@@ -266,49 +290,6 @@ rolling_file.2014-03-13-17.log
         
         <div class="comments">
             <a href="http://jetgeng.github.com/blog/html/2014/03/14/logbackenhance.html#disqus_thread" data-disqus-identifier="2014/03/14/logbackenhance">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>November 26, 2013</span>
-        </div>
-        <h1><a href="2013/11/26/gittips.html">Git使用小技巧</a></h1>
-<p>使用git也有段时间了。其中遇到一些问题，google半圈找到一些觉得不错的技巧记录在此。防止自己会忘掉。</p>
-<div class="section" id="id1">
-<h2>标签相关</h2>
-<p>好不容易创建将手头上的工作告一段落了。可以提供给用户使用了。为了以后很方便的找到这个版本，所以就打一个tag啊。迫不及待的敲了下面的命令。</p>
-<div class="highlight-bash"><div class="highlight"><pre>git tag  -a cool_tagname -m <span class="s1">'cool comment'</span>
-git push origin -- tag
-</pre></div>
-</div>
-<p>心里说不出的畅快啊。终于完成了这些活。
-稍等，qa又测试出bug了。你这个tag上的内容还不能发布。修改吧。经过一堆修改。git add , git commit 操作以后问题搞定了。
-这一回是真的，真的可以提交了。可以打tag了。但是那个那么好的，和功能那么匹配的tag name已经被占用了。把他删除掉，再加一下就好了。
-所以我们需要如下的操作：</p>
-<p>好了，打完收工。tag就修正好。</p>
-<div class="section" id="id2">
-<h3>查看标签创建的时间</h3>
-<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">"format:%ci %d"</span>
-</pre></div>
-</div>
-<p>输出结果如下</p>
-<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">"format:%ci %d"</span>
-2014-01-18 22:27:00 +0800  <span class="o">(</span>tag: v1.0.2<span class="o">)</span>
-2013-11-26 00:09:57 +0800  <span class="o">(</span>tag: v1.0.1<span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-
-        <div class="postmeta">
-        <div class="author">
-            <span>发布者 Jet Geng</span>
-        </div>
-        
-        <div class="tags">
-            <span>
-                标签:
-                <a href="tags/git.html">Git</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2013/11/26/gittips.html#disqus_thread" data-disqus-identifier="2013/11/26/gittips">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; 博客归档 &mdash; </a>
     </div><ul class="related clearfix">
@@ -317,6 +298,8 @@ git push origin -- tag
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>近期的文章</h1>
     <ul><li>
+            <a href="2014/06/02/sql2pojo.html">在Grails使用Sql获取数据</a>
+        </li><li>
             <a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
         </li><li>
             <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
@@ -334,8 +317,6 @@ git push origin -- tag
             <a href="2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
         </li><li>
             <a href="2012/08/21/pyaudio.html">Kid Capture开发手记</a>
-        </li><li>
-            <a href="2012/07/02/jbossover.html">使用Maven和tycho构建OSGi插件项目</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">
