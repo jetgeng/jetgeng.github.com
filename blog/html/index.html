@@ -163,6 +163,126 @@
 <span class="o">}</span>
 </pre></div>
 </td></tr></table></div>
+<p>这个方法最大的缺点是代码量多，并且会有大量重复的代码。给人感觉很恶心。
+在Groovy中又如下的办法可以对对象的字段赋值：</p>
+<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kt">def</span> <span class="n">key</span> <span class="o">=</span> <span class="s2">"field1"</span>
+ <span class="n">someDomain</span><span class="o">.</span><span class="na">getProperties</span><span class="o">()[</span><span class="n">key</span><span class="o">]</span> <span class="o">=</span> <span class="s2">"someValue"</span>
+</pre></div>
+</td></tr></table></div>
+<p>getProperties这个方法将该对象的所有值放到一个Map中返回。具体可参考http://groovy.codehaus.org/groovy-jdk/java/lang/Object.html#getProperties%28%29 对这个map进行赋值，就等于对这个对象进行赋值。
+所以下面我只要有一个字段和变量名对应的map，什么就会搞定了。
+于是有了如下的代码：</p>
+<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">class</span> <span class="nc">DomainClassInfoService</span> <span class="o">{</span>
+
+    <span class="kt">def</span> <span class="n">sessionFactory</span>
+    <span class="kt">def</span> <span class="n">grailsApplication</span>
+
+    <span class="kt">def</span> <span class="nf">getDomainClass</span><span class="o">(</span><span class="n">clazzName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">grailsApplication</span><span class="o">.</span><span class="na">domainClasses</span><span class="o">.</span><span class="na">find</span> <span class="o">{</span>
+            <span class="n">it</span><span class="o">.</span><span class="na">name</span> <span class="o">==</span> <span class="n">clazzName</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kt">def</span> <span class="nf">getFieldColumnMap</span><span class="o">(</span><span class="n">clazz</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">def</span> <span class="n">fieldColumnMap</span> <span class="o">=</span> <span class="o">[:]</span>
+        <span class="kt">def</span> <span class="n">hibernateMetaClass</span> <span class="o">=</span> <span class="n">sessionFactory</span><span class="o">.</span><span class="na">getClassMetadata</span><span class="o">(</span><span class="n">clazz</span><span class="o">)</span>
+        <span class="kt">def</span> <span class="n">grailsDomainClass</span> <span class="o">=</span> <span class="n">getDomainClass</span><span class="o">(</span><span class="n">clazz</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">())</span>
+        <span class="kt">def</span> <span class="n">domainProps</span> <span class="o">=</span> <span class="n">grailsDomainClass</span><span class="o">.</span><span class="na">getProperties</span><span class="o">()</span>
+
+        <span class="n">domainProps</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">prop</span> <span class="o">-&gt;</span>
+            <span class="c1">//get the property's name</span>
+            <span class="kt">def</span> <span class="n">propName</span> <span class="o">=</span> <span class="n">prop</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span>
+            <span class="c1">//please refer to the hibernate javadoc</span>
+            <span class="c1">//http://www.hibernate.org/hib_docs/v3/api/org/hibernate/persister/entity/AbstractEntityPersister.html</span>
+            <span class="kt">def</span> <span class="n">columnProps</span> <span class="o">=</span> <span class="n">hibernateMetaClass</span><span class="o">.</span><span class="na">getPropertyColumnNames</span><span class="o">(</span><span class="n">propName</span><span class="o">)</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">columnProps</span> <span class="o">&amp;&amp;</span> <span class="n">columnProps</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">//get the columnname, which is stored into the first array</span>
+                <span class="kt">def</span> <span class="n">columnName</span> <span class="o">=</span> <span class="n">columnProps</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+                <span class="n">fieldColumnMap</span><span class="o">[</span><span class="n">propName</span><span class="o">]</span> <span class="o">=</span> <span class="n">columnName</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">fieldColumnMap</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<dl class="docutils">
+<dt>以上代码说明如下：</dt>
+<dd><ul class="first last simple">
+<li>5 ~ 6 行注入将要使用的两个服务，一个是hibernate的sessionFactory， 另外一个是grailsApplication 上下文</li>
+<li>7 ~ 9 这个方法是根据给定的段类名。比如有一个Domain Class的全名为 org.gunn.domain.Book 这里的clazzName 就是Book。
+* 第 8 行是从grailsApplication中获取所有Domain Class的DefaultGrailsDomainClass这个类的对象。这里牵涉到一个Artefact的概念，请参考 <a class="reference external" href="https://grails.org/Developer+-+Artefact+API">https://grails.org/Developer+-+Artefact+API</a></li>
+<li>12 ~ 28 行就是 根据Domain Class中的变量来获取数据库对应的的字段名。 有代码在这里就不多解释了。</li>
+</ul>
+</dd>
+</dl>
+<p>结合我们上面的那个properties的小技巧，我们就使用如下代码来完成使用Sql查询数据，转换成Domain Class的对象。</p>
+<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">String</span> <span class="n">querySql</span> <span class="o">=</span> <span class="s1">''' select * from table where field1 = ? '''</span>
+
+<span class="kt">def</span> <span class="n">tripSegmentFieldColumnMap</span> <span class="o">=</span> <span class="n">domainClassInfoService</span><span class="o">.</span><span class="na">getFieldColumnMap</span><span class="o">(</span><span class="n">SomeDomain</span><span class="o">)</span>
+<span class="n">Sql</span> <span class="n">sql</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sql</span><span class="o">(</span><span class="n">dataSource</span><span class="o">)</span>
+<span class="n">sql</span><span class="o">.</span><span class="na">eachRow</span><span class="o">(</span><span class="n">querySql</span><span class="o">,</span> <span class="n">field1Value</span><span class="o">){</span>
+   <span class="n">SomeDomain</span> <span class="n">someObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeDomain</span><span class="o">()</span>
+   <span class="n">tripSegmentFieldColumnMap</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">key</span><span class="o">,</span> <span class="n">value</span> <span class="o">-&gt;</span>
+        <span class="n">someObject</span><span class="o">.</span><span class="na">getProperties</span><span class="o">()[</span><span class="n">key</span><span class="o">]</span> <span class="o">=</span> <span class="n">it</span><span class="o">[</span><span class="n">value</span><span class="o">]</span>
+   <span class="o">}</span>
+ <span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>这个方法对于非关系的，没有太大问题。如果有类似于一对多这样的关系的话，会引起hibernate中著名的n+1的问题。例如SomeDomain 中有一个变量是SomeParent, 并且SomeDomain belong to 这个SomeParent的话。那么像上面那样直接赋值就会引起去发起数据库查询请求查询SomeParent的。所以可以使用如下的方式进行避免：</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="n">sql</span><span class="o">.</span><span class="na">eachRow</span><span class="o">(</span><span class="n">querySql</span><span class="o">,</span> <span class="n">field1Value</span><span class="o">){</span>
+   <span class="n">SomeDomain</span> <span class="n">someObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeDomain</span><span class="o">()</span>
+   <span class="n">SomeParent</span> <span class="n">someParent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeParent</span><span class="o">()</span>
+   <span class="n">someParent</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">parentId</span>
+   <span class="n">tripSegmentFieldColumnMap</span><span class="o">.</span><span class="na">each</span> <span class="o">{</span> <span class="n">key</span><span class="o">,</span> <span class="n">value</span> <span class="o">-&gt;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">key</span> <span class="o">!=</span> <span class="s2">"parentId"</span><span class="o">)</span>
+            <span class="n">someObject</span><span class="o">.</span><span class="na">getProperties</span><span class="o">()[</span><span class="n">key</span><span class="o">]</span> <span class="o">=</span> <span class="n">it</span><span class="o">[</span><span class="n">value</span><span class="o">]</span>
+   <span class="o">}</span>
+   <span class="n">someObject</span><span class="o">.</span><span class="na">parent</span> <span class="o">=</span> <span class="n">someParent</span>
+</pre></div>
+</div>
+<p>这个办法很土，如果你又更好的。欢迎分享！谢谢！</p>
 </div>
 
         <div class="postmeta">

@@ -70,6 +70,99 @@ Grails默认情况使用Hibernate作为数据存取的框架。不过Hibernate�
        someDomain.field2 = it["field2"]
     }
 
+这个方法最大的缺点是代码量多，并且会有大量重复的代码。给人感觉很恶心。
+在Groovy中又如下的办法可以对对象的字段赋值：
+
+.. code-block:: groovy
+    :linenos:
+
+     def key = "field1"
+     someDomain.getProperties()[key] = "someValue"
+
+getProperties这个方法将该对象的所有值放到一个Map中返回。具体可参考http://groovy.codehaus.org/groovy-jdk/java/lang/Object.html#getProperties%28%29 对这个map进行赋值，就等于对这个对象进行赋值。
+所以下面我只要有一个字段和变量名对应的map，什么就会搞定了。
+于是有了如下的代码：
+
+.. code-block:: groovy
+    :linenos:
+
+    class DomainClassInfoService {
+    
+        def sessionFactory
+        def grailsApplication
+    
+        def getDomainClass(clazzName) {
+            return grailsApplication.domainClasses.find {
+                it.name == clazzName
+            }
+        }
+    
+        def getFieldColumnMap(clazz) {
+            def fieldColumnMap = [:]
+            def hibernateMetaClass = sessionFactory.getClassMetadata(clazz)
+            def grailsDomainClass = getDomainClass(clazz.getSimpleName())
+            def domainProps = grailsDomainClass.getProperties()
+    
+            domainProps.each { prop ->
+                //get the property's name
+                def propName = prop.getName()
+                //please refer to the hibernate javadoc
+                //http://www.hibernate.org/hib_docs/v3/api/org/hibernate/persister/entity/AbstractEntityPersister.html
+                def columnProps = hibernateMetaClass.getPropertyColumnNames(propName)
+                if (columnProps && columnProps.length > 0) {
+                    //get the columnname, which is stored into the first array
+                    def columnName = columnProps[0]
+                    fieldColumnMap[propName] = columnName
+                }
+            }
+            return fieldColumnMap
+        }
+    }
+
+以上代码说明如下：
+ * 5 ~ 6 行注入将要使用的两个服务，一个是hibernate的sessionFactory， 另外一个是grailsApplication 上下文
+ * 7 ~ 9 这个方法是根据给定的段类名。比如有一个Domain Class的全名为 org.gunn.domain.Book 这里的clazzName 就是Book。
+   * 第 8 行是从grailsApplication中获取所有Domain Class的DefaultGrailsDomainClass这个类的对象。这里牵涉到一个Artefact的概念，请参考 https://grails.org/Developer+-+Artefact+API
+ * 12 ~ 28 行就是 根据Domain Class中的变量来获取数据库对应的的字段名。 有代码在这里就不多解释了。
+
+结合我们上面的那个properties的小技巧，我们就使用如下代码来完成使用Sql查询数据，转换成Domain Class的对象。
+
+.. code-block:: groovy
+    :linenos:
+
+    String querySql = ''' select * from table where field1 = ? '''
+
+    def tripSegmentFieldColumnMap = domainClassInfoService.getFieldColumnMap(SomeDomain)
+    Sql sql = new Sql(dataSource)
+    sql.eachRow(querySql, field1Value){
+       SomeDomain someObject = new SomeDomain() 
+       tripSegmentFieldColumnMap.each { key, value ->
+            someObject.getProperties()[key] = it[value]
+       }
+     }
+
+这个方法对于非关系的，没有太大问题。如果有类似于一对多这样的关系的话，会引起hibernate中著名的n+1的问题。例如SomeDomain 中有一个变量是SomeParent, 并且SomeDomain belong to 这个SomeParent的话。那么像上面那样直接赋值就会引起去发起数据库查询请求查询SomeParent的。所以可以使用如下的方式进行避免：
+
+.. code-block:: groovy
+
+    
+    sql.eachRow(querySql, field1Value){
+       SomeDomain someObject = new SomeDomain() 
+       SomeParent someParent = new SomeParent()
+       someParent.id = it.parentId
+       tripSegmentFieldColumnMap.each { key, value ->
+            if(key != "parentId")
+                someObject.getProperties()[key] = it[value]
+       }
+       someObject.parent = someParent
+
+这个办法很土，如果你又更好的。欢迎分享！谢谢！
+
+
+   
+
+
+
 
 
    
