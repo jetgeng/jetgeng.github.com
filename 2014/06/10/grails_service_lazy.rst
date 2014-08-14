@@ -59,8 +59,8 @@ Grails 中服务懒加载
 参考资料
 --------
 
- # http://grails.1312388.n4.nabble.com/Is-it-possible-to-avoid-lazy-services-initialization-td4646285.html
- # http://stackoverflow.com/questions/14832002/postconstruct-fails-silently-on-a-grails-service
+#. http://grails.1312388.n4.nabble.com/Is-it-possible-to-avoid-lazy-services-initialization-td4646285.html
+#. http://stackoverflow.com/questions/14832002/postconstruct-fails-silently-on-a-grails-service
 
 
 

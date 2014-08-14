@@ -61,9 +61,10 @@
 </div>
 <div class="section" id="id3">
 <h2>参考资料</h2>
-<blockquote>
-<div># <a class="reference external" href="http://grails.1312388.n4.nabble.com/Is-it-possible-to-avoid-lazy-services-initialization-td4646285.html">http://grails.1312388.n4.nabble.com/Is-it-possible-to-avoid-lazy-services-initialization-td4646285.html</a>
-# <a class="reference external" href="http://stackoverflow.com/questions/14832002/postconstruct-fails-silently-on-a-grails-service">http://stackoverflow.com/questions/14832002/postconstruct-fails-silently-on-a-grails-service</a></div></blockquote>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://grails.1312388.n4.nabble.com/Is-it-possible-to-avoid-lazy-services-initialization-td4646285.html">http://grails.1312388.n4.nabble.com/Is-it-possible-to-avoid-lazy-services-initialization-td4646285.html</a></li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/14832002/postconstruct-fails-silently-on-a-grails-service">http://stackoverflow.com/questions/14832002/postconstruct-fails-silently-on-a-grails-service</a></li>
+</ol>
 </div>
 ]]></description>
              <pubDate>Tue, 10 Jun 2014 00:00:00 +0800</pubDate>
@@ -690,11 +691,10 @@ git push refs/tags/release-1.0:refs/tags/release-1.0
 </pre></div>
 </td></tr></table></div>
 <p>代码说明:</p>
-<blockquote>
-<div># 第一行 删除远端原来的tag
-# 第2~3行 重新创建并推送到远端
-# 第5行 另外一种推送方式。相对底层的推送方式。</div></blockquote>
-<p>好了，打完收工。tag就修正好。</p>
+<p>1. 第一行 删除远端原来的tag
+1. 第2~3行 重新创建并推送到远端
+1. 第5行 另外一种推送方式。相对底层的推送方式。
+好了，打完收工。tag就修正好。</p>
 <div class="section" id="id2">
 <h3>查看标签创建的时间</h3>
 <div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">"format:%ci %d"</span>
