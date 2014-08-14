@@ -5,8 +5,55 @@
         <link>http://jetgeng.github.com/blog/html/</link>
         <description>记录我和Java，Groovy,Python的点点滴滴</description>
         <language>en-us</language>
-        <pubDate>Mon, 02 Jun 2014 00:00:00 +0800</pubDate>
+        <pubDate>Tue, 10 Jun 2014 00:00:00 +0800</pubDate>
         
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2014/06/10/grails_service_lazy.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2014/06/10/grails_service_lazy.html</guid>
+            <title><![CDATA[Grails 中服务懒加载]]></title>
+            <description><![CDATA[<h1>Grails 中服务懒加载</h1>
+<div class="section" id="id1">
+<h2>现象</h2>
+<p>前两天在Grails中使用guava的EventBus做消息分发时发现我得一个Subscrib死活没有被调用。很时费解！</p>
+<p>我代码的结构如下:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="kd">class</span> <span class="nc">HandlerAServices</span> <span class="o">{</span>
+
+    <span class="kt">def</span> <span class="n">eventBus</span>
+
+    <span class="nd">@PostConstruct</span>
+    <span class="kt">def</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">)</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Subscribe</span>
+    <span class="kt">def</span> <span class="nf">someEventHandler</span><span class="o">(</span><span class="n">SomeEvent</span> <span class="n">event</span><span class="o">){</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">HandlerBServices</span> <span class="o">{</span>
+
+    <span class="kt">def</span> <span class="n">eventBus</span>
+
+    <span class="nd">@PostConstruct</span>
+    <span class="kt">def</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">)</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Subscribe</span>
+    <span class="kt">def</span> <span class="nf">someEventHandler</span><span class="o">(</span><span class="n">SomeEvent</span> <span class="n">event</span><span class="o">){</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>最后当有SomeEvent这个的事件发出时 发现HandlerBServices 中得someEventHandler 方法被调用，HandlerAServices 中的someEventHandler完全没有执行。 同样的代码，同样的配置啊。怎么会这么邪乎呢！</p>
+</div>
+<div class="section" id="id2">
+<h2>求解</h2>
+</div>
+]]></description>
+             <pubDate>Tue, 10 Jun 2014 00:00:00 +0800</pubDate>
+        </item>
+    
         <item>
             <link>http://jetgeng.github.com/blog/html/2014/06/02/sql2pojo.html</link>
             <guid>http://jetgeng.github.com/blog/html/2014/06/02/sql2pojo.html</guid>
@@ -628,6 +675,43 @@ git push origin -- tag
 2013-11-26 00:09:57 +0800  <span class="o">(</span>tag: v1.0.1<span class="o">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>分支相关</h2>
+<div class="section" id="id4">
+<h3>创建分支</h3>
+<p>从当前分支创建一个新分支：</p>
+<div class="highlight-bash"><div class="highlight"><pre>git checkout -b BranchName
+</pre></div>
+</div>
+<p>从远端分支创建一个新分支</p>
+<div class="highlight-bash"><div class="highlight"><pre>git checkout -b &lt;branch&gt; --track &lt;remote&gt;/&lt;branch&gt;
+git checkout -b &lt;branch&gt; &lt;remote&gt;/&lt;branch&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>删除分支</h3>
+<p>删除本地分支：</p>
+<div class="highlight-bash"><div class="highlight"><pre>git branch -d &lt;branch&gt;
+</pre></div>
+</div>
+<p>删除远程分支</p>
+<div class="highlight-bash"><div class="highlight"><pre>git push &lt;remote&gt; --delete &lt;branch&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>推送代码到远端</h2>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#推送tracked的分支</span>
+git push &lt;remote&gt;
+<span class="c">#推送当前分支到远端特定分支</span>
+git push &lt;remote&gt; &lt;remote_branch&gt;
+<span class="c">#将本地特定分支推送到远端特定分支</span>
+git push &lt;remote &lt;local_branch&gt;:&lt;remote_branch&gt;
+</pre></div>
 </div>
 </div>
 ]]></description>

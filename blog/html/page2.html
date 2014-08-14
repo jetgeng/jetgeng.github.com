@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>第 2 页 &mdash; 愚钝的故事</title>
+        <title>Page 2 &mdash; 愚钝的故事</title>
             <link rel="stylesheet" href="_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="_static/main.css" type="text/css">
@@ -28,7 +28,7 @@
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
         <script src="_static/main.js"></script>
-        <link rel="next" title="较旧" href="page3.html" /><link rel="prev" title="较新" href="index.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="next" title="Older" href="page3.html" /><link rel="prev" title="Newer" href="index.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.4.2',
@@ -70,16 +70,199 @@
             <ul><li class="quicklink"><div class="rss">
         <a href="rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
     </div></li><li class="main-nav">
-                  <a href="index.html">首页</a>
+                  <a href="index.html">Home</a>
                 </li>
               <li class="main-nav">
                   <a href="pages/aboutme.html">关于我</a>
                 </li>
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="index.html">较新</a></li>
-            <li class="right"><a href="page3.html">较旧</a> &raquo; </li>
+            <li class="left"> &laquo; <a href="index.html">Newer</a></li>
+            <li class="right"><a href="page3.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>May 25, 2014</span>
+        </div>
+        <div class="section" id="spring-mvc">
+<h1><a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a></h1>
+<div class="section" id="id1">
+<h2>背景</h2>
+<dl class="docutils">
+<dt>在已有项目中使用了spring mvc中的Validation框架做验证。在使用的过程中发现改框架有如下缺点：</dt>
+<dd><ol class="first last arabic simple">
+<li>验证规则在编译期确定。 不能在运行期重新设定验证规则</li>
+<li>自定义一个验证规则比较麻烦。需要自己定义一个注解。</li>
+<li>验证规则分散在各个类的注解中。</li>
+</ol>
+</dd>
+</dl>
+<p>对于第一个缺点在在我们的新项目中变的不可接受了。我们的系统是一个多租户的Saas系统。 针对多家租户我们采用了一套代码完成所有逻辑。 同一个对象在不同的租户中他的验证规则不一定相同。而一个对象属于哪个租户只有在运行期才能知道。所以为了能够根据对象属于哪个租户而动态的选择验证规则，我们对Spring的验证框架做了一点扩展。</p>
+<p>最后有了一个新的验证框架。</p>
+</div>
+<div class="section" id="id2">
+<h2>新的验证框架的使用</h2>
+<div class="section" id="id3">
+<h3>定义规则</h3>
+<p>使用我们这个新的验证框架你需要做在classpath的可见范围创建一个名为validator.qr（改文件目前是写死的，后续可以考虑通过一个开关来指定）的文件。这个文件保存的就是我们所有的验证规则。
+他本质上是一段groovy脚本。只不过加上了一点关于验证的语法。我们可以称它针对验证的DSL。
+下面就是他常见的样子:</p>
+<div class="highlight-groovy"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">groovy.time.TimeCategory</span>
+<span class="kn">import</span> <span class="nn">....</span>
+
+<span class="kt">def</span> <span class="n">somePattern</span> <span class="o">=</span> <span class="s">/(\d{6})?/</span>
+<span class="kt">def</span> <span class="n">searchTypes</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"OnewayFlight"</span><span class="o">,</span><span class="s2">"onewaybus"</span><span class="o">,</span><span class="s2">"RoundtripFlight"</span><span class="o">,</span><span class="s2">"roundtripbus"</span><span class="o">,</span><span class="s2">"RoundTripFlight"</span><span class="o">]</span>
+<span class="o">...</span>
+
+<span class="kt">def</span> <span class="n">someClosure</span> <span class="o">=</span> <span class="o">{</span> <span class="n">val</span><span class="o">,</span> <span class="n">obj</span> <span class="o">-&gt;</span>
+<span class="o">}</span>
+<span class="o">...</span>
+
+<span class="n">rules</span><span class="o">(</span><span class="nl">site:</span><span class="s1">'*'</span><span class="o">){</span>
+    <span class="n">BookForm</span><span class="o">(</span><span class="nl">package:</span><span class="s1">'com.gunn.bean'</span><span class="o">){</span>
+        <span class="n">searchType</span> <span class="nl">blank:</span><span class="kc">false</span><span class="o">,</span> <span class="nl">inList:</span><span class="n">searchTypes</span><span class="o">,</span> <span class="nl">nullable:</span> <span class="kc">false</span>
+
+        <span class="n">INVOCE</span> <span class="o">{</span>
+        <span class="c1">//组</span>
+            <span class="n">invoiceRecipientMobile</span> <span class="nl">nullable:</span><span class="kc">false</span><span class="o">,</span> <span class="nl">matches:</span><span class="s">/(1\d{10})?/</span><span class="o">,</span> <span class="nl">blank:</span><span class="kc">false</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">rules</span><span class="o">(</span><span class="nl">site:</span><span class="s1">'hubei'</span><span class="o">){</span>
+    <span class="n">BookForm</span><span class="o">(</span><span class="nl">package:</span><span class="s1">'com.gunn.bus.busship.bean'</span><span class="o">){</span>
+        <span class="n">searchType</span> <span class="nl">blank:</span><span class="kc">true</span><span class="o">,</span> <span class="nl">inList:</span><span class="n">searchTypes</span><span class="o">,</span> <span class="nl">nullable:</span> <span class="kc">false</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>下面是对这段DSL的详细说明：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>1~2 行是导入类，就和java中导入要使用的类一样</li>
+<li>4~5 行定义了一些公用的变量。 可以没有。</li>
+<li>8~10 行定义一些公用的方法或闭包。可以在验证规则中使用。可以没有。</li>
+<li>12~21 行定义了组公用规则。不属于任何旗舰店。但是他时基础的规则。在验证过程中，优先寻找特定旗舰店定义的规则段。如果找不到。就到这个通用规则段来找。<ul>
+<li>12 行 定义规则。site熟悉用于标示这个规则应用于那家租户。<strong>*</strong> 表示这个规则组是一个通用规则组。整个验证规则中只能有一个。</li>
+<li>13 行 定义了一个正对于一个类的验证规则。该规则应用于com.gunn.bean.BookForm</li>
+<li>14 行 是对BookForm中的searchType一个字段的规则进行约定。 blank:flase 表示该字段不能是一个空的字符串。 inList: searchTypes 表示该字段的值必须在searchTypes 这个列表中。 nullable: false 表示这个字段不能为空。</li>
+<li>16 行表示定义一个验证组(Group). 默认情况下对这个对象验证的时候Group 内的规则是不去校验的。只有当显式调用的时候才会去验证。</li>
+</ul>
+</li>
+<li>23 ~ 27行 是为hubei定义了一组 验证规则。其他内容和公用组的机制一样。</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3>创建校验器</h3>
+<p>在spring 配置文件中加上如下内容：</p>
+<blockquote>
+<div><div class="highlight-xml"><div class="highlight"><pre><span class="c">&lt;!-- validator bean --&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"com.gunn.bus.validate.ValidatorConfigManager"</span> <span class="na">id=</span><span class="s">"validatorConfigManager"</span> <span class="na">init-method=</span><span class="s">"init"</span> <span class="nt">&gt;</span>
+   <span class="nt">&lt;aop:scoped-proxy</span> <span class="na">proxy-target-class=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="controller">
+<h3>在Controller中使用</h3>
+<p>这个时候校验器就已经创建好了。下面就是使用他了。使用也很简单。 在Controller类中添加如下代码：</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Autowired</span>
+<span class="kd">private</span> <span class="n">ValidatorConfigManager</span> <span class="n">validator</span> <span class="n">ConfigManager</span><span class="o">;</span>
+
+<span class="nd">@InitBinder</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">initBinder</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="n">ServletRequestDataBin</span> <span class="n">der</span> <span class="n">binder</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">binder</span><span class="o">.</span><span class="na">setValidator</span><span class="o">(</span><span class="n">validatorConfigManager</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>验证框架的实现</h1>
+<div class="section" id="id6">
+<h2>背景知识</h2>
+<p>这个框架是对Spring的验证机制的一个扩展。
+这个框架主要的几个类入下图。</p>
+<p class="plantuml">
+<img src="_images/plantuml-abd6dc5eac452cb3e824d6920a977538ecf19208.png" alt="interface Validator{&#10;    validate(Object target, Errors error)&#10;}&#10;&#10;class SpringValidatorAdapter{&#10;}&#10;&#10;Validator &lt;|-- SpringValidatorAdapter&#10;&#10;class DataBinder {&#10;&#10;}&#10;&#10;Validator &lt;-- DataBinder"/>
+</p>
+<p>主要就是这么几个类。一个请求进入spring框架到验证的调用过程如下图:</p>
+<div class="align-center figure">
+<img alt="../../../_images/from_doDispatch.png" src="_images/from_doDispatch.png"/>
+</div>
+<p>上图需要额外说明。</p>
+</div>
+<div class="section" id="id7">
+<h2>配置期</h2>
+<p>这个时期的主要任务如下：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>新建我们扩展的Validator。 也就是com.qunar.flight.flagship.validate.ValidatorConfigManager</li>
+<li>从配置文件读取，解析验证规则</li>
+<li>根据验证规则创建验证对象</li>
+<li>将验证规则存放到ValidatorConfigManager</li>
+</ol>
+</div></blockquote>
+<div class="section" id="id8">
+<h3>出发之前</h3>
+<p>在开始之前我需要先对Groovy的一些特性做点了解:</p>
+<dl class="docutils">
+<dt>闭包</dt>
+<dd>闭包就是一个可执行的代码片段。</dd>
+<dt>metaClass 元类</dt>
+<dd>允许你动态的为一个类添加一些方法。</dd>
+<dt>builder</dt>
+<dd>先来看个例子. <a class="reference external" href="http://groovy.codehaus.org/Swing+Builder">http://groovy.codehaus.org/Swing+Builder</a></dd>
+</dl>
+</div>
+<div class="section" id="id9">
+<h3>实现配置部分</h3>
+<p>我们先从高处看一下我们的结构：</p>
+<p class="plantuml">
+<img src="_images/plantuml-34c0019ce96703a7cfafb0115a005c3f637428e5.png" alt="interface Validator{&#10;    validate(Object target, Errors error)&#10;}&#10;&#10;class ValidatorConfigManager{&#10;    validateRuleContainer:Map&#10;    __&#10;    init()&#10;    configValidateRules()&#10;    runDSL()&#10;    __&#10;    validate()&#10;    getValidateRule()&#10;}&#10;&#10;class ValidateGroup{&#10;   pojoClassName : String&#10;   name : String&#10;   constrainedProperties : Map&lt;String, ConstrainedProperty3R&gt;&#10;}&#10;&#10;class ConstrainedProperty3r{&#10;&#10;}&#10;&#10;Validator &lt;|-- ValidatorConfigManager&#10;ValidatorConfigManager --&gt; ValidateGroup&#10;ValidateGroup --&gt; ConstrainedProperty3r&#10;ValidatorConfigManager --&gt; SpringValidatorConfigureationDelegate&#10;SpringValidatorConfigureationDelegate --&gt; ValidatorConfigurationBuilder"/>
+</p>
+</div>
+</div>
+</div>
+
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Jet Geng</span>
+        </div>
+        
+        
+        <div class="comments">
+            <a href="http://jetgeng.github.com/blog/html/2014/05/25/validateenchance.html#disqus_thread" data-disqus-identifier="2014/05/25/validateenchance">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>March 21, 2014</span>
         </div>
         <h1><a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a></h1>
@@ -97,207 +280,22 @@ Attach your debugger by running your “Grails Remote” config. Done.</div></bl
 
         <div class="postmeta">
         <div class="author">
-            <span>发布者 Jet Geng</span>
+            <span>Posted by Jet Geng</span>
         </div>
         
         
         <div class="comments">
             <a href="http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html#disqus_thread" data-disqus-identifier="2014/03/21/grails_2_3">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>March 14, 2014</span>
-        </div>
-        <h1><a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a></h1>
-<div class="section" id="id1">
-<h2>前因</h2>
-<p>有系统使用Logback使用RollingFileAppender来记录日志，并且每个小时换成一个新的文件。 这样有个问题如果一个系统在超过一个小时没有打印任何log的时候。
-log文件就会出现不连续的情况。例如用如下配置：</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"LOG"</span>
-           <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.RollingFileAppender"</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;file&gt;</span>target/test-output/rolling_file.log<span class="nt">&lt;/file&gt;</span>
-     <span class="nt">&lt;rollingPolicy</span>
-             <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.TimeBasedRollingPolicy"</span><span class="nt">&gt;</span>
-         <span class="nt">&lt;FileNamePattern&gt;</span>
-             target/test-output/qunarrolling_file.%d{yyyy-MM-dd-HH}.log
-         <span class="nt">&lt;/FileNamePattern&gt;</span>
-     <span class="nt">&lt;/rollingPolicy&gt;</span>
-     <span class="nt">&lt;layout&gt;</span>
-         <span class="nt">&lt;Pattern&gt;</span>%date [%thread] %-5level %logger - %msg%n<span class="nt">&lt;/Pattern&gt;</span>
-     <span class="nt">&lt;/layout&gt;</span>
- <span class="nt">&lt;/appender&gt;</span>
-</pre></div>
-</div>
-<p>如果我在2014-03-13-15开始打印log，15点有打印信息，16点没有，17点有。那么我的log文件如下：</p>
-<p>如果我在2014-03-13-15开始打印log，15点有打印信息，16点没有，17点有。那么我的log文件如下：</p>
-<div class="highlight-bash"><div class="highlight"><pre>ls -1
-rolling_file.log
-rolling_file.2014-03-13-15.log
-rolling_file.2014-03-13-17.log
-</pre></div>
-</div>
-<p>没有 rolling_file.2014-03-13-15.log 这个文件。我们希望是就是么有log输出，也需要有这个文件。这个就是我们的需求。
-为了这个需求开始读logback的代码。我版的版本是1.1.1</p>
-</div>
-<div class="section" id="id2">
-<h2>分析</h2>
-<p>通过阅读LogBack的源码发现如下结构：</p>
-<p class="plantuml">
-<img src="_images/plantuml-52b276328f19272bb063ec61cf468244d1e30727.png" alt="class RollingFileAppender{     +rollover():void     +subAppend(event:E):void }  interface TriggeringPolicy{ }  interface RollingPolicy{ }  class TimeBasedRollingPolicy{ }  class RollingPolicyBase{ }  class DefaultTimeBasedFileNamingAndTriggeringPolicy{     +isTriggeringEvent(activeFile:File, event E) }  RollingFileAppender -left-&gt; TriggeringPolicy RollingFileAppender -right-&gt; RollingPolicy RollingPolicy &lt;|.. RollingPolicyBase RollingPolicyBase &lt;|-- TimeBasedRollingPolicy TimeBasedRollingPolicy ..|&gt; TriggeringPolicy TimeBasedRollingPolicy --&gt; DefaultTimeBasedFileNamingAndTriggeringPolicy"/>
-</p>
-<dl class="docutils">
-<dt><strong>RollingFileAppender</strong></dt>
-<dd>根据RollingPolicy和TriggeringPolicy的计算结果来备份文件，并且创建一下新的文件来记录log。这个功能的实现是由rollover方法来实现。</dd>
-<dt><strong>RollingPolicy</strong></dt>
-<dd>计算什么时候要去新建一个文件。RollingFileAppender在何时新建文件这方面完全听他的。具体的是在RollingFileAppender的subAppend方法中。不过真正觉得何时创建文件，并不是该接口的实现累实现的。而是下面的DefaultTimeBasedFileNamingAndTriggeringPolicy</dd>
-<dt><strong>DefaultTimeBasedFileNamingAndTriggeringPolicy</strong></dt>
-<dd>该类是最后的老板，有他决定是不是到了要进行文件切换的时候了。具体的实现方法为：isTriggeringEvent</dd>
-</dl>
-<p>找到了最后的老板DefaultTimeBasedFileNamingAndTriggeringPolicy，我只要简单扩展这个类就可以了。然后配置logback的时候就使用我们这个就可以了。</p>
-</div>
-<div class="section" id="id3">
-<h2>动手</h2>
-<p>新建一个类继承 DefaultTimeBasedFileNamingAndTriggeringPolicy 重写其中的isTriggeringEvent方法。在该方法中将一次将log的文件名变成当前时间的文件名的步骤变成，分成多个时间段。循环做rollover 的动作。于是有了下面的代码：</p>
-<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span>
-    <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
-<span class="hll">    <span class="k">while</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
-</span>        <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
-        <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
-        <span class="n">elapsedPeriodsFileName</span> <span class="o">=</span> <span class="n">tbrp</span><span class="o">.</span><span class="na">fileNamePatternWCS</span><span class="o">.</span><span class="na">convert</span><span class="o">(</span><span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
-<span class="hll">        <span class="n">tbrp</span><span class="o">.</span><span class="na">rollover</span><span class="o">();</span>
-</span>        <span class="n">setDateInCurrentPeriod</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
-        <span class="n">computeNextCheck</span><span class="o">();</span>
-        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-</td></tr></table></div>
-<p>代码说明：</p>
-<blockquote>
-<div><blockquote>
-<div><ol class="arabic simple">
-<li>第4行 说明被漏掉的时间点会进入循环。</li>
-<li>第8行 简单的认为TimeBasedRollingPolicy中rollover会做所有事情。</li>
-</ol>
-</div></blockquote>
-<p>其实第8行并只是完成了重命名文件的任务。但是并没有完成创建新文件，将新文件打开的功能。最后还是在rollover方法中做了。这样的改动总结成两个字 <strong>“失败”</strong> ！
-问题出现在那里呢？</p>
-<p>重新理顺思路：
-#. 理清楚DefaultTimeBasedFileNamingAndTriggeringPolicy 的职责，他就是用于计算是否要rollover, 提供当前文件的文件名就可以了。他并不去参与rollover这个过程。rollover过程也只有RollingFileAppender 来处理。
-#. 遵循logback的惯例，新建一个类继承于RollingFileAppender， 让他在subAppend的时候调用多次rollover就好了。</p>
-</div></blockquote>
-</div>
-<div class="section" id="id4">
-<h2>重写</h2>
-<p class="plantuml">
-<img src="_images/plantuml-b560654b92490ddc2ed37d4b07a6dc0f3612dfd9.png" alt="RollingFileAppender &lt;|-- ContinueRollingFileAppender DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamingAndTriggeringPolicy"/>
-</p>
-<p>ContinueRollingFileAppender 的重载subAppend方法为：</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Override</span>
-     <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">subAppend</span><span class="o">(</span><span class="n">E</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-             <span class="kd">synchronized</span> <span class="o">(</span><span class="n">triggeringPolicy</span><span class="o">)</span> <span class="o">{</span>
-                     <span class="k">while</span> <span class="o">(</span><span class="n">triggeringPolicy</span><span class="o">.</span><span class="na">isTriggeringEvent</span><span class="o">(</span><span class="n">currentlyActiveFile</span><span class="o">,</span> <span class="n">event</span><span class="o">))</span> <span class="o">{</span>
-                             <span class="n">rollover</span><span class="o">();</span>
-                     <span class="o">}</span>
-             <span class="o">}</span>
-             <span class="kd">super</span><span class="o">.</span><span class="na">subAppend</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
- <span class="o">}</span>
-</pre></div>
-</div>
-<p>ContinueTimeBasedFileNamingAndTriggeringPolicy的最终内容变为：</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContinueTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">DefaultTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LogbackLock</span><span class="o">();</span>
-
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
-                    <span class="k">if</span> <span class="o">(</span><span class="n">tbrp</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-                            <span class="kd">super</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-                    <span class="o">}</span>
-            <span class="o">}</span>
-
-            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
-                    <span class="k">if</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
-                            <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
-                            <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
-                            <span class="n">elapsedPeriodsFileName</span> <span class="o">=</span> <span class="n">tbrp</span><span class="o">.</span><span class="na">fileNamePatternWCS</span><span class="o">.</span><span class="na">convert</span><span class="o">(</span><span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
-                            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"elapsedPeriodsFileName is "</span> <span class="o">+</span> <span class="n">elapsedPeriodsFileName</span><span class="o">);</span>
-                            <span class="n">setDateInCurrentPeriod</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
-                            <span class="n">computeNextCheck</span><span class="o">();</span>
-                            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-                    <span class="o">}</span>
-            <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-</div>
-<p>最后我把配置文件修改为：</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;configuration</span> <span class="na">scan=</span><span class="s">"true"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"LOG"</span>
-          <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.ContinueRollingFileAppender"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;file&gt;</span>target/test-output/demo.log<span class="nt">&lt;/file&gt;</span>
-    <span class="nt">&lt;rollingPolicy</span>
-            <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.TimeBasedRollingPolicy"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;FileNamePattern&gt;</span>
-            target/test-output/demo.%d{yyyy-MM-dd-HH-mm}.log
-        <span class="nt">&lt;/FileNamePattern&gt;</span>
-        <span class="nt">&lt;timeBasedFileNamingAndTriggeringPolicy</span>
-                <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.ContinuePolicyTimeBasedFileNamingAndTriggeringPolicy"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/timeBasedFileNamingAndTriggeringPolicy&gt;</span>
-    <span class="nt">&lt;/rollingPolicy&gt;</span>
-    <span class="nt">&lt;layout&gt;</span>
-        <span class="nt">&lt;Pattern&gt;</span>%date [%thread] %-5level %logger - %msg%n<span class="nt">&lt;/Pattern&gt;</span>
-    <span class="nt">&lt;/layout&gt;</span>
-<span class="nt">&lt;/appender&gt;</span>
-<span class="nt">&lt;root</span> <span class="na">level=</span><span class="s">"DEBUG"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"LOG"</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/root&gt;</span>
-<span class="nt">&lt;/configuration&gt;</span>
-</pre></div>
-</div>
-<p>这个时候一切按照我们需求中要求的进行着。这个小功能就扩展结束了。</p>
-</div>
-<div class="section" id="id5">
-<h2>收工</h2>
-<dl class="docutils">
-<dt>在写完这点东西后想想自己的收获：</dt>
-<dd><ol class="first last arabic simple">
-<li>发现LogBack设计很不错，可以考虑通读一下。</li>
-<li>在扩展现有框架的时候注意了解现有框架的思路。不要违反他的原来的设计思路。不然你会倒霉的。</li>
-</ol>
-</dd>
-</dl>
-</div>
-
-        <div class="postmeta">
-        <div class="author">
-            <span>发布者 Jet Geng</span>
-        </div>
-        
-        
-        <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/03/14/logbackenhance.html#disqus_thread" data-disqus-identifier="2014/03/14/logbackenhance">Leave a comment</a>
         </div></div><div class="archive_link">
-        <a href="archive.html"> &mdash; 博客归档 &mdash; </a>
+        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="index.html">较新</a></li>
-            <li class="right"><a href="page3.html">较旧</a> &raquo; </li>
+            <li class="left"> &laquo; <a href="index.html">Newer</a></li>
+            <li class="right"><a href="page3.html">Older</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget">
-    <h1>近期的文章</h1>
+    <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2014/06/10/grails_service_lazy.html">Grails 中服务懒加载</a>
+        </li><li>
             <a href="2014/06/02/sql2pojo.html">在Grails使用Sql获取数据</a>
         </li><li>
             <a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
@@ -315,8 +313,6 @@ rolling_file.2014-03-13-17.log
             <a href="2013/02/16/soapui_mock.html">用SoapUI mock Web服务</a>
         </li><li>
             <a href="2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
-        </li><li>
-            <a href="2012/08/21/pyaudio.html">Kid Capture开发手记</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">

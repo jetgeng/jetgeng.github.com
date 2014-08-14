@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>又一个查找重复文件的工具 &mdash; 愚钝的故事</title>
+        <title>Grails 中服务懒加载 &mdash; 愚钝的故事</title>
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
@@ -28,7 +28,7 @@
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <link rel="next" title="在Grails使用Sql获取数据" href="../02/sql2pojo.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
         VERSION:     '1.4.2',
@@ -76,63 +76,76 @@
                   <a href="../../../pages/aboutme.html">关于我</a>
                 </li>
               </ul>
-          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><div class="timestamp postmeta">
-            <span>December 31, 2012</span>
+          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../02/sql2pojo.html">在Grails使用Sql获取数据</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>June 10, 2014</span>
         </div>
-    <div class="section" id="id1">
-<h1>又一个查找重复文件的工具</h1>
-<p>有一块放了很多照片的硬盘，想整理出来另作他用。由于当时偷懒，把照片放的乱。甚至有一张照片放了很多份。浪费空间不说，主要是找个东西太费劲。
-所以就下决心自己写一个小工具把这些照片整理整理。</p>
+    <div class="section" id="grails">
+<h1>Grails 中服务懒加载</h1>
+<div class="section" id="id1">
+<h2>现象</h2>
+<p>前两天在Grails中使用guava的EventBus做消息分发时发现我得一个Subscrib死活没有被调用。很时费解！</p>
+<p>我代码的结构如下:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="kd">class</span> <span class="nc">HandlerAServices</span> <span class="o">{</span>
+
+    <span class="kt">def</span> <span class="n">eventBus</span>
+
+    <span class="nd">@PostConstruct</span>
+    <span class="kt">def</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">)</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Subscribe</span>
+    <span class="kt">def</span> <span class="nf">someEventHandler</span><span class="o">(</span><span class="n">SomeEvent</span> <span class="n">event</span><span class="o">){</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">HandlerBServices</span> <span class="o">{</span>
+
+    <span class="kt">def</span> <span class="n">eventBus</span>
+
+    <span class="nd">@PostConstruct</span>
+    <span class="kt">def</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">)</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Subscribe</span>
+    <span class="kt">def</span> <span class="nf">someEventHandler</span><span class="o">(</span><span class="n">SomeEvent</span> <span class="n">event</span><span class="o">){</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>最后当有SomeEvent这个的事件发出时 发现HandlerBServices 中得someEventHandler 方法被调用，HandlerAServices 中的someEventHandler完全没有执行。 同样的代码，同样的配置啊。怎么会这么邪乎呢！</p>
+</div>
 <div class="section" id="id2">
-<h2>技术方案</h2>
-<blockquote>
-<div><ol class="arabic simple">
-<li>这种小东西用Python写会很快。就不用多想了。直接用他就OK了。</li>
-<li><a class="reference external" href="http://pypi.python.org/pypi/argparse">argparse</a> , 用来做命令的解析。</li>
-<li><a class="reference external" href="http://pypi.python.org/pypi/sh/1.07">sh</a> ,用于执行一些命令。</li>
-<li>使用git hash-object 命令获取文件的sha1</li>
-</ol>
-</div></blockquote>
-</div>
-<div class="section" id="id3">
-<h2>设计思路</h2>
-<p>这是一个命令行软件。命令行格式为：</p>
-<div class="highlight-bash"><div class="highlight"><pre>./fileDupFinder.py -e Extend -s sourcefolder -t targetfolder
-</pre></div>
-</div>
-<p>参数选项    长选项  用途
--e          &#8211;extend    将要处理文件的扩展名，不区分大小写
--s          &#8211;source    处理的源目录
--t          &#8211;target    处理的输出目录
-.. uml:</p>
-<div class="highlight-python"><div class="highlight"><pre>class {
-}
-</pre></div>
-</div>
+<h2>求解</h2>
 </div>
 </div>
 
     <div class="postmeta">
+        <div class="author">
+            <span>Posted by Jet Geng</span>
+        </div>
         
         
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="../../../tags/python.html">Python</a></span>
         </div>
-        </div>
-    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    var disqus_identifier = "2012/12/31/finderdumplicate";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    var disqus_identifier = "2014/06/10/grails_service_lazy";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../02/sql2pojo.html">在Grails使用Sql获取数据</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
-            <a href="../../../2014/06/10/grails_service_lazy.html">Grails 中服务懒加载</a>
+            <a href="#">Grails 中服务懒加载</a>
         </li><li>
-            <a href="../../../2014/06/02/sql2pojo.html">在Grails使用Sql获取数据</a>
+            <a href="../02/sql2pojo.html">在Grails使用Sql获取数据</a>
         </li><li>
-            <a href="../../../2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
+            <a href="../../05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
         </li><li>
-            <a href="../../../2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
+            <a href="../../03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
         </li><li>
-            <a href="../../../2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
+            <a href="../../03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
         </li><li>
             <a href="../../../2013/11/26/gittips.html">Git使用小技巧</a>
         </li><li>
@@ -142,7 +155,7 @@
         </li><li>
             <a href="../../../2013/02/16/soapui_mock.html">用SoapUI mock Web服务</a>
         </li><li>
-            <a href="../11/webinosgi.html">在OSGi中部署Web应用(一)</a>
+            <a href="../../../2012/12/11/webinosgi.html">在OSGi中部署Web应用(一)</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">

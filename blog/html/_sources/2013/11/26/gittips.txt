@@ -49,6 +49,66 @@ Git使用小技巧
 
 
 
+分支相关
+--------
+创建分支
+^^^^^^^^
+
+从当前分支创建一个新分支：
+
+.. code-block:: bash
+
+    git checkout -b BranchName
+
+从远端分支创建一个新分支
+
+.. code-block:: bash
+
+   git checkout -b <branch> --track <remote>/<branch>
+   git checkout -b <branch> <remote>/<branch>
+
+
+删除分支
+^^^^^^^^
+
+删除本地分支：
+
+.. code-block:: bash
+
+   git branch -d <branch>
+
+删除远程分支
+
+.. code-block:: bash
+
+   git push <remote> --delete <branch>
+
+推送代码到远端
+--------------
+
+.. code-block:: bash
+
+   #推送tracked的分支
+   git push <remote> 
+   #推送当前分支到远端特定分支
+   git push <remote> <remote_branch>
+   #将本地特定分支推送到远端特定分支
+   git push <remote <local_branch>:<remote_branch>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

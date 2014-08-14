@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/06/10/grails_service_lazy
    2014/06/02/sql2pojo
    2014/05/25/validateenchance
    2014/03/21/grails_2_3
