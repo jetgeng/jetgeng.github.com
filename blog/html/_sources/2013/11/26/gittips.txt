@@ -27,6 +27,8 @@ Git使用小技巧
    or
    git push refs/tags/release-1.0:refs/tags/release-1.0
 
+代码说明:
+
  # 第一行 删除远端原来的tag
  # 第2~3行 重新创建并推送到远端
  # 第5行 另外一种推送方式。相对底层的推送方式。

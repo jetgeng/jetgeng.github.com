@@ -96,6 +96,22 @@ git push origin -- tag
 稍等，qa又测试出bug了。你这个tag上的内容还不能发布。修改吧。经过一堆修改。git add , git commit 操作以后问题搞定了。
 这一回是真的，真的可以提交了。可以打tag了。但是那个那么好的，和功能那么匹配的tag name已经被占用了。把他删除掉，再加一下就好了。
 所以我们需要如下的操作：</p>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre>git push --delete origin cool_tagname
+git tag -a cool_tagname -m <span class="s1">&#39;&#39;</span>
+git push origin --tag
+or
+git push refs/tags/release-1.0:refs/tags/release-1.0
+</pre></div>
+</td></tr></table></div>
+<p>代码说明:</p>
+<blockquote>
+<div># 第一行 删除远端原来的tag
+# 第2~3行 重新创建并推送到远端
+# 第5行 另外一种推送方式。相对底层的推送方式。</div></blockquote>
 <p>好了，打完收工。tag就修正好。</p>
 <div class="section" id="id2">
 <h3>查看标签创建的时间</h3>
