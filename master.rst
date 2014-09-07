@@ -4,6 +4,8 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/09/07/redis_shiro
+   2014/08/20/seriitell
    2014/06/10/grails_service_lazy
    2014/06/02/sql2pojo
    2014/05/25/validateenchance
