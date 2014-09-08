@@ -80,6 +80,36 @@
             <li class="left"></li>
             <li class="right"><a href="page2.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>September 08, 2014</span>
+        </div>
+        <h1><a href="2014/09/08/redis_on_centos.html">在CentOS上安装Redis</a></h1>
+<p>redis 用的人越来越到。他在linux上安装也很简单。官方文档http://redis.io/topics/quickstart 已经说的很清楚了。</p>
+<p>不过在CentOS 上遇到了问题。我的CentOS是一个很干净的系统，没有装过任何其他的东西。所以编译用的gcc 都没有。在Debian 系统中一句 <span class="docutils literal"><span class="pre">`</span> <span class="pre">apt-get</span>  <span class="pre">build-essential</span> <span class="pre">`</span></span> 就可以搞定一切了。
+在CentOs中是不是有对应的呢，当然是有了！</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo yum groupinstall <span class="s2">"Development Tools"</span>
+</pre></div>
+</div>
+<p>这样就搞定了！ 可以继续使用make命令来执行了。</p>
+<p>不过要命的是我用的是CentOS release 6.5 (Final) 遇到了他的那个 #error “Newer version of jemalloc required” 错误。这个是让我升级jemalloc的节奏啊。</p>
+<p>我去那里找这个jemalloc啊？不要找其实已经有了。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>deps
+make hiredis jemalloc linenoise lua
+<span class="nb">cd</span> ..
+make install
+</pre></div>
+</div>
+<p>这个事情就这么搞定了！</p>
+<p>这个解决方案源自 <a class="reference external" href="http://unix.stackexchange.com/questions/94479/jemalloc-and-other-errors-making-redis-on-centos-6-4">http://unix.stackexchange.com/questions/94479/jemalloc-and-other-errors-making-redis-on-centos-6-4</a></p>
+
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Jet Geng</span>
+        </div>
+        
+        
+        <div class="comments">
+            <a href="http://jetgeng.github.com/blog/html/2014/09/08/redis_on_centos.html#disqus_thread" data-disqus-identifier="2014/09/08/redis_on_centos">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>September 07, 2014</span>
         </div>
         <h1><a href="2014/09/07/redis_shiro.html">使用Redis让Shiro实现集群</a></h1>
@@ -149,18 +179,6 @@
         
         <div class="comments">
             <a href="http://jetgeng.github.com/blog/html/2014/09/07/redis_shiro.html#disqus_thread" data-disqus-identifier="2014/09/07/redis_shiro">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>August 20, 2014</span>
-        </div>
-        seriitell
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Jet Geng</span>
-        </div>
-        
-        
-        <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/08/20/seriitell.html#disqus_thread" data-disqus-identifier="2014/08/20/seriitell">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
@@ -169,6 +187,8 @@
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2014/09/08/redis_on_centos.html">在CentOS上安装Redis</a>
+        </li><li>
             <a href="2014/09/07/redis_shiro.html">使用Redis让Shiro实现集群</a>
         </li><li>
             <a href="2014/08/20/seriitell.html">seriitell</a>
@@ -186,8 +206,6 @@
             <a href="2013/11/26/gittips.html">Git使用小技巧</a>
         </li><li>
             <a href="2013/08/23/scodestory.html">一段代码演变的故事</a>
-        </li><li>
-            <a href="2013/02/16/lsfiles.html">如何查看进程打开的文件</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">
