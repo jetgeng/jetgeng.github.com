@@ -1,6 +1,7 @@
 如何查看进程打开的文件
 ============================
 
+
 今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！
 
 首先要做的是找到相应的pid。 我们使用
@@ -43,6 +44,9 @@
         firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
         firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
  
+
+
+
 
 .. author:: Jet 
 .. categories:: CLI  

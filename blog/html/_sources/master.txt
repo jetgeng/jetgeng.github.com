@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/09/18/cas_intro
    2014/09/08/redis_on_centos
    2014/09/07/redis_shiro
    2014/08/20/seriitell
