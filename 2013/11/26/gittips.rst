@@ -84,6 +84,8 @@ Git使用小技巧
 .. code-block:: bash
 
    git push <remote> --delete <branch>
+   or
+   git push <remote> :<branch>
 
 推送代码到远端
 --------------
