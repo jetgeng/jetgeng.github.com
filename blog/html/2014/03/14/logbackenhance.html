@@ -24,13 +24,14 @@
             <link rel="stylesheet" href="../../../_static/font-awesome.min.css" type="text/css">
         <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
         <link rel="next" title="Git使用小技巧" href="../../../2013/11/26/gittips.html" /><link rel="prev" title="Grails从2.2升级到2.3.3遇到的问题" href="../21/grails_2_3.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '1.4.2',
+        VERSION:     '1.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -75,7 +76,7 @@
                   <a href="../../../pages/aboutme.html">关于我</a>
                 </li>
               </ul>
-          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
+          </nav><div class="main-container" role="main"><div class="main wrapper body clearfix"><article role="article"><ul class="related clearfix">
             <li class="left"> &laquo; <a href="../21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a></li>
             <li class="right"><a href="../../../2013/11/26/gittips.html">Git使用小技巧</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
@@ -172,7 +173,7 @@ TimeBasedRollingPolicy --&gt; DefaultTimeBasedFileNamingAndTriggeringPolicy" />
 12
 13</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span>
     <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
 <span class="hll">    <span class="k">while</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
 </span>        <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
         <span class="n">addInfo</span><span class="o">(</span><span class="s">&quot;Elapsed period: &quot;</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
@@ -220,7 +221,7 @@ DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamin
 </div>
 <p>ContinueTimeBasedFileNamingAndTriggeringPolicy的最终内容变为：</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContinueTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">DefaultTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LogbackLock</span><span class="o">();</span>
+        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">LogbackLock</span><span class="o">();</span>
 
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
@@ -231,7 +232,7 @@ DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamin
 
             <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
                     <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
                     <span class="k">if</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
                             <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
                             <span class="n">addInfo</span><span class="o">(</span><span class="s">&quot;Elapsed period: &quot;</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
@@ -299,6 +300,10 @@ DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamin
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="../../12/27/groovytips.html">Groovy小技巧</a>
+        </li><li>
+            <a href="../../12/27/grailstips.html">Grails 技巧汇集</a>
+        </li><li>
             <a href="../../09/18/cas_intro.html">单点登录CAS简介</a>
         </li><li>
             <a href="../../09/08/redis_on_centos.html">在CentOS上安装Redis</a>
@@ -314,14 +319,10 @@ DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamin
             <a href="../../05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
         </li><li>
             <a href="../21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
-        </li><li>
-            <a href="#">增强LogBack的RollingFileAppender</a>
-        </li><li>
-            <a href="../../../2013/11/26/gittips.html">Git使用小技巧</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">
-    <h1>Search</h1>
+    <h1><a href="#searchbox">Search</a></h1>
     <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="fa fa-search"></span></button>
@@ -331,6 +332,7 @@ DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamin
         <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
           <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
         <![endif]-->
     </body>

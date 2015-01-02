@@ -55,8 +55,6 @@ blockdiag_fontpath = '/usr/share/fonts/truetype/wqy/wqy-microhei.ttc'
 # Add other Sphinx extensions here
 extensions = [
              'sphinxcontrib.plantuml',
-              'sphinxcontrib.blockdiag',
-              'sphinxcontrib.seqdiag',
               'tinkerer.ext.blog',
               'tinkerer.ext.disqus',
               'withgithub',

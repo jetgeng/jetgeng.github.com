@@ -5,8 +5,43 @@
         <link>http://jetgeng.github.com/blog/html/</link>
         <description>记录我和Java，Groovy,Python的点点滴滴</description>
         <language>en-us</language>
-        <pubDate>Thu, 18 Sep 2014 00:00:00 +0800</pubDate>
+        <pubDate>Sat, 27 Dec 2014 00:00:00 +0800</pubDate>
         
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2014/12/27/groovytips.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2014/12/27/groovytips.html</guid>
+            <title><![CDATA[Groovy小技巧]]></title>
+            <description><![CDATA[<h1>Groovy小技巧</h1>
+<p>会持续收集一些认为不错的Groovy小技巧。防止被遗忘！</p>
+]]></description>
+             <pubDate>Sat, 27 Dec 2014 00:00:00 +0800</pubDate>
+        </item>
+    
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2014/12/27/grailstips.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2014/12/27/grailstips.html</guid>
+            <title><![CDATA[Grails 技巧汇集]]></title>
+            <description><![CDATA[<h1>Grails 技巧汇集</h1>
+<div class="section" id="service">
+<h2>Service 相关</h2>
+</div>
+<div class="section" id="id1">
+<h2>读取配置信息</h2>
+<p>在Config.groovy文件中</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="n">my</span><span class="o">.</span><span class="na">property</span> <span class="o">=</span> <span class="s1">'some value'</span>
+</pre></div>
+</div>
+<p>读取配置的任何地方:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="kt">def</span> <span class="n">grailsApplication</span>
+
+<span class="n">grailsApplication</span><span class="o">.</span><span class="na">config</span><span class="o">.</span><span class="na">my</span><span class="o">.</span><span class="na">property</span>
+</pre></div>
+</div>
+</div>
+]]></description>
+             <pubDate>Sat, 27 Dec 2014 00:00:00 +0800</pubDate>
+        </item>
+    
         <item>
             <link>http://jetgeng.github.com/blog/html/2014/09/18/cas_intro.html</link>
             <guid>http://jetgeng.github.com/blog/html/2014/09/18/cas_intro.html</guid>
@@ -657,7 +692,7 @@ rolling_file.2014-03-13-17.log
 12
 13</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span>
     <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
 <span class="hll">    <span class="k">while</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
 </span>        <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
         <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
@@ -704,7 +739,7 @@ rolling_file.2014-03-13-17.log
 </div>
 <p>ContinueTimeBasedFileNamingAndTriggeringPolicy的最终内容变为：</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContinueTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">DefaultTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LogbackLock</span><span class="o">();</span>
+        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">LogbackLock</span><span class="o">();</span>
 
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
@@ -715,7 +750,7 @@ rolling_file.2014-03-13-17.log
 
             <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
                     <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
                     <span class="k">if</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
                             <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
                             <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
@@ -887,7 +922,7 @@ git push &lt;remote &lt;local_branch&gt;:&lt;remote_branch&gt;
   <span class="o">}</span>
 
   <span class="kd">private</span> <span class="kd">static</span> <span class="nf">loadOldPOJO</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
-      <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">POJO</span><span class="o">();</span>
+      <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">POJO</span><span class="o">();</span>
       <span class="n">String</span> <span class="n">sql1</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
       <span class="n">getRS</span><span class="o">(</span><span class="n">sql1</span><span class="o">)</span> <span class="c1">//根据一个Sql查询POJO中的一部分。拼装入pojo</span>
       <span class="o">............</span>
@@ -957,8 +992,8 @@ BatchOperate 方法中用于解决如何保存的问题。
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;();</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;</span> <span class="n">daoMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;();</span>
 <span class="kd">static</span> <span class="o">{</span>
-    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">SomePOJORecordCallBack</span><span class="o">())</span>
-    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">AnotherPOJORecordCallBack</span><span class="o">())</span>
+    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nf">SomePOJORecordCallBack</span><span class="o">())</span>
+    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nf">AnotherPOJORecordCallBack</span><span class="o">())</span>
     <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">SomePOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
     <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
 
@@ -1010,9 +1045,9 @@ BatchOperate 方法中用于解决如何保存的问题。
 <p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
 <p>首先要做的是找到相应的pid。 我们使用</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef | grep <span class="o">{</span>programe-name<span class="o">}</span>
+<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef <span class="p">|</span> grep <span class="o">{</span>programe-name<span class="o">}</span>
 
-ps -aef | grep
+ps -aef <span class="p">|</span> grep
 </pre></div>
 </div>
 </div></blockquote>
@@ -1029,19 +1064,19 @@ ps -aef | grep
 </pre></div>
 </div>
 <p>输出的样例如下：</p>
-<div class="highlight-bash"><div class="highlight"><pre>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
-firefox 547 xxxx  txt      REG               14,2     63712   888627 /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
-firefox 547 xxxx  txt      REG               14,2    115792 16394163 /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
-firefox 547 xxxx  txt      REG               14,2    416260 16394166 /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
-firefox 547 xxxx  txt      REG               14,2     48140 16394174 /Applications/Firefox.app/Contents/MacOS/libplc4.dylib
-firefox 547 xxxx  txt      REG               14,2     43220 16394175 /Applications/Firefox.app/Contents/MacOS/libplds4.dylib
-firefox 547 xxxx  txt      REG               14,2    269952 16394173 /Applications/Firefox.app/Contents/MacOS/libnssutil3.dylib
-firefox 547 xxxx  txt      REG               14,2     25820 16394162 /Applications/Firefox.app/Contents/MacOS/libmozalloc.dylib
-firefox 547 xxxx  txt      REG               14,2     41328 16394181 /Applications/Firefox.app/Contents/MacOS/libxpcom.dylib
-firefox 547 xxxx  txt      REG               14,2   2040008 16394168 /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
-firefox 547 xxxx  txt      REG               14,2    304076 16394177 /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
-firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
-firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
+<div class="highlight-bash"><div class="highlight"><pre>firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">53776</span> <span class="m">16394158</span> /Applications/Firefox.app/Contents/MacOS/firefox
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">63712</span>   <span class="m">888627</span> /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">115792</span> <span class="m">16394163</span> /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">416260</span> <span class="m">16394166</span> /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">48140</span> <span class="m">16394174</span> /Applications/Firefox.app/Contents/MacOS/libplc4.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">43220</span> <span class="m">16394175</span> /Applications/Firefox.app/Contents/MacOS/libplds4.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">269952</span> <span class="m">16394173</span> /Applications/Firefox.app/Contents/MacOS/libnssutil3.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">25820</span> <span class="m">16394162</span> /Applications/Firefox.app/Contents/MacOS/libmozalloc.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">41328</span> <span class="m">16394181</span> /Applications/Firefox.app/Contents/MacOS/libxpcom.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2   <span class="m">2040008</span> <span class="m">16394168</span> /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">304076</span> <span class="m">16394177</span> /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">459504</span> <span class="m">16394180</span> /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2   <span class="m">1732832</span> <span class="m">16394165</span> /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
 </pre></div>
 </div>
 ]]></description>
@@ -1132,7 +1167,7 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
             <description><![CDATA[<h1>在OSGi中部署Web应用(一)</h1>
 <div class="section" id="id1">
 <h2>概述</h2>
-<p>在很久很久以前，我们用 ‘HTTP Registry’_  在OSGi环境中注册Servlet，JSP以及静态资源。或者通过 <a class="reference external" href="http://git.eclipse.org/c/equinox/rt.equinox.bundles.git/tree/bundles/org.eclipse.equinox.http.servletbridge">HTTP ServletBridge</a>  在Web容器中启动一个OSGi的方式来实现Web应用和OSGi的集合。在很多文章 <a class="footnote-reference" href="#id5" id="id2">[1]</a> 中都有描述。
+<p>在很久很久以前，我们用 ‘HTTP Registry’_  在OSGi环境中注册Servlet，JSP以及静态资源。或者通过 <a class="reference external" href="http://git.eclipse.org/c/equinox/rt.equinox.bundles.git/tree/bundles/org.eclipse.equinox.http.servletbridge/">HTTP ServletBridge</a>  在Web容器中启动一个OSGi的方式来实现Web应用和OSGi的集合。在很多文章 <a class="footnote-reference" href="#id5" id="id2">[1]</a> 中都有描述。
 但是这样的方式让传统的Web程序员望而生畏他们熟悉的web.xml文件，WEB-INF文件夹在 ‘HTTP Registry’_ 方式中都不见了， 更要命的是对Filter都没有的支持还不全。 为了实现模块化他们甚至要重现学习OSGi的相关内容。所以他们停住了脚本。
 不过现在好了，有了 <a class="reference external" href="http://wiki.eclipse.org/Jetty/Feature/Jetty_OSGi">org.eclipse.jetty.osgi.boot</a> 这一切都发生了改变。</p>
 <dl class="docutils">
@@ -1158,9 +1193,9 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
 <blockquote>
 <div><ol class="arabic simple">
 <li>JDK 1.5 向上。</li>
-<li>OSGi Framework， 推荐Equniox 下载地址为： <a class="reference external" href="http://download.eclipse.org/equinox">http://download.eclipse.org/equinox/</a></li>
-<li>Jetty Bundles发行包 下载地址为： <a class="reference external" href="http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.5.v20120716">http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.5.v20120716/</a></li>
-<li>带有PDE 的Eclipse。 下载地址为： <a class="reference external" href="http://www.eclipse.org/downloads">http://www.eclipse.org/downloads/</a></li>
+<li>OSGi Framework， 推荐Equniox 下载地址为： <a class="reference external" href="http://download.eclipse.org/equinox/">http://download.eclipse.org/equinox/</a></li>
+<li>Jetty Bundles发行包 下载地址为： <a class="reference external" href="http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.5.v20120716/">http://download.eclipse.org/jetty/updates/jetty-bundles-8.x/8.1.5.v20120716/</a></li>
+<li>带有PDE 的Eclipse。 下载地址为： <a class="reference external" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a></li>
 </ol>
 </div></blockquote>
 <div class="section" id="target-platform">
@@ -1228,7 +1263,7 @@ org.hamcrest.core_1.1.0.v20090501071000
 </pre></div>
 </div>
 <p>在启动阐述中加入</p>
-<div class="highlight-bash"><div class="highlight"><pre>-Djetty.home<span class="o">=</span><span class="k">${</span><span class="nv">jetty</span><span class="p">.home</span><span class="k">}</span>
+<div class="highlight-bash"><div class="highlight"><pre>-Djetty.home<span class="o">=</span><span class="si">${</span><span class="nv">jetty</span><span class="p">.home</span><span class="si">}</span>
 </pre></div>
 </div>
 <p>在${jetty.home} 这个目录中包括如下结构：</p>
@@ -1261,7 +1296,7 @@ index.html
 2012-12-17 18:21:28.599:INFO:oejsh.ContextHandler:started o.e.j.w.WebAppContext<span class="o">{</span>/org.web,file:/private/var/folders/z3/38fg6pfx37z6tbfw6878tps80000gn/T/jetty-0.0.0.0-9080-org.web.war-_org.web-any-/webapp/<span class="o">}</span>, /temp/jetty-home/webapps/org.web.war
 </pre></div>
 </div>
-<p>这个时候我们访问一下 <a class="reference external" href="http://localhost:9080/org.web">http://localhost:9080/org.web/</a> 这个url。可以看到如下效果：</p>
+<p>这个时候我们访问一下 <a class="reference external" href="http://localhost:9080/org.web/">http://localhost:9080/org.web/</a> 这个url。可以看到如下效果：</p>
 <img alt="../../../_images/osgi_web.jpg" src="http://jetgeng.github.com/blog/html/_images/osgi_web.jpg"/>
 <p>这个时候我们就已经将传统的Web应用部署到OSGi中来了。但是他现在还不能访问OSGi中资源！我们这就来干这活！</p>
 </div>
@@ -1285,9 +1320,9 @@ Import-Package: org.eclipse.osgi.framework.adaptor,
  org.eclipse.osgi.framework.internal.core,
  org.eclipse.osgi.internal.baseadaptor,
  org.eclipse.osgi.internal.loader,
- org.osgi.framework;version<span class="o">=</span><span class="s2">"1.3.0"</span>
+ org.osgi.framework<span class="p">;</span><span class="nv">version</span><span class="o">=</span><span class="s2">"1.3.0"</span>
 Web-ContextPath: /web/demo
-Require-Bundle: org.eclipse.jetty.osgi.boot;bundle-version<span class="o">=</span><span class="s2">"8.1.0"</span>
+Require-Bundle: org.eclipse.jetty.osgi.boot<span class="p">;</span>bundle-version<span class="o">=</span><span class="s2">"8.1.0"</span>
 Bundle-ClassPath: WEB-INF/classes,
  .
 </pre></div>
@@ -1310,7 +1345,7 @@ Bundle-ClassPath: WEB-INF/classes,
 <table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label"/><col/></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://www.ibm.com/developerworks/cn/web/0907_osgiweb_liuqing">使用Equinox 框架进行OSGi环境下的Web开发</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://www.ibm.com/developerworks/cn/web/0907_osgiweb_liuqing/">使用Equinox 框架进行OSGi环境下的Web开发</a></td></tr>
 </tbody>
 </table>
 </div>
@@ -1360,10 +1395,10 @@ Bundle-ClassPath: WEB-INF/classes,
 所以决定采用如下的工具</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>开发语言– <a class="reference external" href="http://python.org">Python</a></li>
-<li>图形界面框架 – <a class="reference external" href="http://wxpython.org">wxPython</a></li>
-<li>图像采集和分析框架 – <a class="reference external" href="http://opencv.org">OpenCV</a></li>
-<li>声音采集工具  – <a class="reference external" href="http://people.csail.mit.edu/hubert/pyaudio">PyAudio</a></li>
+<li>开发语言– <a class="reference external" href="http://python.org/">Python</a></li>
+<li>图形界面框架 – <a class="reference external" href="http://wxpython.org/">wxPython</a></li>
+<li>图像采集和分析框架 – <a class="reference external" href="http://opencv.org/">OpenCV</a></li>
+<li>声音采集工具  – <a class="reference external" href="http://people.csail.mit.edu/hubert/pyaudio/">PyAudio</a></li>
 </ol>
 </div></blockquote>
 </div>
@@ -1409,7 +1444,7 @@ Bundle-ClassPath: WEB-INF/classes,
 <li>11 ~ 13 读取摄像头的数据帧，并显示到窗体中。</li>
 <li>15 ~ 16 判断有没有用户输入，如果是 esc键就退出。</li>
 </ol>
-<p>上面的代码就是视屏捕捉的所有核心！超级简单吧！不过有个问题上面的代码只能使用 <a class="reference external" href="http://opencv.org">OpenCV</a> 自己的图像界面，而且他的并不能集成到其他框架中来。所以要对他他做写改动才可以。</p>
+<p>上面的代码就是视屏捕捉的所有核心！超级简单吧！不过有个问题上面的代码只能使用 <a class="reference external" href="http://opencv.org/">OpenCV</a> 自己的图像界面，而且他的并不能集成到其他框架中来。所以要对他他做写改动才可以。</p>
 <blockquote>
 <div>在他的官方网站上找到了一个例子</div></blockquote>
 </div>
@@ -1551,7 +1586,7 @@ Bundle-ClassPath: WEB-INF/classes,
             <description><![CDATA[<h1>使用Maven和tycho构建OSGi插件项目</h1>
 <div class="section" id="tycho">
 <h2>介绍Tycho插件</h2>
-<p>自动构建OSGi Plugin项目，一直以来就是个头疼的问题。直到 <a class="reference external" href="http://eclipse.org/tycho">Tycho</a> 的出现,这些都不在成为问题了。用它你可以很轻松来构建Eclipse插件(Eclipse Plugin) , Eclipse features , Eclipse的更新站点(Update Site)以及可以直接执行的Eclipse产品(Eclipse Product)。
+<p>自动构建OSGi Plugin项目，一直以来就是个头疼的问题。直到 <a class="reference external" href="http://eclipse.org/tycho/">Tycho</a> 的出现,这些都不在成为问题了。用它你可以很轻松来构建Eclipse插件(Eclipse Plugin) , Eclipse features , Eclipse的更新站点(Update Site)以及可以直接执行的Eclipse产品(Eclipse Product)。
 Tycho插件将会直接使用Eclipse项目中MANIFEST.MF中所包含的依赖信息。这样依赖pom.xml文件就会很小。</p>
 </div>
 <div class="section" id="nexus">

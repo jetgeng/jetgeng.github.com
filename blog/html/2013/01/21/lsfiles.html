@@ -24,13 +24,14 @@
             <link rel="stylesheet" href="../../../_static/font-awesome.min.css" type="text/css">
         <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
         <link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '1.4.2',
+        VERSION:     '1.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -75,7 +76,7 @@
                   <a href="../../../pages/aboutme.html">关于我</a>
                 </li>
               </ul>
-          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><div class="timestamp postmeta">
+          </nav><div class="main-container" role="main"><div class="main wrapper body clearfix"><article role="article"><div class="timestamp postmeta">
             <span>January 21, 2013</span>
         </div>
     <div class="section" id="id1">
@@ -83,9 +84,9 @@
 <p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
 <p>首先要做的是找到相应的pid。 我们使用</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef | grep <span class="o">{</span>programe-name<span class="o">}</span>
+<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef <span class="p">|</span> grep <span class="o">{</span>programe-name<span class="o">}</span>
 
-ps -aef | grep
+ps -aef <span class="p">|</span> grep
 </pre></div>
 </div>
 </div></blockquote>
@@ -135,6 +136,10 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
     <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    var disqus_identifier = "2013/01/21/lsfiles";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="../../../2014/12/27/groovytips.html">Groovy小技巧</a>
+        </li><li>
+            <a href="../../../2014/12/27/grailstips.html">Grails 技巧汇集</a>
+        </li><li>
             <a href="../../../2014/09/18/cas_intro.html">单点登录CAS简介</a>
         </li><li>
             <a href="../../../2014/09/08/redis_on_centos.html">在CentOS上安装Redis</a>
@@ -150,14 +155,10 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
             <a href="../../../2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
         </li><li>
             <a href="../../../2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
-        </li><li>
-            <a href="../../../2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
-        </li><li>
-            <a href="../../11/26/gittips.html">Git使用小技巧</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">
-    <h1>Search</h1>
+    <h1><a href="#searchbox">Search</a></h1>
     <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="fa fa-search"></span></button>
@@ -167,6 +168,7 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
         <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
           <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
         <![endif]-->
     </body>

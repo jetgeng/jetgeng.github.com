@@ -4,6 +4,8 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/12/27/groovytips
+   2014/12/27/grailstips
    2014/09/18/cas_intro
    2014/09/08/redis_on_centos
    2014/09/07/redis_shiro

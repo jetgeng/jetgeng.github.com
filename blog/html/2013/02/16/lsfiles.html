@@ -24,13 +24,14 @@
             <link rel="stylesheet" href="../../../_static/font-awesome.min.css" type="text/css">
         <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
         <link rel="next" title="用SoapUI mock Web服务" href="soapui_mock.html" /><link rel="prev" title="一段代码演变的故事" href="../../08/23/scodestory.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '1.4.2',
+        VERSION:     '1.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -75,7 +76,7 @@
                   <a href="../../../pages/aboutme.html">关于我</a>
                 </li>
               </ul>
-          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
+          </nav><div class="main-container" role="main"><div class="main wrapper body clearfix"><article role="article"><ul class="related clearfix">
             <li class="left"> &laquo; <a href="../../08/23/scodestory.html">一段代码演变的故事</a></li>
             <li class="right"><a href="soapui_mock.html">用SoapUI mock Web服务</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
@@ -86,9 +87,9 @@
 <p>今天有个同事问我如何查看某个进程打开了那些文件。说是在的我也不知道。所以简单的Google了一下。发现一些方法，真的很好用。特记录如下！</p>
 <p>首先要做的是找到相应的pid。 我们使用</p>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef | grep <span class="o">{</span>programe-name<span class="o">}</span>
+<div><div class="highlight-bash"><div class="highlight"><pre>ps -aef <span class="p">|</span> grep <span class="o">{</span>programe-name<span class="o">}</span>
 
-ps -aef | grep
+ps -aef <span class="p">|</span> grep
 </pre></div>
 </div>
 </div></blockquote>
@@ -105,19 +106,19 @@ ps -aef | grep
 </pre></div>
 </div>
 <p>输出的样例如下：</p>
-<div class="highlight-bash"><div class="highlight"><pre>firefox 547 xxxx  txt      REG               14,2     53776 16394158 /Applications/Firefox.app/Contents/MacOS/firefox
-firefox 547 xxxx  txt      REG               14,2     63712   888627 /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
-firefox 547 xxxx  txt      REG               14,2    115792 16394163 /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
-firefox 547 xxxx  txt      REG               14,2    416260 16394166 /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
-firefox 547 xxxx  txt      REG               14,2     48140 16394174 /Applications/Firefox.app/Contents/MacOS/libplc4.dylib
-firefox 547 xxxx  txt      REG               14,2     43220 16394175 /Applications/Firefox.app/Contents/MacOS/libplds4.dylib
-firefox 547 xxxx  txt      REG               14,2    269952 16394173 /Applications/Firefox.app/Contents/MacOS/libnssutil3.dylib
-firefox 547 xxxx  txt      REG               14,2     25820 16394162 /Applications/Firefox.app/Contents/MacOS/libmozalloc.dylib
-firefox 547 xxxx  txt      REG               14,2     41328 16394181 /Applications/Firefox.app/Contents/MacOS/libxpcom.dylib
-firefox 547 xxxx  txt      REG               14,2   2040008 16394168 /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
-firefox 547 xxxx  txt      REG               14,2    304076 16394177 /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
-firefox 547 xxxx  txt      REG               14,2    459504 16394180 /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
-firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
+<div class="highlight-bash"><div class="highlight"><pre>firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">53776</span> <span class="m">16394158</span> /Applications/Firefox.app/Contents/MacOS/firefox
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">63712</span>   <span class="m">888627</span> /System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">115792</span> <span class="m">16394163</span> /Applications/Firefox.app/Contents/MacOS/libmozglue.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">416260</span> <span class="m">16394166</span> /Applications/Firefox.app/Contents/MacOS/libnspr4.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">48140</span> <span class="m">16394174</span> /Applications/Firefox.app/Contents/MacOS/libplc4.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">43220</span> <span class="m">16394175</span> /Applications/Firefox.app/Contents/MacOS/libplds4.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">269952</span> <span class="m">16394173</span> /Applications/Firefox.app/Contents/MacOS/libnssutil3.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">25820</span> <span class="m">16394162</span> /Applications/Firefox.app/Contents/MacOS/libmozalloc.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2     <span class="m">41328</span> <span class="m">16394181</span> /Applications/Firefox.app/Contents/MacOS/libxpcom.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2   <span class="m">2040008</span> <span class="m">16394168</span> /Applications/Firefox.app/Contents/MacOS/libnss3.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">304076</span> <span class="m">16394177</span> /Applications/Firefox.app/Contents/MacOS/libsmime3.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2    <span class="m">459504</span> <span class="m">16394180</span> /Applications/Firefox.app/Contents/MacOS/libssl3.dylib
+firefox <span class="m">547</span> xxxx  txt      REG               14,2   <span class="m">1732832</span> <span class="m">16394165</span> /Applications/Firefox.app/Contents/MacOS/libmozsqlite3.dylib
 </pre></div>
 </div>
 </div>
@@ -143,6 +144,10 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="../../../2014/12/27/groovytips.html">Groovy小技巧</a>
+        </li><li>
+            <a href="../../../2014/12/27/grailstips.html">Grails 技巧汇集</a>
+        </li><li>
             <a href="../../../2014/09/18/cas_intro.html">单点登录CAS简介</a>
         </li><li>
             <a href="../../../2014/09/08/redis_on_centos.html">在CentOS上安装Redis</a>
@@ -158,14 +163,10 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
             <a href="../../../2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
         </li><li>
             <a href="../../../2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
-        </li><li>
-            <a href="../../../2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
-        </li><li>
-            <a href="../../11/26/gittips.html">Git使用小技巧</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">
-    <h1>Search</h1>
+    <h1><a href="#searchbox">Search</a></h1>
     <form action="../../../search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="fa fa-search"></span></button>
@@ -175,6 +176,7 @@ firefox 547 xxxx  txt      REG               14,2   1732832 16394165 /Applicatio
         <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
           <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
         <![endif]-->
     </body>

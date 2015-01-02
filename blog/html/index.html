@@ -24,13 +24,14 @@
             <link rel="stylesheet" href="_static/font-awesome.min.css" type="text/css">
         <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
         <script src="_static/main.js"></script>
         <link rel="next" title="Older" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.4.2',
+        VERSION:     '1.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -75,15 +76,17 @@
                   <a href="pages/aboutme.html">关于我</a>
                 </li>
               </ul>
-          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
+          </nav><div class="main-container" role="main"><div class="main wrapper body clearfix"><article role="article"><ul class="related clearfix">
             <li class="left"></li>
             <li class="right"><a href="page2.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>September 18, 2014</span>
+            <span>December 27, 2014</span>
         </div>
-        <h1><a href="2014/09/18/cas_intro.html">单点登录CAS简介</a></h1>
-<p>马上回来！</p>
+        <div class="section">
+            <h1><a href="2014/12/27/groovytips.html">Groovy小技巧</a></h1>
+<p>会持续收集一些认为不错的Groovy小技巧。防止被遗忘！</p>
 
+        </div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by Jet Geng</span>
@@ -91,37 +94,42 @@
         
         
         <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/09/18/cas_intro.html#disqus_thread" data-disqus-identifier="2014/09/18/cas_intro">Leave a comment</a>
+            <a href="http://jetgeng.github.com/blog/html/2014/12/27/groovytips.html#disqus_thread" data-disqus-identifier="2014/12/27/groovytips">Leave a comment</a>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>September 08, 2014</span>
+            <span>December 27, 2014</span>
         </div>
-        <h1><a href="2014/09/08/redis_on_centos.html">在CentOS上安装Redis</a></h1>
-<p>redis 用的人越来越到。他在linux上安装也很简单。官方文档http://redis.io/topics/quickstart 已经说的很清楚了。</p>
-<p>不过在CentOS 上遇到了问题。我的CentOS是一个很干净的系统，没有装过任何其他的东西。所以编译用的gcc 都没有。在Debian 系统中一句 <span class="docutils literal"><span class="pre">`</span> <span class="pre">apt-get</span>  <span class="pre">build-essential</span> <span class="pre">`</span></span> 就可以搞定一切了。
-在CentOs中是不是有对应的呢，当然是有了！</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo yum groupinstall <span class="s2">"Development Tools"</span>
+        <div class="section">
+            <h1><a href="2014/12/27/grailstips.html">Grails 技巧汇集</a></h1>
+<div class="section" id="service">
+<h2>Service 相关</h2>
+</div>
+<div class="section" id="id1">
+<h2>读取配置信息</h2>
+<p>在Config.groovy文件中</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="n">my</span><span class="o">.</span><span class="na">property</span> <span class="o">=</span> <span class="s1">'some value'</span>
 </pre></div>
 </div>
-<p>这样就搞定了！ 可以继续使用make命令来执行了。</p>
-<p>不过要命的是我用的是CentOS release 6.5 (Final) 遇到了他的那个 #error “Newer version of jemalloc required” 错误。这个是让我升级jemalloc的节奏啊。</p>
-<p>我去那里找这个jemalloc啊？不要找其实已经有了。</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>deps
-make hiredis jemalloc linenoise lua
-<span class="nb">cd</span> ..
-make install
-</pre></div>
-</div>
-<p>这个事情就这么搞定了！</p>
-<p>这个解决方案源自 <a class="reference external" href="http://unix.stackexchange.com/questions/94479/jemalloc-and-other-errors-making-redis-on-centos-6-4">http://unix.stackexchange.com/questions/94479/jemalloc-and-other-errors-making-redis-on-centos-6-4</a></p>
+<p>读取配置的任何地方:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="kt">def</span> <span class="n">grailsApplication</span>
 
+<span class="n">grailsApplication</span><span class="o">.</span><span class="na">config</span><span class="o">.</span><span class="na">my</span><span class="o">.</span><span class="na">property</span>
+</pre></div>
+</div>
+</div>
+
+        </div>
         <div class="postmeta">
         <div class="author">
             <span>Posted by Jet Geng</span>
         </div>
         
-        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/grails.html">Grails</a></span>
+        </div>
         <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/09/08/redis_on_centos.html#disqus_thread" data-disqus-identifier="2014/09/08/redis_on_centos">Leave a comment</a>
+            <a href="http://jetgeng.github.com/blog/html/2014/12/27/grailstips.html#disqus_thread" data-disqus-identifier="2014/12/27/grailstips">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
@@ -130,6 +138,10 @@ make install
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2014/12/27/groovytips.html">Groovy小技巧</a>
+        </li><li>
+            <a href="2014/12/27/grailstips.html">Grails 技巧汇集</a>
+        </li><li>
             <a href="2014/09/18/cas_intro.html">单点登录CAS简介</a>
         </li><li>
             <a href="2014/09/08/redis_on_centos.html">在CentOS上安装Redis</a>
@@ -145,14 +157,10 @@ make install
             <a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
         </li><li>
             <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
-        </li><li>
-            <a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
-        </li><li>
-            <a href="2013/11/26/gittips.html">Git使用小技巧</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">
-    <h1>Search</h1>
+    <h1><a href="#searchbox">Search</a></h1>
     <form action="search.html" method="get">
         <input type="text" name="q" />
         <button type="submit"><span class="fa fa-search"></span></button>
@@ -162,6 +170,7 @@ make install
         <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, Jet Geng. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "techfoolishstory";    disqus_count();</script><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
           <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
         <![endif]-->
     </body>
