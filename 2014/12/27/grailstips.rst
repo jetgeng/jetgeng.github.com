@@ -5,6 +5,25 @@ Service 相关
 --------------------
 
 
+配置相关
+--------
+
+
+
+获取当前环境
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: java
+
+    import import grails.util.Environment
+    def currentEnvName = Environment.current
+    // currentEnvName 有可能是： "production" 线上环境
+    //                            'beta'    beta环境
+    //                            'dev'
+
+
+
+
 
 
 读取配置信息
