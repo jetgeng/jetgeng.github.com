@@ -12,6 +12,7 @@ ionic框架资料整理
 ------------
 
 1. 用ionic 做推送的例子。 https://github.com/hollyschinsky/PushNotificationSample
+1. ionic 自动更新 https://github.com/ben-ng/phonegap-air
 
 
 
