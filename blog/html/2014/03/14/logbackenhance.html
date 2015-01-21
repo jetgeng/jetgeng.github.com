@@ -173,7 +173,7 @@ TimeBasedRollingPolicy --&gt; DefaultTimeBasedFileNamingAndTriggeringPolicy" />
 12
 13</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span>
     <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
 <span class="hll">    <span class="k">while</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
 </span>        <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
         <span class="n">addInfo</span><span class="o">(</span><span class="s">&quot;Elapsed period: &quot;</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
@@ -221,7 +221,7 @@ DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamin
 </div>
 <p>ContinueTimeBasedFileNamingAndTriggeringPolicy的最终内容变为：</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContinueTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">DefaultTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">LogbackLock</span><span class="o">();</span>
+        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LogbackLock</span><span class="o">();</span>
 
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
@@ -232,7 +232,7 @@ DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamin
 
             <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
                     <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
                     <span class="k">if</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
                             <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
                             <span class="n">addInfo</span><span class="o">(</span><span class="s">&quot;Elapsed period: &quot;</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
@@ -300,6 +300,10 @@ DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamin
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="../../../2015/01/21/ionicdebug.html">ionic 项目的调试</a>
+        </li><li>
+            <a href="../../../2015/01/08/ionicinfo.html">ionic框架资料整理</a>
+        </li><li>
             <a href="../../12/27/groovytips.html">Groovy小技巧</a>
         </li><li>
             <a href="../../12/27/grailstips.html">Grails 技巧汇集</a>
@@ -315,10 +319,6 @@ DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamin
             <a href="../../06/02/sql2pojo.html">在Grails使用Sql获取数据</a>
         </li><li>
             <a href="../../05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
-        </li><li>
-            <a href="../21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
-        </li><li>
-            <a href="#">增强LogBack的RollingFileAppender</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">

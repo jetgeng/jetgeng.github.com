@@ -105,7 +105,7 @@
   <span class="o">}</span>
 
   <span class="kd">private</span> <span class="kd">static</span> <span class="nf">loadOldPOJO</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
-      <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">POJO</span><span class="o">();</span>
+      <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">POJO</span><span class="o">();</span>
       <span class="n">String</span> <span class="n">sql1</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
       <span class="n">getRS</span><span class="o">(</span><span class="n">sql1</span><span class="o">)</span> <span class="c1">//根据一个Sql查询POJO中的一部分。拼装入pojo</span>
       <span class="o">............</span>
@@ -204,8 +204,8 @@ BatchOperate 方法中用于解决如何保存的问题。
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;();</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;</span> <span class="n">daoMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;();</span>
 <span class="kd">static</span> <span class="o">{</span>
-    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nf">SomePOJORecordCallBack</span><span class="o">())</span>
-    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nf">AnotherPOJORecordCallBack</span><span class="o">())</span>
+    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">SomePOJORecordCallBack</span><span class="o">())</span>
+    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">AnotherPOJORecordCallBack</span><span class="o">())</span>
     <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">SomePOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
     <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
 
@@ -260,6 +260,10 @@ BatchOperate 方法中用于解决如何保存的问题。
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="../../../2015/01/21/ionicdebug.html">ionic 项目的调试</a>
+        </li><li>
+            <a href="../../../2015/01/08/ionicinfo.html">ionic框架资料整理</a>
+        </li><li>
             <a href="../../../2014/12/27/groovytips.html">Groovy小技巧</a>
         </li><li>
             <a href="../../../2014/12/27/grailstips.html">Grails 技巧汇集</a>
@@ -275,10 +279,6 @@ BatchOperate 方法中用于解决如何保存的问题。
             <a href="../../../2014/06/02/sql2pojo.html">在Grails使用Sql获取数据</a>
         </li><li>
             <a href="../../../2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
-        </li><li>
-            <a href="../../../2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
-        </li><li>
-            <a href="../../../2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">

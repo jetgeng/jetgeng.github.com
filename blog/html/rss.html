@@ -5,8 +5,121 @@
         <link>http://jetgeng.github.com/blog/html/</link>
         <description>记录我和Java，Groovy,Python的点点滴滴</description>
         <language>en-us</language>
-        <pubDate>Sat, 27 Dec 2014 00:00:00 +0800</pubDate>
+        <pubDate>Wed, 21 Jan 2015 00:00:00 +0800</pubDate>
         
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2015/01/21/ionicdebug.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2015/01/21/ionicdebug.html</guid>
+            <title><![CDATA[ionic 项目的调试]]></title>
+            <description><![CDATA[<h1>ionic 项目的调试</h1>
+<div class="section" id="id1">
+<h2>概述</h2>
+<p>在开发过程中，调试是一个非常重要的环境。调试的难易程度对开发效率有很大的影响。
+在使用ionic 做开发的时候有如下几种调试方式：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>通过浏览器调试</li>
+<li>通过 ionic run ios 命令在设备或模拟器中运行</li>
+<li>使用xcode或android 开发工具进行打包，安装部署到设备上。进行真机测试。</li>
+</ol>
+</div></blockquote>
+<p>这三种方式各有优缺，以及他们各自的适用场景。相互补充。所以下面分别对这三种方法进行说明。</p>
+</div>
+<div class="section" id="id2">
+<h2>通过浏览器调试</h2>
+<p>ionic 程序本身的展现层是用Angular JS来写的。所以可以很方便的在浏览器中调试。具体调试方法如下：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>在项目目录中执行 ionic serve</li>
+<li>在chrome或firefox浏览器的调试工具中进行调试。</li>
+<li>注意查看console 控制台。所有错误信息都会在哪里出现。</li>
+</ol>
+</div></blockquote>
+<p>该方法的不足是：只能调试展现类的内容。牵涉到手机原生的功能就无法调试了。</p>
+</div>
+<div class="section" id="id3">
+<h2>在设备或模拟器中调试</h2>
+<p>这种方法调试刚好可以弥补在浏览器里调试的不足，可以测试和手机相关的功能。</p>
+<p>测试方法如下：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>进入项目目录。</li>
+<li>运行 ionic run ios -s -l -c 这样的指令
+* -s 表示打印服务端的log
+* -c 表示打印客户端的log
+* -l 表示Live Reload。 就是说，你在电脑上对文件的改动，能立即反应到测试的手机上。</li>
+<li>根据各种log来调试你得程序。</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>该测试方法的不足的地方如下：</dt>
+<dd><ol class="first last arabic simple">
+<li>你需要拥有具体的设备。如果你想开发ios的程序的话。必须具备一个 装有Mac OSX系统的电脑(苹果机器，或黑苹果)，一个苹果的设备（iphone或ipad）， 一个开发者账户。</li>
+<li>需要让你的苹果设备和开发用的电脑在一个WiFi下。这样才能正常工作。原因是手机端的应用程序需要通过一个Websocket连接到开发用的电脑上。一旦电脑中的文件有变化，会立刻被刷新到手机上。</li>
+<li>他的测试结果不能100% 代表程序最终发布以后的结果。因为该方式获取资源的方式都是通过http访问开发用的电脑上，来获取资源。而正式的应用程序是从文件系统直接读取文件。在文件的获取上会存在差异。</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>通过原生的开发工具打包部署测试</h2>
+<p>这种方式是最后的测试。通过IDE环境打开特定platform下的项目对已有项目进行编译，部署，和执行。就像开发原生的程序一样。</p>
+<p>他的优点就是真实。不过在开始之前有一个小技巧需要了解。
+就是如果刚使用第一种和第二种方法测试后，一定要在项目目录下执行如下命令：</p>
+<div class="highlight-bash"><div class="highlight"><pre>ionic prepare ios
+<span class="c"># 或者</span>
+ionic prepare android
+</pre></div>
+</div>
+<p>这个语句是去除掉从远端获取资源。直接从本地读取。如果不执行，部署到设备上的程序将无法执行。</p>
+</div>
+<div class="section" id="id5">
+<h2>参考资料</h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference external" href="http://ionicframework.com/blog/live-reload-all-things-ionic-cli/">http://ionicframework.com/blog/live-reload-all-things-ionic-cli/</a></li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/26314005/ionic-failed-to-load-webpage-with-error-could-not-connect-to-the-server">http://stackoverflow.com/questions/26314005/ionic-failed-to-load-webpage-with-error-could-not-connect-to-the-server</a></li>
+</ol>
+</div></blockquote>
+</div>
+]]></description>
+            <category><![CDATA[ ionic ]]></category>
+             <pubDate>Wed, 21 Jan 2015 00:00:00 +0800</pubDate>
+        </item>
+    
+        <item>
+            <link>http://jetgeng.github.com/blog/html/2015/01/08/ionicinfo.html</link>
+            <guid>http://jetgeng.github.com/blog/html/2015/01/08/ionicinfo.html</guid>
+            <title><![CDATA[ionic框架资料整理]]></title>
+            <description><![CDATA[<h1>ionic框架资料整理</h1>
+<div class="section" id="id1">
+<h2>有用的网站</h2>
+<ol class="arabic simple">
+<li>最有用的当然是官方网站了。 <a class="reference external" href="http://ionicframework.com/">http://ionicframework.com/</a></li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>有用的小例子</h2>
+<p>1. 用ionic 做推送的例子。 <a class="reference external" href="https://github.com/hollyschinsky/PushNotificationSample">https://github.com/hollyschinsky/PushNotificationSample</a>
+1. ionic 自动更新 <a class="reference external" href="https://github.com/ben-ng/phonegap-air">https://github.com/ben-ng/phonegap-air</a></p>
+</div>
+<div class="section" id="id3">
+<h2>调试相关小技巧</h2>
+<div class="section" id="id4">
+<h3>调试阶段</h3>
+<div class="highlight-bash"><div class="highlight"><pre>ionic run ios -c -l -s
+</pre></div>
+</div>
+<p>会打印出各种信息.</p>
+</div>
+<div class="section" id="id5">
+<h3>为生产环境打包</h3>
+</div>
+</div>
+]]></description>
+             <pubDate>Thu, 08 Jan 2015 00:00:00 +0800</pubDate>
+        </item>
+    
         <item>
             <link>http://jetgeng.github.com/blog/html/2014/12/27/groovytips.html</link>
             <guid>http://jetgeng.github.com/blog/html/2014/12/27/groovytips.html</guid>
@@ -697,7 +810,7 @@ rolling_file.2014-03-13-17.log
 12
 13</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span>
     <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
 <span class="hll">    <span class="k">while</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
 </span>        <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
         <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
@@ -744,7 +857,7 @@ rolling_file.2014-03-13-17.log
 </div>
 <p>ContinueTimeBasedFileNamingAndTriggeringPolicy的最终内容变为：</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContinueTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">DefaultTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
-        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">LogbackLock</span><span class="o">();</span>
+        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LogbackLock</span><span class="o">();</span>
 
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
@@ -755,7 +868,7 @@ rolling_file.2014-03-13-17.log
 
             <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
                     <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
                     <span class="k">if</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
                             <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
                             <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
@@ -927,7 +1040,7 @@ git push &lt;remote &lt;local_branch&gt;:&lt;remote_branch&gt;
   <span class="o">}</span>
 
   <span class="kd">private</span> <span class="kd">static</span> <span class="nf">loadOldPOJO</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
-      <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">POJO</span><span class="o">();</span>
+      <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">POJO</span><span class="o">();</span>
       <span class="n">String</span> <span class="n">sql1</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
       <span class="n">getRS</span><span class="o">(</span><span class="n">sql1</span><span class="o">)</span> <span class="c1">//根据一个Sql查询POJO中的一部分。拼装入pojo</span>
       <span class="o">............</span>
@@ -997,8 +1110,8 @@ BatchOperate 方法中用于解决如何保存的问题。
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;();</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;</span> <span class="n">daoMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;();</span>
 <span class="kd">static</span> <span class="o">{</span>
-    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nf">SomePOJORecordCallBack</span><span class="o">())</span>
-    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nf">AnotherPOJORecordCallBack</span><span class="o">())</span>
+    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">SomePOJORecordCallBack</span><span class="o">())</span>
+    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">AnotherPOJORecordCallBack</span><span class="o">())</span>
     <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">SomePOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
     <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
 

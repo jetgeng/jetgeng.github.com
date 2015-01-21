@@ -80,54 +80,79 @@
             <li class="left"></li>
             <li class="right"><a href="page2.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>December 27, 2014</span>
+            <span>January 21, 2015</span>
         </div>
         <div class="section">
-            <h1><a href="2014/12/27/groovytips.html">Groovy小技巧</a></h1>
-<p>会持续收集一些认为不错的Groovy小技巧。防止被遗忘！</p>
-
-        </div>
-        <div class="postmeta">
-        <div class="author">
-            <span>Posted by Jet Geng</span>
-        </div>
-        
-        
-        <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/12/27/groovytips.html#disqus_thread" data-disqus-identifier="2014/12/27/groovytips">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>December 27, 2014</span>
-        </div>
-        <div class="section">
-            <h1><a href="2014/12/27/grailstips.html">Grails 技巧汇集</a></h1>
-<div class="section" id="service">
-<h2>Service 相关</h2>
-</div>
+            <h1><a href="2015/01/21/ionicdebug.html">ionic 项目的调试</a></h1>
 <div class="section" id="id1">
-<h2>配置相关</h2>
+<h2>概述</h2>
+<p>在开发过程中，调试是一个非常重要的环境。调试的难易程度对开发效率有很大的影响。
+在使用ionic 做开发的时候有如下几种调试方式：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>通过浏览器调试</li>
+<li>通过 ionic run ios 命令在设备或模拟器中运行</li>
+<li>使用xcode或android 开发工具进行打包，安装部署到设备上。进行真机测试。</li>
+</ol>
+</div></blockquote>
+<p>这三种方式各有优缺，以及他们各自的适用场景。相互补充。所以下面分别对这三种方法进行说明。</p>
+</div>
 <div class="section" id="id2">
-<h3>获取当前环境</h3>
-<div class="highlight-java"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">import</span> <span class="n">grails</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Environment</span>
-<span class="n">def</span> <span class="n">currentEnvName</span> <span class="o">=</span> <span class="n">Environment</span><span class="o">.</span><span class="na">current</span>
-<span class="c1">// currentEnvName 有可能是： "production" 线上环境</span>
-<span class="c1">//                            'beta'    beta环境</span>
-<span class="c1">//                            'dev'</span>
-</pre></div>
-</div>
-</div>
+<h2>通过浏览器调试</h2>
+<p>ionic 程序本身的展现层是用Angular JS来写的。所以可以很方便的在浏览器中调试。具体调试方法如下：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>在项目目录中执行 ionic serve</li>
+<li>在chrome或firefox浏览器的调试工具中进行调试。</li>
+<li>注意查看console 控制台。所有错误信息都会在哪里出现。</li>
+</ol>
+</div></blockquote>
+<p>该方法的不足是：只能调试展现类的内容。牵涉到手机原生的功能就无法调试了。</p>
 </div>
 <div class="section" id="id3">
-<h2>读取配置信息</h2>
-<p>在Config.groovy文件中</p>
-<div class="highlight-groovy"><div class="highlight"><pre><span class="n">my</span><span class="o">.</span><span class="na">property</span> <span class="o">=</span> <span class="s1">'some value'</span>
+<h2>在设备或模拟器中调试</h2>
+<p>这种方法调试刚好可以弥补在浏览器里调试的不足，可以测试和手机相关的功能。</p>
+<p>测试方法如下：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>进入项目目录。</li>
+<li>运行 ionic run ios -s -l -c 这样的指令
+* -s 表示打印服务端的log
+* -c 表示打印客户端的log
+* -l 表示Live Reload。 就是说，你在电脑上对文件的改动，能立即反应到测试的手机上。</li>
+<li>根据各种log来调试你得程序。</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>该测试方法的不足的地方如下：</dt>
+<dd><ol class="first last arabic simple">
+<li>你需要拥有具体的设备。如果你想开发ios的程序的话。必须具备一个 装有Mac OSX系统的电脑(苹果机器，或黑苹果)，一个苹果的设备（iphone或ipad）， 一个开发者账户。</li>
+<li>需要让你的苹果设备和开发用的电脑在一个WiFi下。这样才能正常工作。原因是手机端的应用程序需要通过一个Websocket连接到开发用的电脑上。一旦电脑中的文件有变化，会立刻被刷新到手机上。</li>
+<li>他的测试结果不能100% 代表程序最终发布以后的结果。因为该方式获取资源的方式都是通过http访问开发用的电脑上，来获取资源。而正式的应用程序是从文件系统直接读取文件。在文件的获取上会存在差异。</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>通过原生的开发工具打包部署测试</h2>
+<p>这种方式是最后的测试。通过IDE环境打开特定platform下的项目对已有项目进行编译，部署，和执行。就像开发原生的程序一样。</p>
+<p>他的优点就是真实。不过在开始之前有一个小技巧需要了解。
+就是如果刚使用第一种和第二种方法测试后，一定要在项目目录下执行如下命令：</p>
+<div class="highlight-bash"><div class="highlight"><pre>ionic prepare ios
+<span class="c"># 或者</span>
+ionic prepare android
 </pre></div>
 </div>
-<p>读取配置的任何地方:</p>
-<div class="highlight-groovy"><div class="highlight"><pre><span class="kt">def</span> <span class="n">grailsApplication</span>
-
-<span class="n">grailsApplication</span><span class="o">.</span><span class="na">config</span><span class="o">.</span><span class="na">my</span><span class="o">.</span><span class="na">property</span>
-</pre></div>
+<p>这个语句是去除掉从远端获取资源。直接从本地读取。如果不执行，部署到设备上的程序将无法执行。</p>
 </div>
+<div class="section" id="id5">
+<h2>参考资料</h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference external" href="http://ionicframework.com/blog/live-reload-all-things-ionic-cli/">http://ionicframework.com/blog/live-reload-all-things-ionic-cli/</a></li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/26314005/ionic-failed-to-load-webpage-with-error-could-not-connect-to-the-server">http://stackoverflow.com/questions/26314005/ionic-failed-to-load-webpage-with-error-could-not-connect-to-the-server</a></li>
+</ol>
+</div></blockquote>
 </div>
 
         </div>
@@ -135,14 +160,57 @@
         <div class="author">
             <span>Posted by Jet Geng</span>
         </div>
-        
+        <div class="categories">
+            <span>
+                Filed under:
+                <a href="categories/ionic.html">ionic</a></span>
+        </div>
         <div class="tags">
             <span>
                 Tags:
-                <a href="tags/grails.html">Grails</a></span>
+                <a href="tags/ionic_javascript_phone_gap.html">ionic javascript phone-gap</a></span>
         </div>
         <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/12/27/grailstips.html#disqus_thread" data-disqus-identifier="2014/12/27/grailstips">Leave a comment</a>
+            <a href="http://jetgeng.github.com/blog/html/2015/01/21/ionicdebug.html#disqus_thread" data-disqus-identifier="2015/01/21/ionicdebug">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>January 08, 2015</span>
+        </div>
+        <div class="section">
+            <h1><a href="2015/01/08/ionicinfo.html">ionic框架资料整理</a></h1>
+<div class="section" id="id1">
+<h2>有用的网站</h2>
+<ol class="arabic simple">
+<li>最有用的当然是官方网站了。 <a class="reference external" href="http://ionicframework.com/">http://ionicframework.com/</a></li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>有用的小例子</h2>
+<p>1. 用ionic 做推送的例子。 <a class="reference external" href="https://github.com/hollyschinsky/PushNotificationSample">https://github.com/hollyschinsky/PushNotificationSample</a>
+1. ionic 自动更新 <a class="reference external" href="https://github.com/ben-ng/phonegap-air">https://github.com/ben-ng/phonegap-air</a></p>
+</div>
+<div class="section" id="id3">
+<h2>调试相关小技巧</h2>
+<div class="section" id="id4">
+<h3>调试阶段</h3>
+<div class="highlight-bash"><div class="highlight"><pre>ionic run ios -c -l -s
+</pre></div>
+</div>
+<p>会打印出各种信息.</p>
+</div>
+<div class="section" id="id5">
+<h3>为生产环境打包</h3>
+</div>
+</div>
+
+        </div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Jet Geng</span>
+        </div>
+        
+        
+        <div class="comments">
+            <a href="http://jetgeng.github.com/blog/html/2015/01/08/ionicinfo.html#disqus_thread" data-disqus-identifier="2015/01/08/ionicinfo">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
@@ -151,6 +219,10 @@
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2015/01/21/ionicdebug.html">ionic 项目的调试</a>
+        </li><li>
+            <a href="2015/01/08/ionicinfo.html">ionic框架资料整理</a>
+        </li><li>
             <a href="2014/12/27/groovytips.html">Groovy小技巧</a>
         </li><li>
             <a href="2014/12/27/grailstips.html">Grails 技巧汇集</a>
@@ -166,10 +238,6 @@
             <a href="2014/06/02/sql2pojo.html">在Grails使用Sql获取数据</a>
         </li><li>
             <a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
-        </li><li>
-            <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
-        </li><li>
-            <a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">

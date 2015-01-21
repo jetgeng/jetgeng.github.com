@@ -80,11 +80,11 @@
             <li class="left"> &laquo; <a href="index.html">Newer</a></li>
             <li class="right"><a href="page3.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>September 18, 2014</span>
+            <span>December 27, 2014</span>
         </div>
         <div class="section">
-            <h1><a href="2014/09/18/cas_intro.html">单点登录CAS简介</a></h1>
-<p>马上回来！</p>
+            <h1><a href="2014/12/27/groovytips.html">Groovy小技巧</a></h1>
+<p>会持续收集一些认为不错的Groovy小技巧。防止被遗忘！</p>
 
         </div>
         <div class="postmeta">
@@ -94,29 +94,41 @@
         
         
         <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/09/18/cas_intro.html#disqus_thread" data-disqus-identifier="2014/09/18/cas_intro">Leave a comment</a>
+            <a href="http://jetgeng.github.com/blog/html/2014/12/27/groovytips.html#disqus_thread" data-disqus-identifier="2014/12/27/groovytips">Leave a comment</a>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>September 08, 2014</span>
+            <span>December 27, 2014</span>
         </div>
         <div class="section">
-            <h1><a href="2014/09/08/redis_on_centos.html">在CentOS上安装Redis</a></h1>
-<p>redis 用的人越来越到。他在linux上安装也很简单。官方文档http://redis.io/topics/quickstart 已经说的很清楚了。</p>
-<p>不过在CentOS 上遇到了问题。我的CentOS是一个很干净的系统，没有装过任何其他的东西。所以编译用的gcc 都没有。在Debian 系统中一句 <span class="docutils literal"><span class="pre">`</span> <span class="pre">apt-get</span>  <span class="pre">build-essential</span> <span class="pre">`</span></span> 就可以搞定一切了。
-在CentOs中是不是有对应的呢，当然是有了！</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo yum groupinstall <span class="s2">"Development Tools"</span>
+            <h1><a href="2014/12/27/grailstips.html">Grails 技巧汇集</a></h1>
+<div class="section" id="service">
+<h2>Service 相关</h2>
+</div>
+<div class="section" id="id1">
+<h2>配置相关</h2>
+<div class="section" id="id2">
+<h3>获取当前环境</h3>
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">import</span> <span class="n">grails</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Environment</span>
+<span class="n">def</span> <span class="n">currentEnvName</span> <span class="o">=</span> <span class="n">Environment</span><span class="o">.</span><span class="na">current</span>
+<span class="c1">// currentEnvName 有可能是： "production" 线上环境</span>
+<span class="c1">//                            'beta'    beta环境</span>
+<span class="c1">//                            'dev'</span>
 </pre></div>
 </div>
-<p>这样就搞定了！ 可以继续使用make命令来执行了。</p>
-<p>不过要命的是我用的是CentOS release 6.5 (Final) 遇到了他的那个 #error “Newer version of jemalloc required” 错误。这个是让我升级jemalloc的节奏啊。</p>
-<p>我去那里找这个jemalloc啊？不要找其实已经有了。</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>deps
-make hiredis jemalloc linenoise lua
-<span class="nb">cd</span> ..
-make install
+</div>
+</div>
+<div class="section" id="id3">
+<h2>读取配置信息</h2>
+<p>在Config.groovy文件中</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="n">my</span><span class="o">.</span><span class="na">property</span> <span class="o">=</span> <span class="s1">'some value'</span>
 </pre></div>
 </div>
-<p>这个事情就这么搞定了！</p>
-<p>这个解决方案源自 <a class="reference external" href="http://unix.stackexchange.com/questions/94479/jemalloc-and-other-errors-making-redis-on-centos-6-4">http://unix.stackexchange.com/questions/94479/jemalloc-and-other-errors-making-redis-on-centos-6-4</a></p>
+<p>读取配置的任何地方:</p>
+<div class="highlight-groovy"><div class="highlight"><pre><span class="kt">def</span> <span class="n">grailsApplication</span>
+
+<span class="n">grailsApplication</span><span class="o">.</span><span class="na">config</span><span class="o">.</span><span class="na">my</span><span class="o">.</span><span class="na">property</span>
+</pre></div>
+</div>
+</div>
 
         </div>
         <div class="postmeta">
@@ -124,9 +136,13 @@ make install
             <span>Posted by Jet Geng</span>
         </div>
         
-        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/grails.html">Grails</a></span>
+        </div>
         <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2014/09/08/redis_on_centos.html#disqus_thread" data-disqus-identifier="2014/09/08/redis_on_centos">Leave a comment</a>
+            <a href="http://jetgeng.github.com/blog/html/2014/12/27/grailstips.html#disqus_thread" data-disqus-identifier="2014/12/27/grailstips">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
@@ -135,6 +151,10 @@ make install
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2015/01/21/ionicdebug.html">ionic 项目的调试</a>
+        </li><li>
+            <a href="2015/01/08/ionicinfo.html">ionic框架资料整理</a>
+        </li><li>
             <a href="2014/12/27/groovytips.html">Groovy小技巧</a>
         </li><li>
             <a href="2014/12/27/grailstips.html">Grails 技巧汇集</a>
@@ -150,10 +170,6 @@ make install
             <a href="2014/06/02/sql2pojo.html">在Grails使用Sql获取数据</a>
         </li><li>
             <a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
-        </li><li>
-            <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
-        </li><li>
-            <a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">

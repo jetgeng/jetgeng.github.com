@@ -80,89 +80,20 @@
             <li class="left"> &laquo; <a href="page5.html">Newer</a></li>
             <li class="right"><a href="page7.html">Older</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>November 26, 2013</span>
+            <span>March 21, 2014</span>
         </div>
         <div class="section">
-            <h1><a href="2013/11/26/gittips.html">Git使用小技巧</a></h1>
-<p>使用git也有段时间了。其中遇到一些问题，google半圈找到一些觉得不错的技巧记录在此。防止自己会忘掉。</p>
-<div class="section" id="id1">
-<h2>标签相关</h2>
-<p>好不容易创建将手头上的工作告一段落了。可以提供给用户使用了。为了以后很方便的找到这个版本，所以就打一个tag啊。迫不及待的敲了下面的命令。</p>
-<div class="highlight-bash"><div class="highlight"><pre>git tag  -a cool_tagname -m <span class="s1">'cool comment'</span>
-git push origin -- tag
-</pre></div>
-</div>
-<p>心里说不出的畅快啊。终于完成了这些活。
-稍等，qa又测试出bug了。你这个tag上的内容还不能发布。修改吧。经过一堆修改。git add , git commit 操作以后问题搞定了。
-这一回是真的，真的可以提交了。可以打tag了。但是那个那么好的，和功能那么匹配的tag name已经被占用了。把他删除掉，再加一下就好了。
-所以我们需要如下的操作：</p>
-<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre>git push --delete origin cool_tagname
-git tag -a cool_tagname -m <span class="s1">''</span>
-git push origin --tag
-or
-git push refs/tags/release-1.0:refs/tags/release-1.0
-</pre></div>
-</td></tr></table></div>
-<p>代码说明:</p>
-<p>1. 第一行 删除远端原来的tag
-1. 第2~3行 重新创建并推送到远端
-1. 第5行 另外一种推送方式。相对底层的推送方式。
-好了，打完收工。tag就修正好。</p>
-<div class="section" id="id2">
-<h3>查看标签创建的时间</h3>
-<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">"format:%ci %d"</span>
-</pre></div>
-</div>
-<p>输出结果如下</p>
-<div class="highlight-bash"><div class="highlight"><pre>git log --tags --simplify-by-decoration --pretty<span class="o">=</span><span class="s2">"format:%ci %d"</span>
-2014-01-18 22:27:00 +0800  <span class="o">(</span>tag: v1.0.2<span class="o">)</span>
-2013-11-26 00:09:57 +0800  <span class="o">(</span>tag: v1.0.1<span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="id3">
-<h2>分支相关</h2>
-<div class="section" id="id4">
-<h3>创建分支</h3>
-<p>从当前分支创建一个新分支：</p>
-<div class="highlight-bash"><div class="highlight"><pre>git checkout -b BranchName
-</pre></div>
-</div>
-<p>从远端分支创建一个新分支</p>
-<div class="highlight-bash"><div class="highlight"><pre>git checkout -b &lt;branch&gt; --track &lt;remote&gt;/&lt;branch&gt;
-git checkout -b &lt;branch&gt; &lt;remote&gt;/&lt;branch&gt;
-</pre></div>
-</div>
-</div>
-<div class="section" id="id5">
-<h3>删除分支</h3>
-<p>删除本地分支：</p>
-<div class="highlight-bash"><div class="highlight"><pre>git branch -d &lt;branch&gt;
-</pre></div>
-</div>
-<p>删除远程分支</p>
-<div class="highlight-bash"><div class="highlight"><pre>git push &lt;remote&gt; --delete &lt;branch&gt;
-or
-git push &lt;remote&gt; :&lt;branch&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="id6">
-<h2>推送代码到远端</h2>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c">#推送tracked的分支</span>
-git push &lt;remote&gt;
-<span class="c">#推送当前分支到远端特定分支</span>
-git push &lt;remote&gt; &lt;remote_branch&gt;
-<span class="c">#将本地特定分支推送到远端特定分支</span>
-git push &lt;remote &lt;local_branch&gt;:&lt;remote_branch&gt;
-</pre></div>
-</div>
+            <h1><a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a></h1>
+<div class="section" id="debug">
+<h2>Debug</h2>
+<p>升级到2.3 以后我就找不到grails-debug 这个命令了。后进过查询发现原来是被 <span class="docutils literal"><span class="pre">grails</span> <span class="pre">-debug</span></span> 这个参数替代了。是要了这个参数以后又遇到一个问题。就是需要通过Remote Debug 的方式连接进去才可以。但是不管咋地都不在断点处停下来。真的让人抓狂。</p>
+<p>最后通过这个一个老外的一段话给解决了</p>
+<blockquote>
+<div>In Intellij  go to “Run / Edit Configurations”, click + then “Remote” and name it whatever  you want (example “Grails Remote”) then press ok.
+Then from the command line do:
+grail run-app –debug-fork
+Attach your debugger by running your “Grails Remote” config. Done.</div></blockquote>
+<p>原来是需要使用 grails run-app –debug-fork 命令来做。解了，亲测！</p>
 </div>
 
         </div>
@@ -171,149 +102,187 @@ git push &lt;remote &lt;local_branch&gt;:&lt;remote_branch&gt;
             <span>Posted by Jet Geng</span>
         </div>
         
-        <div class="tags">
-            <span>
-                Tags:
-                <a href="tags/git.html">Git</a></span>
-        </div>
+        
         <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2013/11/26/gittips.html#disqus_thread" data-disqus-identifier="2013/11/26/gittips">Leave a comment</a>
+            <a href="http://jetgeng.github.com/blog/html/2014/03/21/grails_2_3.html#disqus_thread" data-disqus-identifier="2014/03/21/grails_2_3">Leave a comment</a>
         </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>August 23, 2013</span>
+            <span>March 14, 2014</span>
         </div>
         <div class="section">
-            <h1><a href="2013/08/23/scodestory.html">一段代码演变的故事</a></h1>
-<dl class="docutils">
-<dt>前段时间项目需要从一个mysql数据库(记做A库)导入到另外mysql数据库（记做B库)。在到换的过程中需要对数据进行一些转换。本质而言就是把同样的业务数据分成不同的格式进行存储。初期的我们想法很简单，通过如下步骤来完成：</dt>
-<dd><ol class="first last arabic simple">
-<li>从老库逐条读取出数据，</li>
-<li>将这些数据拼装成POJO，这些POJO通过ORM框架可以直接存入数据库B</li>
-<li>通过ORM框架将数据逐条出入数据库。</li>
-</ol>
-</dd>
-</dl>
-<p>主题的程序结构如下为代码所示:</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">DBMigrate</span><span class="o">{</span>
-  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">{</span>
-      <span class="c1">//分析参数</span>
-      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">offset</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-          <span class="n">id</span> <span class="o">=</span> <span class="n">startId</span> <span class="o">+</span> <span class="n">i</span>
-          <span class="n">pojo</span> <span class="o">=</span> <span class="n">loadOldPOJO</span><span class="o">(</span><span class="n">id</span><span class="o">);</span> <span class="c1">//从老库获取POJO</span>
-          <span class="n">savePOJO2NewDB</span><span class="o">(</span><span class="n">pojo</span><span class="o">);</span>
-      <span class="o">}</span>
-  <span class="o">}</span>
-
-  <span class="kd">private</span> <span class="kd">static</span> <span class="nf">loadOldPOJO</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
-      <span class="n">POJO</span> <span class="n">pojo</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">POJO</span><span class="o">();</span>
-      <span class="n">String</span> <span class="n">sql1</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
-      <span class="n">getRS</span><span class="o">(</span><span class="n">sql1</span><span class="o">)</span> <span class="c1">//根据一个Sql查询POJO中的一部分。拼装入pojo</span>
-      <span class="o">............</span>
-      <span class="o">............</span> <span class="c1">//根据不同的sql，重复上面的步骤。</span>
-
-      <span class="k">return</span> <span class="n">pojo</span>
-  <span class="o">}</span>
-
-  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">savePOJO2NewDB</span><span class="o">(</span><span class="n">POJO</span> <span class="n">pojo</span><span class="o">){</span>
-      <span class="c1">//使用ibatis保存该记录。</span>
-      <span class="c1">//同时会更新n多表</span>
-  <span class="o">}</span>
-
-<span class="o">}</span>
+            <h1><a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a></h1>
+<div class="section" id="id1">
+<h2>前因</h2>
+<p>有系统使用Logback使用RollingFileAppender来记录日志，并且每个小时换成一个新的文件。 这样有个问题如果一个系统在超过一个小时没有打印任何log的时候。
+log文件就会出现不连续的情况。例如用如下配置：</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"LOG"</span>
+           <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.RollingFileAppender"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;file&gt;</span>target/test-output/rolling_file.log<span class="nt">&lt;/file&gt;</span>
+     <span class="nt">&lt;rollingPolicy</span>
+             <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.TimeBasedRollingPolicy"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;FileNamePattern&gt;</span>
+             target/test-output/qunarrolling_file.%d{yyyy-MM-dd-HH}.log
+         <span class="nt">&lt;/FileNamePattern&gt;</span>
+     <span class="nt">&lt;/rollingPolicy&gt;</span>
+     <span class="nt">&lt;layout&gt;</span>
+         <span class="nt">&lt;Pattern&gt;</span>%date [%thread] %-5level %logger - %msg%n<span class="nt">&lt;/Pattern&gt;</span>
+     <span class="nt">&lt;/layout&gt;</span>
+ <span class="nt">&lt;/appender&gt;</span>
 </pre></div>
 </div>
-<p>牛x的你可能一眼就能看出我们这个结构中致命的问题–效率！ 逐条导入数据效率会非常底下。一笔数据将要多次连接数据库。另外当前结构还有一个致命缺点就是啥和啥的都混在一起。想要加个表和减少一个表都很困难。</p>
-<p>针对上面的问题我们不得不对这段代码做点改动。改动的第一目标就是让他快起来！</p>
+<p>如果我在2014-03-13-15开始打印log，15点有打印信息，16点没有，17点有。那么我的log文件如下：</p>
+<p>如果我在2014-03-13-15开始打印log，15点有打印信息，16点没有，17点有。那么我的log文件如下：</p>
+<div class="highlight-bash"><div class="highlight"><pre>ls -1
+rolling_file.log
+rolling_file.2014-03-13-15.log
+rolling_file.2014-03-13-17.log
+</pre></div>
+</div>
+<p>没有 rolling_file.2014-03-13-15.log 这个文件。我们希望是就是么有log输出，也需要有这个文件。这个就是我们的需求。
+为了这个需求开始读logback的代码。我版的版本是1.1.1</p>
+</div>
 <div class="section" id="id2">
-<h2>加速</h2>
-<p>加速时目标。手段是减少和数据库交互。说白了就是批量处理这个的感谢mysql提供了强大的插入命令。</p>
-<div class="highlight-mysql"><div class="highlight"><pre>INSERT [LOW_PRIORITY | DELAYED | HIGH_PRIORITY] [IGNORE]
-[INTO] tbl_name
-[PARTITION (partition_name,...)]
-[(col_name,...)]
-{VALUES | VALUE} ({expr | DEFAULT},...),(...),...
-[ ON DUPLICATE KEY UPDATE
-col_name=expr
-[, col_name=expr] ... ]
-</pre></div>
-</div>
-<p>这个命令可以一次插入很多条数据，只要你的sql够长就可以。就像下面的样子：</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tbl_name</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="k">c</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>这样就往数据库中插入了三条记录。1000条也是这样。这个就是我们的核心技术。
-为了能够对数据库表批量操作。将不再将老数据拼装中间状态的POJO，直接使用对应于新表的POJO。** 让数据从业务逻辑中解放出来**
-所以就有一些和与B数据库表一一对应的POJO。下面的转换的过程就以这个与B数据库一一对应的表为中心。下面要做的事情就时很老套的了。</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>根据POJO从A数据库中获取一批该数据库所需要的。</li>
-<li>拼装成和B数据库表对应的POJO</li>
-<li>使用批量插入语句将POJO插入到新的数据库。</li>
-</ol>
-<dl class="docutils">
-<dt>在上述动作中对每一个表操作的不同点有三点：</dt>
-<dd><ol class="first last arabic simple">
-<li>从A数据库获取数据的sql</li>
-<li>将从A数据库获取的数据拼装成对象。</li>
-<li>POJO插入到B数据库时，对应的字段。也就是插入方式不同。</li>
-</ol>
-</dd>
-</dl>
-</div></blockquote>
-<p>只要将上述这个三个地方抽取出来我们就可以用一套代码完成所有表的操作。基于这个思路我们有了如下的代码.</p>
+<h2>分析</h2>
+<p>通过阅读LogBack的源码发现如下结构：</p>
 <p class="plantuml">
-<img src="_images/plantuml-7cd5dcb24abe5d6b8b60de23c2636a78477223c6.png" alt="interface IRecordCallBack{     +processRecord(ResultSet):T     +getQuerySql():String }  interface BatchOperate{     +saveByBatch(list:List&lt;T&gt;):int }  class SomePOJODao{     +saveByBatch(list:List&lt;SomePOJO&gt;):int } class AnotherPOJODao{     +saveByBatch(list:List&lt;AnotherPOJO&gt;):int } class SomePOJORecordCallBack {     +processRecord(ResultSet):SomePOJO     +getQuerySql():String }  class AnotherPOJORecordCallBack{     +processRecord(ResultSet):AnotherPOJO     +getQuerySql():String }  IRecordCallBack &lt;|-- SomePOJORecordCallBack IRecordCallBack &lt;|-- AnotherPOJORecordCallBack  BatchOperate &lt;|--  SomePOJODao BatchOperate &lt;|-- AnotherPOJODao"/>
+<img src="_images/plantuml-52b276328f19272bb063ec61cf468244d1e30727.png" alt="class RollingFileAppender{     +rollover():void     +subAppend(event:E):void }  interface TriggeringPolicy{ }  interface RollingPolicy{ }  class TimeBasedRollingPolicy{ }  class RollingPolicyBase{ }  class DefaultTimeBasedFileNamingAndTriggeringPolicy{     +isTriggeringEvent(activeFile:File, event E) }  RollingFileAppender -left-&gt; TriggeringPolicy RollingFileAppender -right-&gt; RollingPolicy RollingPolicy &lt;|.. RollingPolicyBase RollingPolicyBase &lt;|-- TimeBasedRollingPolicy TimeBasedRollingPolicy ..|&gt; TriggeringPolicy TimeBasedRollingPolicy --&gt; DefaultTimeBasedFileNamingAndTriggeringPolicy"/>
 </p>
-<p>在上图的结构中IRecordCallBack 中的 getQuerySql 方法用于解决如何获取数据的问题。processRecord 方法用于解决如何拼装POJO的问题。
-BatchOperate 方法中用于解决如何保存的问题。
-这样所有问题都解决了。我们的工作是否完了呢。还没有，还缺少一个总管来协调让这些分散的类协同工作。</p>
+<dl class="docutils">
+<dt><strong>RollingFileAppender</strong></dt>
+<dd>根据RollingPolicy和TriggeringPolicy的计算结果来备份文件，并且创建一下新的文件来记录log。这个功能的实现是由rollover方法来实现。</dd>
+<dt><strong>RollingPolicy</strong></dt>
+<dd>计算什么时候要去新建一个文件。RollingFileAppender在何时新建文件这方面完全听他的。具体的是在RollingFileAppender的subAppend方法中。不过真正觉得何时创建文件，并不是该接口的实现累实现的。而是下面的DefaultTimeBasedFileNamingAndTriggeringPolicy</dd>
+<dt><strong>DefaultTimeBasedFileNamingAndTriggeringPolicy</strong></dt>
+<dd>该类是最后的老板，有他决定是不是到了要进行文件切换的时候了。具体的实现方法为：isTriggeringEvent</dd>
+</dl>
+<p>找到了最后的老板DefaultTimeBasedFileNamingAndTriggeringPolicy，我只要简单扩展这个类就可以了。然后配置logback的时候就使用我们这个就可以了。</p>
 </div>
 <div class="section" id="id3">
-<h2>程序的拼装</h2>
-<p>在前期的程序中，我们直接将程序里面。这样如果要加一个表，牵涉的内容会比较多。
-我们做了如下改进。同样时以于与数据库B一一对应的POJO为中心创建两个Map，具体代码如下：</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;();</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;</span> <span class="n">daoMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">Class</span><span class="o">&lt;?&gt;[]&gt;();</span>
-<span class="kd">static</span> <span class="o">{</span>
-    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nf">SomePOJORecordCallBack</span><span class="o">())</span>
-    <span class="n">callbacks</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nf">AnotherPOJORecordCallBack</span><span class="o">())</span>
-    <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SomePOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">SomePOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
-    <span class="n">daoMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">AnotherPOJO</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">AnotherPOJODao</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
-
-<span class="o">}</span>
-</pre></div>
-</div>
-<p>有了这样的配置信息后，我们后期的程序根本不许要知道当前处理的时什么pojo。只是知道取数据，交给dao取保存就可以了。下面给出伪代码如下：</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">startMigrate</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">){</span>
-    <span class="c1">//获取数据库连接</span>
-    <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;,</span> <span class="n">IRecordCallBack</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">tableItem</span> <span class="o">:</span> <span class="n">callbacks</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
-        <span class="n">PreparedStatement</span> <span class="n">stmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="n">tableItem</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">getQuerySql</span><span class="o">());</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">())</span> <span class="o">{</span>
-                <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tableItem</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">processRecord</span><span class="o">(</span><span class="n">rs</span><span class="o">));</span>
-                <span class="o">}</span>
-        <span class="k">for</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">cls</span> <span class="o">:</span> <span class="n">daoMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">tableItem</span><span class="o">.</span><span class="na">getKey</span><span class="o">())){</span>
-            <span class="n">BatchOperate</span> <span class="n">dao</span> <span class="o">=</span> <span class="o">(</span><span class="n">BatchOperate</span><span class="o">)</span> <span class="n">session</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">cls</span><span class="o">);</span>
-            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"cls.getName():"</span><span class="o">+</span><span class="n">cls</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
-                        <span class="k">if</span> <span class="o">(</span><span class="n">dao</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">&amp;&amp;</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()!=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                                    <span class="n">dao</span><span class="o">.</span><span class="na">saveByBatch</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
-                        <span class="o">}</span>
-                    <span class="o">}</span>
-        <span class="c1">//各种善后</span>
-        <span class="c1">//小睡一会</span>
+<h2>动手</h2>
+<p>新建一个类继承 DefaultTimeBasedFileNamingAndTriggeringPolicy 重写其中的isTriggeringEvent方法。在该方法中将一次将log的文件名变成当前时间的文件名的步骤变成，分成多个时间段。循环做rollover 的动作。于是有了下面的代码：</p>
+<div class="highlight-java"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span>
+    <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+<span class="hll">    <span class="k">while</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
+</span>        <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
+        <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
+        <span class="n">elapsedPeriodsFileName</span> <span class="o">=</span> <span class="n">tbrp</span><span class="o">.</span><span class="na">fileNamePatternWCS</span><span class="o">.</span><span class="na">convert</span><span class="o">(</span><span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
+<span class="hll">        <span class="n">tbrp</span><span class="o">.</span><span class="na">rollover</span><span class="o">();</span>
+</span>        <span class="n">setDateInCurrentPeriod</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+        <span class="n">computeNextCheck</span><span class="o">();</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
-</div>
-<p>这个就是所有改善后的结果。这样改动后效率提升了不少。结构上也把重复的代码去掉。今后如果要加入新的数据库表的话，只需要实现一个POJO, IRecordCallBack 和Dao就可以了。其他东西都不用动了。</p>
+</td></tr></table></div>
+<p>代码说明：</p>
+<blockquote>
+<div><blockquote>
+<div><ol class="arabic simple">
+<li>第4行 说明被漏掉的时间点会进入循环。</li>
+<li>第8行 简单的认为TimeBasedRollingPolicy中rollover会做所有事情。</li>
+</ol>
+</div></blockquote>
+<p>其实第8行并只是完成了重命名文件的任务。但是并没有完成创建新文件，将新文件打开的功能。最后还是在rollover方法中做了。这样的改动总结成两个字 <strong>“失败”</strong> ！
+问题出现在那里呢？</p>
+<p>重新理顺思路：
+#. 理清楚DefaultTimeBasedFileNamingAndTriggeringPolicy 的职责，他就是用于计算是否要rollover, 提供当前文件的文件名就可以了。他并不去参与rollover这个过程。rollover过程也只有RollingFileAppender 来处理。
+#. 遵循logback的惯例，新建一个类继承于RollingFileAppender， 让他在subAppend的时候调用多次rollover就好了。</p>
+</div></blockquote>
 </div>
 <div class="section" id="id4">
-<h2>扩展,插件化</h2>
-<p>到这里应该说告一段落了。但是还没有完。现在的情况如果你要添加一个表的导入的话。你还的修改daoMap和callBacks这两个map。</p>
-<p>其实我们这边很容易通过 <a class="reference external" href="http://en.wikipedia.org/wiki/Service_provider_interface">SPI</a>  将IRecordCallBack 和BatchOperate 服务化。通过 java.util.ServiceLoader 来动态获取当前系统中已经存在的实现。动态创建daoMap和callbacks，这样就建立起了一个可管理插件的框。</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">某个牛人说过：写软件就是在别人写的框子里填数，或则自己写框让别人填数。</p>
+<h2>重写</h2>
+<p class="plantuml">
+<img src="_images/plantuml-b560654b92490ddc2ed37d4b07a6dc0f3612dfd9.png" alt="RollingFileAppender &lt;|-- ContinueRollingFileAppender DefaultTimeBasedFileNamingAndTriggeringPolicy &lt;|-- ContinueTimeBasedFileNamingAndTriggeringPolicy"/>
+</p>
+<p>ContinueRollingFileAppender 的重载subAppend方法为：</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Override</span>
+     <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">subAppend</span><span class="o">(</span><span class="n">E</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+             <span class="kd">synchronized</span> <span class="o">(</span><span class="n">triggeringPolicy</span><span class="o">)</span> <span class="o">{</span>
+                     <span class="k">while</span> <span class="o">(</span><span class="n">triggeringPolicy</span><span class="o">.</span><span class="na">isTriggeringEvent</span><span class="o">(</span><span class="n">currentlyActiveFile</span><span class="o">,</span> <span class="n">event</span><span class="o">))</span> <span class="o">{</span>
+                             <span class="n">rollover</span><span class="o">();</span>
+                     <span class="o">}</span>
+             <span class="o">}</span>
+             <span class="kd">super</span><span class="o">.</span><span class="na">subAppend</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+ <span class="o">}</span>
+</pre></div>
 </div>
-<p>我们只是做好了让别人(包括我们自己)填的框！</p>
+<p>ContinueTimeBasedFileNamingAndTriggeringPolicy的最终内容变为：</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ContinueTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">DefaultTimeBasedFileNamingAndTriggeringPolicy</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kd">protected</span> <span class="n">LogbackLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LogbackLock</span><span class="o">();</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">tbrp</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="kd">super</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+                    <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTriggeringEvent</span><span class="o">(</span><span class="n">File</span> <span class="n">activeFile</span><span class="o">,</span> <span class="kd">final</span> <span class="n">E</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+                    <span class="n">Date</span> <span class="n">rollFileDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">nextCheck</span> <span class="o">&amp;&amp;</span> <span class="n">rc</span><span class="o">.</span><span class="na">getNextTriggeringMillis</span><span class="o">(</span><span class="n">rollFileDate</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">time</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">Date</span> <span class="n">dateOfElapsedPeriod</span> <span class="o">=</span> <span class="n">dateInCurrentPeriod</span><span class="o">;</span>
+                            <span class="n">addInfo</span><span class="o">(</span><span class="s">"Elapsed period: "</span> <span class="o">+</span> <span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
+                            <span class="n">elapsedPeriodsFileName</span> <span class="o">=</span> <span class="n">tbrp</span><span class="o">.</span><span class="na">fileNamePatternWCS</span><span class="o">.</span><span class="na">convert</span><span class="o">(</span><span class="n">dateOfElapsedPeriod</span><span class="o">);</span>
+                            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"elapsedPeriodsFileName is "</span> <span class="o">+</span> <span class="n">elapsedPeriodsFileName</span><span class="o">);</span>
+                            <span class="n">setDateInCurrentPeriod</span><span class="o">(</span><span class="n">nextCheck</span><span class="o">);</span>
+                            <span class="n">computeNextCheck</span><span class="o">();</span>
+                            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+                    <span class="o">}</span>
+            <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>最后我把配置文件修改为：</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;configuration</span> <span class="na">scan=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"LOG"</span>
+          <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.ContinueRollingFileAppender"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;file&gt;</span>target/test-output/demo.log<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;rollingPolicy</span>
+            <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.TimeBasedRollingPolicy"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;FileNamePattern&gt;</span>
+            target/test-output/demo.%d{yyyy-MM-dd-HH-mm}.log
+        <span class="nt">&lt;/FileNamePattern&gt;</span>
+        <span class="nt">&lt;timeBasedFileNamingAndTriggeringPolicy</span>
+                <span class="na">class=</span><span class="s">"ch.qos.logback.core.rolling.ContinuePolicyTimeBasedFileNamingAndTriggeringPolicy"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/timeBasedFileNamingAndTriggeringPolicy&gt;</span>
+    <span class="nt">&lt;/rollingPolicy&gt;</span>
+    <span class="nt">&lt;layout&gt;</span>
+        <span class="nt">&lt;Pattern&gt;</span>%date [%thread] %-5level %logger - %msg%n<span class="nt">&lt;/Pattern&gt;</span>
+    <span class="nt">&lt;/layout&gt;</span>
+<span class="nt">&lt;/appender&gt;</span>
+<span class="nt">&lt;root</span> <span class="na">level=</span><span class="s">"DEBUG"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"LOG"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</div>
+<p>这个时候一切按照我们需求中要求的进行着。这个小功能就扩展结束了。</p>
+</div>
+<div class="section" id="id5">
+<h2>收工</h2>
+<dl class="docutils">
+<dt>在写完这点东西后想想自己的收获：</dt>
+<dd><ol class="first last arabic simple">
+<li>发现LogBack设计很不错，可以考虑通读一下。</li>
+<li>在扩展现有框架的时候注意了解现有框架的思路。不要违反他的原来的设计思路。不然你会倒霉的。</li>
+</ol>
+</dd>
+</dl>
 </div>
 
         </div>
@@ -324,7 +293,7 @@ BatchOperate 方法中用于解决如何保存的问题。
         
         
         <div class="comments">
-            <a href="http://jetgeng.github.com/blog/html/2013/08/23/scodestory.html#disqus_thread" data-disqus-identifier="2013/08/23/scodestory">Leave a comment</a>
+            <a href="http://jetgeng.github.com/blog/html/2014/03/14/logbackenhance.html#disqus_thread" data-disqus-identifier="2014/03/14/logbackenhance">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
     </div><ul class="related clearfix">
@@ -333,6 +302,10 @@ BatchOperate 方法中用于解决如何保存的问题。
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2015/01/21/ionicdebug.html">ionic 项目的调试</a>
+        </li><li>
+            <a href="2015/01/08/ionicinfo.html">ionic框架资料整理</a>
+        </li><li>
             <a href="2014/12/27/groovytips.html">Groovy小技巧</a>
         </li><li>
             <a href="2014/12/27/grailstips.html">Grails 技巧汇集</a>
@@ -348,10 +321,6 @@ BatchOperate 方法中用于解决如何保存的问题。
             <a href="2014/06/02/sql2pojo.html">在Grails使用Sql获取数据</a>
         </li><li>
             <a href="2014/05/25/validateenchance.html">自定义Spring MVC的验证框架</a>
-        </li><li>
-            <a href="2014/03/21/grails_2_3.html">Grails从2.2升级到2.3.3遇到的问题</a>
-        </li><li>
-            <a href="2014/03/14/logbackenhance.html">增强LogBack的RollingFileAppender</a>
         </li></ul>
 </div>
 </section><section><div class="widget" id="searchbox" role="search">
