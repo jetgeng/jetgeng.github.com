@@ -18,7 +18,7 @@ ionic 项目的调试
 
 ionic 程序本身的展现层是用Angular JS来写的。所以可以很方便的在浏览器中调试。具体调试方法如下：
 
- #. 在项目目录中执行 ionic serve 
+ #. 在项目目录中执行 **ionic serve**
  #. 在chrome或firefox浏览器的调试工具中进行调试。
  #. 注意查看console 控制台。所有错误信息都会在哪里出现。
 
@@ -32,10 +32,10 @@ ionic 程序本身的展现层是用Angular JS来写的。所以可以很方便�
 测试方法如下：
 
  #. 进入项目目录。
- #. 运行 ionic run ios -s -l -c 这样的指令
-    * -s 表示打印服务端的log
-    * -c 表示打印客户端的log
-    * -l 表示Live Reload。 就是说，你在电脑上对文件的改动，能立即反应到测试的手机上。
+ #. 运行 **ionic run ios -s -l -c** 这样的指令
+    #. -s 表示打印服务端的log
+    #. -c 表示打印客户端的log
+    #. -l 表示Live Reload。 就是说，你在电脑上对文件的改动，能立即反应到测试的手机上。
  #. 根据各种log来调试你得程序。
 
 该测试方法的不足的地方如下：
@@ -70,5 +70,5 @@ ionic 程序本身的展现层是用Angular JS来写的。所以可以很方便�
 
 .. author:: default
 .. categories:: ionic 
-.. tags:: ionic javascript phone-gap
+.. tags:: ionic
 .. comments::

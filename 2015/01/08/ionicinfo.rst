@@ -11,8 +11,8 @@ ionic框架资料整理
 有用的小例子
 ------------
 
-1. 用ionic 做推送的例子。 https://github.com/hollyschinsky/PushNotificationSample
-1. ionic 自动更新 https://github.com/ben-ng/phonegap-air
+#. 用ionic 做推送的例子。 https://github.com/hollyschinsky/PushNotificationSample
+#. ionic 自动更新 https://github.com/ben-ng/phonegap-air
 
 
 调试相关小技巧
@@ -28,8 +28,6 @@ ionic框架资料整理
 会打印出各种信息.
 
 
-为生产环境打包
-^^^^^^^^^^^^^^
 
 
 
