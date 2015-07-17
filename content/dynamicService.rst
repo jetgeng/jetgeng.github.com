@@ -24,7 +24,7 @@ http://yum.postgresql.org/9.4/redhat/rhel-5.4-x86_64/pgdg-redhat94-9.4-1.noarch.
 
 .. code-block:: bash
 
-    
+
    sudo yum install postgresql94.x86_64 postgresql94-contrib.x86_64 postgresql94-debuginfo.x86_64 postgresql94-devel.x86_64 postgresql94-docs.x86_64 postgresql94-libs.x86_64 postgresql94-server.x86_64
 
 /sbin 必须放到path中。
@@ -37,7 +37,7 @@ http://yum.postgresql.org/9.4/redhat/rhel-5.4-x86_64/pgdg-redhat94-9.4-1.noarch.
 
    \c database_name //切换数据库
 
-用新用户登录数据库：postgresql Peer authentication failed for user 
+用新用户登录数据库：postgresql Peer authentication failed for user
 
 http://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge
 
@@ -45,19 +45,3 @@ postgresql 的认证方式有多种方式：
 
 #. peer登录，这个就是和操作系统的用户一样。
 #. md5 就是通过用户名和密码登录。
-
-有两个菜单：
-
-会员中心:
-    会员绑定 -- 会员登录
-    卡余额
-    消费记录
-    我的订单
-    预约服务
-
-员工中心:
-    员工绑定
-    工资查询
-    门店业绩
-    预约情况
-

@@ -21,18 +21,4 @@ sudo service postgresql-9.4 start //启动数据库
 &lt;li&gt;peer登录，这个就是和操作系统的用户一样。&lt;/li&gt;
 &lt;li&gt;md5 就是通过用户名和密码登录。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;有两个菜单：&lt;/p&gt;
-&lt;dl class="docutils"&gt;
-&lt;dt&gt;会员中心:&lt;/dt&gt;
-&lt;dd&gt;会员绑定 -- 会员登录
-卡余额
-消费记录
-我的订单
-预约服务&lt;/dd&gt;
-&lt;dt&gt;员工中心:&lt;/dt&gt;
-&lt;dd&gt;员工绑定
-工资查询
-门店业绩
-预约情况&lt;/dd&gt;
-&lt;/dl&gt;
 </summary><category term="sql"></category></entry></feed>
