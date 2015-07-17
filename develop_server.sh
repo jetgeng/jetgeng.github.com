@@ -2,7 +2,7 @@
 ##
 # This section should match your Makefile
 ##
-#this is a test
+#this is a test 继续添加
 PY=${PY:-python}
 PELICAN=${PELICAN:-pelican}
 PELICANOPTS=
