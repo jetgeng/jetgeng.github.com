@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+      <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="/grails-zhong-fu-wu-lan-jia-zai.html" />
+
+    <title>  愚钝的故事 &mdash; Grails 中服务懒加载
+</title>
+
+
+
+
+    <link rel="stylesheet" href="/theme/css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <meta name="author" content="Jet Geng">
+    <meta name="description" content="现象 前两天在Grails中使用guava的EventBus做消息分发时发现我得一个Subscrib死活没有被调用。很时费解！ 我代码的结构如下: class HandlerAServices { def eventBus @PostConstruct def init(){ eventBus.register(this) } @Subscribe def someEventHandler(SomeEvent event){ } } class HandlerBServices { def eventBus @PostConstruct def init(){ eventBus.register(this) } @Subscribe def someEventHandler(SomeEvent event){ } } 最后当有SomeEvent这个的事件发出时 发现HandlerBServices 中得someEventHandler 方法被调用，HandlerAServices 中的someEventHandler完全没有执行。 同样的代码，同样的配置啊。怎么会这么邪乎呢！ 排查原因 因为grails中对service的初始化在默认情况下采用懒加载的方式。加入一个服务没有被其他的内容如controller，service， domain class等等引用。那么这个服务将不会在已启动的时候就被初始化 ...">
+  <meta name="tags" contents="Gorm, Grails, ">
+</head>
+
+<body>
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <h1 class="header-name">
+        <a class="nodec" href="">愚钝的故事</a>
+      </h1>
+      <h3 class="header-text"></h3>
+      <ul class="header-menu list-inline">
+      </ul>
+    </div>
+  </div>
+</header> <!-- /.header -->  <div class="container">
+  <div class="post full-post">
+    <h1 class="post-title">
+      <a href="/grails-zhong-fu-wu-lan-jia-zai.html" title="Permalink to Grails 中服务懒加载">Grails 中服务懒加载</a>
+    </h1>
+    <ul class="list-inline">
+      <li class="post-date">
+        <a class="text-muted" href="/grails-zhong-fu-wu-lan-jia-zai.html" title="2015-06-10T17:39:00+08:00">三 10 六月 2015</a>
+      </li>
+      <li class="muted">&middot;</li>
+      <li class="post-category">
+        <a href="/category/grails.html">Grails</a>
+      </li>
+        <li class="muted">&middot;</li>
+        <li>
+            <a href="/tag/Gorm.html">Gorm</a>,             <a href="/tag/Grails.html">Grails</a>        </li>
+    </ul>
+    <div class="post-content">
+      <div class="section" id="id1">
+<h2>现象</h2>
+<p>前两天在Grails中使用guava的EventBus做消息分发时发现我得一个Subscrib死活没有被调用。很时费解！</p>
+<p>我代码的结构如下:</p>
+<div class="highlight"><pre><span class="kd">class</span> <span class="nc">HandlerAServices</span> <span class="o">{</span>
+
+    <span class="kt">def</span> <span class="n">eventBus</span>
+
+    <span class="nd">@PostConstruct</span>
+    <span class="kt">def</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">)</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Subscribe</span>
+    <span class="kt">def</span> <span class="nf">someEventHandler</span><span class="o">(</span><span class="n">SomeEvent</span> <span class="n">event</span><span class="o">){</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">HandlerBServices</span> <span class="o">{</span>
+
+    <span class="kt">def</span> <span class="n">eventBus</span>
+
+    <span class="nd">@PostConstruct</span>
+    <span class="kt">def</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">)</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Subscribe</span>
+    <span class="kt">def</span> <span class="nf">someEventHandler</span><span class="o">(</span><span class="n">SomeEvent</span> <span class="n">event</span><span class="o">){</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+<p>最后当有SomeEvent这个的事件发出时 发现HandlerBServices 中得someEventHandler 方法被调用，HandlerAServices 中的someEventHandler完全没有执行。 同样的代码，同样的配置啊。怎么会这么邪乎呢！</p>
+</div>
+<div class="section" id="id2">
+<h2>排查原因</h2>
+<p>因为grails中对service的初始化在默认情况下采用懒加载的方式。加入一个服务没有被其他的内容如controller，service， domain class等等引用。那么这个服务将不会在已启动的时候就被初始化。
+我们的HandlerAServices 中 someEventHandler 没有被执行的原因就是这个HandlerAServices 没有被其他内容直接使用，导致这个HandlerAServices这个bean没有被创建。所以他就没有被调用了。</p>
+<p>为了解决这个问题要做的东西很少，只是告诉grails，我们不要懒加载的方式。修改代码如下：</p>
+<div class="highlight"><pre><span class="kd">class</span> <span class="nc">HandlerAServices</span> <span class="o">{</span>
+
+    <span class="kd">static</span> <span class="n">lazyInit</span> <span class="o">=</span> <span class="kc">false</span> <span class="c1">//申明不需要懒加载</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="section" id="id3">
+<h2>参考资料</h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://grails.1312388.n4.nabble.com/Is-it-possible-to-avoid-lazy-services-initialization-td4646285.html">http://grails.1312388.n4.nabble.com/Is-it-possible-to-avoid-lazy-services-initialization-td4646285.html</a></li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/14832002/postconstruct-fails-silently-on-a-grails-service">http://stackoverflow.com/questions/14832002/postconstruct-fails-silently-on-a-grails-service</a></li>
+</ol>
+</div>
+
+    </div>
+  </div>
+  <hr class="separator">
+  <div class="col-md-8 col-md-offset-2">
+  <div id="disqus_thread">
+    <script>
+      var disqus_shortname = 'techfoolishstory';
+      (function() {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] ||
+         document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript=techfoolishstory">
+        comments powered by Disqus.
+      </a>
+    </noscript>
+    <a href="https://disqus.com" class="dsq-brlink">
+      blog comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+  </div>
+  </div>
+  </div>
+<footer class="footer">
+  <div class="container">
+    <p class="text-center">
+      Jet Geng, <a href="" target="_blank"></a> unless otherwise noted.
+    </p>
+    <div class="text-center">
+      Generated by <a href="http://getpelican.com" target="_blank">Pelican</a> with the <a href="http://github.com/nairobilug/pelican-alchemy">alchemy</a> theme.
+    </div>
+  </div>
+</footer> <!-- /.footer -->
+  <script src="/theme/js/jquery.min.js"></script>
+  <script src="/theme/js/bootstrap.min.js"></script>
+</body> <!-- 42 -->
+
+</html>

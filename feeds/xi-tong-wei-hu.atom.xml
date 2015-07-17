@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>愚钝的故事</title><link href="/" rel="alternate"></link><link href="/feeds/xi-tong-wei-hu.atom.xml" rel="self"></link><id>/</id><updated>2014-09-14T17:39:00+08:00</updated><entry><title>在CentOS上安装Redis</title><link href="/zai-centosshang-an-zhuang-redis.html" rel="alternate"></link><updated>2014-09-14T17:39:00+08:00</updated><author><name>Jet Geng</name></author><id>tag:,2014-09-14:zai-centosshang-an-zhuang-redis.html</id><summary type="html">&lt;p&gt;redis 用的人越来越到。他在linux上安装也很简单。官方文档http://redis.io/topics/quickstart 已经说的很清楚了。&lt;/p&gt;
+&lt;p&gt;不过在CentOS 上遇到了问题。我的CentOS是一个很干净的系统，没有装过任何其他的东西。所以编译用的gcc 都没有。在Debian 系统中一句 &lt;tt class="docutils literal"&gt;` &lt;span class="pre"&gt;apt-get&lt;/span&gt;&amp;nbsp; &lt;span class="pre"&gt;build-essential&lt;/span&gt; `&lt;/tt&gt; 就可以搞定一切了。
+在CentOs中是不是有对应的呢，当然是有了！&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo yum groupinstall &lt;span class="s2"&gt;&amp;quot;Development Tools&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这样就搞定了！ 可以继续使用make命令来执行了。&lt;/p&gt;
+&lt;p&gt;不过要命的是我用的是CentOS release 6.5 (Final) 遇到了他的那个 #error &amp;quot;Newer version of jemalloc required&amp;quot; 错误。这个是让我升级jemalloc的节奏啊。&lt;/p&gt;
+&lt;p&gt;我去那里找这个jemalloc啊？不要找其实已经有了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;deps
+make hiredis jemalloc linenoise lua
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+make install
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这个事情就这么搞定了！&lt;/p&gt;
+&lt;p&gt;这个解决方案源自 &lt;a class="reference external" href="http://unix.stackexchange.com/questions/94479/jemalloc-and-other-errors-making-redis-on-centos-6-4"&gt;http://unix.stackexchange.com/questions/94479/jemalloc-and-other-errors-making-redis-on-centos-6-4&lt;/a&gt;&lt;/p&gt;
+</summary><category term="Gorm"></category><category term="Grails"></category></entry></feed>
