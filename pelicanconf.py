@@ -4,13 +4,13 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Jet Geng'
 SITENAME = u'愚钝的故事'
-SITEURL = ''
+SITEURL = u'http://jetgeng.github.io'
 
 PATH = 'content'
 
 TIMEZONE = 'Asia/Shanghai'
 
-DEFAULT_LANG = u'zh'
+DEFAULT_LANG = u'zh-CN'
 
 
 THEME = "/Users/jet/.pelican/pelican-themes/alchemy/alchemy"
@@ -40,3 +40,9 @@ PLUGINS = ['plantuml',  'sitemap']
 DISQUS_SITENAME = u'techfoolishstory'
 #DISQUS_SECRET_KEY = u'YOUR_SECRET_KEY'
 #DISQUS_PUBLIC_KEY = u'YOUR_PUBLIC_KEY'
+
+LICENSE_NAME="版权归Jet Geng所有，转载请注明！"
+SHOW_ARTICLE_AUTHOR = True
+SITE_SUBTEXT="Jet Geng和Grails，Groovy那些说不清道不明的故事"
+
+GITHUB_ADDRESS="https://github.com/jetgeng"
