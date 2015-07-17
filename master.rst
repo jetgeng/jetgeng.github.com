@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2015/03/28/angularjs
    2015/01/21/ionicdebug
    2015/01/08/ionicinfo
    2014/12/27/groovytips
