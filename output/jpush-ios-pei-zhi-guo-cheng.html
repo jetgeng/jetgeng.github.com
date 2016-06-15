@@ -116,11 +116,11 @@
 </dl>
 <p>修改AppDelegate.m 这个文件</p>
 <p>在文件开始加入导入：</p>
-<div class="highlight"><pre>import &quot;APService.h&quot;
+<div class="highlight"><pre><span></span>import &quot;APService.h&quot;
 import &quot;JPushPlugin.h&quot;
 </pre></div>
 <p>其他地方按照 <a class="reference external" href="https://github.com/jpush/jpush-phonegap-plugin">https://github.com/jpush/jpush-phonegap-plugin</a> IOS手工安装 这个地方就可以了。千万不要按照 <strong>IOS使用PhoneGap/Cordova CLI自动安装</strong> 中的修改文件的方法修改。他的那个</p>
-<div class="highlight"><pre>- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+<div class="highlight"><pre><span></span>- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
  // Required
  [APService handleRemoteNotification:userInfo];
  [[NSNotificationCenter defaultCenter] postNotificationName: kJPushPluginReceiveNotification

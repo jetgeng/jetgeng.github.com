@@ -86,7 +86,7 @@
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">class</span> <span class="nc">DoSomethingServices</span> <span class="o">{</span>
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">DoSomethingServices</span> <span class="o">{</span>
     <span class="kt">def</span> <span class="n">dataSource</span>
 
     <span class="kt">def</span> <span class="nf">queryDataWithSql</span><span class="o">(){</span>
@@ -115,7 +115,7 @@
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre>    <span class="kt">def</span> <span class="nf">queryDataWithSql</span><span class="o">(){</span>
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="kt">def</span> <span class="nf">queryDataWithSql</span><span class="o">(){</span>
         <span class="n">Sql</span> <span class="n">sql</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sql</span><span class="o">(</span><span class="n">dataSource</span><span class="o">)</span>
         <span class="kt">def</span> <span class="n">paramValue</span> <span class="o">=</span> <span class="o">..</span>
         <span class="kt">def</span> <span class="n">paramValue2</span> <span class="o">=</span> <span class="o">..</span>
@@ -133,7 +133,7 @@
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">sql</span><span class="o">.</span><span class="na">each</span><span class="o">(</span><span class="s2">&quot;select field1 , field2 from sometable where field = ${paramValue} and field2 = ${paramValue2}&quot;</span><span class="o">){</span> <span class="n">it</span> <span class="o">-&gt;</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">sql</span><span class="o">.</span><span class="na">each</span><span class="o">(</span><span class="s2">&quot;select field1 , field2 from sometable where field = ${paramValue} and field2 = ${paramValue2}&quot;</span><span class="o">){</span> <span class="n">it</span> <span class="o">-&gt;</span>
    <span class="kt">def</span> <span class="n">someDomain</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeDomin</span><span class="o">()</span>
    <span class="n">someDomain</span><span class="o">.</span><span class="na">field1</span> <span class="o">=</span> <span class="n">it</span><span class="o">[</span><span class="s2">&quot;field1&quot;</span><span class="o">]</span>
    <span class="n">someDomain</span><span class="o">.</span><span class="na">field2</span> <span class="o">=</span> <span class="n">it</span><span class="o">[</span><span class="s2">&quot;field2&quot;</span><span class="o">]</span>
@@ -142,7 +142,7 @@
 </td></tr></table><p>这个方法最大的缺点是代码量多，并且会有大量重复的代码。给人感觉很恶心。
 在Groovy中又如下的办法可以对对象的字段赋值：</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre> <span class="kt">def</span> <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;field1&quot;</span>
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kt">def</span> <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;field1&quot;</span>
  <span class="n">someDomain</span><span class="o">.</span><span class="na">getProperties</span><span class="o">()[</span><span class="n">key</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;someValue&quot;</span>
 </pre></div>
 </td></tr></table><p>getProperties这个方法将该对象的所有值放到一个Map中返回。具体可参考http://groovy.codehaus.org/groovy-jdk/java/lang/Object.html#getProperties%28%29 对这个map进行赋值，就等于对这个对象进行赋值。
@@ -179,7 +179,7 @@
 29
 30
 31
-32</pre></div></td><td class="code"><div class="highlight"><pre><span class="kd">class</span> <span class="nc">DomainClassInfoService</span> <span class="o">{</span>
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">DomainClassInfoService</span> <span class="o">{</span>
 
     <span class="kt">def</span> <span class="n">sessionFactory</span>
     <span class="kt">def</span> <span class="n">grailsApplication</span>
@@ -232,7 +232,7 @@
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">String</span> <span class="n">querySql</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39; select * from table where field1 = ? &#39;&#39;&#39;</span>
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">querySql</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39; select * from table where field1 = ? &#39;&#39;&#39;</span>
 
 <span class="kt">def</span> <span class="n">tripSegmentFieldColumnMap</span> <span class="o">=</span> <span class="n">domainClassInfoService</span><span class="o">.</span><span class="na">getFieldColumnMap</span><span class="o">(</span><span class="n">SomeDomain</span><span class="o">)</span>
 <span class="n">Sql</span> <span class="n">sql</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sql</span><span class="o">(</span><span class="n">dataSource</span><span class="o">)</span>
@@ -244,7 +244,7 @@
  <span class="o">}</span>
 </pre></div>
 </td></tr></table><p>这个方法对于非关系的，没有太大问题。如果有类似于一对多这样的关系的话，会引起hibernate中著名的n+1的问题。例如SomeDomain 中有一个变量是SomeParent, 并且SomeDomain belong to 这个SomeParent的话。那么像上面那样直接赋值就会引起去发起数据库查询请求查询SomeParent的。所以可以使用如下的方式进行避免：</p>
-<div class="highlight"><pre><span class="n">sql</span><span class="o">.</span><span class="na">eachRow</span><span class="o">(</span><span class="n">querySql</span><span class="o">,</span> <span class="n">field1Value</span><span class="o">){</span>
+<div class="highlight"><pre><span></span><span class="n">sql</span><span class="o">.</span><span class="na">eachRow</span><span class="o">(</span><span class="n">querySql</span><span class="o">,</span> <span class="n">field1Value</span><span class="o">){</span>
    <span class="n">SomeDomain</span> <span class="n">someObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeDomain</span><span class="o">()</span>
    <span class="n">SomeParent</span> <span class="n">someParent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeParent</span><span class="o">()</span>
    <span class="n">someParent</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">parentId</span>

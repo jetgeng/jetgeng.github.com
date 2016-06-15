@@ -70,7 +70,7 @@
 <h2>配置相关</h2>
 <div class="section" id="id2">
 <h3>获取当前环境</h3>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">import</span> <span class="n">grails</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Environment</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">import</span> <span class="n">grails</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Environment</span>
 <span class="n">def</span> <span class="n">currentEnvName</span> <span class="o">=</span> <span class="n">Environment</span><span class="o">.</span><span class="na">current</span>
 <span class="c1">// currentEnvName 有可能是： &quot;production&quot; 线上环境</span>
 <span class="c1">//                            &#39;beta&#39;    beta环境</span>
@@ -81,10 +81,10 @@
 <div class="section" id="id3">
 <h2>读取配置信息</h2>
 <p>在Config.groovy文件中</p>
-<div class="highlight"><pre><span class="n">my</span><span class="o">.</span><span class="na">property</span> <span class="o">=</span> <span class="s1">&#39;some value&#39;</span>
+<div class="highlight"><pre><span></span><span class="n">my</span><span class="o">.</span><span class="na">property</span> <span class="o">=</span> <span class="s1">&#39;some value&#39;</span>
 </pre></div>
 <p>读取配置的任何地方:</p>
-<div class="highlight"><pre><span class="kt">def</span> <span class="n">grailsApplication</span>
+<div class="highlight"><pre><span></span><span class="kt">def</span> <span class="n">grailsApplication</span>
 
 <span class="n">grailsApplication</span><span class="o">.</span><span class="na">config</span><span class="o">.</span><span class="na">my</span><span class="o">.</span><span class="na">property</span>
 </pre></div>

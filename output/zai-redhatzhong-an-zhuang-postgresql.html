@@ -67,13 +67,13 @@
 <p>要注意特定的系统的版本</p>
 <p><a class="reference external" href="http://yum.postgresql.org/9.4/redhat/rhel-5.4-x86_64/pgdg-redhat94-9.4-1.noarch.rpm">http://yum.postgresql.org/9.4/redhat/rhel-5.4-x86_64/pgdg-redhat94-9.4-1.noarch.rpm</a></p>
 <p>查看linux是32还是64？</p>
-<div class="highlight"><pre>file /bin/ls
+<div class="highlight"><pre><span></span>file /bin/ls
 </pre></div>
 <p>下面去修改/etc/yum.repo.d 中的内容</p>
-<div class="highlight"><pre>sudo yum install postgresql94.x86_64 postgresql94-contrib.x86_64 postgresql94-debuginfo.x86_64 postgresql94-devel.x86_64 postgresql94-docs.x86_64 postgresql94-libs.x86_64 postgresql94-server.x86_64
+<div class="highlight"><pre><span></span>sudo yum install postgresql94.x86_64 postgresql94-contrib.x86_64 postgresql94-debuginfo.x86_64 postgresql94-devel.x86_64 postgresql94-docs.x86_64 postgresql94-libs.x86_64 postgresql94-server.x86_64
 </pre></div>
 <p>/sbin 必须放到path中。</p>
-<div class="highlight"><pre>sudo service postgresql-9.4 initdb //初始化db
+<div class="highlight"><pre><span></span>sudo service postgresql-9.4 initdb //初始化db
 sudo service postgresql-9.4 start //启动数据库
 
 <span class="se">\c</span> database_name //切换数据库

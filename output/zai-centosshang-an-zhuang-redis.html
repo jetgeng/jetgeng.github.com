@@ -66,12 +66,12 @@
       <p>redis 用的人越来越到。他在linux上安装也很简单。官方文档http://redis.io/topics/quickstart 已经说的很清楚了。</p>
 <p>不过在CentOS 上遇到了问题。我的CentOS是一个很干净的系统，没有装过任何其他的东西。所以编译用的gcc 都没有。在Debian 系统中一句 <tt class="docutils literal">` <span class="pre">apt-get</span>&nbsp; <span class="pre">build-essential</span> `</tt> 就可以搞定一切了。
 在CentOs中是不是有对应的呢，当然是有了！</p>
-<div class="highlight"><pre>sudo yum groupinstall <span class="s2">&quot;Development Tools&quot;</span>
+<div class="highlight"><pre><span></span>sudo yum groupinstall <span class="s2">&quot;Development Tools&quot;</span>
 </pre></div>
 <p>这样就搞定了！ 可以继续使用make命令来执行了。</p>
 <p>不过要命的是我用的是CentOS release 6.5 (Final) 遇到了他的那个 #error &quot;Newer version of jemalloc required&quot; 错误。这个是让我升级jemalloc的节奏啊。</p>
 <p>我去那里找这个jemalloc啊？不要找其实已经有了。</p>
-<div class="highlight"><pre><span class="nb">cd </span>deps
+<div class="highlight"><pre><span></span><span class="nb">cd</span> deps
 make hiredis jemalloc linenoise lua
 <span class="nb">cd</span> ..
 make install

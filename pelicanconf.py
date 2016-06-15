@@ -29,7 +29,7 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
-
+DISPLAY_PAGES_ON_MENU = True
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
@@ -43,6 +43,6 @@ DISQUS_SITENAME = u'techfoolishstory'
 
 LICENSE_NAME="版权归Jet Geng所有，转载请注明！"
 SHOW_ARTICLE_AUTHOR = True
-SITE_SUBTEXT="Jet Geng和Grails，Groovy那些说不清道不明的故事"
+SITE_SUBTEXT="Jet Geng的工作和生活"
 
 GITHUB_ADDRESS="https://github.com/jetgeng"
