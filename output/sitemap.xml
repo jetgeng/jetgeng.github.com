@@ -4,231 +4,231 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://jetgeng.github.io/</loc>
-<lastmod>2016-06-15T18:24:10-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2016-06-15T18:26:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/archives.html</loc>
-<lastmod>2016-06-15T18:24:10-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2016-06-15T18:26:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tags.html</loc>
-<lastmod>2016-06-15T18:24:10-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2016-06-15T18:26:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/categories.html</loc>
-<lastmod>2016-06-15T18:24:10-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2016-06-15T18:26:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/videoforkid.html</loc>
+<loc>/videoforkid.html</loc>
 <lastmod>2016-06-04T19:57:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/grails-zhong-fu-wu-lan-jia-zai.html</loc>
+<loc>/grails-zhong-fu-wu-lan-jia-zai.html</loc>
 <lastmod>2015-06-10T17:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/zai-redhatzhong-an-zhuang-postgresql.html</loc>
+<loc>/zai-redhatzhong-an-zhuang-postgresql.html</loc>
 <lastmod>2015-04-11T10:20:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/grailsdai-ma-yue-du.html</loc>
+<loc>/grailsdai-ma-yue-du.html</loc>
 <lastmod>2015-04-05T18:40:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/jpush-ios-pei-zhi-guo-cheng.html</loc>
+<loc>/jpush-ios-pei-zhi-guo-cheng.html</loc>
 <lastmod>2015-03-31T18:40:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/angularjszhong-de-dong-tai-qie-huan-fu-wu.html</loc>
+<loc>/angularjszhong-de-dong-tai-qie-huan-fu-wu.html</loc>
 <lastmod>2015-03-28T17:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/ionic-xiang-mu-de-diao-shi.html</loc>
+<loc>/ionic-xiang-mu-de-diao-shi.html</loc>
 <lastmod>2015-01-21T17:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/groovyxiao-ji-qiao.html</loc>
+<loc>/groovyxiao-ji-qiao.html</loc>
 <lastmod>2014-12-27T17:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/grails-ji-qiao-hui-ji.html</loc>
+<loc>/grails-ji-qiao-hui-ji.html</loc>
 <lastmod>2014-12-14T17:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/zai-centosshang-an-zhuang-redis.html</loc>
+<loc>/zai-centosshang-an-zhuang-redis.html</loc>
 <lastmod>2014-09-14T17:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/shi-yong-redisrang-shiroshi-xian-ji-qun.html</loc>
+<loc>/shi-yong-redisrang-shiroshi-xian-ji-qun.html</loc>
 <lastmod>2014-09-07T17:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/zai-grailsshi-yong-sqlhuo-qu-shu-ju.html</loc>
+<loc>/zai-grailsshi-yong-sqlhuo-qu-shu-ju.html</loc>
 <lastmod>2014-06-12T17:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/grailscong-22sheng-ji-dao-233yu-dao-de-wen-ti.html</loc>
+<loc>/grailscong-22sheng-ji-dao-233yu-dao-de-wen-ti.html</loc>
 <lastmod>2014-03-21T17:39:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/category/database.html</loc>
+<loc>/category/database.html</loc>
 <lastmod>2015-04-11T10:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/category/grails.html</loc>
+<loc>/category/grails.html</loc>
 <lastmod>2015-06-10T17:39:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/category/qian-duan.html</loc>
+<loc>/category/qian-duan.html</loc>
 <lastmod>2015-03-28T17:39:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/category/she-ji.html</loc>
+<loc>/category/she-ji.html</loc>
 <lastmod>2015-03-31T18:40:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/category/xi-tong-wei-hu.html</loc>
+<loc>/category/xi-tong-wei-hu.html</loc>
 <lastmod>2014-09-14T17:39:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/category/zao-jiao.html</loc>
+<loc>/category/zao-jiao.html</loc>
 <lastmod>2016-06-04T19:57:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tag/grails.html</loc>
+<loc>/tag/grails.html</loc>
 <lastmod>2015-06-10T17:39:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tag/yu-er.html</loc>
+<loc>/tag/yu-er.html</loc>
 <lastmod>2016-06-04T19:57:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tag/ios.html</loc>
+<loc>/tag/ios.html</loc>
 <lastmod>2015-03-31T18:40:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tag/angular.html</loc>
+<loc>/tag/angular.html</loc>
 <lastmod>2015-01-21T17:39:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tag/angularjs.html</loc>
+<loc>/tag/angularjs.html</loc>
 <lastmod>2015-03-28T17:39:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tag/sql.html</loc>
+<loc>/tag/sql.html</loc>
 <lastmod>2015-04-11T10:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tag/push.html</loc>
+<loc>/tag/push.html</loc>
 <lastmod>2015-03-31T18:40:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tag/gorm.html</loc>
+<loc>/tag/gorm.html</loc>
 <lastmod>2015-06-10T17:39:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/tag/coderead.html</loc>
+<loc>/tag/coderead.html</loc>
 <lastmod>2015-04-05T18:40:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://jetgeng.github.io/author/jet-geng.html</loc>
+<loc>/author/jet-geng.html</loc>
 <lastmod>2016-06-04T19:57:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
